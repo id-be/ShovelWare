@@ -1,0 +1,95 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwgwsdxtumtbu"]
+
+[ext_resource type="Script" path="res://Scenes/Menu/Scripts/MainMenu.gd" id="1_8x5y4"]
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("quit_pop_up", "menu_options_vbox")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8x5y4")
+quit_pop_up = NodePath("MenuOptionsMarginContainer/VBoxContainer/Quit/QuitPopupMenu")
+menu_options_vbox = NodePath("MenuOptionsMarginContainer/VBoxContainer")
+metadata/_edit_lock_ = true
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.239216, 0, 0.0352941, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.336
+anchor_top = 0.131
+anchor_right = 0.664
+anchor_bottom = 0.417
+offset_left = -0.0720215
+offset_top = 0.111992
+offset_right = 0.0719604
+offset_bottom = -0.216003
+grow_horizontal = 2
+
+[node name="MenuOptionsMarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.461
+anchor_top = 0.211
+anchor_right = 0.539
+anchor_bottom = 0.789
+offset_left = -0.0720215
+offset_top = -0.228012
+offset_right = 0.0719604
+offset_bottom = 0.227966
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuOptionsMarginContainer"]
+layout_mode = 2
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="HSeparator" type="HSeparator" parent="MenuOptionsMarginContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(90, 200)
+layout_mode = 2
+
+[node name="Play" type="Button" parent="MenuOptionsMarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="Help" type="Button" parent="MenuOptionsMarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Help"
+
+[node name="Options" type="Button" parent="MenuOptionsMarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="Gallery" type="Button" parent="MenuOptionsMarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Gallery"
+
+[node name="Quit" type="Button" parent="MenuOptionsMarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="QuitPopupMenu" type="PopupMenu" parent="MenuOptionsMarginContainer/VBoxContainer/Quit"]
+title = "Quit?"
+initial_position = 4
+
+[connection signal="pressed" from="MenuOptionsMarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MenuOptionsMarginContainer/VBoxContainer/Help" to="." method="_on_help_pressed"]
+[connection signal="pressed" from="MenuOptionsMarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MenuOptionsMarginContainer/VBoxContainer/Gallery" to="." method="_on_gallery_pressed"]
+[connection signal="pressed" from="MenuOptionsMarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="about_to_popup" from="MenuOptionsMarginContainer/VBoxContainer/Quit/QuitPopupMenu" to="." method="_on_quit_popup_menu_about_to_popup"]
+[connection signal="index_pressed" from="MenuOptionsMarginContainer/VBoxContainer/Quit/QuitPopupMenu" to="." method="_on_quit_popup_menu_index_pressed"]
+[connection signal="popup_hide" from="MenuOptionsMarginContainer/VBoxContainer/Quit/QuitPopupMenu" to="." method="_on_quit_popup_menu_popup_hide"]

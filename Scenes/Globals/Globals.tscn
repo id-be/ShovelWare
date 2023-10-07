@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ci5tx5cvaoegx"]
+
+[ext_resource type="Script" path="res://Scenes/Globals/Scripts/Globals.gd" id="1_uvuwr"]
+
+[node name="Globals" type="Node"]
+script = ExtResource("1_uvuwr")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]

@@ -13,3 +13,7 @@ config_version=5
 config/name="ShovelWare"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://GodotDefaults/icon.svg"
+
+[autoload]
+
+Globals="*res://Scenes/Globals/Globals.tscn"
