@@ -1,0 +1,22 @@
+splash screen --> come up with a project name
+exe icons -->
+
+main_menu
+	play --> pick play mode
+		mode --> go to game
+	how to play --> simple instructions
+	options
+		volume mixer
+		input binding --> change which button does what
+	credits --> a gallery to look at the microgames and see who contributed what to them (maybe a short demo to play if you click on them)
+	quit --> quit game
+
+game (framing device)
+	game system, highlight buttons that will be used for the microgame
+	serve microgame (zoom into game system screen)
+	hold lives (shows you how many you have, lose one if you lose a microgame)
+
+microgame
+	short (5-15 seconds apiece)
+	should start with a clear one-word instruction
+	should have consistent input-output logic (with signals), clear fail/success state
