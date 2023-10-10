@@ -1,6 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://dy30skcparclc"]
+[gd_scene load_steps=5 format=3 uid="uid://dy30skcparclc"]
 
-[ext_resource type="Script" path="res://Scenes/MicroGames/Scripts/PetThePet.gd" id="1_37mku"]
+[ext_resource type="Script" path="res://Scenes/MicroGames/Scripts/pet_the_pet.gd" id="1_tufc1"]
+[ext_resource type="Texture2D" uid="uid://d2s2xdefqh2g8" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/Backgrounds/GreenField.jpg" id="2_nk47s"]
+[ext_resource type="Texture2D" uid="uid://cv8dg0ebed4n0" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/Backgrounds/House.jpg" id="3_eq8r8"]
+[ext_resource type="Texture2D" uid="uid://cxx85q454jhdn" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/Backgrounds/NiceMountain.jpg" id="4_ia4ox"]
 
 [node name="PetThePet" type="Node2D"]
-script = ExtResource("1_37mku")
+script = ExtResource("1_tufc1")
+bgs = [ExtResource("2_nk47s"), ExtResource("3_eq8r8"), ExtResource("4_ia4ox")]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2

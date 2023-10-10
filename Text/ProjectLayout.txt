@@ -1,0 +1,13 @@
+scenes should have their own folders, a subfolder for scripts, and a subfolder
+for assets unique to the scene
+
+RAW assets go into res://Assets/.RAW (this is not visible from within godot, use
+system file manager to find it.) this is where you place .blend files, .aseprite
+files, etc. and they will not be exported with the project but will be tracked
+by git. game-specific assets go in their respective scenes folder, reusable 
+assets go into res://Assets/*.
+
+a great resource for realistic photos is pexels.com, no attribution required for
+those--try to modify them as we don't want giant hi-res images. would encourage
+using things we don't have to attribute but making stuff ourselves is also good
+so long as we don't spend way too much dev time on it

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5uyx77h5bilf"
-path="res://.godot/imported/icon.svg-122469344de8dcee940df5f02cf83fc2.ctex"
+uid="uid://d2s2xdefqh2g8"
+path="res://.godot/imported/GreenField.jpg-1379b2fb92d766982bfbeb3d77161970.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GodotDefaults/icon.svg"
-dest_files=["res://.godot/imported/icon.svg-122469344de8dcee940df5f02cf83fc2.ctex"]
+source_file="res://Scenes/MicroGames/MicroGameAssets/PetThePet/Backgrounds/GreenField.jpg"
+dest_files=["res://.godot/imported/GreenField.jpg-1379b2fb92d766982bfbeb3d77161970.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

@@ -1,1 +1,9 @@
-pet the animal (cat, cat with claws up don't pet), (dog, dog with mouth open growling don't pet), shark (shark, shark with mouth open don't pet')
+please number ideas and add an X once they are implemented.
+
+1) pet the animal (cat, cat with claws up don't pet), 
+(dog, dog with mouth open growling don't pet), scorpion (stings you)
+
+2) pop the balloons (a kid holding balloons [cries], a clown holding balloons 
+[takes out butcher knife], a set of air balloons [people fall out of sky]), 
+balloons float around a little bit and sometimes wind blows and makes them go to
+one side

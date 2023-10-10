@@ -38,7 +38,7 @@ text = "Press Me To Win!"
 [node name="Bounds" type="Node2D" parent="."]
 
 [node name="TopBound" type="StaticBody2D" parent="Bounds"]
-position = Vector2(576, 10)
+position = Vector2(576, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Bounds/TopBound"]
 texture_filter = 1

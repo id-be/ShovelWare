@@ -1,0 +1,14 @@
+none of these are enforced by the engine, these are purely for legibility.
+
+if an object exists purely in code, use snake_case. if an object exists outside 
+of code (eg., an asset) use PascalCase. for references in code to 
+ANonCodeObject, the references should also be snake_case. when referencing an
+object created in code that exists outside of code, its variable should be in
+snake_case while the object itself should be PascalCase (eg.,a 
+SceneThatIsReferenced and held in a_variable, or AnyNode that is created in code
+and added to the SceneTree)
+
+all CONSTANTS, including ENUMS, should be in SCREAMING_SNAKE_CASE.
+
+a _private_method, _virtual_method, or a _parameter_that_goes_unused should have
+a leading underscore (the debugger will throw a warning but not an error.)

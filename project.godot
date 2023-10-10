@@ -11,9 +11,23 @@ config_version=5
 [application]
 
 config/name="ShovelWare"
+run/main_scene="res://Scenes/Splash/Splash.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://GodotDefaults/icon.svg"
+config/icon="res://Assets/GodotDefaults/icon.svg"
 
 [autoload]
 
 Globals="*res://Scenes/Globals/Globals.tscn"
+
+[display]
+
+window/size/mode=3
+window/stretch/mode="viewport"
+
+[input]
+
+DEBUG_Quit={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194438,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
