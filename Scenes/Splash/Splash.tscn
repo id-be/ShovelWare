@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8drgd0uraxil"]
+[gd_scene load_steps=4 format=3 uid="uid://c8drgd0uraxil"]
 
 [ext_resource type="Script" path="res://Scenes/Splash/Scripts/splash.gd" id="1_6gutw"]
+[ext_resource type="Texture2D" uid="uid://bkw1wpd1u8lbd" path="res://Scenes/Splash/Assets/MagicConch.png" id="2_alfd8"]
+[ext_resource type="AudioStream" uid="uid://kfsaxknyauxk" path="res://Scenes/Splash/Assets/HornBlow.wav" id="2_d4mqu"]
 
 [node name="Splash" type="Control"]
 layout_mode = 3
@@ -10,3 +12,57 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6gutw")
+ConchBlow = ExtResource("2_d4mqu")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="StudioSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(572, 337)
+scale = Vector2(6, 6)
+texture = ExtResource("2_alfd8")
+
+[node name="StudioName" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.171
+anchor_right = 0.5
+anchor_bottom = 0.171
+offset_left = -85.0
+offset_top = -9.808
+offset_right = 88.0
+offset_bottom = 16.192
+grow_horizontal = 2
+text = "MAGIC CONCH GAMES"
+
+[node name="Underwriting" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.501
+anchor_top = 0.874
+anchor_right = 0.501
+anchor_bottom = 0.874
+offset_left = -89.152
+offset_top = -10.352
+offset_right = 91.848
+offset_bottom = 15.648
+grow_horizontal = 2
+text = "a shell corporation (tm)"
+
+[node name="FG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

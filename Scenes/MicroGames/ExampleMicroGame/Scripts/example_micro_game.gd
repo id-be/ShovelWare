@@ -5,6 +5,8 @@ extends Node2D
 
 var difficulty = "easy"
 
+var button_layout_class
+
 signal start_game
 signal end_game
 
@@ -25,10 +27,14 @@ func _ready():
 
 	$MoveButton.position = screen_size/2
 	$MoveButton.velocity = move_speed * base_speed_multiplier * Vector2(start_num_1,start_num_2).normalized()
+#	set_physics_process(false)
+#	await get_tree().create_timer(2).timeout
+#	emit_signal("start_game")
+#	set_physics_process(true)
 	emit_signal("start_game")
 
 
-func _physics_process(_delta):
+func _process(_delta):
 	move_button_around()
 #Maybe look at this logic again lol
 func move_button_around():
@@ -54,3 +60,5 @@ func move_button_around():
 				$MoveButton.velocity = vel_before_collision.rotated(rand_angle)
 func _on_button_pressed():
 	emit_signal("end_game", "success")
+
+

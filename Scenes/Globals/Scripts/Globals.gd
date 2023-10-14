@@ -1,5 +1,8 @@
 extends Node
 
+@onready var music_player = $Music
+@onready var sfx_player = $SFX
+
 var cur_music_track
 var music_track_queue = []
 
