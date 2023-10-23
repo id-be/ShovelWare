@@ -1,6 +1,8 @@
 splash screen --> come up with a project name
 exe icons -->
 
+"shovelware" --> digging up garbage games from a dumpster using a shovel (et cartridges etc)
+
 main_menu
 	play --> pick play mode
 		mode --> go to game

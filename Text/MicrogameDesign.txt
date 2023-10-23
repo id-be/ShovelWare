@@ -1,3 +1,4 @@
 allowed inputs: d-pad, action button 1, action button 2.
 
 some games require all inputs
+

@@ -1,9 +1,35 @@
 please number ideas and add an X once they are implemented.
 
-1) pet the animal (cat, cat with claws up don't pet), 
-(dog, dog with mouth open growling don't pet), scorpion (stings you)
+1) pet!
+pet the animal (cat, cat with claws up don't pet), 
+(dog, dog with mouth open growling don't pet), scorpion (stings you), crocodile
 
-2) pop the balloons (a kid holding balloons [cries], a clown holding balloons 
+2) pop!
+pop the balloons (a kid holding balloons [cries], a clown holding balloons 
 [takes out butcher knife], a set of air balloons [people fall out of sky]), 
 balloons float around a little bit and sometimes wind blows and makes them go to
 one side
+
+3) date!
+select the right response from a menu within a time frame (a dating sim, an rpg, etc)
+|_> kick/fireball
+|_> kiss :3
+|_> punch/ultrablast
+
+4) hatch!
+(tap eggs until they crack, little animals inside... multiple eggs for harder difficulties)
+
+5) dip!
+dip a chip in salsa when the hand is going back and forth
+
+6) shave!
+use a razor to shave a man's beard/mustache/armpits
+
+7) combo!
+put in a series of inputs to do the correct attack combo
+
+8) pump!
+go up and down to pump up an inflatable thing
+
+9) worship!
+move up and down to bend and pray to an idol or something

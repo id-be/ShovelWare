@@ -1,38 +1,30 @@
-extends Node2D
+extends microgame
 
 @export var move_speed = 5
 @export var base_speed_multiplier = 40
 
-var difficulty = "easy"
-
-var button_layout_class
-
-signal start_game
-signal end_game
-
 
 func _init(dif = difficulty):
+	_time_step = 0.4
+	_music_track = load("res://Scenes/MicroGames/ExampleMicroGame/Assets/Audio/DebugTrack.ogg")
+	prompt = "Click!"
 	difficulty = dif
-func _ready():
-	match difficulty:
+func _set_difficulty(dif):
+	match dif:
 		"easy":
-			move_speed = 5
+			move_speed = 3
 		"medium":
-			move_speed = 8
+			move_speed = 4
 		"hard":
-			move_speed = 12
+			move_speed = 6
+func _set_initial_values():
 	var screen_size = get_viewport_rect().size
 	var start_num_1 = randf_range(-1,1)
 	var start_num_2 = randf_range(-1,1)
 
 	$MoveButton.position = screen_size/2
-	$MoveButton.velocity = move_speed * base_speed_multiplier * Vector2(start_num_1,start_num_2).normalized()
-#	set_physics_process(false)
-#	await get_tree().create_timer(2).timeout
-#	emit_signal("start_game")
-#	set_physics_process(true)
-	emit_signal("start_game")
 
+	$MoveButton.velocity = move_speed * base_speed_multiplier * Vector2(start_num_1,start_num_2).normalized()
 
 func _process(_delta):
 	move_button_around()
@@ -58,7 +50,7 @@ func move_button_around():
 			elif phi > 0:
 				var rand_angle = -randf_range(PI/2, phi)
 				$MoveButton.velocity = vel_before_collision.rotated(rand_angle)
+
 func _on_button_pressed():
-	emit_signal("end_game", "success")
-
-
+	set_process(false)
+	end_state = "success"
