@@ -1,19 +1,70 @@
-[gd_scene load_steps=5 format=3 uid="uid://dy30skcparclc"]
+[gd_scene load_steps=8 format=3 uid="uid://dy30skcparclc"]
 
 [ext_resource type="Script" path="res://Scenes/MicroGames/Scripts/pet_the_pet.gd" id="1_tufc1"]
 [ext_resource type="Texture2D" uid="uid://d2s2xdefqh2g8" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/Backgrounds/GreenField.jpg" id="2_nk47s"]
 [ext_resource type="Texture2D" uid="uid://cv8dg0ebed4n0" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/Backgrounds/House.jpg" id="3_eq8r8"]
 [ext_resource type="Texture2D" uid="uid://cxx85q454jhdn" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/Backgrounds/NiceMountain.jpg" id="4_ia4ox"]
+[ext_resource type="Texture2D" uid="uid://bucjr426s70d2" path="res://Assets/DEBUG/2D/Defaults/Square.png" id="5_582kv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4kb10"]
+size = Vector2(240, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2ysg"]
+size = Vector2(16, 160)
 
 [node name="PetThePet" type="Node2D"]
 script = ExtResource("1_tufc1")
 bgs = [ExtResource("2_nk47s"), ExtResource("3_eq8r8"), ExtResource("4_ia4ox")]
 
 [node name="TextureRect" type="TextureRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 1152.0
-offset_bottom = 648.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 228.0
+offset_bottom = 152.0
+
+[node name="Bounds" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="TopBound" type="StaticBody2D" parent="Bounds"]
+position = Vector2(120, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/TopBound"]
+texture_filter = 1
+scale = Vector2(3.75, 0.25)
+texture = ExtResource("5_582kv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/TopBound"]
+shape = SubResource("RectangleShape2D_4kb10")
+
+[node name="BottomBound" type="StaticBody2D" parent="Bounds"]
+position = Vector2(120, 160)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/BottomBound"]
+texture_filter = 1
+scale = Vector2(3.75, 0.25)
+texture = ExtResource("5_582kv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BottomBound"]
+shape = SubResource("RectangleShape2D_4kb10")
+
+[node name="LeftBound" type="StaticBody2D" parent="Bounds"]
+position = Vector2(4, 80)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/LeftBound"]
+texture_filter = 1
+scale = Vector2(0.25, 2.5)
+texture = ExtResource("5_582kv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/LeftBound"]
+shape = SubResource("RectangleShape2D_c2ysg")
+
+[node name="RightBound" type="StaticBody2D" parent="Bounds"]
+position = Vector2(236, 80)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/RightBound"]
+texture_filter = 1
+scale = Vector2(0.25, 2.5)
+texture = ExtResource("5_582kv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightBound"]
+shape = SubResource("RectangleShape2D_c2ysg")

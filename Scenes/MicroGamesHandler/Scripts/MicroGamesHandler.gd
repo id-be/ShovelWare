@@ -39,6 +39,7 @@ var next_microgame
 var microgames_queue
 
 var speed_up_flag
+var cur_game_speed = 1
 
 signal zoom_into_microgame
 signal zoom_out_of_microgame
@@ -50,7 +51,8 @@ func flash_ready():
 	await $PromptLabel/AnimationPlayer.animation_finished
 	return
 
-func speed_up():
+func speed_up(new_speed):
+	cur_game_speed = new_speed
 	pass
 
 func update_microgame_difficulty(new_difficulty):

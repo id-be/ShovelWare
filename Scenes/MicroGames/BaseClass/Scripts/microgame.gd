@@ -44,6 +44,9 @@ func _init(dif = difficulty):
 #	you shouldn't need to override this, unless you want to use
 #	physics_process
 func _ready():
+	boilerplate_ready()
+
+func boilerplate_ready():
 	set_process(false)
 	_set_initial_values()
 	emit_signal("start_game")
