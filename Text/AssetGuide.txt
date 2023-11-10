@@ -1,0 +1,16 @@
+assets should be kept to 32-bit or lower.
+
+the microgames themselves fit within a 216x144 window styled on the 
+gameboy advance screen. raw visual assets should fit within this 
+window to minimize storage of large assets. scaling in-engine is
+fine, just keep in mind the pixel-perfect nature of a game with this
+low of a resolution in order to minimize artifacting.
+
+mono sound preferred but not a necessity--positional sound will
+need to be introduced in microgames that require them as the 
+globals sfxplayer and musicplayer are non-positional (but do accept
+stereo tracks and will play them as such). sfx are defined as short,
+one-shot sounds (not designed to repeat, you will have to play them
+again manually). these should be in .wav format to maximize quality.
+music is longer and generally designed to be repeatable, these tracks
+should be in an .ogg format to minimize load times.

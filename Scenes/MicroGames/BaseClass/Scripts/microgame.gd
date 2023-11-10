@@ -2,6 +2,8 @@ extends Node2D
 
 class_name microgame
 
+@onready var timer = Timer.new()
+
 var _music_track
 
 var _time_step = 0.5
@@ -23,14 +25,14 @@ var _cur_inputs = []
 
 #the base window size is 240x160, there are 12 pixels missing from left and right
 #as well as 8 from top and bottom--this leaves the usable, unbordered area as
-#216 x 144
+#216 x 144. this is a 216:144 = 1.5 = 3:2 aspect ratio
 
 signal start_game
 signal end_game
 signal increment_timer
 
 #	called when the node is initialized (loaded into memory)
-func _init(dif = difficulty):
+func _init():
 #	_time_step = some_time
 #	_music_track = some_music_track
 #	prompt = some_prompt
@@ -45,9 +47,15 @@ func _init(dif = difficulty):
 #	physics_process
 func _ready():
 	boilerplate_ready()
+	
 
 func boilerplate_ready():
+##	don't do this here! do it in microgames_handler
+#	if _music_track!= null:
+#		Globals.set_and_play_music(_music_track)
+	add_child(timer)
 	set_process(false)
+	set_process_input(false)
 	_set_initial_values()
 	emit_signal("start_game")
 
@@ -70,19 +78,18 @@ func _set_initial_values():
 
 #you shouldn't need to override this
 func _start():
-	set_process(true)
-	track_time()
+	boiler_plate_start()
 
+
+func boiler_plate_start():
+	set_process(true)
+	set_process_input(true)
 
 func track_time():
-	var timer
-	while self != null:
-		timer = get_tree().create_timer(_time_step)
-		await timer.timeout
-		emit_signal("increment_timer")
-#	if condition not met:
-#		pass
-	pass
+	timer.wait_time = _time_step; timer.start()
+	await timer.timeout
+	emit_signal("increment_timer")
+	track_time()
 
 func _end_game(state = end_state):
 	emit_signal("end_game", state)

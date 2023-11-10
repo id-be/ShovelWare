@@ -128,6 +128,7 @@ offset_left = -24.0
 offset_top = -27.0
 offset_right = 1170.0
 offset_bottom = 680.0
+mouse_filter = 1
 color = Color(0, 0, 0, 0.705882)
 metadata/_edit_lock_ = true
 

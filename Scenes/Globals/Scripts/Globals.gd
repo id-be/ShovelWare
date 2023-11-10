@@ -45,6 +45,9 @@ func set_music_track(track):
 	music_player.set_stream(track)
 func play_music():
 	music_player.play()
+func stop_music():
+	music_player.stop()
+	pass
 func set_and_play_music(track):
 	set_music_track(track)
 	play_music()
@@ -59,7 +62,9 @@ func set_sfx_track(track):
 	sfx_player.set_stream(track)
 func play_sfx():
 	sfx_player.play()
-func set_and_sfx_music(track):
+func stop_sfx():
+	sfx_player.stop()
+func set_and_play_sfx(track):
 	set_sfx_track(track)
 	play_sfx()
 func _on_sfx_finished():
@@ -75,3 +80,6 @@ func toggle_sounds():
 #want to resume playing from the spot we stopped at.
 
 	pass
+func kill_sounds():
+	stop_music()
+	stop_sfx()

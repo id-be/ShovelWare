@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8ei7a3uqh7vl"]
+
+[ext_resource type="Script" path="res://Scenes/DEBUG/DEBUG_viewport.gd" id="1_fdsah"]
+[ext_resource type="PackedScene" uid="uid://c3f6kj2tkyjog" path="res://Scenes/MicroGames/ExampleMicroGame/ExampleMicroGame.tscn" id="2_faggv"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_fdsah")
+
+[node name="ExampleMicroGame2" parent="." instance=ExtResource("2_faggv")]
+position = Vector2(766, 250)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_right = 512.0
+offset_bottom = 512.0
+mouse_default_cursor_shape = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="ExampleMicroGame" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_faggv")]

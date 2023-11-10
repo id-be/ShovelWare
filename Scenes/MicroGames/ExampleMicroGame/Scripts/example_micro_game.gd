@@ -51,6 +51,31 @@ func move_button_around():
 				var rand_angle = -randf_range(PI/2, phi)
 				$MoveButton.velocity = vel_before_collision.rotated(rand_angle)
 
+func _input(event):
+	if event is InputEventMouseButton:
+#		if event.button_index == MOUSE_BUTTON_LEFT:
+#			print("MEME")
+		pass
+	elif event is InputEventMouseMotion:
+#		print(get_local_mouse_position())
+#		print(get_global_mouse_position())
+#		get_tree().get_root().warp_mouse($Sprite2D/Area2D/CollisionShape2D.global_position)
+#		$Sprite2D/Area2D/CollisionShape2D.emit_signal("_on_mouse_shape_entered")
+#		get_tree().get_root().update_mouse_cursor_state()
+		pass		
+#	else:
+#		print(event)
+#			print(get_local_mouse_position())
+#			print(get_global_mouse_position())
+
 func _on_button_pressed():
 	set_process(false)
 	end_state = "success"
+
+func _on_area_2d_mouse_entered():
+	print("STUFF")
+
+
+func _on_area_2d_mouse_shape_entered(shape_idx):
+	print("STUFF2")
+	pass # Replace with function body.

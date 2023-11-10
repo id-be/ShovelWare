@@ -2,6 +2,13 @@ add a tv static shader for when you zoom into and out of the game
 
 refactor the title screen and the splash to take place on the deanboy
 
-create a base microgame class with the basics (init, start_game, end_game(end_state)
+create a base microgame class with the basics (init, start_game, 
+end_game(end_state)
 
-make sure the sfx and music are mono not stereo
+make sure the sfx and music are mono not stereo* and bitcrush them!
+
+need to make sure that the microgame only "starts" when the game is 
+done zooming in
+
+find how to push mouse input and mouse motion to the subviewport
+in the microgameshandler for purposes of mouse_entered

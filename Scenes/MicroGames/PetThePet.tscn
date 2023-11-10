@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://dy30skcparclc"]
+[gd_scene load_steps=14 format=3 uid="uid://dy30skcparclc"]
 
 [ext_resource type="Script" path="res://Scenes/MicroGames/Scripts/pet_the_pet.gd" id="1_tufc1"]
-[ext_resource type="Texture2D" uid="uid://d2s2xdefqh2g8" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/Backgrounds/GreenField.jpg" id="2_nk47s"]
-[ext_resource type="Texture2D" uid="uid://cv8dg0ebed4n0" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/Backgrounds/House.jpg" id="3_eq8r8"]
-[ext_resource type="Texture2D" uid="uid://cxx85q454jhdn" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/Backgrounds/NiceMountain.jpg" id="4_ia4ox"]
+[ext_resource type="Texture2D" uid="uid://d2s2xdefqh2g8" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Backgrounds/GreenField.jpg" id="2_scoiw"]
+[ext_resource type="Texture2D" uid="uid://cv8dg0ebed4n0" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Backgrounds/House.jpg" id="3_k6d71"]
+[ext_resource type="Texture2D" uid="uid://cxx85q454jhdn" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Backgrounds/NiceMountain.jpg" id="4_qi80w"]
 [ext_resource type="Texture2D" uid="uid://bucjr426s70d2" path="res://Assets/DEBUG/2D/Defaults/Square.png" id="5_582kv"]
+[ext_resource type="SpriteFrames" uid="uid://b3wuj62rruwx7" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Pets/Animations/Gator.tres" id="7_0cil3"]
+[ext_resource type="Texture2D" uid="uid://bhsywumns0h8x" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Hand.png" id="7_4u1pm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4kb10"]
 size = Vector2(240, 16)
@@ -12,9 +14,64 @@ size = Vector2(240, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c2ysg"]
 size = Vector2(16, 160)
 
+[sub_resource type="Animation" id="Animation_sxd85"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(90, 52), Vector2(90, 58)]
+}
+
+[sub_resource type="Animation" id="Animation_ph8cb"]
+resource_name = "Pet"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(95, 80), Vector2(136, 67)]
+}
+
+[sub_resource type="Animation" id="Animation_m8xeq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(90, 52)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nvmmb"]
+_data = {
+"Idle": SubResource("Animation_sxd85"),
+"Pet": SubResource("Animation_ph8cb"),
+"RESET": SubResource("Animation_m8xeq")
+}
+
 [node name="PetThePet" type="Node2D"]
 script = ExtResource("1_tufc1")
-bgs = [ExtResource("2_nk47s"), ExtResource("3_eq8r8"), ExtResource("4_ia4ox")]
+bgs = [ExtResource("2_scoiw"), ExtResource("3_k6d71"), ExtResource("4_qi80w")]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = 12.0
@@ -68,3 +125,25 @@ texture = ExtResource("5_582kv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightBound"]
 shape = SubResource("RectangleShape2D_c2ysg")
+
+[node name="Animal" type="AnimatedSprite2D" parent="."]
+position = Vector2(12, 8)
+sprite_frames = ExtResource("7_0cil3")
+animation = &"Normal"
+centered = false
+
+[node name="Hand" type="Sprite2D" parent="."]
+position = Vector2(90, 52)
+texture = ExtResource("7_4u1pm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hand"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_nvmmb")
+}
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(136, 67)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(95, 80)
