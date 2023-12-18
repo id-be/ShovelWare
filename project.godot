@@ -12,7 +12,7 @@ config_version=5
 
 config/name="ShovelWare"
 run/main_scene="res://Scenes/Splash/Splash.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://Assets/GodotDefaults/icon.svg"
 
 [audio]
@@ -29,6 +29,7 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=3
 window/stretch/mode="viewport"
+window/emulate_touch_from_mouse=true
 
 [gui]
 

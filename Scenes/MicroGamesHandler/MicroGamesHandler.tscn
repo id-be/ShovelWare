@@ -1,9 +1,24 @@
 [gd_scene load_steps=8 format=3 uid="uid://ftkh155jwal2"]
 
-[ext_resource type="Script" path="res://Scenes/MicroGamesHandler/Scripts/MicroGamesHandler.gd" id="1_4vqmy"]
+[ext_resource type="Script" path="res://Scenes/MicroGamesHandler/Scripts/micro_games_handler.gd" id="1_bkbri"]
 [ext_resource type="Texture2D" uid="uid://f53rs58kvlfq" path="res://Scenes/MicroGamesHandler/Assets/2D/Cloud2.png" id="2_g468g"]
 [ext_resource type="Texture2D" uid="uid://datfnkmlcyc6v" path="res://Scenes/MicroGamesHandler/Assets/2D/Bomb1.png" id="3_sa4kw"]
 [ext_resource type="AudioStream" uid="uid://cjr7t5vifoyu" path="res://Scenes/MicroGamesHandler/Assets/Audio/BombBump.ogg" id="4_tk4ib"]
+
+[sub_resource type="Animation" id="Animation_8cyig"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_650cc"]
 resource_name = "flash_ready"
@@ -21,21 +36,6 @@ tracks/0/keys = {
 "values": [true, false, true, false, true, false, true, false, true, false]
 }
 
-[sub_resource type="Animation" id="Animation_8cyig"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m847m"]
 _data = {
 "RESET": SubResource("Animation_8cyig"),
@@ -44,12 +44,13 @@ _data = {
 
 [node name="MicroGamesHandler" type="Node2D"]
 process_mode = 1
-script = ExtResource("1_4vqmy")
+script = ExtResource("1_bkbri")
 metadata/_edit_lock_ = true
 
 [node name="SubViewPortContainer" type="SubViewportContainer" parent="."]
 process_mode = 1
 texture_filter = 1
+clip_contents = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -61,6 +62,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 0
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
@@ -74,6 +76,7 @@ offset_left = -108.0
 offset_top = -72.0
 offset_right = 108.0
 offset_bottom = 72.0
+mouse_filter = 1
 color = Color(0, 0, 0, 1)
 
 [node name="WinLossRect" type="ColorRect" parent="."]
@@ -89,6 +92,7 @@ offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
+mouse_filter = 1
 metadata/_edit_lock_ = true
 
 [node name="WinLabel" type="Label" parent="WinLossRect"]
@@ -134,6 +138,7 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
+mouse_filter = 1
 text = "READY???"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -174,3 +179,5 @@ texture = ExtResource("3_sa4kw")
 [node name="BombSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_tk4ib")
 bus = &"SFXBus"
+
+[node name="Timer" type="Timer" parent="."]

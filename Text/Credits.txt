@@ -1,0 +1,6 @@
+please keep your desired credits to the following format to keep 
+the project streamlined.
+
+1) Design
+2) Assets
+3) Implementation
