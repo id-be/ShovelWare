@@ -93,10 +93,10 @@ offset_bottom = 152.0
 mouse_filter = 2
 texture = ExtResource("5_ul35b")
 
+[node name="BalloonHandler" type="Node2D" parent="."]
+
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(228, 18)
-
-[node name="BalloonHandler" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.694118, 0.619608, 0.662745, 1)
@@ -121,12 +121,5 @@ scale = Vector2(6.4, 6.4)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Icon/Area2D"]
 shape = SubResource("CircleShape2D_f6pkc")
 
-[node name="Button" type="Button" parent="."]
-offset_left = 87.0
-offset_top = 93.0
-offset_right = 95.0
-offset_bottom = 101.0
-
 [connection signal="mouse_entered" from="Icon/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Icon/Area2D" to="." method="_on_area_2d_mouse_exited"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

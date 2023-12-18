@@ -5,6 +5,12 @@ var can_click
 #	16 wide. 12 is the min, 236-8=228 is the max. so we need to
 #	make this balloon placed such that its position is between
 #	extents+12 and 228-extents
+class dummy extends Sprite2D:
+	func _init():
+		texture = load("res://Assets/GodotDefaults/icon.svg")
+	
+	
+
 
 class balloon extends AnimatedSprite2D:
 	var can_be_clicked = false
@@ -44,6 +50,9 @@ class balloon extends AnimatedSprite2D:
 		
 		area.connect("mouse_entered", Callable(self, "mouse_over"))
 		area.connect("mouse_exited", Callable(self, "mouse_exited"))	
+
+#		area.connect("mouse_entered", Callable(self, "mouse_over"))
+#		area.connect("mouse_exited", Callable(self, "mouse_exited"))	
 	func gen_color():
 		var col_r = (randf_range(0.3, 1.0))
 		var col_g = (randf_range(0.3, 1.0))
@@ -55,6 +64,8 @@ class balloon extends AnimatedSprite2D:
 	func _ready():
 #		set_process_input(true)
 #		connect("is_queued_for_deletion", Callable(get_tree().get_root().get_node("PopIt"),"fuck"))
+		set_process_input(true)
+		set_process_unhandled_input(true)
 		place()
 		set_speed()
 	func place():
@@ -75,14 +86,25 @@ class balloon extends AnimatedSprite2D:
 		is_moving = true
 	func _process(delta):
 		move_around()
-	
 	func _input(event):
 		if can_be_clicked:
 			if event is InputEventMouseButton:
 				if event.button_index == MOUSE_BUTTON_LEFT:
 					if area != null:
 						if !area.is_queued_for_deletion():
-							pop()
+							pop()	
+	#func _input(event):
+		#if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+			#if get_rect().has_point((to_local(event.position))):
+				#pass
+	#func _unhandled_input(event):
+		#if can_be_clicked:
+			#if event is InputEventMouseButton:
+				#if event.button_index == MOUSE_BUTTON_LEFT:
+					#if area != null:
+						#if !area.is_queued_for_deletion():
+							#pop()
+	
 	func mouse_over():
 		print("MOUSEOVER")
 		can_be_clicked = true
@@ -131,8 +153,8 @@ func _init():
 func _ready():
 	boilerplate_ready()
 	spawn_balloon()
-	spawn_balloon()
-	spawn_balloon()
+#	spawn_balloon()
+#	spawn_balloon()
 	var points = $Path2D.curve.get_baked_points()
 #	print(points)
 #	print($Line2D.points)
@@ -148,12 +170,30 @@ func _ready():
 
 func _input(event):
 	if Input.is_action_just_pressed("button_0"):
-		print(get_global_mouse_position())
+		print("FACK " + str(get_global_mouse_position()))
+		print(get_local_mouse_position())
+
+	#if event is InputEventMouse:
+		#var container = find_parent("SubViewPortContainer") as SubViewportContainer
+		#if container != null:
+			#print("ASS")
+			#event = container.make_input_local(event)
+		#event = make_input_local(event)
+	#if can_click:
+		#if event is InputEventMouseButton:
+			#if event.button_index == MOUSE_BUTTON_LEFT:
+				#can_click = false
+				
+func _unhandled_input(event):
+	if Input.is_action_just_pressed("button_0"):
+		print("FACK " + str(get_global_mouse_position()))
+		print("GAY " + str(get_parent().get_mouse_position()))
 
 	if event is InputEventMouse:
-		var container = find_parent("SubViewPortContainer") as SubViewportContainer
+		var container = get_parent().get_parent() as SubViewportContainer
+#		print("the container is " + str(container))
 		if container != null:
-			print("ASS")
+			#print("ASS")
 			event = container.make_input_local(event)
 		event = make_input_local(event)
 	if can_click:
@@ -189,14 +229,9 @@ func _process(_delta):
 func _on_area_2d_mouse_entered():
 	can_click = true
 	print(get_global_mouse_position())
-	pass # Replace with function body.
+	
 
 func _on_area_2d_mouse_exited():
 	can_click = false
 	print("Ahh")
-	pass # Replace with function body.
 
-func _on_button_pressed():
-	for child in $BalloonHandler.get_children():
-		child.can_be_clicked = true
-	$Button.queue_free()

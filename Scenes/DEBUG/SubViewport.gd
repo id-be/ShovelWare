@@ -8,11 +8,11 @@ func _ready():
 #	set_process_input(true)
 	pass # Replace with function body.
 
-#func _input(event):
+#func _unhandled_input(event):
 ##	update_mouse_cursor_state()
 ##	print(event)
-#	for child in get_children():
-#		child._input(event)
+	#for child in get_children():
+		#child.unhandled_input(event)
 
 #func _unhandled_input(event):
 #	for child in get_children():
