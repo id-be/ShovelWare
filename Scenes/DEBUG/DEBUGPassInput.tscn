@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://er6iov1vaprh"]
+[gd_scene load_steps=6 format=3 uid="uid://er6iov1vaprh"]
 
 [ext_resource type="Script" path="res://Scenes/DEBUG/debug_pass_input.gd" id="1_kison"]
+[ext_resource type="Script" path="res://Scenes/DEBUG/sub_viewport_container.gd" id="2_3udi7"]
 [ext_resource type="PackedScene" uid="uid://dvyfsxkfu508j" path="res://Scenes/MicroGames/PopIt.tscn" id="2_4x6lc"]
 [ext_resource type="Texture2D" uid="uid://5uyx77h5bilf" path="res://Assets/GodotDefaults/icon.svg" id="3_eutsx"]
 
@@ -13,9 +14,9 @@ script = ExtResource("1_kison")
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("2_3udi7")
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
-transparent_bg = true
 handle_input_locally = false
 physics_object_picking = true
 render_target_update_mode = 4

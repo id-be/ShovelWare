@@ -8,8 +8,6 @@ var can_click
 class dummy extends Sprite2D:
 	func _init():
 		texture = load("res://Assets/GodotDefaults/icon.svg")
-	
-	
 
 
 class balloon extends AnimatedSprite2D:
@@ -40,10 +38,11 @@ class balloon extends AnimatedSprite2D:
 		add_child(timer)#...why is there a timer??
 		add_child(area)
 		area.add_child(shape)
-		area.input_pickable = true
 		shape.shape = circle
 		circle.radius = 16
 		shape.position.y = 3
+		area.input_pickable = true
+
 		add_child(line_anchor)
 		
 		gen_color()
@@ -92,14 +91,18 @@ class balloon extends AnimatedSprite2D:
 				if event.button_index == MOUSE_BUTTON_LEFT:
 					if area != null:
 						if !area.is_queued_for_deletion():
-							pop()	
+
+							pop()
+
 	func _unhandled_input(event):
 		if can_be_clicked:
 			if event is InputEventMouseButton:
 				if event.button_index == MOUSE_BUTTON_LEFT:
 					if area != null:
 						if !area.is_queued_for_deletion():
-							pop()	
+
+							pop()
+
 	#func _input(event):
 		#if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			#if get_rect().has_point((to_local(event.position))):
@@ -174,6 +177,7 @@ func _ready():
 #	for point in points:
 #		$Line2D.add_point(point)
 #	pass # Replace with function body.
+	set_process(true)
 
 func _input(event):
 	return
@@ -232,6 +236,8 @@ func move_points_around():
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	#if $Icon:
+		#$Icon.position.x += 1
 	pass
 
 
@@ -244,3 +250,13 @@ func _on_area_2d_mouse_exited():
 	can_click = false
 	print("Ahh")
 
+
+
+func _on_button_pressed():
+	$Icon.queue_free()
+	pass # Replace with function body.
+
+
+func _on_texture_button_pressed():
+	$Icon.queue_free()
+	pass # Replace with function body.
