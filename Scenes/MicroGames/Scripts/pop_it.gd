@@ -91,18 +91,22 @@ class balloon extends AnimatedSprite2D:
 				if event.button_index == MOUSE_BUTTON_LEFT:
 					if area != null:
 						if !area.is_queued_for_deletion():
+
 							pop()
+
 	func _unhandled_input(event):
 		if can_be_clicked:
 			if event is InputEventMouseButton:
 				if event.button_index == MOUSE_BUTTON_LEFT:
 					if area != null:
 						if !area.is_queued_for_deletion():
+
 							pop()
+
 	#func _input(event):
 		#if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			#if get_rect().has_point((to_local(event.position))):
-				#pass
+				#pass 
 	#func _unhandled_input(event):
 		#if can_be_clicked:
 			#if event is InputEventMouseButton:
@@ -175,23 +179,25 @@ func _ready():
 #	pass # Replace with function body.
 	set_process(true)
 
-#func _input(event):
-	#if Input.is_action_just_pressed("button_0"):
-		#print("FACK " + str(get_global_mouse_position()))
-		#print(get_local_mouse_position())
+func _input(event):
+	return
+	if Input.is_action_just_pressed("button_0"):
+		print("FACK " + str(get_global_mouse_position()))
+		print(get_local_mouse_position())
 
 	#if event is InputEventMouse:
 		#var container = find_parent("SubViewPortContainer") as SubViewportContainer
 		#if container != null:
 			#print("ASS")
 			#event = container.make_input_local(event)
-		#event = make_input_local(event)
+		#event = make_input_local(event)0000
 	#if can_click:
 		#if event is InputEventMouseButton:
 			#if event.button_index == MOUSE_BUTTON_LEFT:
 				#can_click = false
 				
 func _unhandled_input(event):
+	return
 	if Input.is_action_just_pressed("button_0"):
 		print("FACK " + str(get_global_mouse_position()))
 		print("GAY " + str(get_parent().get_mouse_position()))

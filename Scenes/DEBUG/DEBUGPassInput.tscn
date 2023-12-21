@@ -34,4 +34,5 @@ texture = ExtResource("3_eutsx")
 position = Vector2(0.370003, 0.0725021)
 shape = SubResource("RectangleShape2D_y1kh7")
 
-[connection signal="mouse_shape_entered" from="SubViewportContainer/SubViewport/Sprite2D/Area2D" to="." method="_on_area_2d_mouse_shape_entered"]
+[connection signal="input_event" from="SubViewportContainer/SubViewport/Sprite2D/Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="SubViewportContainer/SubViewport/Sprite2D/Area2D" to="." method="_on_area_2d_mouse_entered"]

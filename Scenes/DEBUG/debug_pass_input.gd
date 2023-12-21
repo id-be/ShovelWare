@@ -20,5 +20,10 @@ func _process(delta):
 	pass
 
 
-func _on_area_2d_mouse_shape_entered(shape_idx):
-	print("GAY.COM")
+func _on_area_2d_mouse_entered():
+	print("CUM")
+	pass # Replace with function body.
+
+
+func _on_area_2d_input_event(viewport, event, shape_idx):
+	pass
