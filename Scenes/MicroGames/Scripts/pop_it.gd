@@ -103,7 +103,7 @@ class balloon extends AnimatedSprite2D:
 	#func _input(event):
 		#if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			#if get_rect().has_point((to_local(event.position))):
-				#pass
+				#pass 
 	#func _unhandled_input(event):
 		#if can_be_clicked:
 			#if event is InputEventMouseButton:
