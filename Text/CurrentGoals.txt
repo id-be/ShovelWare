@@ -5,6 +5,9 @@ refactor the title screen and the splash to take place on the deanboy
 create a base microgame class with the basics (init, start_game, 
 end_game(end_state)
 
+refactor popit and petthepet to properly take advantage of the starting
+and stopping... petthepet seems to start music even without prompting
+
 make sure the sfx and music are mono not stereo* and bitcrush them!
 
 need to make sure that the microgame only "starts" when the game is 
