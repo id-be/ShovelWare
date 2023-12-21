@@ -20,3 +20,7 @@ func _process(delta):
 func _on_area_2d_mouse_entered():
 	print("CUM")
 	pass # Replace with function body.
+
+
+func _on_area_2d_input_event(viewport, event, shape_idx):
+	pass
