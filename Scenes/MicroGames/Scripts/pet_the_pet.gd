@@ -25,10 +25,10 @@ func _ready():
 	boilerplate_ready()
 	match pet_start_state:
 		0:
-			set_pet_state("Angry")
+			queue_pet_state("Angry")
 		1:
-			set_pet_state("Normal")
-	start_anims()
+			queue_pet_state("Normal")
+#	start_anims()
 
 func randomize_start_emotion():
 	var start_state = randi_range(0,1)
@@ -96,6 +96,11 @@ func randomize_pet_orientation():
 
 func _start():
 	boiler_plate_start()
+	set_pet_state(pet_state)
+	start_anims()
+
+func queue_pet_state(state):
+	pet_state = state
 
 func set_pet_state(state):
 	Globals.stop_sfx()
