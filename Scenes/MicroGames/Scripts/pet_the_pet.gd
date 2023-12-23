@@ -28,7 +28,7 @@ func _ready():
 			queue_pet_state("Angry")
 		1:
 			queue_pet_state("Normal")
-#	start_anims()
+
 
 func randomize_start_emotion():
 	var start_state = randi_range(0,1)
@@ -36,10 +36,8 @@ func randomize_start_emotion():
 	match pet_start_state:
 		0:
 			_music_track = music[1]
-#			Globals.set_and_play_music(music[1])
 		1:
 			_music_track = music[0]
-#			Globals.set_and_play_music(music[0])
 			
 func randomize_background():
 	var my_bg = randi_range(0, bgs.size()-1)
@@ -63,8 +61,6 @@ func _set_initial_values():
 	randomize_hand_orientation()
 	randomize_pet_orientation()
 	randomize_start_emotion()
-#	print($Animal.sprite_frames.animations[0])
-#	var start_state = randi_range(0,1)
 
 func _input(_event):
 	if Input.is_action_just_pressed("button_0"):
