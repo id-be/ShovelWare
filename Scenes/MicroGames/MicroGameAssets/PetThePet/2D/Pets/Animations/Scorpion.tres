@@ -1,8 +1,8 @@
-[gd_resource type="SpriteFrames" load_steps=12 format=3 uid="uid://cbwel8mqo10gy"]
+[gd_resource type="SpriteFrames" load_steps=13 format=3 uid="uid://cbwel8mqo10gy"]
 
 [ext_resource type="Texture2D" uid="uid://dykxyfe551j6h" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Pets/CrocAngry.png" id="1_cq5ij"]
 [ext_resource type="Texture2D" uid="uid://g52crhx88q2w" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Pets/CrocHappy.png" id="2_1b6ko"]
-[ext_resource type="Texture2D" uid="uid://chu2w1g3ieki2" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Pets/CrocNormal.png" id="3_xhkfm"]
+[ext_resource type="Texture2D" uid="uid://dw6maqnljggc5" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Pets/ScorpionNormal.png" id="3_k4eiv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ytpb"]
 atlas = ExtResource("1_cq5ij")
@@ -24,17 +24,21 @@ region = Rect2(0, 0, 216, 144)
 atlas = ExtResource("2_1b6ko")
 region = Rect2(216, 0, 216, 144)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pileb"]
-atlas = ExtResource("3_xhkfm")
+[sub_resource type="AtlasTexture" id="AtlasTexture_yf0w0"]
+atlas = ExtResource("3_k4eiv")
 region = Rect2(0, 0, 216, 144)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_eyu5e"]
-atlas = ExtResource("3_xhkfm")
+[sub_resource type="AtlasTexture" id="AtlasTexture_68bmh"]
+atlas = ExtResource("3_k4eiv")
 region = Rect2(216, 0, 216, 144)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sys4i"]
-atlas = ExtResource("3_xhkfm")
+[sub_resource type="AtlasTexture" id="AtlasTexture_dyg8x"]
+atlas = ExtResource("3_k4eiv")
 region = Rect2(432, 0, 216, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3g415"]
+atlas = ExtResource("3_k4eiv")
+region = Rect2(648, 0, 216, 144)
 
 [resource]
 animations = [{
@@ -65,13 +69,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pileb")
+"texture": SubResource("AtlasTexture_yf0w0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_eyu5e")
+"texture": SubResource("AtlasTexture_68bmh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sys4i")
+"texture": SubResource("AtlasTexture_dyg8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3g415")
 }],
 "loop": true,
 "name": &"Normal",

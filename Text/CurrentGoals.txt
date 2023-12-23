@@ -11,7 +11,5 @@ and stopping... petthepet seems to start music even without prompting
 make sure the sfx and music are mono not stereo* and bitcrush them!
 
 need to make sure that the microgame only "starts" when the game is 
-done zooming in
+done zooming in (looking at you petthepet!!!)
 
-find how to push mouse input and mouse motion to the subviewport
-in the microgameshandler for purposes of mouse_entered

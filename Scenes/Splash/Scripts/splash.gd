@@ -2,7 +2,6 @@ extends Control
 
 @export var ConchBlow = AudioStreamWAV
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	Globals.sfx_player.stream = ConchBlow
 	

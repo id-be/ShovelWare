@@ -5,10 +5,9 @@ var can_click
 #	16 wide. 12 is the min, 236-8=228 is the max. so we need to
 #	make this balloon placed such that its position is between
 #	extents+12 and 228-extents
-class dummy extends Sprite2D:
-	func _init():
-		texture = load("res://Assets/GodotDefaults/icon.svg")
 
+#to add to this: multiple backgrounds, functionality for multiple difficulty levels (kid with
+#balloons, clown with balloons, balloons with strings etc)
 
 class balloon extends AnimatedSprite2D:
 	var can_be_clicked = false
@@ -116,10 +115,8 @@ class balloon extends AnimatedSprite2D:
 							#pop()
 	
 	func mouse_over():
-		print("MOUSEOVER")
 		can_be_clicked = true
 	func mouse_exited():
-		print("MOUSEOFF")
 		can_be_clicked = false
 
 	func pop():
@@ -163,8 +160,8 @@ func _init():
 func _ready():
 	boilerplate_ready()
 	spawn_balloon()
-#	spawn_balloon()
-#	spawn_balloon()
+	spawn_balloon()
+	spawn_balloon()
 	var points = $Path2D.curve.get_baked_points()
 #	print(points)
 #	print($Line2D.points)
@@ -224,39 +221,3 @@ func spawn_balloon():
 	var cur_balloon = balloon.new()
 	$BalloonHandler.add_child(cur_balloon)
 	cur_balloon.name = "Balloon1"#this ensures that the name increments properly from 1 to 2 to 3 etc
-
-func fuck():
-	print("Hmm")
-
-func move_balloons_around():
-	pass
-
-
-func move_points_around():
-	pass
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	#if $Icon:
-		#$Icon.position.x += 1
-	pass
-
-
-func _on_area_2d_mouse_entered():
-	can_click = true
-	print(get_global_mouse_position())
-	
-
-func _on_area_2d_mouse_exited():
-	can_click = false
-	print("Ahh")
-
-
-
-func _on_button_pressed():
-	$Icon.queue_free()
-	pass # Replace with function body.
-
-
-func _on_texture_button_pressed():
-	$Icon.queue_free()
-	pass # Replace with function body.

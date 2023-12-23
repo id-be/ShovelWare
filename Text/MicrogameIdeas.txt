@@ -31,7 +31,7 @@ put in a series of inputs to do the correct attack combo
 8) pump!
 go up and down to pump up an inflatable thing
 
-9) worship!
+9) worship!/pray!
 move up and down to bend and pray to an idol or something
 
 10) lift!
@@ -39,3 +39,11 @@ move up and down to lift a weight
 
 11) marry!
 a ring moves side to side, put it on the correct finger
+
+12) chop! --connor
+chop vegetables but don't chop your hand off! a comically long carrot
+
+13) pacify!
+put a pacifier in a baby's mouth that's crying (hand going up and 
+down, if you miss the baby cries even harder and zooms towards the 
+screen)

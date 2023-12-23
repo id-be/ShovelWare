@@ -1,12 +1,18 @@
-[gd_scene load_steps=14 format=3 uid="uid://dy30skcparclc"]
+[gd_scene load_steps=20 format=3 uid="uid://dy30skcparclc"]
 
 [ext_resource type="Script" path="res://Scenes/MicroGames/Scripts/pet_the_pet.gd" id="1_tufc1"]
 [ext_resource type="Texture2D" uid="uid://d2s2xdefqh2g8" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Backgrounds/GreenField.jpg" id="2_scoiw"]
 [ext_resource type="Texture2D" uid="uid://cv8dg0ebed4n0" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Backgrounds/House.jpg" id="3_k6d71"]
 [ext_resource type="Texture2D" uid="uid://cxx85q454jhdn" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Backgrounds/NiceMountain.jpg" id="4_qi80w"]
 [ext_resource type="Texture2D" uid="uid://bucjr426s70d2" path="res://Assets/DEBUG/2D/Defaults/Square.png" id="5_582kv"]
+[ext_resource type="AudioStream" uid="uid://qk60ih8ebrr" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/Audio/Jingle.ogg" id="5_hlebc"]
+[ext_resource type="AudioStream" uid="uid://brhir2r5fmytb" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/Audio/2Scary.ogg" id="6_atgnb"]
 [ext_resource type="SpriteFrames" uid="uid://b3wuj62rruwx7" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Pets/Animations/Gator.tres" id="7_0cil3"]
+[ext_resource type="AudioStream" uid="uid://dpd1offxi1mbk" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/Audio/Woohoo.ogg" id="7_3hpdn"]
 [ext_resource type="Texture2D" uid="uid://bhsywumns0h8x" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Hand.png" id="7_4u1pm"]
+[ext_resource type="AudioStream" uid="uid://dhsefakh3jugq" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/Audio/Grrr.ogg" id="8_jghi8"]
+[ext_resource type="AudioStream" uid="uid://de3u7334jj6u5" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/Audio/Growl.ogg" id="9_ggytq"]
+[ext_resource type="AudioStream" uid="uid://c1rr2lokxm5hq" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/Audio/Moan.ogg" id="10_v1jas"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4kb10"]
 size = Vector2(240, 16)
@@ -72,6 +78,8 @@ _data = {
 [node name="PetThePet" type="Node2D"]
 script = ExtResource("1_tufc1")
 bgs = [ExtResource("2_scoiw"), ExtResource("3_k6d71"), ExtResource("4_qi80w")]
+music = [ExtResource("5_hlebc"), ExtResource("6_atgnb"), ExtResource("7_3hpdn")]
+sfx = [ExtResource("8_jghi8"), ExtResource("9_ggytq"), ExtResource("10_v1jas")]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = 12.0
@@ -80,6 +88,7 @@ offset_right = 228.0
 offset_bottom = 152.0
 
 [node name="Bounds" type="Node2D" parent="."]
+top_level = true
 metadata/_edit_lock_ = true
 
 [node name="TopBound" type="StaticBody2D" parent="Bounds"]
@@ -129,7 +138,7 @@ shape = SubResource("RectangleShape2D_c2ysg")
 [node name="Animal" type="AnimatedSprite2D" parent="."]
 position = Vector2(12, 8)
 sprite_frames = ExtResource("7_0cil3")
-animation = &"Normal"
+animation = &"Angry"
 centered = false
 
 [node name="Hand" type="Sprite2D" parent="."]

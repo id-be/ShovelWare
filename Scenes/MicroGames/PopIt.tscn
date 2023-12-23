@@ -1,9 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://dvyfsxkfu508j"]
+[gd_scene load_steps=8 format=3 uid="uid://dvyfsxkfu508j"]
 
 [ext_resource type="Script" path="res://Scenes/MicroGames/Scripts/pop_it.gd" id="1_hd6qi"]
 [ext_resource type="Texture2D" uid="uid://bucjr426s70d2" path="res://Assets/DEBUG/2D/Defaults/Square.png" id="2_fv0p8"]
-[ext_resource type="Texture2D" uid="uid://5uyx77h5bilf" path="res://Assets/GodotDefaults/icon.svg" id="3_xkurk"]
-[ext_resource type="SpriteFrames" uid="uid://4wb4ug83u187" path="res://Scenes/MicroGames/MicroGameAssets/PopIt/2D/Animations/BalloonAnim.tres" id="4_peons"]
 [ext_resource type="Texture2D" uid="uid://tvcc8pyuc04" path="res://Scenes/MicroGames/MicroGameAssets/PopIt/2D/Sky.png" id="5_ul35b"]
 
 [sub_resource type="Curve2D" id="Curve2D_1fy8l"]
@@ -22,11 +20,6 @@ size = Vector2(240, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j4eeb"]
 size = Vector2(16, 160)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_f6pkc"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_q6olh"]
-radius = 16.0
 
 [node name="PopIt" type="Node2D"]
 script = ExtResource("1_hd6qi")
@@ -93,41 +86,7 @@ offset_bottom = 152.0
 mouse_filter = 2
 texture = ExtResource("5_ul35b")
 
-[node name="Icon" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(167, 86)
-scale = Vector2(0.867187, 0.882813)
-texture = ExtResource("3_xkurk")
-
-[node name="Area2D" type="Area2D" parent="Icon"]
-scale = Vector2(6.4, 6.4)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Icon/Area2D"]
-shape = SubResource("CircleShape2D_f6pkc")
-
-[node name="Button" type="Button" parent="Icon"]
-offset_left = -64.0
-offset_top = -64.0
-offset_right = 64.0
-offset_bottom = 64.0
-
 [node name="BalloonHandler" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(228, 18)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.694118, 0.619608, 0.662745, 1)
-position = Vector2(32, 29)
-sprite_frames = ExtResource("4_peons")
-animation = &"Balloon"
-
-[node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
-position = Vector2(0, 3)
-shape = SubResource("CircleShape2D_q6olh")
-
-[connection signal="mouse_entered" from="Icon/Area2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Icon/Area2D" to="." method="_on_area_2d_mouse_exited"]
-[connection signal="pressed" from="Icon/Button" to="." method="_on_button_pressed"]

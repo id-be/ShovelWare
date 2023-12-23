@@ -5,10 +5,9 @@ extends microgame
 
 @onready var anims = []
 
-var music = []
+@export var music = []
 @export var sfx = []
 
-#needed: a growl sound effect, a panting sound effect, a bite sound effect,
 
 var animal
 var pet_start_state
@@ -16,18 +15,10 @@ var pet_state
 var is_being_pet = false
 var pet_change_state_time = 0.8
 
+
+
 func _init():
 	_time_step = 0.4
-	music =[
-		load("res://Scenes/MicroGames/MicroGameAssets/PetThePet/Audio/Jingle.ogg"),
-		load("res://Scenes/MicroGames/MicroGameAssets/PetThePet/Audio/2Scary.ogg"),
-		load("res://Scenes/MicroGames/MicroGameAssets/PetThePet/Audio/Woohoo.ogg")
-		]
-	sfx = [
-		load("res://Scenes/MicroGames/MicroGameAssets/PetThePet/Audio/Grrr.ogg"),
-		load("res://Scenes/MicroGames/MicroGameAssets/PetThePet/Audio/Growl.ogg"),
-		load("res://Scenes/MicroGames/MicroGameAssets/PetThePet/Audio/Moan.ogg")
-		] #,load(moan)]
 	prompt = "Pet!"
 
 func _ready():
@@ -55,7 +46,8 @@ func randomize_background():
 func _set_difficulty(dif):
 	match difficulty:
 		"easy":
-			animal = "Tiger"
+			animal = "Scorpion"
+#			animal = "Tiger"
 			pet_change_state_time = 0.8
 		"medium":
 			animal = "Scorpion"
@@ -89,17 +81,17 @@ func randomize_hand_orientation():
 
 func randomize_pet_orientation():
 	var pet_orientation_h = randi_range(0,1)
-	var pet_orientation_v = randi_range(0,1)
+	#var pet_orientation_v = randi_range(0,1)
 	match pet_orientation_h:
 		0:
 			pass
 		1:
 			$Animal.flip_h = true
-	match pet_orientation_v:
-		0:
-			pass
-		1:
-			$Animal.flip_v = true
+	#match pet_orientation_v:
+		#0:
+			#pass
+		#1:
+			#$Animal.flip_v = true
 
 func _start():
 	boiler_plate_start()
@@ -119,6 +111,7 @@ func set_pet_state(state):
 				state = pet_state
 				Globals.set_and_play_sfx(sfx[1])
 				end_state = "failure"
+				$Animal.scale = $Animal.scale * 1.3
 			else:
 #				play happy music
 				Globals.set_and_play_music(music[2])
@@ -137,8 +130,10 @@ func animate_animal():
 		match pet_state:
 			"Normal":
 				set_pet_state("Angry")
+
 			"Angry":
 				set_pet_state("Normal")
+
 		timer.start(pet_change_state_time)
 		await timer.timeout
 	
@@ -154,10 +149,3 @@ func end_anim_pet():
 #	won't need this when you add the music to the state machine
 	Globals.stop_music()
 	set_pet_state("Happy")
-#	match pet_state:
-#		"Normal":
-#			$Animal.animation = "Happy"
-#			end_state = "success"
-#		"Angry":
-##pretty hacky solution, but it works~!
-#			end_state = "failure"

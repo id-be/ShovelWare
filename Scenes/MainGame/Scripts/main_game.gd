@@ -30,7 +30,9 @@ func zoom_in():
 	tween = get_tree().create_tween()
 	tween.set_parallel(true)
 	tween.tween_property($Camera2D, "position", $MicroGamesHandler.position, 0.01)
-	tween.tween_property($Camera2D, "zoom", Vector2(2.25, 2.25), 0.5)
+#	tween.tween_property($Camera2D, "zoom", Vector2(2.25, 2.25), 0.5)
+	tween.tween_property($Camera2D, "zoom", Vector2(1.35, 1.35), 0.5)
+
 	await tween.finished
 	
 	emit_signal("done_zoom_in")
