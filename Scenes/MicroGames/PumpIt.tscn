@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=3 uid="uid://bx2bauxccxbxg"]
+
+[ext_resource type="Script" path="res://Scenes/MicroGames/Scripts/pump_it.gd" id="1_rr2sd"]
+[ext_resource type="Texture2D" uid="uid://bucjr426s70d2" path="res://Assets/DEBUG/2D/Defaults/Square.png" id="2_stfri"]
+[ext_resource type="Texture2D" uid="uid://bt8uhgt7cvp6k" path="res://Assets/2D/Sprites/Explosion.png" id="3_x81re"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_avj4k"]
+size = Vector2(240, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mbgb8"]
+size = Vector2(16, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gumn2"]
+size = Vector2(78, 66)
+
+[node name="PumpIt" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_rr2sd")
+metadata/_edit_lock_ = true
+
+[node name="TestText" type="Label" parent="."]
+offset_left = 70.0
+offset_top = 36.0
+offset_right = 110.0
+offset_bottom = 59.0
+text = "Test"
+
+[node name="Bounds" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="TopBound" type="StaticBody2D" parent="Bounds"]
+position = Vector2(120, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/TopBound"]
+texture_filter = 1
+scale = Vector2(3.75, 0.25)
+texture = ExtResource("2_stfri")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/TopBound"]
+shape = SubResource("RectangleShape2D_avj4k")
+
+[node name="BottomBound" type="StaticBody2D" parent="Bounds"]
+position = Vector2(120, 160)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/BottomBound"]
+texture_filter = 1
+scale = Vector2(3.75, 0.25)
+texture = ExtResource("2_stfri")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BottomBound"]
+shape = SubResource("RectangleShape2D_avj4k")
+
+[node name="LeftBound" type="StaticBody2D" parent="Bounds"]
+position = Vector2(4, 80)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/LeftBound"]
+texture_filter = 1
+position = Vector2(-2.98023e-08, 0)
+scale = Vector2(0.25, 2.5)
+texture = ExtResource("2_stfri")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/LeftBound"]
+shape = SubResource("RectangleShape2D_mbgb8")
+
+[node name="RightBound" type="StaticBody2D" parent="Bounds"]
+position = Vector2(236, 80)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/RightBound"]
+texture_filter = 1
+scale = Vector2(0.25, 2.5)
+texture = ExtResource("2_stfri")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightBound"]
+shape = SubResource("RectangleShape2D_mbgb8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(106, 71)
+texture = ExtResource("3_x81re")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+position = Vector2(-1, -12)
+shape = SubResource("RectangleShape2D_gumn2")
+
+[connection signal="mouse_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_shape_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_mouse_shape_entered"]
