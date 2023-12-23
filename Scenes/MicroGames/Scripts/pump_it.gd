@@ -30,7 +30,6 @@ func _set_initial_values():
 	#$MoveButton.velocity = move_speed * base_speed_multiplier * Vector2(start_num_1,start_num_2).normalized()
 
 func _process(_delta):
-	check_win()
 	$TestText.text = str(current_pump_val)
 #Maybe look at this logic again lol
 
@@ -47,13 +46,14 @@ func press_up():
 	current_pump_val += 1
 
 func _input(event):
-	current_pump_val += 1
-	if Input.is_action_just_pressed("ui_up"):
+	if Input.is_action_just_pressed("ui_up") && !event.is_echo():
 		if(is_up == false):
 			press_up()
-	if Input.is_action_just_pressed("ui_down"):
+			check_win()
+	if Input.is_action_just_pressed("ui_down") && !event.is_echo():
 		if(is_up == true):
 			press_down()
+			check_win()
 		
 
 func _on_button_pressed():
