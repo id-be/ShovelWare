@@ -35,9 +35,11 @@ func randomize_start_emotion():
 	pet_start_state = start_state
 	match pet_start_state:
 		0:
-			Globals.set_and_play_music(music[1])
+			_music_track = music[1]
+#			Globals.set_and_play_music(music[1])
 		1:
-			Globals.set_and_play_music(music[0])
+			_music_track = music[0]
+#			Globals.set_and_play_music(music[0])
 			
 func randomize_background():
 	var my_bg = randi_range(0, bgs.size()-1)
@@ -46,8 +48,7 @@ func randomize_background():
 func _set_difficulty(dif):
 	match difficulty:
 		"easy":
-			animal = "Scorpion"
-#			animal = "Tiger"
+			animal = "Tiger"
 			pet_change_state_time = 0.8
 		"medium":
 			animal = "Scorpion"
@@ -59,9 +60,9 @@ func _set_difficulty(dif):
 
 func _set_initial_values():
 	randomize_background()
-	randomize_start_emotion()
 	randomize_hand_orientation()
 	randomize_pet_orientation()
+	randomize_start_emotion()
 #	print($Animal.sprite_frames.animations[0])
 #	var start_state = randi_range(0,1)
 
@@ -113,7 +114,6 @@ func set_pet_state(state):
 				end_state = "failure"
 				$Animal.scale = $Animal.scale * 1.3
 			else:
-#				play happy music
 				Globals.set_and_play_music(music[2])
 				Globals.set_and_play_sfx(sfx[2])
 				end_state = "success"
@@ -146,6 +146,6 @@ func end_anim_pet():
 	$Hand/AnimationPlayer.seek(0)
 	$Hand/AnimationPlayer.current_animation = "Pet"
 	$Hand/AnimationPlayer.play()
-#	won't need this when you add the music to the state machine
+#	won't need this when you add the music to the (globals or microgames??) state machine
 	Globals.stop_music()
 	set_pet_state("Happy")
