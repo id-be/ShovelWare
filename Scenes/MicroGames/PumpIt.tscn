@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bx2bauxccxbxg"]
+[gd_scene load_steps=7 format=3 uid="uid://ctg1xxf1treoi"]
 
 [ext_resource type="Script" path="res://Scenes/MicroGames/Scripts/pump_it.gd" id="1_rr2sd"]
 [ext_resource type="Texture2D" uid="uid://bucjr426s70d2" path="res://Assets/DEBUG/2D/Defaults/Square.png" id="2_stfri"]

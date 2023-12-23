@@ -4,6 +4,8 @@ extends microgame
 var current_pump_val = 0
 var is_up = false
 
+func _ready():
+	boilerplate_ready()
 
 func _init(dif = difficulty):
 	_time_step = 0.4
@@ -29,6 +31,7 @@ func _set_initial_values():
 
 func _process(_delta):
 	check_win()
+	$TestText.text = str(current_pump_val)
 #Maybe look at this logic again lol
 
 func check_win():
@@ -44,21 +47,14 @@ func press_up():
 	current_pump_val += 1
 
 func _input(event):
-	if event is InputEventMouseButton:
-#		if event.button_index == MOUSE_BUTTON_LEFT:
-#			print("MEME")
-		pass
-	elif event is InputEventMouseMotion:
-#		print(get_local_mouse_position())
-#		print(get_global_mouse_position())
-#		get_tree().get_root().warp_mouse($Sprite2D/Area2D/CollisionShape2D.global_position)
-#		$Sprite2D/Area2D/CollisionShape2D.emit_signal("_on_mouse_shape_entered")
-#		get_tree().get_root().update_mouse_cursor_state()
-		pass		
-#	else:
-#		print(event)
-#			print(get_local_mouse_position())
-#			print(get_global_mouse_position())
+	current_pump_val += 1
+	if Input.is_action_just_pressed("ui_up"):
+		if(is_up == false):
+			press_up()
+	if Input.is_action_just_pressed("ui_down"):
+		if(is_up == true):
+			press_down()
+		
 
 func _on_button_pressed():
 	set_process(false)

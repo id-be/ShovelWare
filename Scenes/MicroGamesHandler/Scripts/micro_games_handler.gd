@@ -48,7 +48,8 @@ signal zoom_out_of_microgame
 func _ready():
 
 #	load_microgame("res://Scenes/MicroGames/PopIt.tscn")
-	load_microgame("res://Scenes/MicroGames/PetThePet.tscn")
+#	load_microgame("res://Scenes/MicroGames/PetThePet.tscn")
+	load_microgame("res://Scenes/MicroGames/PumpIt.tscn")
 #	load_microgame(debug_microgame_path)
 func flash_ready():
 	$PromptLabel/AnimationPlayer.play("flash_ready")
