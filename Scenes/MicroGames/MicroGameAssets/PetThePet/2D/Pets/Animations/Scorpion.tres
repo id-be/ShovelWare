@@ -1,7 +1,24 @@
-[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://cbwel8mqo10gy"]
+[gd_resource type="SpriteFrames" load_steps=14 format=3 uid="uid://cbwel8mqo10gy"]
 
+[ext_resource type="Texture2D" uid="uid://cnneqvptjnw2h" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Pets/ScorpionAngry.png" id="1_iryrv"]
 [ext_resource type="Texture2D" uid="uid://dq5gld6kmk0r6" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Pets/ScorpionHappy.png" id="2_vevqr"]
 [ext_resource type="Texture2D" uid="uid://obv1lg0p3w3f" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Pets/ScorpionNormal.png" id="3_k4eiv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qs683"]
+atlas = ExtResource("1_iryrv")
+region = Rect2(0, 0, 216, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5m1x3"]
+atlas = ExtResource("1_iryrv")
+region = Rect2(216, 0, 216, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vim2"]
+atlas = ExtResource("1_iryrv")
+region = Rect2(432, 0, 216, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31acc"]
+atlas = ExtResource("1_iryrv")
+region = Rect2(648, 0, 216, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lh10u"]
 atlas = ExtResource("2_vevqr")
@@ -29,7 +46,19 @@ region = Rect2(648, 0, 216, 144)
 
 [resource]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qs683")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5m1x3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vim2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31acc")
+}],
 "loop": true,
 "name": &"Angry",
 "speed": 10.0

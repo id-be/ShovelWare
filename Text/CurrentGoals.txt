@@ -6,10 +6,20 @@ create a base microgame class with the basics (init, start_game,
 end_game(end_state)
 
 refactor popit and petthepet to properly take advantage of the starting
-and stopping... petthepet seems to start music even without prompting
+and stopping...
+
+popit still needs the win state logic set up, could also use different
+flight paths (circular, sinusoid, wavy, etc)
 
 make sure the sfx and music are mono not stereo* and bitcrush them!
 
 need to make sure that the microgame only "starts" when the game is 
 done zooming in (looking at you petthepet!!!)
+
+appears that petthepet isn't properly taking set difficulty.
+
+looks like you can still do inputs when the microgame should be ending
+(the bomb explodes) and not sure if this is good or not
+
+refactor base microgame to have default slots for stuff like sfx
 

@@ -17,7 +17,7 @@ var pet_change_state_time = 0.8
 
 
 
-func _init():
+func _init(dif = difficulty):
 	_time_step = 0.4
 	prompt = "Pet!"
 
@@ -44,7 +44,7 @@ func randomize_background():
 	bg.set_texture(bgs[my_bg])
 
 func _set_difficulty(dif):
-	match difficulty:
+	match dif:
 		"easy":
 			animal = "Tiger"
 			pet_change_state_time = 0.8
