@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctg1xxf1treoi"]
+[gd_scene load_steps=10 format=3 uid="uid://ctg1xxf1treoi"]
 
 [ext_resource type="Script" path="res://Scenes/MicroGames/Scripts/pump_it.gd" id="1_rr2sd"]
 [ext_resource type="Texture2D" uid="uid://bucjr426s70d2" path="res://Assets/DEBUG/2D/Defaults/Square.png" id="2_stfri"]
 [ext_resource type="Texture2D" uid="uid://bt8uhgt7cvp6k" path="res://Assets/2D/Sprites/Explosion.png" id="3_x81re"]
+[ext_resource type="Texture2D" uid="uid://cta4lwcvmxyua" path="res://Scenes/MicroGames/MicroGameAssets/PumpIt/PumpTop.png" id="4_t3laj"]
+[ext_resource type="Texture2D" uid="uid://055jhnxslgl5" path="res://Scenes/MicroGames/MicroGameAssets/PumpIt/PumpBase.png" id="5_bhbee"]
+[ext_resource type="Texture2D" uid="uid://brfx1jgj122ax" path="res://Scenes/MicroGames/MicroGameAssets/PumpIt/PumpBalloon.png" id="6_ucnfb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_avj4k"]
 size = Vector2(240, 16)
@@ -16,14 +19,27 @@ size = Vector2(78, 66)
 [node name="PumpIt" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_rr2sd")
+max_pump_val = null
 metadata/_edit_lock_ = true
 
-[node name="TestText" type="Label" parent="."]
-offset_left = 70.0
-offset_top = 36.0
-offset_right = 110.0
-offset_bottom = 59.0
-text = "Test"
+[node name="PumpValue" type="Label" parent="."]
+offset_left = 23.0
+offset_top = 125.0
+offset_right = 122.0
+offset_bottom = 148.0
+text = "PumpValue
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DirectionText" type="Label" parent="."]
+offset_left = 117.0
+offset_top = 81.0
+offset_right = 216.0
+offset_bottom = 104.0
+text = "Up!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Bounds" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -84,6 +100,21 @@ texture = ExtResource("3_x81re")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
 position = Vector2(-1, -12)
 shape = SubResource("RectangleShape2D_gumn2")
+
+[node name="PumpTop" type="Sprite2D" parent="."]
+position = Vector2(53, 96)
+texture = ExtResource("4_t3laj")
+
+[node name="PumpBase" type="Sprite2D" parent="."]
+position = Vector2(53, 96)
+texture = ExtResource("5_bhbee")
+
+[node name="BalloonOrigin" type="Node2D" parent="."]
+position = Vector2(75, 90)
+
+[node name="PumpBalloon" type="Sprite2D" parent="BalloonOrigin"]
+position = Vector2(0, -26)
+texture = ExtResource("6_ucnfb")
 
 [connection signal="mouse_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_shape_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_mouse_shape_entered"]

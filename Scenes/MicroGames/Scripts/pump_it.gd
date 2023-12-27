@@ -24,13 +24,17 @@ func _set_initial_values():
 	var screen_size = get_viewport_rect().size
 	var start_num_1 = randf_range(-1,1)
 	var start_num_2 = randf_range(-1,1)
-	$TestText.text = str(current_pump_val)
+	#$TestText.text = str(current_pump_val)
 
 	#$MoveButton.position = screen_size/2
 	#$MoveButton.velocity = move_speed * base_speed_multiplier * Vector2(start_num_1,start_num_2).normalized()
 
 func _process(_delta):
-	$TestText.text = str(current_pump_val)
+	$PumpValue.text = str(current_pump_val)
+	if is_up: 
+		$DirectionText.text = "Down!"
+	else:
+		$DirectionText.text = "Up!"
 #Maybe look at this logic again lol
 
 func check_win():
@@ -40,6 +44,7 @@ func check_win():
 func press_down():
 	is_up = false
 	current_pump_val += 1
+	BalloonOrigin.apply_scale(2, 2)
 	
 func press_up():
 	is_up = true
