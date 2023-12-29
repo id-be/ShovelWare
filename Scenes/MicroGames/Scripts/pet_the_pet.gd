@@ -35,7 +35,7 @@ func randomize_background():
 func _set_difficulty(dif):
 	match dif:
 		"easy":
-			$Animal.sprite_frames = anims[1]
+			$Animal.sprite_frames = anims[0]
 			pet_change_state_time = 0.8
 		"medium":
 			$Animal.sprite_frames = anims[1]
