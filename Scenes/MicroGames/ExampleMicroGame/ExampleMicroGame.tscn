@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3f6kj2tkyjog"]
+[gd_scene load_steps=7 format=3 uid="uid://c3f6kj2tkyjog"]
 
 [ext_resource type="Script" path="res://Scenes/MicroGames/ExampleMicroGame/Scripts/example_micro_game.gd" id="1_i8beg"]
+[ext_resource type="AudioStream" uid="uid://chsledvoinutr" path="res://Scenes/MicroGames/ExampleMicroGame/Assets/Audio/DebugTrack.ogg" id="2_b8h88"]
 [ext_resource type="Texture2D" uid="uid://bucjr426s70d2" path="res://Assets/DEBUG/2D/Defaults/Square.png" id="2_d2r2n"]
-[ext_resource type="Texture2D" uid="uid://bt8uhgt7cvp6k" path="res://Assets/2D/Sprites/Explosion.png" id="3_0q4i1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dl1u"]
 size = Vector2(160, 31)
@@ -13,12 +13,21 @@ size = Vector2(240, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mbgb8"]
 size = Vector2(16, 160)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gumn2"]
-size = Vector2(78, 66)
-
 [node name="ExampleMicroGame" type="Node2D"]
-texture_filter = 1
 script = ExtResource("1_i8beg")
+_prompt = "Click!"
+input_flags = {
+"button_0": false,
+"button_1": false,
+"microphone": false,
+"mouse_touch": true,
+"ui_down": false,
+"ui_left": false,
+"ui_right": false,
+"ui_up": false
+}
+_music_tracks = Array[AudioStream]([ExtResource("2_b8h88")])
+_time_step = 0.4
 metadata/_edit_lock_ = true
 
 [node name="MoveButton" type="CharacterBody2D" parent="."]
@@ -28,6 +37,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MoveButton"]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_3dl1u")
+metadata/_edit_lock_ = true
 
 [node name="Button" type="Button" parent="MoveButton"]
 anchors_preset = 8
@@ -35,79 +45,75 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -70.0
+offset_left = -80.0
 offset_top = -15.5
-offset_right = 70.0
-offset_bottom = 15.5
+offset_right = 80.0
+offset_bottom = 16.5
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(80, 16)
 action_mode = 0
 text = "Press Me To Win!"
-
-[node name="TextureButton" type="TextureButton" parent="MoveButton"]
-offset_right = 40.0
-offset_bottom = 40.0
+metadata/_edit_lock_ = true
 
 [node name="Bounds" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
 [node name="TopBound" type="StaticBody2D" parent="Bounds"]
 position = Vector2(120, 0)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Bounds/TopBound"]
 texture_filter = 1
 scale = Vector2(3.75, 0.25)
 texture = ExtResource("2_d2r2n")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/TopBound"]
 shape = SubResource("RectangleShape2D_avj4k")
+metadata/_edit_lock_ = true
 
 [node name="BottomBound" type="StaticBody2D" parent="Bounds"]
 position = Vector2(120, 160)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Bounds/BottomBound"]
 texture_filter = 1
 scale = Vector2(3.75, 0.25)
 texture = ExtResource("2_d2r2n")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BottomBound"]
 shape = SubResource("RectangleShape2D_avj4k")
+metadata/_edit_lock_ = true
 
 [node name="LeftBound" type="StaticBody2D" parent="Bounds"]
 position = Vector2(4, 80)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Bounds/LeftBound"]
 texture_filter = 1
 position = Vector2(-2.98023e-08, 0)
 scale = Vector2(0.25, 2.5)
 texture = ExtResource("2_d2r2n")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/LeftBound"]
 shape = SubResource("RectangleShape2D_mbgb8")
+metadata/_edit_lock_ = true
 
 [node name="RightBound" type="StaticBody2D" parent="Bounds"]
 position = Vector2(236, 80)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Bounds/RightBound"]
 texture_filter = 1
 scale = Vector2(0.25, 2.5)
 texture = ExtResource("2_d2r2n")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightBound"]
 shape = SubResource("RectangleShape2D_mbgb8")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-texture_filter = 1
-position = Vector2(106, 71)
-texture = ExtResource("3_0q4i1")
-
-[node name="Area2D" type="Area2D" parent="Sprite2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
-position = Vector2(-1, -12)
-shape = SubResource("RectangleShape2D_gumn2")
+metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="MoveButton/Button" to="." method="_on_button_pressed"]
-[connection signal="mouse_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_shape_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_mouse_shape_entered"]
