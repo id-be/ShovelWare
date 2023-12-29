@@ -14,10 +14,10 @@ func _ready():
 	boilerplate_ready()
 	match pet_start_state:
 		0:
-			set_pet_state("Angry")
+			queue_pet_state("Angry")
 		1:
-			set_pet_state("Normal")
-	start_anims()
+			queue_pet_state("Normal")
+
 
 func randomize_start_emotion():
 	var start_state = randi_range(0,1)
@@ -33,7 +33,7 @@ func randomize_background():
 	bg.set_texture(bgs[my_bg])
 
 func _set_difficulty(dif):
-	match difficulty:
+	match dif:
 		"easy":
 			$Animal.sprite_frames = anims[1]
 			pet_change_state_time = 0.8
@@ -46,11 +46,9 @@ func _set_difficulty(dif):
 
 func _set_initial_values():
 	randomize_background()
-	randomize_start_emotion()
 	randomize_hand_orientation()
 	randomize_pet_orientation()
-#	print($Animal.sprite_frames.animations[0])
-#	var start_state = randi_range(0,1)
+	randomize_start_emotion()
 
 func _input(_event):
 	if Input.is_action_just_pressed("button_0"):
@@ -82,6 +80,11 @@ func randomize_pet_orientation():
 
 func _start():
 	boiler_plate_start()
+	set_pet_state(pet_state)
+	start_anims()
+
+func queue_pet_state(state):
+	pet_state = state
 
 func set_pet_state(state):
 	Globals.stop_sfx()
@@ -133,6 +136,6 @@ func end_anim_pet():
 	$Hand/AnimationPlayer.seek(0)
 	$Hand/AnimationPlayer.current_animation = "Pet"
 	$Hand/AnimationPlayer.play()
-#	won't need this when you add the music to the state machine
+#	won't need this when you add the music to the (globals or microgames??) state machine
 	Globals.stop_music()
 	set_pet_state("Happy")

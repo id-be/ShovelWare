@@ -79,8 +79,8 @@ _data = {
 
 [node name="PetThePet" type="Node2D"]
 script = ExtResource("1_tufc1")
-bgs = [ExtResource("2_scoiw"), ExtResource("3_k6d71"), ExtResource("4_qi80w")]
-anims = [ExtResource("5_gfekf"), ExtResource("6_2kcny"), ExtResource("7_0cil3")]
+bgs = Array[Texture]([ExtResource("2_scoiw"), ExtResource("3_k6d71"), ExtResource("4_qi80w")])
+anims = Array[SpriteFrames]([ExtResource("5_gfekf"), ExtResource("6_2kcny"), ExtResource("7_0cil3")])
 _prompt = "Pet!"
 input_flags = {
 "button_0": true,
