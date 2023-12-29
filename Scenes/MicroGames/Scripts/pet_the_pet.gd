@@ -103,7 +103,6 @@ func set_pet_state(state):
 				end_state = "failure"
 				$Animal.scale = $Animal.scale * 1.3
 			else:
-#				play happy music
 				Globals.set_and_play_music(_music_tracks[2])
 				Globals.set_and_play_sfx(_sfx[2])
 				end_state = "success"
