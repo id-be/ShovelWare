@@ -1,5 +1,9 @@
 extends Node2D
 #og colorrect pos: -108, -72
+#sadly will need to do a lot of refactoring to account
+#for boss microgames which won't have a timer...... that
+#means that we can either USE the full screen space OR
+#we can replace the debugrects with some sort of nice border
 @onready var mcg_timer = $Timer
 
 @onready var mcg_port = $SubViewPortContainer/SubViewPort#find a way to find this
@@ -49,7 +53,8 @@ signal zoom_out_of_microgame
 func _ready():
 	#mcg_port_container.set_gui_input(false)
 #	load_microgame("res://Scenes/MicroGames/PopIt.tscn")
-	load_microgame(debug_microgame_path)
+	load_microgame("res://Scenes/MicroGames/PetThePet.tscn")
+#	load_microgame(debug_microgame_path)
 func flash_ready():
 	$PromptLabel/AnimationPlayer.play("flash_ready")
 	await $PromptLabel/AnimationPlayer.animation_finished
@@ -132,8 +137,8 @@ func on_done_zoom_in():
 	await mcg_timer.timeout
 	screen_cover.hide(); prompt_label.hide()
 	#mcg_port_container.set_gui_input(true)
-		
-	Globals.set_and_play_music(current_microgame._init_music_track)
+	if current_microgame._init_music_track:
+		Globals.set_and_play_music(current_microgame._init_music_track)
 	
 	initialize_game_timer()
 	
