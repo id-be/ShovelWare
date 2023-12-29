@@ -1,31 +1,32 @@
 extends Node2D
 
+#the base window size is 240x160, there are 12 pixels missing
+#from left and right as well as 8 from top and bottom--this
+#leaves the usable, unbordered area as 216 x 144.
+#this is a 216:144 = 1.5 = 3:2 aspect ratio
+
 class_name microgame
 
+@export var _prompt: String = "Task!"
+
+@export var input_flags: Dictionary = {"ui_up":false, "ui_down":false, 
+"ui_left":false, "ui_right":false, "button_0":false, 
+"button_1":false, "mouse_touch":false, "microphone":false}
+
+@export var _music_tracks: Array[AudioStream]
+@onready var _init_music_track = _music_tracks[0]
+@export var _sfx: Array[AudioStream]
+
+#setting difficulty here, or in the inspector, intentionally 
+#does nothing. the design goal is to set all of that up
+#so that the microgameshandler ramps up or lowers difficulty
+#based on game state.
+@export_enum("easy", "medium", "hard", "boss") var difficulty: String = "easy"
 @onready var timer = Timer.new()
+@export_range(0.1, 1) var _time_step: float = 0.5
 
-var _music_track
-
-var _time_step = 0.5
-
-var difficulty = "easy"
-var prompt = "Task!"
-
-var end_state = "failure"#or "failure"
-
-var game_inputs = ["ui_up", "ui_down", "ui_left", "ui_right", 
-"button_0", "button_1", "mouse_touch", "microphone"]
-var _disabled_inputs = ["ui_down"]
-
-var _cur_inputs = []
-#override this in order to properly 
-
-#var _used_inputs = game_inputs - _stripped_inputs
-
-
-#the base window size is 240x160, there are 12 pixels missing from left and right
-#as well as 8 from top and bottom--this leaves the usable, unbordered area as
-#216 x 144. this is a 216:144 = 1.5 = 3:2 aspect ratio
+@export_enum("failure", "success") var default_end_state: String = "failure"
+@onready var end_state = default_end_state
 
 signal start_game
 signal end_game
@@ -33,29 +34,18 @@ signal increment_timer
 
 #	called when the node is initialized (loaded into memory)
 func _init():
-#	_time_step = some_time
-#	_music_track = some_music_track
-#	prompt = some_prompt
-#	difficulty = dif
+#	only use this for stuff that doesn't need to be loaded.
+#	anything set in the editor is unavailable here 
+#	(eg, _music_tracks) until the ready function is called 
+#	(which is ALWAYS after _init).
 	pass
 	
-#func _input(event):
-#	if event is InputEventMouseButton && !event.is_echo():
-#		print(event)
-#	called when the node enters the scene tree for the first time
-#	you shouldn't need to override this, unless you want to use
-#	physics_process
 func _ready():
 	boilerplate_ready()
-	
 
 func boilerplate_ready():
-##	don't do this here! do it in microgames_handler
-#	if _music_track!= null:
-#		Globals.set_and_play_music(_music_track)
 	add_child(timer)
-	set_process(false)
-	set_process_input(false)
+	process_toggle(false)
 	_set_initial_values()
 	emit_signal("start_game")
 
@@ -80,10 +70,14 @@ func _set_initial_values():
 func _start():
 	boiler_plate_start()
 
+func process_toggle(state):
+	set_process(state)
+	set_physics_process(state)
+	set_process_input(state)
+	set_process_unhandled_input(state)
 
 func boiler_plate_start():
-	set_process(true)
-	set_process_input(true)
+	process_toggle(true)
 
 func track_time():
 	timer.wait_time = _time_step; timer.start()

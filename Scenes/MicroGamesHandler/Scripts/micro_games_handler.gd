@@ -3,6 +3,7 @@ extends Node2D
 @onready var mcg_timer = $Timer
 
 @onready var mcg_port = $SubViewPortContainer/SubViewPort#find a way to find this
+@onready var mcg_port_container = $SubViewPortContainer
 @onready var prompt_label = $PromptLabel
 @onready var screen_cover = $ColorRect
 
@@ -46,10 +47,9 @@ signal zoom_into_microgame
 signal zoom_out_of_microgame
 
 func _ready():
-
+	#mcg_port_container.set_gui_input(false)
 #	load_microgame("res://Scenes/MicroGames/PopIt.tscn")
-	load_microgame("res://Scenes/MicroGames/PetThePet.tscn")
-#	load_microgame(debug_microgame_path)
+	load_microgame(debug_microgame_path)
 func flash_ready():
 	$PromptLabel/AnimationPlayer.play("flash_ready")
 	await $PromptLabel/AnimationPlayer.animation_finished
@@ -85,7 +85,7 @@ func add_and_initialize_microgame(mcg):
 	current_microgame.connect("end_game", Callable(self, "on_end_game"))
 	mcg_timer.connect("timeout", Callable(self, "on_increment_timer"))
 	
-	prompt_label.text = current_microgame.prompt
+	prompt_label.text = current_microgame._prompt
 	prompt_label.show()
 	
 	mcg_port.add_child(current_microgame)#this needs to be at the end so that we can emit start_game in the ready function.
@@ -126,12 +126,14 @@ func on_end_game(end_state):
 	$WinLossRect/LossLabel.hide()
 
 func on_done_zoom_in():
+
 #	from here, we await a couple seconds for the timer to run out and remove the colorrect
 	mcg_timer.start(tutorial_time)
 	await mcg_timer.timeout
 	screen_cover.hide(); prompt_label.hide()
-	
-	Globals.set_and_play_music(current_microgame._music_track)
+	#mcg_port_container.set_gui_input(true)
+		
+	Globals.set_and_play_music(current_microgame._init_music_track)
 	
 	initialize_game_timer()
 	
@@ -155,7 +157,8 @@ func on_increment_timer():
 #	print(bomb.position.y)
 	if bomb.texture == init_bomb_texture:
 		if bomb.position.y == 150:
-			current_microgame.set_process(false)
+			current_microgame.process_toggle(false)
+			#mcg_port_container.set_gui_input(false)
 			bomb.texture = bomb_explode_texture
 			bomb.position = Vector2(6.5 , 146.5)
 			bomb_sfx.stream = bomb_splode
