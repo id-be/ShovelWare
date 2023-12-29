@@ -44,11 +44,16 @@ func check_win():
 func press_down():
 	is_up = false
 	current_pump_val += 1
-	BalloonOrigin.apply_scale(2, 2)
+	$BalloonOrigin.scale *= 1.05
+	$PumpTop.position.y = 96
 	
 func press_up():
 	is_up = true
 	current_pump_val += 1
+	$BalloonOrigin.scale *= 1.05
+	$PumpTop.position.y = 80
+	
+	
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_up") && !event.is_echo():
