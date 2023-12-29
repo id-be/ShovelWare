@@ -1,6 +1,6 @@
 please number ideas and add an X once they are implemented.
 
-1) pet!
+1) pet! X
 pet the animal (cat, cat with claws up don't pet), 
 (dog, dog with mouth open growling don't pet), scorpion (stings you), crocodile
 
