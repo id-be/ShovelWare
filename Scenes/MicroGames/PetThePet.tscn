@@ -1,11 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://dy30skcparclc"]
+[gd_scene load_steps=22 format=3 uid="uid://dy30skcparclc"]
 
 [ext_resource type="Script" path="res://Scenes/MicroGames/Scripts/pet_the_pet.gd" id="1_tufc1"]
 [ext_resource type="Texture2D" uid="uid://d2s2xdefqh2g8" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Backgrounds/GreenField.jpg" id="2_scoiw"]
 [ext_resource type="Texture2D" uid="uid://cv8dg0ebed4n0" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Backgrounds/House.jpg" id="3_k6d71"]
 [ext_resource type="Texture2D" uid="uid://cxx85q454jhdn" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Backgrounds/NiceMountain.jpg" id="4_qi80w"]
 [ext_resource type="Texture2D" uid="uid://bucjr426s70d2" path="res://Assets/DEBUG/2D/Defaults/Square.png" id="5_582kv"]
+[ext_resource type="SpriteFrames" uid="uid://culihm8rvdc6w" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Pets/Animations/Tiger.tres" id="5_gfekf"]
 [ext_resource type="AudioStream" uid="uid://qk60ih8ebrr" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/Audio/Jingle.ogg" id="5_hlebc"]
+[ext_resource type="SpriteFrames" uid="uid://cbwel8mqo10gy" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Pets/Animations/Scorpion.tres" id="6_2kcny"]
 [ext_resource type="AudioStream" uid="uid://brhir2r5fmytb" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/Audio/2Scary.ogg" id="6_atgnb"]
 [ext_resource type="SpriteFrames" uid="uid://b3wuj62rruwx7" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Pets/Animations/Gator.tres" id="7_0cil3"]
 [ext_resource type="AudioStream" uid="uid://dpd1offxi1mbk" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/Audio/Woohoo.ogg" id="7_3hpdn"]
@@ -78,8 +80,21 @@ _data = {
 [node name="PetThePet" type="Node2D"]
 script = ExtResource("1_tufc1")
 bgs = [ExtResource("2_scoiw"), ExtResource("3_k6d71"), ExtResource("4_qi80w")]
-music = [ExtResource("5_hlebc"), ExtResource("6_atgnb"), ExtResource("7_3hpdn")]
-sfx = [ExtResource("8_jghi8"), ExtResource("9_ggytq"), ExtResource("10_v1jas")]
+anims = [ExtResource("5_gfekf"), ExtResource("6_2kcny"), ExtResource("7_0cil3")]
+_prompt = "Pet!"
+input_flags = {
+"button_0": true,
+"button_1": false,
+"microphone": false,
+"mouse_touch": false,
+"ui_down": false,
+"ui_left": false,
+"ui_right": false,
+"ui_up": false
+}
+_music_tracks = Array[AudioStream]([ExtResource("5_hlebc"), ExtResource("6_atgnb"), ExtResource("7_3hpdn")])
+_sfx = Array[AudioStream]([ExtResource("8_jghi8"), ExtResource("9_ggytq"), ExtResource("10_v1jas")])
+_time_step = 0.4
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = 12.0

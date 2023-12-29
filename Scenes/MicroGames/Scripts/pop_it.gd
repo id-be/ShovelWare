@@ -2,6 +2,13 @@ extends microgame
 
 var can_click
 
+var num_balloons = 3
+@export_enum("hot_air", "circus", "birthday") var ballons_type: int
+#export(String, "hot_air", "circus", "birthday") var game_mode
+
+#refactor this shit... it looks like the balloons start moving
+#around even without having to wait for start.
+
 #	16 wide. 12 is the min, 236-8=228 is the max. so we need to
 #	make this balloon placed such that its position is between
 #	extents+12 and 228-extents
@@ -154,14 +161,19 @@ class balloon extends AnimatedSprite2D:
 #the different conditions: a clown, a boy, and air balloons
 # Called when the node enters the scene tree for the first time.
 
-func _init():
-	prompt = "Pop!"
+func _set_difficulty(dif):
+	match dif:
+		"easy":
+			num_balloons = 3
+		"medium":
+			num_balloons = 5
+		"hard":
+			num_balloons = 7
 
 func _ready():
 	boilerplate_ready()
-	spawn_balloon()
-	spawn_balloon()
-	spawn_balloon()
+	for balloon in num_balloons:
+		spawn_balloon()
 	var points = $Path2D.curve.get_baked_points()
 #	print(points)
 #	print($Line2D.points)
