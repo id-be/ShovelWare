@@ -6,7 +6,7 @@ extends Node2D
 #we can replace the debugrects with some sort of nice border
 @onready var mcg_timer = $Timer
 
-@onready var mcg_port = $SubViewPortContainer/SubViewPort#find a way to find this
+@onready var mcg_port = $SubViewPortContainer/SubViewPort
 @onready var mcg_port_container = $SubViewPortContainer
 @onready var prompt_label = $PromptLabel
 @onready var screen_cover = $ColorRect
@@ -52,8 +52,8 @@ signal zoom_out_of_microgame
 
 func _ready():
 	#mcg_port_container.set_gui_input(false)
-#	load_microgame("res://Scenes/MicroGames/PopIt.tscn")
-	load_microgame("res://Scenes/MicroGames/PetThePet.tscn")
+	load_microgame("res://Scenes/MicroGames/PopIt.tscn")
+#	load_microgame("res://Scenes/MicroGames/PetThePet.tscn")
 #	load_microgame(debug_microgame_path)
 func flash_ready():
 	$PromptLabel/AnimationPlayer.play("flash_ready")
