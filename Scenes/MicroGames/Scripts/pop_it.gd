@@ -37,7 +37,7 @@ class balloon extends AnimatedSprite2D:
 	var anchor_pos; var x_delta = 24; var y_delta = 12
 	var left_right_bound = Vector2(); var top_down_bound = Vector2()
 	var is_moving = false; var moving_left = true; var moving_up = false
-	var move_type = "ellipsoid"#alternative is zigzag (what you already made) or sinusoidal
+	var move_type = "zigzag"#alternative is zigzag (what you already made) or sinusoidal
 
 	var area; var shape; var circle; var line_anchor
 	
