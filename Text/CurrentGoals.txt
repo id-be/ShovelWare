@@ -2,11 +2,12 @@ add a tv static shader for when you zoom into and out of the game
 
 refactor the title screen and the splash to take place on the deanboy
 
-refactor popit and petthepet to properly take advantage of the starting
-and stopping...
+create a 3d model of the deanboy to use (take pics of it to make the sprite)
 
-popit still needs the win state logic set up, could also use different
-flight paths (circular, sinusoid, wavy, etc)
+popit could use different flight paths (circular, sinusoid, wavy, etc), set up
+the balloons to be in a random phase, set them to scale up or down based on
+the difficulty, get the balloons to have a pop sound, drop people that scream and
+fall after you pop a balloon
 
 make sure the sfx and music are mono not stereo* and bitcrush them!
 
