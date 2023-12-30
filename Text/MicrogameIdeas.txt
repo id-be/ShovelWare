@@ -50,3 +50,9 @@ screen)
 
 14) get caught(?)!
 you're a fly, fly into a bug zapper or a spiderweb or a venus flytrap
+
+15) count!
+something comes on screen and you count it up, then at the end you are asked
+"how many?"
+
+16) free!

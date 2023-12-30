@@ -44,6 +44,9 @@ curve = SubResource("Curve2D_1fy8l")
 points = PackedVector2Array(0, 0)
 width_curve = SubResource("Curve_y7lxa")
 
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(228, 18)
+
 [node name="Bounds" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
@@ -98,8 +101,7 @@ offset_right = 228.0
 offset_bottom = 152.0
 mouse_filter = 2
 texture = ExtResource("5_ul35b")
+metadata/_edit_lock_ = true
 
 [node name="BalloonHandler" type="Node2D" parent="."]
-
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(228, 18)
+metadata/_edit_lock_ = true
