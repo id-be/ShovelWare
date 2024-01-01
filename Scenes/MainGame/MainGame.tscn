@@ -122,6 +122,7 @@ scale = Vector2(3, 3)
 
 [node name="PauseScreenTint" type="ColorRect" parent="."]
 process_mode = 3
+visible = false
 offset_left = -24.0
 offset_top = -203.0
 offset_right = 1170.0
