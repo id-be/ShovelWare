@@ -52,7 +52,8 @@ signal zoom_out_of_microgame
 
 func _ready():
 	#mcg_port_container.set_gui_input(false)
-	load_microgame("res://Scenes/MicroGames/PopIt.tscn")
+	#load_microgame("res://Scenes/MicroGames/PopIt.tscn")
+	load_microgame("res://Scenes/MicroGames/CatScratchFever.tscn")
 #	load_microgame("res://Scenes/MicroGames/PetThePet.tscn")
 #	load_microgame(debug_microgame_path)
 func flash_ready():

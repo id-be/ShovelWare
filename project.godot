@@ -25,7 +25,6 @@ Globals="*res://Scenes/Globals/Globals.tscn"
 
 [display]
 
-window/size/mode=3
 window/stretch/mode="viewport"
 window/emulate_touch_from_mouse=true
 
