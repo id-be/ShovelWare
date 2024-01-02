@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://0heqek8cf68e"]
+
+[ext_resource type="Texture2D" uid="uid://bucjr426s70d2" path="res://Assets/DEBUG/2D/Defaults/Square.png" id="1_afugh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4kb10"]
+size = Vector2(240, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2ysg"]
+size = Vector2(16, 160)
+
+[node name="Bounds" type="Node2D"]
+top_level = true
+metadata/_edit_lock_ = true
+
+[node name="TopBound" type="StaticBody2D" parent="."]
+position = Vector2(120, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="TopBound"]
+texture_filter = 1
+scale = Vector2(3.75, 0.25)
+texture = ExtResource("1_afugh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopBound"]
+shape = SubResource("RectangleShape2D_4kb10")
+
+[node name="BottomBound" type="StaticBody2D" parent="."]
+position = Vector2(120, 160)
+
+[node name="Sprite2D" type="Sprite2D" parent="BottomBound"]
+texture_filter = 1
+scale = Vector2(3.75, 0.25)
+texture = ExtResource("1_afugh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBound"]
+shape = SubResource("RectangleShape2D_4kb10")
+
+[node name="LeftBound" type="StaticBody2D" parent="."]
+position = Vector2(4, 80)
+
+[node name="Sprite2D" type="Sprite2D" parent="LeftBound"]
+texture_filter = 1
+scale = Vector2(0.25, 2.5)
+texture = ExtResource("1_afugh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBound"]
+shape = SubResource("RectangleShape2D_c2ysg")
+
+[node name="RightBound" type="StaticBody2D" parent="."]
+position = Vector2(236, 80)
+
+[node name="Sprite2D" type="Sprite2D" parent="RightBound"]
+texture_filter = 1
+scale = Vector2(0.25, 2.5)
+texture = ExtResource("1_afugh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBound"]
+shape = SubResource("RectangleShape2D_c2ysg")
