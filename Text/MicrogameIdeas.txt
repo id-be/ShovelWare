@@ -1,6 +1,6 @@
 please number ideas and add an X once they are implemented.
 
-1) pet!
+1) pet! X
 pet the animal (cat, cat with claws up don't pet), 
 (dog, dog with mouth open growling don't pet), scorpion (stings you), crocodile
 
@@ -47,3 +47,12 @@ chop vegetables but don't chop your hand off! a comically long carrot
 put a pacifier in a baby's mouth that's crying (hand going up and 
 down, if you miss the baby cries even harder and zooms towards the 
 screen)
+
+14) get caught(?)!
+you're a fly, fly into a bug zapper or a spiderweb or a venus flytrap
+
+15) count!
+something comes on screen and you count it up, then at the end you are asked
+"how many?"
+
+16) free!

@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://Scenes/MicroGames/BaseClass/Scripts/microgame.gd" id="1_m4jyf"]
 
-[node name="Node2D2" type="Node2D"]
+[node name="Node" type="Node"]
 script = ExtResource("1_m4jyf")

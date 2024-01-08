@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://6x6el2de0mt3"]
+
+[ext_resource type="Script" path="res://Scenes/MicroGames/BaseClass/Scripts/microgame.gd" id="1_m4jyf"]
+
+[node name="Node2D2" type="Node2D"]
+script = ExtResource("1_m4jyf")

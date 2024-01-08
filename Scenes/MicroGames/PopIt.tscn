@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dvyfsxkfu508j"]
+[gd_scene load_steps=9 format=3 uid="uid://dvyfsxkfu508j"]
 
 [ext_resource type="Script" path="res://Scenes/MicroGames/Scripts/pop_it.gd" id="1_hd6qi"]
+[ext_resource type="AudioStream" uid="uid://chsledvoinutr" path="res://Scenes/MicroGames/ExampleMicroGame/Assets/Audio/DebugTrack.ogg" id="2_bxurd"]
 [ext_resource type="Texture2D" uid="uid://bucjr426s70d2" path="res://Assets/DEBUG/2D/Defaults/Square.png" id="2_fv0p8"]
 [ext_resource type="Texture2D" uid="uid://tvcc8pyuc04" path="res://Scenes/MicroGames/MicroGameAssets/PopIt/2D/Sky.png" id="5_ul35b"]
 
@@ -23,6 +24,18 @@ size = Vector2(16, 160)
 
 [node name="PopIt" type="Node2D"]
 script = ExtResource("1_hd6qi")
+_prompt = "Pop!"
+input_flags = {
+"button_0": false,
+"button_1": false,
+"microphone": false,
+"mouse_touch": true,
+"ui_down": false,
+"ui_left": false,
+"ui_right": false,
+"ui_up": false
+}
+_music_tracks = Array[AudioStream]([ExtResource("2_bxurd")])
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_1fy8l")
@@ -30,6 +43,9 @@ curve = SubResource("Curve2D_1fy8l")
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(0, 0)
 width_curve = SubResource("Curve_y7lxa")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(228, 18)
 
 [node name="Bounds" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -85,8 +101,7 @@ offset_right = 228.0
 offset_bottom = 152.0
 mouse_filter = 2
 texture = ExtResource("5_ul35b")
+metadata/_edit_lock_ = true
 
 [node name="BalloonHandler" type="Node2D" parent="."]
-
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(228, 18)
+metadata/_edit_lock_ = true
