@@ -2,16 +2,8 @@ extends microgame
 
 @export var max_pump_val = 3
 var current_pump_val = 0
-var is_up = false
-
-func _ready():
-	boilerplate_ready()
-
-func _init(dif = difficulty):
-	_time_step = 0.4
-	_music_track = load("res://Scenes/MicroGames/ExampleMicroGame/Assets/Audio/DebugTrack.ogg")
-	prompt = "Pump!"
-	difficulty = dif
+var is_up = false	
+	
 func _set_difficulty(dif):
 	match dif:
 		"easy":
