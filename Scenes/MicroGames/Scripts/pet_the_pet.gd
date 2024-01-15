@@ -22,11 +22,11 @@ func _ready():
 func randomize_start_emotion():
 	var start_state = randi_range(0,1)
 	pet_start_state = start_state
-	match pet_start_state:
-		0:
-			Globals.set_and_play_music(_music_tracks[1])
-		1:
-			Globals.set_and_play_music(_music_tracks[0])
+	#match pet_start_state:
+		#0:
+			#Globals.set_and_play_music(_music_tracks[1])
+		#1:
+			#Globals.set_and_play_music(_music_tracks[0])
 			
 func randomize_background():
 	var my_bg = randi_range(0, bgs.size()-1)

@@ -56,3 +56,7 @@ something comes on screen and you count it up, then at the end you are asked
 "how many?"
 
 16) free!
+let animals out of cages
+
+17) hide!
+either hide yourself from a monster or evidence from the police, difficulty 

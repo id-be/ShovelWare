@@ -37,7 +37,7 @@ class balloon extends AnimatedSprite2D:
 	var anchor_pos; var x_delta = 24; var y_delta = 12
 	var left_right_bound = Vector2(); var top_down_bound = Vector2()
 	var is_moving = false; var moving_left = true; var moving_up = false
-	var move_type = "zigzag"#alternative is zigzag (what you already made) or sinusoidal
+	var move_type = "zigzag"#alternative is circular or sinusoidal
 
 	var area; var shape; var circle; var line_anchor
 	
@@ -85,6 +85,7 @@ class balloon extends AnimatedSprite2D:
 		set_process_input(true)
 		set_process_unhandled_input(true)
 		place()
+		randomize_move_type()
 		set_speed()
 	func place():#refactor this to be inside of the balloonhandler, so that
 		#it's easier to prevent overlaps.
@@ -100,9 +101,21 @@ class balloon extends AnimatedSprite2D:
 		top_down_bound = Vector2(anchor_pos_y-y_delta,anchor_pos_y+y_delta)
 		position = anchor_pos
 		var init_pos
+	func randomize_phase():
+		pass
 	func set_speed():
 		speed = base_speed*total_speed*Vector2(hor_speed, vert_speed)
 		is_moving = true
+	func randomize_move_type():
+		var my_rand_int = randi_range(0,2)
+		match my_rand_int:
+			0:
+				pass#keeps move_type as the default
+			1:
+				move_type = "sinusoidal"
+			2:
+				move_type = "ellipsoid"
+#		print(my_rand_int)
 	func _process(delta):
 		move_around(delta)
 
@@ -112,20 +125,7 @@ class balloon extends AnimatedSprite2D:
 				if event.button_index == MOUSE_BUTTON_LEFT:
 					if area != null:
 						if !area.is_queued_for_deletion():
-
 							pop()
-
-	#func _input(event):
-		#if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-			#if get_rect().has_point((to_local(event.position))):
-				#pass 
-	#func _unhandled_input(event):
-		#if can_be_clicked:
-			#if event is InputEventMouseButton:
-				#if event.button_index == MOUSE_BUTTON_LEFT:
-					#if area != null:
-						#if !area.is_queued_for_deletion():
-							#pop()
 	
 	func mouse_over():
 		can_be_clicked = true
@@ -186,6 +186,8 @@ class balloon extends AnimatedSprite2D:
 				var x = radius * cos(angle)
 				var y = radius * sin(angle)
 				position = Vector2(anchor_pos.x + x, anchor_pos.y + y)
+				pass
+			"linear":
 				pass
 #the difficulties for this are the number of balloons and how fast they move around
 #the different conditions: a clown, a boy, and air balloons

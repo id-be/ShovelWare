@@ -27,49 +27,37 @@ metadata/_edit_lock_ = true
 modulate = Color(0.388235, 0.956863, 0.756863, 1)
 metadata/_edit_lock_ = true
 
-[node name="Up" type="Sprite2D" parent="GameConsole/ActionButtonHints/ButtonsOn"]
+[node name="ActionCircleOver1" type="Sprite2D" parent="GameConsole/ActionButtonHints/ButtonsOn"]
 position = Vector2(89, 346)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_x7xhr")
 metadata/_edit_lock_ = true
 
-[node name="Mic" type="Sprite2D" parent="GameConsole/ActionButtonHints/ButtonsOn"]
-position = Vector2(149.5, 84.0001)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("4_x7xhr")
-metadata/_edit_lock_ = true
-
-[node name="Tap" type="Sprite2D" parent="GameConsole/ActionButtonHints/ButtonsOn"]
-position = Vector2(60.5, 179)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("4_x7xhr")
-metadata/_edit_lock_ = true
-
-[node name="Left" type="Sprite2D" parent="GameConsole/ActionButtonHints/ButtonsOn"]
+[node name="ActionCircleOver2" type="Sprite2D" parent="GameConsole/ActionButtonHints/ButtonsOn"]
 position = Vector2(21.5, 395)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_x7xhr")
 metadata/_edit_lock_ = true
 
-[node name="Right" type="Sprite2D" parent="GameConsole/ActionButtonHints/ButtonsOn"]
+[node name="ActionCircleOver3" type="Sprite2D" parent="GameConsole/ActionButtonHints/ButtonsOn"]
 position = Vector2(134.5, 420)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_x7xhr")
 metadata/_edit_lock_ = true
 
-[node name="Down" type="Sprite2D" parent="GameConsole/ActionButtonHints/ButtonsOn"]
+[node name="ActionCircleOver4" type="Sprite2D" parent="GameConsole/ActionButtonHints/ButtonsOn"]
 position = Vector2(64.5, 470)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_x7xhr")
 metadata/_edit_lock_ = true
 
-[node name="A" type="Sprite2D" parent="GameConsole/ActionButtonHints/ButtonsOn"]
+[node name="ActionCircleOver5" type="Sprite2D" parent="GameConsole/ActionButtonHints/ButtonsOn"]
 position = Vector2(1125.5, 343)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_x7xhr")
 metadata/_edit_lock_ = true
 
-[node name="B" type="Sprite2D" parent="GameConsole/ActionButtonHints/ButtonsOn"]
+[node name="ActionCircleOver6" type="Sprite2D" parent="GameConsole/ActionButtonHints/ButtonsOn"]
 position = Vector2(1033.5, 422)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_x7xhr")
@@ -79,49 +67,37 @@ metadata/_edit_lock_ = true
 modulate = Color(1, 0, 0, 1)
 metadata/_edit_lock_ = true
 
-[node name="Up" type="Sprite2D" parent="GameConsole/ActionButtonHints/ButtonsOff"]
+[node name="ActionXOver1" type="Sprite2D" parent="GameConsole/ActionButtonHints/ButtonsOff"]
 position = Vector2(94, 345)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("5_bf5pv")
 metadata/_edit_lock_ = true
 
-[node name="Mic" type="Sprite2D" parent="GameConsole/ActionButtonHints/ButtonsOff"]
-position = Vector2(154.5, 83.0001)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("5_bf5pv")
-metadata/_edit_lock_ = true
-
-[node name="Tap" type="Sprite2D" parent="GameConsole/ActionButtonHints/ButtonsOff"]
-position = Vector2(65.5, 178)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("5_bf5pv")
-metadata/_edit_lock_ = true
-
-[node name="Left" type="Sprite2D" parent="GameConsole/ActionButtonHints/ButtonsOff"]
+[node name="ActionXOver2" type="Sprite2D" parent="GameConsole/ActionButtonHints/ButtonsOff"]
 position = Vector2(26.5, 394)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("5_bf5pv")
 metadata/_edit_lock_ = true
 
-[node name="Right" type="Sprite2D" parent="GameConsole/ActionButtonHints/ButtonsOff"]
+[node name="ActionXOver3" type="Sprite2D" parent="GameConsole/ActionButtonHints/ButtonsOff"]
 position = Vector2(139.5, 419)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("5_bf5pv")
 metadata/_edit_lock_ = true
 
-[node name="Down" type="Sprite2D" parent="GameConsole/ActionButtonHints/ButtonsOff"]
+[node name="ActionXOver4" type="Sprite2D" parent="GameConsole/ActionButtonHints/ButtonsOff"]
 position = Vector2(69.5, 469)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("5_bf5pv")
 metadata/_edit_lock_ = true
 
-[node name="A" type="Sprite2D" parent="GameConsole/ActionButtonHints/ButtonsOff"]
+[node name="ActionXOver5" type="Sprite2D" parent="GameConsole/ActionButtonHints/ButtonsOff"]
 position = Vector2(1130.5, 342)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("5_bf5pv")
 metadata/_edit_lock_ = true
 
-[node name="B" type="Sprite2D" parent="GameConsole/ActionButtonHints/ButtonsOff"]
+[node name="ActionXOver6" type="Sprite2D" parent="GameConsole/ActionButtonHints/ButtonsOff"]
 position = Vector2(1038.5, 421)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("5_bf5pv")
@@ -183,8 +159,6 @@ text = "Help"
 [node name="ToMenu" type="Button" parent="PauseMenuMarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "To Menu"
-
-[node name="Timer" type="Timer" parent="."]
 
 [connection signal="pressed" from="PauseMenuMarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenuMarginContainer/VBoxContainer/Help" to="." method="_on_help_pressed"]

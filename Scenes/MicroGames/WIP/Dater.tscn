@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7jgo7y8haq2y"]
+
+[ext_resource type="Script" path="res://Scenes/MicroGames/Scripts/dater.gd" id="1_wawo0"]
+
+[node name="Dater" type="Node2D"]
+script = ExtResource("1_wawo0")
