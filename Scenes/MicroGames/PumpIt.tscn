@@ -21,6 +21,16 @@ size = Vector2(78, 66)
 texture_filter = 1
 script = ExtResource("1_rr2sd")
 _prompt = "Pump!"
+input_flags = {
+"button_0": false,
+"button_1": false,
+"microphone": false,
+"mouse_touch": false,
+"ui_down": true,
+"ui_left": false,
+"ui_right": false,
+"ui_up": true
+}
 _music_tracks = Array[AudioStream]([ExtResource("2_24aq0")])
 metadata/_edit_lock_ = true
 

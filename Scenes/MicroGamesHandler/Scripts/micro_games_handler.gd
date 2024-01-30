@@ -51,8 +51,9 @@ var current_microgame
 var next_microgame
 var microgames_queue
 
-var speed_up_flag
-var cur_game_speed = 1
+@export var boss_mcg_counter = 8#every n, you get a boss mcg. 
+#this will be handled differently in that you have to win or 
+#else it keeps rerolling, and after this one ends you hit a speed up
 
 signal zoom_into_microgame
 signal get_input_flags
@@ -61,10 +62,10 @@ signal zoom_out_of_microgame
 func _ready():
 	$PromptLabel/DEBUGHearts.text = str(num_hearts)
 	mcg_timer.connect("timeout", Callable(self, "on_increment_timer"))
-	pick_microgame()
+#	pick_microgame()
 	#mcg_port_container.set_gui_input(false)
-	#load_microgame("res://Scenes/MicroGames/PopIt.tscn")
-#	load_microgame("res://Scenes/MicroGames/PetThePet.tscn")
+#	load_microgame("res://Scenes/MicroGames/Combo.tscn")
+	load_microgame("res://Scenes/MicroGames/PetThePet.tscn")
 
 
 	
@@ -74,8 +75,6 @@ func flash_ready():
 	await $PromptLabel/AnimationPlayer.animation_finished
 	return
 
-func speed_up(new_speed):
-	cur_game_speed = new_speed
 
 func update_microgame_difficulty(new_difficulty):
 	cur_microgame_difficulty = new_difficulty
@@ -129,7 +128,6 @@ func add_and_initialize_microgame(mcg):
 #	microgame's _ready() is called here ^
 
 func on_start_game():
-#	print(current_microgame.get_groups())
 	emit_signal("zoom_into_microgame")
 #	mcg_timer.start(start_game_breather_time)
 #	await mcg_timer.timeout#this should be based on the time you want them to read the prompt
@@ -147,6 +145,10 @@ func on_end_game(end_state):
 			$WinLossRect/WinLabel.show()
 		"failure":
 			$WinLossRect/LossLabel.show()
+		"boss_success":
+			pass
+		"boss_failure":
+			pass
 	update_num_hearts(end_state)
 # here is where you need to await the win_time
 #	current_microgame.disconnect("start_game", Callable(self, "on_start_game"))
@@ -154,6 +156,7 @@ func on_end_game(end_state):
 	emit_signal("zoom_out_of_microgame")
 	current_microgame.queue_free()
 	microgames_count += 1
+	$PromptLabel/DEBUGMCGCount.text = str(microgames_count)
 #	update the counter
 	mcg_timer.start(win_loss_time)
 	await mcg_timer.timeout
@@ -184,10 +187,11 @@ func on_done_zoom_in():
 func on_done_zoom_out():
 	#couple things here... don't immediately pick the microgame, wait a little and also offload this to the maingame
 	#second off: save the previous microgame for reference, even if only as a name
-	#third off: you need to do the start_game after waiting for the game to actually ZOOM... this seems to be an issue only in pet_the_pet
 #	print(current_microgame)
+#wait here in case we need to speed up!
+	if microgames_count % boss_mcg_counter == 0:
+		print("FUCK")
 	pick_microgame()
-	pass
 
 
 func initialize_bomb_timer_visuals():
@@ -200,7 +204,6 @@ func on_increment_timer():
 	if current_microgame == null:
 		mcg_timer.stop()
 		return
-#	print(bomb.position.y)
 	if bomb.texture == init_bomb_texture:
 		if bomb.position.y == 150:
 			current_microgame.process_toggle(false)
@@ -215,7 +218,7 @@ func on_increment_timer():
 		bomb.texture = init_bomb_texture
 	bomb_sfx.play()
 
-func update_num_hearts(update_type):
+func update_num_hearts(update_type):#only add hearts every 10 or so, or maybe after every boss
 	match update_type:
 		"failure":
 			num_hearts -=1

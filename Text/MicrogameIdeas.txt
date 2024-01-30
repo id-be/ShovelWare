@@ -15,32 +15,37 @@ select the right response from a menu within a time frame (a dating sim, an rpg,
 |_> kick/fireball
 |_> kiss :3
 |_> punch/ultrablast
+could also make this one a boss microgame 
+
 
 4) hatch!
 (tap eggs until they crack, little animals inside... multiple eggs for harder difficulties)
 
-5) dip!
+5) dip! -- floppy sword
 dip a chip in salsa when the hand is going back and forth
+difficulty scaling would be speed of motion and the size of the salsa dish
+convolutions: different chips, different hands, different motion patterns, different salsas
 
-6) shave!
-use a razor to shave a man's beard/mustache/armpits
+6) shave! -- floppy sword
+use a razor to shave a man's beard/mustache/armpits (think like wooly willy)
 
 7) combo!
 put in a series of inputs to do the correct attack combo
+--make this a simple version, upgrade for a boss version as well
 
-8) pump!
+8) pump! -- larry
 go up and down to pump up an inflatable thing
 
 9) worship!/pray!
 move up and down to bend and pray to an idol or something
 
-10) lift!
+10) lift! -- floppy sword
 move up and down to lift a weight
 
 11) marry!
 a ring moves side to side, put it on the correct finger
 
-12) chop! --connor
+12) chop! --connor idea --floppy sword
 chop vegetables but don't chop your hand off! a comically long carrot
 
 13) pacify!
@@ -48,7 +53,7 @@ put a pacifier in a baby's mouth that's crying (hand going up and
 down, if you miss the baby cries even harder and zooms towards the 
 screen)
 
-14) get caught(?)!
+14) get caught(?)! -- floppy sword
 you're a fly, fly into a bug zapper or a spiderweb or a venus flytrap
 
 15) count!
@@ -56,7 +61,19 @@ something comes on screen and you count it up, then at the end you are asked
 "how many?"
 
 16) free!
-let animals out of cages
+let animals out of cages--possibly let dinosaurs out and they eat the guards
 
 17) hide!
-either hide yourself from a monster or evidence from the police, difficulty 
+hide evidence from the police, difficulty changes how many items you have to hide (click to hide)
+
+18) evade!
+hide yourself from a monster
+
+19) drag! -- floppy sword
+dragon-drop
+
+20) find!
+a where's waldo type game
+
+21) guide! -- floppy sword
+guide a cat with a laser pointer to a goal

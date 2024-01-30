@@ -51,7 +51,7 @@ func _set_initial_values():
 	randomize_start_emotion()
 
 func _input(_event):
-	if Input.is_action_just_pressed("button_0"):
+	if Input.is_action_just_pressed("button_1"):
 		if !is_being_pet:
 			is_being_pet = true
 			end_anim_pet()

@@ -1,0 +1,11 @@
+1) boss battle
+physically fight your boss (either a punchout thing or )
+
+2) fight!
+do combos when it's your turn in order to deal damage (combos displayed on top of screen)
+and defend when it's not your turn
+
+aim for 10 to 20 total
+
+3) slay!
+something like daggerfall/doom where you have a sword  (a) and shield (b), you have to use both to fight a monster

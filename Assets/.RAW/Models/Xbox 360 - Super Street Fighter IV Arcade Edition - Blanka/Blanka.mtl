@@ -1,0 +1,70 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 25.09.2013 23:33:03
+
+newmtl Material__456
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka tex_0060_0.png
+	map_Kd tex_0060_0.png
+	map_d tex_0060_0.png
+	map_bump tex_0060_1.png
+	bump tex_0060_1.png
+
+newmtl Material__453
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka tex_0055_0.png
+	map_Kd tex_0055_0.png
+	map_d tex_0055_0.png
+	map_bump tex_0055_1.png
+	bump tex_0055_1.png
+
+newmtl Material__454
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka tex_0059_0.png
+	map_Kd tex_0059_0.png
+	map_d tex_0059_0.png
+	map_bump tex_0059_1.png
+	bump tex_0059_1.png
+
+newmtl Material__455
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka tex_0054_0.png
+	map_Kd tex_0054_0.png
+	map_d tex_0054_0.png
+	map_bump tex_0054_1.png
+	bump tex_0054_1.png
