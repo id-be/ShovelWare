@@ -78,7 +78,6 @@ func toggle_sounds():
 #basically, if they're playing you want to pause them and save the current
 #playback position then if they're not playing and we hit toggle sound, we 
 #want to resume playing from the spot we stopped at.
-
 	pass
 func kill_sounds():
 	stop_music()

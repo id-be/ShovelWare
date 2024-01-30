@@ -83,8 +83,8 @@ bgs = Array[Texture]([ExtResource("2_scoiw"), ExtResource("3_k6d71"), ExtResourc
 anims = Array[SpriteFrames]([ExtResource("5_gfekf"), ExtResource("6_2kcny"), ExtResource("7_0cil3")])
 _prompt = "Pet!"
 input_flags = {
-"button_0": true,
-"button_1": false,
+"button_0": false,
+"button_1": true,
 "microphone": false,
 "mouse_touch": false,
 "ui_down": false,

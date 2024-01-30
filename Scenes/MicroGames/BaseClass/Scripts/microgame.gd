@@ -21,11 +21,11 @@ class_name microgame
 #does nothing. the design goal is to set all of that up
 #so that the microgameshandler ramps up or lowers difficulty
 #based on game state.
-@export_enum("easy", "medium", "hard", "boss") var difficulty: String = "easy"
+@export_enum("easy", "medium", "hard") var difficulty: String = "easy"
 @onready var timer = Timer.new()
 @export_range(0.1, 1) var _time_step: float = 0.5
 
-@export_enum("failure", "success") var default_end_state: String = "failure"
+@export_enum("failure", "success", "boss_failure", "boss_success") var default_end_state: String = "failure"
 @onready var end_state = default_end_state
 
 signal start_game
@@ -56,8 +56,6 @@ func _set_difficulty(dif):
 		"medium":
 			pass
 		"hard":
-			pass
-		"boss":
 			pass
 #		default
 		_:

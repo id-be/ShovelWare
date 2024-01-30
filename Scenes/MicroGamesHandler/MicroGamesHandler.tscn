@@ -45,7 +45,6 @@ _data = {
 [node name="MicroGamesHandler" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_bkbri")
-metadata/_edit_lock_ = true
 
 [node name="SubViewPortContainer" type="SubViewportContainer" parent="."]
 process_mode = 1
@@ -150,6 +149,23 @@ process_mode = 1
 libraries = {
 "": SubResource("AnimationLibrary_m847m")
 }
+
+[node name="DEBUGHearts" type="Label" parent="PromptLabel"]
+layout_mode = 0
+offset_left = 1.5
+offset_top = 46.5
+offset_right = 41.5
+offset_bottom = 66.5
+text = "
+"
+
+[node name="DEBUGMCGCount" type="Label" parent="PromptLabel"]
+layout_mode = 0
+offset_left = 66.5
+offset_top = 46.5
+offset_right = 106.5
+offset_bottom = 66.5
+text = "0"
 
 [node name="BombTimer" type="Node2D" parent="."]
 process_mode = 1

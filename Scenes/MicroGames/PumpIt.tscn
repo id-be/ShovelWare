@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ctg1xxf1treoi"]
+[gd_scene load_steps=11 format=3 uid="uid://dlfkwidbm687i"]
 
 [ext_resource type="Script" path="res://Scenes/MicroGames/Scripts/pump_it.gd" id="1_rr2sd"]
 [ext_resource type="AudioStream" uid="uid://chsledvoinutr" path="res://Scenes/MicroGames/ExampleMicroGame/Assets/Audio/DebugTrack.ogg" id="2_24aq0"]
@@ -21,6 +21,16 @@ size = Vector2(78, 66)
 texture_filter = 1
 script = ExtResource("1_rr2sd")
 _prompt = "Pump!"
+input_flags = {
+"button_0": false,
+"button_1": false,
+"microphone": false,
+"mouse_touch": false,
+"ui_down": true,
+"ui_left": false,
+"ui_right": false,
+"ui_up": true
+}
 _music_tracks = Array[AudioStream]([ExtResource("2_24aq0")])
 metadata/_edit_lock_ = true
 

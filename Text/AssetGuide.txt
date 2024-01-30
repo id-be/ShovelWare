@@ -1,10 +1,16 @@
-assets should be kept to 32-bit or lower.
+assets should be kept to 32-bit or lower (this is more an aesthetic
+choice than anything, so feel free to break this rule if it'd make 
+for a better experience!)
 
 the microgames themselves fit within a 216x144 window styled on the 
 gameboy advance screen. raw visual assets should fit within this 
 window to minimize storage of large assets. scaling in-engine is
 fine, just keep in mind the pixel-perfect nature of a game with this
 low of a resolution in order to minimize artifacting.
+
+fontmeme is a great site for fonts as well as fontstruct.
+
+https://pixabay.com/ is a great spot for sfx
 
 mono sound preferred but not a necessity--positional sound will
 need to be introduced in microgames that require them as the 
