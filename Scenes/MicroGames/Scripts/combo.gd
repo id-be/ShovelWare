@@ -9,13 +9,17 @@ var temp_game_inputs = []
 var cur_input_index = 0
 
 var cur_combo = []
-var cur_combo_achieved = false
+
+var is_comboing = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	boilerplate_ready()
 	max_num_inputs = game_inputs.size() - 1
 	for input in input_flags.keys():
 		if input_flags[input]:
 			game_inputs.append(input)
+	randomize_fighters()
+	randomize_bg()
 	generate_combo()
 	print(game_inputs)
 #	print(InputMap.get_actions())
@@ -24,25 +28,25 @@ func _input(event):
 	var action_as_string
 #	print(event.is_action_type())
 #	print("FUCK")
-	if !cur_combo_achieved:
+	if is_comboing:
 		for input in game_inputs:
-			if Input.is_action_just_pressed(input):
-				if cur_input_index < combo_length:
-					if Input.is_action_just_pressed(cur_combo[cur_input_index]):
-						if cur_input_index == combo_length - 1:
-							cur_combo_achieved = true
-							$Label3.show()
-					cur_input_index += 1
-					
-	#				$Label2.show()
-				else:
-					$Label4.show()
+			if Input.is_action_just_pressed(input) && Input.is_action_just_pressed(cur_combo[cur_input_index]):
+				if cur_input_index == combo_length - 1:
+					is_comboing = false
+					$Label3.show()
+					end_state = "success"
+				cur_input_index += 1
+				$Label2.visible_characters = cur_input_index
+			elif Input.is_action_just_pressed(input):
+				is_comboing = false
+				$Label4.show()
 	
 
 #	print(InputMap.event_is_action(event, action_as_string))
 #	print(event.as_text())
 
 func generate_combo():
+	cur_input_index = 0
 	var new_combo = []
 	var new_glyph_combo = []
 	var last_input
@@ -76,8 +80,8 @@ func generate_combo():
 	var my_label_text = ""
 	for glyph in new_glyph_combo:
 		my_label_text += glyph
-	$Label.text = my_label_text
-	$Label2.text = my_label_text
+	$Label.text = my_label_text; $Label.show()
+	$Label2.text = my_label_text; $Label2.visible_characters = 0; $Label2.show()
 		#
 		#if is_truncated:
 			#temp_game_inputs = game_inputs.duplicate()
@@ -95,5 +99,16 @@ func generate_combo():
 #≺≻≼≽ == left, up, right, down
 #⏴⏵⏶⏷ == left, right, up, down
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+func randomize_fighters():
+	pass
+func randomize_bg():
+	pass
+
+func end_combo(end_state):
+	pass
+
+func flash_and_disappear_combo():
+	pass
+	
 func _process(delta):
 	pass
