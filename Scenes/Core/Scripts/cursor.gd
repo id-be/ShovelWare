@@ -6,7 +6,7 @@
 
 extends Control
 
-@export var cursor_offset = Vector2(0,0)
+@export var cursor_offset = Vector2(20,9)
 @export var texture_offset = Vector2(0,0)
 @export var label_offset = Vector2(0,0)
 
@@ -63,6 +63,6 @@ func set_cursor_from_index(index : int) -> void:
 	var size = menu_item.size
 	
 	#global_position = Vector2(position.x, position.y + size.y/2.0) - (size/2.0) - cursor_offset
-	global_position = Vector2(position.x, position.y + size.y/2.0) - (size/2.0) - cursor_offset
+	global_position = Vector2(position.x, position.y + size.y/2.0) - cursor_offset
 	
 	cursor_index = index

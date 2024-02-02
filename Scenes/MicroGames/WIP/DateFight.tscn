@@ -136,5 +136,5 @@ theme_override_font_sizes/font_size = 13
 text = "THING6"
 
 [node name="Cursor" parent="." instance=ExtResource("5_js453")]
-cursor_offset = Vector2(0, 4)
+cursor_offset = Vector2(20, 11)
 menu_parent_path = NodePath("../Panel/GridContainer")

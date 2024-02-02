@@ -63,18 +63,10 @@ signal zoom_out_of_microgame
 func _ready():
 	$PromptLabel/DEBUGHearts.text = str(num_hearts)
 	mcg_timer.connect("timeout", Callable(self, "on_increment_timer"))
-#	print(all_microgames)
 	
 	pick_microgame()
 
 
-	#mcg_port_container.set_gui_input(false)
-#	load_microgame("res://Scenes/MicroGames/ComboKing.tscn")
-#	load_microgame("res://Scenes/MicroGames/PetThePet.tscn")
-
-
-	
-#	load_microgame(debug_microgame_path)
 func flash_ready():
 	$PromptLabel/AnimationPlayer.play("flash_ready")
 	await $PromptLabel/AnimationPlayer.animation_finished
