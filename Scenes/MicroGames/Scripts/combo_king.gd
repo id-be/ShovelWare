@@ -35,6 +35,7 @@ func _input(event):
 					is_comboing = false
 					$Label3.show()
 					end_state = "success"
+					flash_and_disappear_combo()
 				cur_input_index += 1
 				$Label2.visible_characters = cur_input_index
 			elif Input.is_action_just_pressed(input):

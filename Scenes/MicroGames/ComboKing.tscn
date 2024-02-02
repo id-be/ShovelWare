@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://1p5q3jc517pa"]
 
-[ext_resource type="Script" path="res://Scenes/MicroGames/Scripts/combo.gd" id="1_rdfle"]
-[ext_resource type="AudioStream" uid="uid://chsledvoinutr" path="res://Scenes/MicroGames/ExampleMicroGame/Assets/Audio/DebugTrack.ogg" id="2_5hwyg"]
-[ext_resource type="FontFile" uid="uid://d34ql3sx3d5kh" path="res://Assets/2D/Fonts/PromptFont/promptfont.ttf" id="3_hf8aa"]
-[ext_resource type="Texture2D" uid="uid://bucjr426s70d2" path="res://Assets/DEBUG/2D/Defaults/Square.png" id="4_6en4s"]
+[ext_resource type="Script" path="res://Scenes/MicroGames/Scripts/combo_king.gd" id="1_v3bi1"]
+[ext_resource type="AudioStream" uid="uid://chsledvoinutr" path="res://Scenes/MicroGames/ExampleMicroGame/Assets/Audio/DebugTrack.ogg" id="2_eocbj"]
+[ext_resource type="FontFile" uid="uid://d34ql3sx3d5kh" path="res://Assets/2D/Fonts/PromptFont/promptfont.ttf" id="3_bouyl"]
+[ext_resource type="Texture2D" uid="uid://bucjr426s70d2" path="res://Assets/DEBUG/2D/Defaults/Square.png" id="4_maaab"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_55qyn"]
 size = Vector2(240, 16)
@@ -11,8 +11,8 @@ size = Vector2(240, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_igb7u"]
 size = Vector2(16, 160)
 
-[node name="Combo" type="Node2D"]
-script = ExtResource("1_rdfle")
+[node name="ComboKing" type="Node2D"]
+script = ExtResource("1_v3bi1")
 _prompt = "Combo!"
 input_flags = {
 "button_0": true,
@@ -24,14 +24,14 @@ input_flags = {
 "ui_right": true,
 "ui_up": true
 }
-_music_tracks = Array[AudioStream]([ExtResource("2_5hwyg")])
+_music_tracks = Array[AudioStream]([ExtResource("2_eocbj")])
 
 [node name="Label" type="Label" parent="."]
 offset_left = 15.0
 offset_top = 8.0
 offset_right = 223.0
 offset_bottom = 152.0
-theme_override_fonts/font = ExtResource("3_hf8aa")
+theme_override_fonts/font = ExtResource("3_bouyl")
 text = "⓿⓵≺≻≼≽⏴⏵⏶⏷"
 autowrap_mode = 1
 
@@ -45,7 +45,7 @@ theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 3
 theme_override_constants/shadow_outline_size = 5
-theme_override_fonts/font = ExtResource("3_hf8aa")
+theme_override_fonts/font = ExtResource("3_bouyl")
 text = "⓿⓵≺≻≼≽⏴⏵⏶⏷"
 autowrap_mode = 1
 visible_characters = 0
@@ -73,7 +73,7 @@ position = Vector2(120, 0)
 [node name="Sprite2D" type="Sprite2D" parent="Bounds/TopBound"]
 texture_filter = 1
 scale = Vector2(3.75, 0.25)
-texture = ExtResource("4_6en4s")
+texture = ExtResource("4_maaab")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/TopBound"]
 shape = SubResource("RectangleShape2D_55qyn")
@@ -84,7 +84,7 @@ position = Vector2(120, 160)
 [node name="Sprite2D" type="Sprite2D" parent="Bounds/BottomBound"]
 texture_filter = 1
 scale = Vector2(3.75, 0.25)
-texture = ExtResource("4_6en4s")
+texture = ExtResource("4_maaab")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BottomBound"]
 shape = SubResource("RectangleShape2D_55qyn")
@@ -95,7 +95,7 @@ position = Vector2(4, 80)
 [node name="Sprite2D" type="Sprite2D" parent="Bounds/LeftBound"]
 texture_filter = 1
 scale = Vector2(0.25, 2.5)
-texture = ExtResource("4_6en4s")
+texture = ExtResource("4_maaab")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/LeftBound"]
 shape = SubResource("RectangleShape2D_igb7u")
@@ -106,7 +106,7 @@ position = Vector2(236, 80)
 [node name="Sprite2D" type="Sprite2D" parent="Bounds/RightBound"]
 texture_filter = 1
 scale = Vector2(0.25, 2.5)
-texture = ExtResource("4_6en4s")
+texture = ExtResource("4_maaab")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightBound"]
 shape = SubResource("RectangleShape2D_igb7u")
