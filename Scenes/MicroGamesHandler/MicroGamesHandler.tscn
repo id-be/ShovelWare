@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ftkh155jwal2"]
+[gd_scene load_steps=10 format=3 uid="uid://ftkh155jwal2"]
 
 [ext_resource type="Script" path="res://Scenes/MicroGamesHandler/Scripts/micro_games_handler.gd" id="1_bkbri"]
 [ext_resource type="Texture2D" uid="uid://f53rs58kvlfq" path="res://Scenes/MicroGamesHandler/Assets/2D/Cloud2.png" id="2_g468g"]
+[ext_resource type="Texture2D" uid="uid://b2rsyo5v88vf2" path="res://Scenes/MicroGamesHandler/Assets/2D/EndBomb.png" id="2_hv17n"]
 [ext_resource type="Texture2D" uid="uid://datfnkmlcyc6v" path="res://Scenes/MicroGamesHandler/Assets/2D/Bomb1.png" id="3_sa4kw"]
+[ext_resource type="AudioStream" uid="uid://llqshaenjyfn" path="res://Scenes/MicroGamesHandler/Assets/Audio/BombSplode.ogg" id="3_yxg65"]
 [ext_resource type="AudioStream" uid="uid://cjr7t5vifoyu" path="res://Scenes/MicroGamesHandler/Assets/Audio/BombBump.ogg" id="4_tk4ib"]
 
 [sub_resource type="Animation" id="Animation_8cyig"]
@@ -45,6 +47,10 @@ _data = {
 [node name="MicroGamesHandler" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_bkbri")
+bomb_explode_texture = ExtResource("2_hv17n")
+bomb_splode = ExtResource("3_yxg65")
+microgame_playmode = "queue"
+microgames_queue = Array[String](["res://Scenes/MicroGames/ComboKing.tscn"])
 
 [node name="SubViewPortContainer" type="SubViewportContainer" parent="."]
 process_mode = 1
