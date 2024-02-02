@@ -16,6 +16,7 @@ func _set_initial_values():
 	var screen_size = get_viewport_rect().size
 	var start_num_1 = randf_range(-1,1)
 	var start_num_2 = randf_range(-1,1)
+	$BalloonOrigin. get_node("PumpBalloon").modulate = Color(max(randf(), .1),max(randf(), .1),max(randf(), .1))
 	#$TestText.text = str(current_pump_val)
 
 	#$MoveButton.position = screen_size/2
