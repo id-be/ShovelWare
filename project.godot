@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="ShovelWare"
-run/main_scene="res://Scenes/Splash/Splash.tscn"
+run/main_scene="res://Scenes/DEBUG/DEBUGPlayMinigame.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://Assets/GodotDefaults/icon.svg"
 
@@ -27,6 +27,10 @@ Globals="*res://Scenes/Globals/Globals.tscn"
 
 window/stretch/mode="viewport"
 window/emulate_touch_from_mouse=true
+
+[editor]
+
+movie_writer/movie_file="C:/Users/ealex/Documents/VGDEV/godot movie maker/CatScratchFeverDemo.avi"
 
 [gui]
 
