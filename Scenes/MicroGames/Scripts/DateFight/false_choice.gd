@@ -1,5 +1,5 @@
 extends Control
 
 func _cursor_select():
-	print(self.name)
+	self.get_parent().get_parent().get_parent().make_choice("false")
 	

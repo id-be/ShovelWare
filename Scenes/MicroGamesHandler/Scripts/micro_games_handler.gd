@@ -84,7 +84,7 @@ func queue_microgames():
 	var _temp_microgames_array = []
 #	temp_microgames_array
 
-func pick_microgame():
+func pick_microgame(is_boss = false):
 	var my_game_index
 	var my_game_path
 	match microgame_playmode:
@@ -100,14 +100,14 @@ func pick_microgame():
 					pass
 				else:
 					mcg_index_in_queue +=1
-	load_microgame(my_game_path)
+	load_microgame(my_game_path, is_boss)
 
-func load_microgame(mcg):
+func load_microgame(mcg, is_boss = false):
 	await flash_ready()
 	ResourceLoader.load_threaded_request(mcg)
-	add_and_initialize_microgame(mcg)
+	add_and_initialize_microgame(mcg, is_boss)
 
-func add_and_initialize_microgame(mcg):
+func add_and_initialize_microgame(mcg, is_boss = false):
 	bomb_sfx.stream = bomb_bump
 	screen_cover.show()
 	var microgame_scn = ResourceLoader.load_threaded_get(mcg)

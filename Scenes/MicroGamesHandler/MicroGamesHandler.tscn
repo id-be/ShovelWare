@@ -50,7 +50,7 @@ script = ExtResource("1_bkbri")
 bomb_explode_texture = ExtResource("2_hv17n")
 bomb_splode = ExtResource("3_yxg65")
 microgame_playmode = "queue"
-microgames_queue = Array[String](["res://Scenes/MicroGames/ComboKing.tscn"])
+microgames_queue = Array[String](["res://Scenes/MicroGames/WIP/DateFight.tscn"])
 
 [node name="SubViewPortContainer" type="SubViewportContainer" parent="."]
 process_mode = 1

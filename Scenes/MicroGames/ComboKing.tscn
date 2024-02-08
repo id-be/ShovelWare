@@ -25,6 +25,7 @@ input_flags = {
 "ui_up": true
 }
 _music_tracks = Array[AudioStream]([ExtResource("2_eocbj")])
+_time_step = 0.4
 
 [node name="Label" type="Label" parent="."]
 offset_left = 15.0
