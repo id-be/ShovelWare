@@ -45,8 +45,8 @@ tracks/2/keys = {
 "values": [1, 0]
 }
 
-[sub_resource type="Animation" id="Animation_crnkt"]
-resource_name = "highlighted"
+[sub_resource type="Animation" id="Animation_j1ma3"]
+resource_name = "idle"
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -85,8 +85,8 @@ tracks/2/keys = {
 "values": [1]
 }
 
-[sub_resource type="Animation" id="Animation_j1ma3"]
-resource_name = "idle"
+[sub_resource type="Animation" id="Animation_crnkt"]
+resource_name = "highlighted"
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -145,7 +145,7 @@ position = Vector2(6.5, 4.5)
 texture = ExtResource("1_fdn86")
 hframes = 7
 vframes = 12
-frame = 22
+frame = 21
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
