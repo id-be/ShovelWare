@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dsc8lq85esv4k" path="res://Scenes/MicroGames/MicroGameAssets/CatScratchFever/2D/sitting.png" id="6_p4tub"]
 [ext_resource type="Texture2D" uid="uid://b8d46ssddqlhk" path="res://Scenes/MicroGames/MicroGameAssets/CatScratchFever/2D/walking.png" id="7_uxbgi"]
 [ext_resource type="Texture2D" uid="uid://cpnloivu6eb25" path="res://Scenes/MicroGames/MicroGameAssets/CatScratchFever/2D/laser_pointer.png" id="9_i3eri"]
-[ext_resource type="PackedScene" uid="uid://b5v1v2e08j5a5" path="res://Scenes/MicroGames/MicroGameAssets/CatScratchFever/scenessX/crates.tscn" id="11_awnd2"]
+[ext_resource type="PackedScene" uid="uid://b5v1v2e08j5a5" path="res://Scenes/MicroGames/MicroGameAssets/CatScratchFever/Scenes/Crates.tscn" id="11_awnd2"]
 [ext_resource type="AudioStream" uid="uid://bbnjtifr44lyc" path="res://Scenes/MicroGames/MicroGameAssets/CatScratchFever/Audio/bigcateliontigermeow-76352.mp3" id="11_bndaf"]
 
 [sub_resource type="OggPacketSequence" id="OggPacketSequence_84e5p"]
