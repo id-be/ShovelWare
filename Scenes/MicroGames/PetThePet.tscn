@@ -153,7 +153,7 @@ shape = SubResource("RectangleShape2D_c2ysg")
 [node name="Animal" type="AnimatedSprite2D" parent="."]
 position = Vector2(12, 8)
 sprite_frames = ExtResource("7_0cil3")
-animation = &"Normal"
+animation = &"Angry"
 centered = false
 
 [node name="Hand" type="Sprite2D" parent="."]

@@ -21,11 +21,11 @@ var num_hearts = max_hearts
 @onready var bomb = $BombTimer/Sky/Bomb
 @onready var bomb_init_pos = bomb.position
 @onready var init_bomb_texture = bomb.texture
-@export var bomb_explode_texture : CompressedTexture2D
+@export var bomb_explode_texture = load("res://Scenes/MicroGamesHandler/Assets/2D/EndBomb.png")
 
 @onready var bomb_sfx = $BombSFX
 @onready var bomb_bump = bomb_sfx.stream
-@export var bomb_splode : AudioStreamOggVorbis
+@onready var bomb_splode = load("res://Scenes/MicroGamesHandler/Assets/Audio/BombSplode.ogg")
 
 var microgames_dir = "res://Scenes/MicroGames/"
 var all_microgames = DirAccess.get_files_at(microgames_dir)
@@ -43,14 +43,13 @@ var debug_microgame_path = "res://Scenes/MicroGames/ExampleMicroGame/ExampleMicr
 
 var cur_microgame_difficulty = "easy"
 
-@export_enum("random_shuffle", "shuffle", "queue") var microgame_playmode: String = "random_shuffle"#shuffle from queue, go through queue, etc
+var microgame_playmode = "random_shuffle"#shuffle from queue, go through queue, etc
 var microgames_pool = all_microgames
 
 var previous_microgame
 var current_microgame
 var next_microgame
-@export var microgames_queue: Array[String]
-var mcg_index_in_queue = 0
+var microgames_queue
 
 @export var boss_mcg_counter = 8#every n, you get a boss mcg. 
 #this will be handled differently in that you have to win or 
@@ -63,10 +62,15 @@ signal zoom_out_of_microgame
 func _ready():
 	$PromptLabel/DEBUGHearts.text = str(num_hearts)
 	mcg_timer.connect("timeout", Callable(self, "on_increment_timer"))
-	
 	pick_microgame()
 
+	#mcg_port_container.set_gui_input(false)
+#	load_microgame("res://Scenes/MicroGames/Combo.tscn")
+#	load_microgame("res://Scenes/MicroGames/PetThePet.tscn")
 
+
+	
+#	load_microgame(debug_microgame_path)
 func flash_ready():
 	$PromptLabel/AnimationPlayer.play("flash_ready")
 	await $PromptLabel/AnimationPlayer.animation_finished
@@ -84,7 +88,7 @@ func queue_microgames():
 	var _temp_microgames_array = []
 #	temp_microgames_array
 
-func pick_microgame(is_boss = false):
+func pick_microgame():
 	var my_game_index
 	var my_game_path
 	match microgame_playmode:
@@ -94,20 +98,15 @@ func pick_microgame(is_boss = false):
 		"shuffle":
 			pass
 		"queue":
-			for mcg in microgames_queue:
-				my_game_path = microgames_queue[mcg_index_in_queue]
-				if mcg_index_in_queue == microgames_queue.size() - 1:
-					pass
-				else:
-					mcg_index_in_queue +=1
-	load_microgame(my_game_path, is_boss)
+			pass
+	load_microgame(my_game_path)
 
-func load_microgame(mcg, is_boss = false):
+func load_microgame(mcg):
 	await flash_ready()
 	ResourceLoader.load_threaded_request(mcg)
-	add_and_initialize_microgame(mcg, is_boss)
+	add_and_initialize_microgame(mcg)
 
-func add_and_initialize_microgame(mcg, is_boss = false):
+func add_and_initialize_microgame(mcg):
 	bomb_sfx.stream = bomb_bump
 	screen_cover.show()
 	var microgame_scn = ResourceLoader.load_threaded_get(mcg)
