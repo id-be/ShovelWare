@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpnloivu6eb25"
-path="res://.godot/imported/laser_pointer.png-8db77baf0a599c0ec57ad6b4e0d576a3.ctex"
+uid="uid://dkern8k2u178d"
+path="res://.godot/imported/Running.png-1696dabb93221a81aed37bfc61b4b40d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/MicroGames/MicroGameAssets/CatScratchFever/2D/laser_pointer.png"
-dest_files=["res://.godot/imported/laser_pointer.png-8db77baf0a599c0ec57ad6b4e0d576a3.ctex"]
+source_file="res://Scenes/MicroGames/MicroGameAssets/CatScratch/2D/Running.png"
+dest_files=["res://.godot/imported/Running.png-1696dabb93221a81aed37bfc61b4b40d.ctex"]
 
 [params]
 

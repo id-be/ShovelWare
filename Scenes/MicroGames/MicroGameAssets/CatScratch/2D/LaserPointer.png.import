@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cx5062nxrg7kf"
-path="res://.godot/imported/attacks.png-b7ca806390783e108cf739034f1f99d0.ctex"
+uid="uid://cpnloivu6eb25"
+path="res://.godot/imported/LaserPointer.png-fa8138ae4a667728d1cfb32d4829957a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/MicroGames/MicroGameAssets/CatScratchFever/2D/attacks.png"
-dest_files=["res://.godot/imported/attacks.png-b7ca806390783e108cf739034f1f99d0.ctex"]
+source_file="res://Scenes/MicroGames/MicroGameAssets/CatScratch/2D/LaserPointer.png"
+dest_files=["res://.godot/imported/LaserPointer.png-fa8138ae4a667728d1cfb32d4829957a.ctex"]
 
 [params]
 

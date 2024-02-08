@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b5v1v2e08j5a5"]
 
-[ext_resource type="Texture2D" uid="uid://dx872tet7lcj0" path="res://Scenes/MicroGames/MicroGameAssets/CatScratchFever/2D/Destructible Objects Sprite Sheet.png" id="1_fdn86"]
+[ext_resource type="Texture2D" uid="uid://dx872tet7lcj0" path="res://Scenes/MicroGames/MicroGameAssets/CatScratch/2D/Destructible Objects Sprite Sheet.png" id="1_fdn86"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j4l4u"]
 size = Vector2(19, 19)

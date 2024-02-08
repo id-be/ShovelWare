@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsc8lq85esv4k"
-path="res://.godot/imported/sitting.png-e46016a87ede892de42cdbd1260f7e37.ctex"
+uid="uid://b8d46ssddqlhk"
+path="res://.godot/imported/Walking.png-a6afdcf0877326de51179077caf54a00.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/MicroGames/MicroGameAssets/CatScratchFever/2D/sitting.png"
-dest_files=["res://.godot/imported/sitting.png-e46016a87ede892de42cdbd1260f7e37.ctex"]
+source_file="res://Scenes/MicroGames/MicroGameAssets/CatScratch/2D/Walking.png"
+dest_files=["res://.godot/imported/Walking.png-a6afdcf0877326de51179077caf54a00.ctex"]
 
 [params]
 

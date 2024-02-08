@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3qr0qvgmtohu"
-path="res://.godot/imported/idle.png-dbc73ebb673eb97d1f55e311146c3ef4.ctex"
+uid="uid://dsc8lq85esv4k"
+path="res://.godot/imported/Sitting.png-9b10b331757308975095968f2fa3cb1d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/MicroGames/MicroGameAssets/CatScratchFever/2D/idle.png"
-dest_files=["res://.godot/imported/idle.png-dbc73ebb673eb97d1f55e311146c3ef4.ctex"]
+source_file="res://Scenes/MicroGames/MicroGameAssets/CatScratch/2D/Sitting.png"
+dest_files=["res://.godot/imported/Sitting.png-9b10b331757308975095968f2fa3cb1d.ctex"]
 
 [params]
 

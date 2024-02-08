@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dx872tet7lcj0"
-path="res://.godot/imported/Destructible Objects Sprite Sheet.png-0187533bb96c33a7b22bbc1f11beb567.ctex"
+uid="uid://cx5062nxrg7kf"
+path="res://.godot/imported/Attacks.png-a480886564e16df7a9da1c9d68bdc003.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/MicroGames/MicroGameAssets/CatScratchFever/2D/Destructible Objects Sprite Sheet.png"
-dest_files=["res://.godot/imported/Destructible Objects Sprite Sheet.png-0187533bb96c33a7b22bbc1f11beb567.ctex"]
+source_file="res://Scenes/MicroGames/MicroGameAssets/CatScratch/2D/Attacks.png"
+dest_files=["res://.godot/imported/Attacks.png-a480886564e16df7a9da1c9d68bdc003.ctex"]
 
 [params]
 

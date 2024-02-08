@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4nqlka5fje62"
-path="res://.godot/imported/sitting_walking.png-f7739b4289459299116a8aab8c841d0c.ctex"
+uid="uid://dx872tet7lcj0"
+path="res://.godot/imported/Destructible Objects Sprite Sheet.png-33499b125e299c9f46f0e5f7073046f6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/MicroGames/MicroGameAssets/CatScratchFever/2D/sitting_walking.png"
-dest_files=["res://.godot/imported/sitting_walking.png-f7739b4289459299116a8aab8c841d0c.ctex"]
+source_file="res://Scenes/MicroGames/MicroGameAssets/CatScratch/2D/Destructible Objects Sprite Sheet.png"
+dest_files=["res://.godot/imported/Destructible Objects Sprite Sheet.png-33499b125e299c9f46f0e5f7073046f6.ctex"]
 
 [params]
 

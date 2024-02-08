@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drtj4hat8garg"
-path="res://.godot/imported/dying.png-d87957c0ac493620d4a8fc7c2f4b91bf.ctex"
+uid="uid://c3qr0qvgmtohu"
+path="res://.godot/imported/Idle.png-ef954521748fe0662f0c4dec9e292960.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/MicroGames/MicroGameAssets/CatScratchFever/2D/dying.png"
-dest_files=["res://.godot/imported/dying.png-d87957c0ac493620d4a8fc7c2f4b91bf.ctex"]
+source_file="res://Scenes/MicroGames/MicroGameAssets/CatScratch/2D/Idle.png"
+dest_files=["res://.godot/imported/Idle.png-ef954521748fe0662f0c4dec9e292960.ctex"]
 
 [params]
 
