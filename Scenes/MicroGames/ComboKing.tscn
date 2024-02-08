@@ -1,0 +1,113 @@
+[gd_scene load_steps=7 format=3 uid="uid://1p5q3jc517pa"]
+
+[ext_resource type="Script" path="res://Scenes/MicroGames/Scripts/combo_king.gd" id="1_v3bi1"]
+[ext_resource type="AudioStream" uid="uid://chsledvoinutr" path="res://Scenes/MicroGames/ExampleMicroGame/Assets/Audio/DebugTrack.ogg" id="2_eocbj"]
+[ext_resource type="FontFile" uid="uid://d34ql3sx3d5kh" path="res://Assets/2D/Fonts/PromptFont/promptfont.ttf" id="3_bouyl"]
+[ext_resource type="Texture2D" uid="uid://bucjr426s70d2" path="res://Assets/DEBUG/2D/Defaults/Square.png" id="4_maaab"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_55qyn"]
+size = Vector2(240, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_igb7u"]
+size = Vector2(16, 160)
+
+[node name="ComboKing" type="Node2D"]
+script = ExtResource("1_v3bi1")
+_prompt = "Combo!"
+input_flags = {
+"button_0": true,
+"button_1": true,
+"microphone": false,
+"mouse_touch": false,
+"ui_down": true,
+"ui_left": true,
+"ui_right": true,
+"ui_up": true
+}
+_music_tracks = Array[AudioStream]([ExtResource("2_eocbj")])
+_time_step = 0.4
+
+[node name="Label" type="Label" parent="."]
+offset_left = 15.0
+offset_top = 8.0
+offset_right = 223.0
+offset_bottom = 152.0
+theme_override_fonts/font = ExtResource("3_bouyl")
+text = "⓿⓵≺≻≼≽⏴⏵⏶⏷"
+autowrap_mode = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 15.0
+offset_top = 8.0
+offset_right = 223.0
+offset_bottom = 152.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("3_bouyl")
+text = "⓿⓵≺≻≼≽⏴⏵⏶⏷"
+autowrap_mode = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Label3" type="Label" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 20.0
+text = "COMBO ACHIEVED!!!"
+
+[node name="Label4" type="Label" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 20.0
+text = "FAILURE!!!"
+
+[node name="Bounds" type="Node2D" parent="."]
+top_level = true
+metadata/_edit_lock_ = true
+
+[node name="TopBound" type="StaticBody2D" parent="Bounds"]
+position = Vector2(120, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/TopBound"]
+texture_filter = 1
+scale = Vector2(3.75, 0.25)
+texture = ExtResource("4_maaab")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/TopBound"]
+shape = SubResource("RectangleShape2D_55qyn")
+
+[node name="BottomBound" type="StaticBody2D" parent="Bounds"]
+position = Vector2(120, 160)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/BottomBound"]
+texture_filter = 1
+scale = Vector2(3.75, 0.25)
+texture = ExtResource("4_maaab")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BottomBound"]
+shape = SubResource("RectangleShape2D_55qyn")
+
+[node name="LeftBound" type="StaticBody2D" parent="Bounds"]
+position = Vector2(4, 80)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/LeftBound"]
+texture_filter = 1
+scale = Vector2(0.25, 2.5)
+texture = ExtResource("4_maaab")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/LeftBound"]
+shape = SubResource("RectangleShape2D_igb7u")
+
+[node name="RightBound" type="StaticBody2D" parent="Bounds"]
+position = Vector2(236, 80)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/RightBound"]
+texture_filter = 1
+scale = Vector2(0.25, 2.5)
+texture = ExtResource("4_maaab")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightBound"]
+shape = SubResource("RectangleShape2D_igb7u")

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsbyf1lx7fwi8"]
+
+[ext_resource type="Script" path="res://Scenes/Core/Scripts/cursor.gd" id="1_3gnos"]
+[ext_resource type="FontFile" uid="uid://cjj8j680nneju" path="res://Assets/2D/Fonts/PromptFont/promptfont.otf" id="2_nqwoj"]
+
+[node name="Cursor" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_3gnos")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 20.0
+theme_override_fonts/font = ExtResource("2_nqwoj")
+text = "࢐∁"
