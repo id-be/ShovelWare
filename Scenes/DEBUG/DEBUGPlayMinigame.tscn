@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://02wy0vqakyl"]
 
-[ext_resource type="PackedScene" uid="uid://bkh6cxkp28ses" path="res://Scenes/MicroGames/CatScratchFever.tscn" id="1_hnh3o"]
+[ext_resource type="PackedScene" uid="uid://bkh6cxkp28ses" path="res://Scenes/MicroGames/CatScratch.tscn" id="1_hnh3o"]
 [ext_resource type="Script" path="res://Scenes/DEBUG/DEBUG_play_minigame.gd" id="1_vj8xm"]
 
 [node name="DebugPlayMinigame" type="Node2D"]
@@ -10,4 +10,4 @@ script = ExtResource("1_vj8xm")
 anchor_mode = 0
 zoom = Vector2(4, 4)
 
-[node name="CatScratchFever" parent="Camera2D" instance=ExtResource("1_hnh3o")]
+[node name="CatScratch" parent="Camera2D" instance=ExtResource("1_hnh3o")]
