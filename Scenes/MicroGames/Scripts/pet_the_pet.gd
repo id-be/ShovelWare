@@ -135,6 +135,6 @@ func end_anim_pet():
 	$Hand/AnimationPlayer.seek(0)
 	$Hand/AnimationPlayer.current_animation = "Pet"
 	$Hand/AnimationPlayer.play()
-#	won't need this when you add the music to the (globals or microgames??) state machine
+
 	Globals.stop_music()
 	set_pet_state("Happy")
