@@ -1,14 +1,14 @@
-[gd_scene load_steps=58 format=3 uid="uid://bkh6cxkp28ses"]
+[gd_scene load_steps=58 format=3 uid="uid://dd5fyyt0hcvbo"]
 
 [ext_resource type="Script" path="res://Scenes/MicroGames/Scripts/cat_scratch.gd" id="1_yo2xv"]
-[ext_resource type="PackedScene" uid="uid://0heqek8cf68e" path="res://Scenes/MicroGames/BaseClass/BaseBounds.tscn" id="2_xllr7"]
+[ext_resource type="PackedScene" path="res://Scenes/MicroGames/BaseClass/BaseBounds.tscn" id="2_xllr7"]
 [ext_resource type="Texture2D" uid="uid://cx5062nxrg7kf" path="res://Scenes/MicroGames/MicroGameAssets/CatScratchFever/2D/attacks.png" id="3_sj4ne"]
 [ext_resource type="Texture2D" uid="uid://c3qr0qvgmtohu" path="res://Scenes/MicroGames/MicroGameAssets/CatScratchFever/2D/idle.png" id="4_xxa72"]
 [ext_resource type="Texture2D" uid="uid://dkern8k2u178d" path="res://Scenes/MicroGames/MicroGameAssets/CatScratchFever/2D/Running.png" id="5_bryfh"]
 [ext_resource type="Texture2D" uid="uid://dsc8lq85esv4k" path="res://Scenes/MicroGames/MicroGameAssets/CatScratchFever/2D/sitting.png" id="6_p4tub"]
 [ext_resource type="Texture2D" uid="uid://b8d46ssddqlhk" path="res://Scenes/MicroGames/MicroGameAssets/CatScratchFever/2D/walking.png" id="7_uxbgi"]
 [ext_resource type="Texture2D" uid="uid://cpnloivu6eb25" path="res://Scenes/MicroGames/MicroGameAssets/CatScratchFever/2D/laser_pointer.png" id="9_i3eri"]
-[ext_resource type="PackedScene" uid="uid://b5v1v2e08j5a5" path="res://Scenes/MicroGames/MicroGameAssets/CatScratchFever/Scenes/Crate.tscn" id="11_awnd2"]
+[ext_resource type="PackedScene" uid="uid://b5v1v2e08j5a5" path="res://Scenes/MicroGames/MicroGameAssets/CatScratchFever/scenessX/crates.tscn" id="11_awnd2"]
 [ext_resource type="AudioStream" uid="uid://bbnjtifr44lyc" path="res://Scenes/MicroGames/MicroGameAssets/CatScratchFever/Audio/bigcateliontigermeow-76352.mp3" id="11_bndaf"]
 
 [sub_resource type="OggPacketSequence" id="OggPacketSequence_84e5p"]

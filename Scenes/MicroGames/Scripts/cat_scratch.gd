@@ -19,7 +19,7 @@ var cat_attacking = false
 var score = 0
 
 func _ready():
-	#boilerplate_ready()
+	boilerplate_ready()
 	difficulty = "hard"
 	
 	#Set laser and point on.
