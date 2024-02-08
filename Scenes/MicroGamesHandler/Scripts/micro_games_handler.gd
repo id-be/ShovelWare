@@ -63,18 +63,10 @@ signal zoom_out_of_microgame
 func _ready():
 	$PromptLabel/DEBUGHearts.text = str(num_hearts)
 	mcg_timer.connect("timeout", Callable(self, "on_increment_timer"))
-#	print(all_microgames)
 	
 	pick_microgame()
 
 
-	#mcg_port_container.set_gui_input(false)
-#	load_microgame("res://Scenes/MicroGames/ComboKing.tscn")
-#	load_microgame("res://Scenes/MicroGames/PetThePet.tscn")
-
-
-	
-#	load_microgame(debug_microgame_path)
 func flash_ready():
 	$PromptLabel/AnimationPlayer.play("flash_ready")
 	await $PromptLabel/AnimationPlayer.animation_finished
@@ -92,7 +84,7 @@ func queue_microgames():
 	var _temp_microgames_array = []
 #	temp_microgames_array
 
-func pick_microgame():
+func pick_microgame(is_boss = false):
 	var my_game_index
 	var my_game_path
 	match microgame_playmode:
@@ -108,14 +100,14 @@ func pick_microgame():
 					pass
 				else:
 					mcg_index_in_queue +=1
-	load_microgame(my_game_path)
+	load_microgame(my_game_path, is_boss)
 
-func load_microgame(mcg):
+func load_microgame(mcg, is_boss = false):
 	await flash_ready()
 	ResourceLoader.load_threaded_request(mcg)
-	add_and_initialize_microgame(mcg)
+	add_and_initialize_microgame(mcg, is_boss)
 
-func add_and_initialize_microgame(mcg):
+func add_and_initialize_microgame(mcg, is_boss = false):
 	bomb_sfx.stream = bomb_bump
 	screen_cover.show()
 	var microgame_scn = ResourceLoader.load_threaded_get(mcg)

@@ -94,5 +94,4 @@ text = "cum
 "
 
 [node name="Cursor" parent="." instance=ExtResource("1_x7gx6")]
-cursor_offset = Vector2(0, 0)
 menu_parent_path = NodePath("../GridContainer")

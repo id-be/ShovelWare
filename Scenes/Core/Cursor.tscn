@@ -7,7 +7,6 @@
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_3gnos")
-cursor_offset = Vector2(3, 0)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
