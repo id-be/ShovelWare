@@ -1,7 +1,7 @@
 [gd_scene load_steps=58 format=3 uid="uid://dd5fyyt0hcvbo"]
 
 [ext_resource type="Script" path="res://Scenes/MicroGames/Scripts/cat_scratch.gd" id="1_yo2xv"]
-[ext_resource type="PackedScene" path="res://Scenes/MicroGames/BaseClass/BaseBounds.tscn" id="2_xllr7"]
+[ext_resource type="PackedScene" uid="uid://0heqek8cf68e" path="res://Scenes/MicroGames/BaseClass/BaseBounds.tscn" id="2_xllr7"]
 [ext_resource type="Texture2D" uid="uid://cx5062nxrg7kf" path="res://Scenes/MicroGames/MicroGameAssets/CatScratch/2D/Attacks.png" id="3_sj4ne"]
 [ext_resource type="Texture2D" uid="uid://c3qr0qvgmtohu" path="res://Scenes/MicroGames/MicroGameAssets/CatScratch/2D/Idle.png" id="4_xxa72"]
 [ext_resource type="Texture2D" uid="uid://dkern8k2u178d" path="res://Scenes/MicroGames/MicroGameAssets/CatScratch/2D/Running.png" id="5_bryfh"]
@@ -485,6 +485,8 @@ _data = {
 script = ExtResource("1_yo2xv")
 _music_tracks = Array[AudioStream]([SubResource("AudioStreamOggVorbis_3olvy")])
 
+[node name="DebugCamera2DDisable" type="Camera2D" parent="."]
+
 [node name="Bounds" parent="." instance=ExtResource("2_xllr7")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -496,16 +498,16 @@ color = Color(0, 0.301961, 0.0352941, 1)
 [node name="Crates" type="Node2D" parent="."]
 
 [node name="Crate" parent="Crates" instance=ExtResource("11_awnd2")]
-position = Vector2(140, 58)
+position = Vector2(71, 21)
 
 [node name="Crate2" parent="Crates" instance=ExtResource("11_awnd2")]
-position = Vector2(80, 101)
+position = Vector2(89, 47)
 
 [node name="Crate3" parent="Crates" instance=ExtResource("11_awnd2")]
 position = Vector2(-49, 178)
 
 [node name="Cat" type="CharacterBody2D" parent="."]
-position = Vector2(89, 58)
+position = Vector2(38, 76)
 motion_mode = 1
 wall_min_slide_angle = 0.0
 metadata/_edit_group_ = true
@@ -522,7 +524,7 @@ shape = SubResource("CapsuleShape2D_rhx26")
 
 [node name="RayCast2D" type="RayCast2D" parent="Cat"]
 position = Vector2(19, 0)
-target_position = Vector2(8, 0)
+target_position = Vector2(15, 0)
 
 [node name="DetectArea2D" type="Area2D" parent="Cat"]
 monitorable = false
@@ -596,5 +598,3 @@ stream = ExtResource("11_bndaf")
 [connection signal="animation_finished" from="Cat/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Cat/DetectArea2D" to="." method="_on_detect_area_2d_area_entered"]
 [connection signal="area_exited" from="Cat/UndetectArea2D" to="." method="_on_undetect_area_2d_area_exited"]
-[connection signal="body_entered" from="Laser" to="." method="_on_laser_body_entered"]
-[connection signal="body_exited" from="Laser" to="." method="_on_laser_body_exited"]
