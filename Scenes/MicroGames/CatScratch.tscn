@@ -190,7 +190,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_pounce",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -207,7 +207,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_swipe",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -486,6 +486,9 @@ script = ExtResource("1_yo2xv")
 _music_tracks = Array[AudioStream]([SubResource("AudioStreamOggVorbis_3olvy")])
 
 [node name="DebugCamera2DDisable" type="Camera2D" parent="."]
+position = Vector2(100, 76)
+enabled = false
+zoom = Vector2(3, 3)
 
 [node name="Bounds" parent="." instance=ExtResource("2_xllr7")]
 
@@ -562,7 +565,7 @@ color = Color(1, 0, 0.235294, 1)
 [node name="Pointer" type="Node2D" parent="."]
 top_level = true
 z_index = 1
-position = Vector2(123, 152)
+position = Vector2(123, 138)
 metadata/_edit_group_ = true
 
 [node name="PointerParticles2D" type="CPUParticles2D" parent="Pointer"]
