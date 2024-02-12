@@ -20,9 +20,12 @@ const TURN_STEP = 0.05
 var chasing = false
 var attacking = false
 var score = 0
+var dragon_path_points = []
 
 func _ready():
-	boilerplate_ready()
+	#boilerplate_ready()
+	
+	pass
 	
 func _set_difficulty(dif):
 	$Loadouts.play(dif)
@@ -49,7 +52,7 @@ func _unhandled_input(event):
 			if event.pressed:
 				print("Left button was clicked at ", event.position)
 			else:
-				print("Left button was released")
+				print("Left button was released at", event.position)
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			print("Wheel down")
 	
@@ -74,4 +77,6 @@ func _on_generate_path_timer_timeout():
 	#step timer subtimer of this one. 
 
 func _on_generate_point_timer_timeout():
-	pass # Replace with function body.
+	var nextpos = get_global_mouse_position()
+
+	$GeneratePathTimer/GeneratePointTimer.start()

@@ -387,7 +387,6 @@ _music_tracks = Array[AudioStream]([SubResource("AudioStreamOggVorbis_3olvy")])
 
 [node name="DebugCamera2DDisable" type="Camera2D" parent="."]
 position = Vector2(100, 76)
-enabled = false
 zoom = Vector2(3, 3)
 
 [node name="Bounds" parent="." instance=ExtResource("2_xllr7")]
@@ -477,8 +476,10 @@ hframes = 3
 frame = 2
 
 [node name="GeneratePathTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="GeneratePointTimer" type="Timer" parent="GeneratePathTimer"]
+wait_time = 0.1
 
 [node name="Loadouts" type="AnimationPlayer" parent="."]
 libraries = {
