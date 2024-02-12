@@ -16,6 +16,7 @@ metadata/_edit_lock_ = true
 position = Vector2(120, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="TopBound"]
+visible = false
 texture_filter = 1
 scale = Vector2(3.75, 0.25)
 texture = ExtResource("1_afugh")
@@ -27,6 +28,7 @@ shape = SubResource("RectangleShape2D_4kb10")
 position = Vector2(120, 160)
 
 [node name="Sprite2D" type="Sprite2D" parent="BottomBound"]
+visible = false
 texture_filter = 1
 scale = Vector2(3.75, 0.25)
 texture = ExtResource("1_afugh")
@@ -38,6 +40,7 @@ shape = SubResource("RectangleShape2D_4kb10")
 position = Vector2(4, 80)
 
 [node name="Sprite2D" type="Sprite2D" parent="LeftBound"]
+visible = false
 texture_filter = 1
 scale = Vector2(0.25, 2.5)
 texture = ExtResource("1_afugh")
@@ -49,6 +52,7 @@ shape = SubResource("RectangleShape2D_c2ysg")
 position = Vector2(236, 80)
 
 [node name="Sprite2D" type="Sprite2D" parent="RightBound"]
+visible = false
 texture_filter = 1
 scale = Vector2(0.25, 2.5)
 texture = ExtResource("1_afugh")
