@@ -49,8 +49,7 @@ process_mode = 1
 script = ExtResource("1_bkbri")
 bomb_explode_texture = ExtResource("2_hv17n")
 bomb_splode = ExtResource("3_yxg65")
-microgame_playmode = "queue"
-microgames_queue = Array[String](["res://Scenes/MicroGames/CatScratch.tscn"])
+microgames_queue = Array[String](["res://Scenes/MicroGames/PetThePet.tscn"])
 
 [node name="SubViewPortContainer" type="SubViewportContainer" parent="."]
 process_mode = 1

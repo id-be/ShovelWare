@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyrun2yetlhnb"]
+
+[ext_resource type="Script" path="res://Scenes/MicroGames/Common/CommonScripts/hearts_handler.gd" id="1_16lq8"]
+
+[node name="HeartsHandler" type="Node2D"]
+script = ExtResource("1_16lq8")

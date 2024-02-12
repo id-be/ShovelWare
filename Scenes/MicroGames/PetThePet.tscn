@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://dy30skcparclc"]
 
-[ext_resource type="Script" path="res://Scenes/MicroGames/Scripts/pet_the_pet.gd" id="1_tufc1"]
+[ext_resource type="Script" path="res://Scenes/MicroGames/MicroGameScripts/pet_the_pet.gd" id="1_tufc1"]
 [ext_resource type="Texture2D" uid="uid://d2s2xdefqh2g8" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Backgrounds/GreenField.jpg" id="2_scoiw"]
 [ext_resource type="Texture2D" uid="uid://cv8dg0ebed4n0" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Backgrounds/House.jpg" id="3_k6d71"]
 [ext_resource type="Texture2D" uid="uid://cxx85q454jhdn" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Backgrounds/NiceMountain.jpg" id="4_qi80w"]
@@ -153,7 +153,7 @@ shape = SubResource("RectangleShape2D_c2ysg")
 [node name="Animal" type="AnimatedSprite2D" parent="."]
 position = Vector2(12, 8)
 sprite_frames = ExtResource("7_0cil3")
-animation = &"Normal"
+animation = &"Angry"
 centered = false
 
 [node name="Hand" type="Sprite2D" parent="."]

@@ -41,7 +41,7 @@ var ready_time
 
 var debug_microgame_path = "res://Scenes/MicroGames/ExampleMicroGame/ExampleMicroGame.tscn"
 
-var cur_microgame_difficulty = "easy"
+@export_enum("easy", "medium", "hard") var cur_microgame_difficulty : String = "easy"
 
 @export_enum("random_shuffle", "shuffle", "queue") var microgame_playmode: String = "random_shuffle"#shuffle from queue, go through queue, etc
 var microgames_pool = all_microgames
@@ -117,6 +117,7 @@ func add_and_initialize_microgame(mcg, is_boss = false):
 #	microgame's _init() is called here ^
 	current_microgame = microgame_instance
 	
+	current_microgame._set_boss(is_boss)
 	current_microgame._set_difficulty(cur_microgame_difficulty)
 	
 	current_microgame.connect("start_game", Callable(self, "on_start_game"))
@@ -192,8 +193,11 @@ func on_done_zoom_out():
 #	print(current_microgame)
 #wait here in case we need to speed up!
 	if microgames_count % boss_mcg_counter == 0:
-		print("FUCK")
-	pick_microgame()
+		microgame_playmode = "queue"
+		pick_microgame(true)
+	else:
+		microgame_playmode = "random_shuffle"
+		pick_microgame()
 
 
 func initialize_bomb_timer_visuals():
@@ -229,7 +233,7 @@ func update_num_hearts(update_type):#only add hearts every 10 or so, or maybe af
 				num_hearts += 1
 	if num_hearts == 0:
 		pass
-		#you lose!!!!
+		#you lose!!!!e
 	$PromptLabel/DEBUGHearts.text = str(num_hearts)
 #	for normal microgames, we'd move onto the next one (or if you lose all lives, lose)
 

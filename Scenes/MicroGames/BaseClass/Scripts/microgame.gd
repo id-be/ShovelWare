@@ -9,6 +9,8 @@ class_name microgame
 
 @export var _prompt: String = "Task!"
 
+@export var is_boss = false
+
 @export var input_flags: Dictionary = {"ui_up":false, "ui_down":false, 
 "ui_left":false, "ui_right":false, "button_0":false, 
 "button_1":false, "mouse_touch":false, "microphone":false}
@@ -49,6 +51,17 @@ func boilerplate_ready():
 	_set_initial_values()
 	emit_signal("start_game")
 
+func _set_boss(boss):
+	boilerplate_set_boss(boss)
+	match is_boss:
+		true:
+			pass
+		false:
+			pass
+
+func boilerplate_set_boss(boss):
+	is_boss = boss
+
 func _set_difficulty(dif):
 	match dif:
 		"easy":
@@ -66,7 +79,7 @@ func _set_initial_values():
 
 #you shouldn't need to override this
 func _start():
-	boiler_plate_start()
+	boilerplate_start()
 
 func process_toggle(state):
 	set_process(state)
@@ -74,7 +87,7 @@ func process_toggle(state):
 	set_process_input(state)
 	set_process_unhandled_input(state)
 
-func boiler_plate_start():
+func boilerplate_start():
 	process_toggle(true)
 
 func track_time():

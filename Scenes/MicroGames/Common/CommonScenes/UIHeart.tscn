@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdky2qgp6nrpp"]
+
+[ext_resource type="SpriteFrames" uid="uid://dp0hg1v570of1" path="res://Scenes/MicroGames/CommonAssets/Animations/HeartFrames.tres" id="1_ywxsw"]
+
+[node name="UIHeart" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_ywxsw")
+animation = &"Beat"
+frame_progress = 0.227721

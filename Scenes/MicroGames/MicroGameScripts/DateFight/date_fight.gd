@@ -9,8 +9,15 @@ var cursor_location = 0
 
 @export var choice_scripts : Array[Script]
 
-var bad_actions = ["Punch", "Kick", "Hit", "Smack", "Blast", "Bash", "Shout", "Roman Tactics", "WWII History", "Mindmeld", "Fireball", "MagicMissl", "Blizanga", "Fireango", "Thundoblast", "ThoraxChew", "Suplex", "Poison", "ThrowGlass", "MakeScene", "UnwntdGift", "Phrenology", "Rob", "GlandChop", "Lick", "KarateChop", "JudoThrow", "SumoSlam", "EyeGouge", "Bore", "Snort", "NoseBlow", "NosePick", "JudoChop", "Uppercut", "KiBlast", "Brag"]
-var good_actions = ["Smooch", "Kiss", "Hug", "Wink", "Flirt", "Poetry", "Compliment", "Gift", "Makeout"]
+var bad_actions = ["Punch", "Kick", "Hit", "Smack", "Blast", "Bash", "Shout", 
+"Roman Tactics", "WWII History", "Mindmeld", "Fireball", "MagicMissl", 
+"Blizzanga", "Fireango", "Thundoblast", "ThoraxChew", "Suplex", "Poison", 
+"ThrowGlass", "MakeScene", "UnwntdGift", "Phrenology", "Rob", "GlandChop", 
+"Lick", "KarateChop", "JudoThrow", "SumoSlam", "EyeGouge", "Bore", "Snort", 
+"NoseBlow", "NosePick", "JudoChop", "Uppercut", "KiBlast", "Brag", "Headbutt", 
+"Spit"]
+var good_actions = ["Smooch", "Kiss", "Hug", "Wink", "Flirt", "Poetry", 
+"Compliment", "Gift", "Makeout"]
 var neutral = "--"
 
 var no_hl_text_bg = Color("715d00")
@@ -21,7 +28,7 @@ var hl_text_bg = Color("a40082")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	boilerplate_ready()
-#	$Cursor.toggle_self(false)
+	$Cursor.toggle_self(false)
 	generate_flirts()
 
 
@@ -103,6 +110,10 @@ func generate_flirts():
 	#for act in all_bad_actions:
 		#pass
 	
+func _start():
+	boilerplate_start()
+	$Cursor.toggle_self(true)
+
 func make_choice(choice):
 	match choice:
 		"correct":

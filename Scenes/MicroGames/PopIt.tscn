@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dvyfsxkfu508j"]
 
-[ext_resource type="Script" path="res://Scenes/MicroGames/Scripts/pop_it.gd" id="1_hd6qi"]
-[ext_resource type="AudioStream" uid="uid://chsledvoinutr" path="res://Scenes/MicroGames/ExampleMicroGame/Assets/Audio/DebugTrack.ogg" id="2_bxurd"]
+[ext_resource type="Script" path="res://Scenes/MicroGames/MicroGameScripts/pop_it.gd" id="1_hd6qi"]
+[ext_resource type="AudioStream" uid="uid://chsledvoinutr" path="res://Scenes/MicroGames/CommonAssets/Audio/DebugTrack.ogg" id="2_bxurd"]
 [ext_resource type="Texture2D" uid="uid://bucjr426s70d2" path="res://Assets/DEBUG/2D/Defaults/Square.png" id="2_fv0p8"]
 [ext_resource type="Texture2D" uid="uid://tvcc8pyuc04" path="res://Scenes/MicroGames/MicroGameAssets/PopIt/2D/Sky.png" id="5_ul35b"]
 

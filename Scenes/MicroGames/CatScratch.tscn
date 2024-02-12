@@ -1,7 +1,7 @@
 [gd_scene load_steps=58 format=3 uid="uid://dd5fyyt0hcvbo"]
 
-[ext_resource type="Script" path="res://Scenes/MicroGames/Scripts/cat_scratch.gd" id="1_yo2xv"]
-[ext_resource type="PackedScene" path="res://Scenes/MicroGames/BaseClass/BaseBounds.tscn" id="2_xllr7"]
+[ext_resource type="Script" path="res://Scenes/MicroGames/MicroGameScripts/cat_scratch.gd" id="1_yo2xv"]
+[ext_resource type="PackedScene" uid="uid://0heqek8cf68e" path="res://Scenes/MicroGames/BaseClass/BaseBounds.tscn" id="2_xllr7"]
 [ext_resource type="Texture2D" uid="uid://cx5062nxrg7kf" path="res://Scenes/MicroGames/MicroGameAssets/CatScratch/2D/Attacks.png" id="3_sj4ne"]
 [ext_resource type="Texture2D" uid="uid://c3qr0qvgmtohu" path="res://Scenes/MicroGames/MicroGameAssets/CatScratch/2D/Idle.png" id="4_xxa72"]
 [ext_resource type="Texture2D" uid="uid://dkern8k2u178d" path="res://Scenes/MicroGames/MicroGameAssets/CatScratch/2D/Running.png" id="5_bryfh"]
@@ -483,6 +483,16 @@ _data = {
 
 [node name="CatScratch" type="Node2D"]
 script = ExtResource("1_yo2xv")
+input_flags = {
+"button_0": false,
+"button_1": false,
+"microphone": false,
+"mouse_touch": true,
+"ui_down": false,
+"ui_left": false,
+"ui_right": false,
+"ui_up": false
+}
 _music_tracks = Array[AudioStream]([SubResource("AudioStreamOggVorbis_3olvy")])
 
 [node name="Bounds" parent="." instance=ExtResource("2_xllr7")]

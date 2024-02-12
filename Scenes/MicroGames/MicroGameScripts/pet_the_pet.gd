@@ -1,5 +1,13 @@
 extends microgame
 
+#really the irritability to make this more difficult would mean that
+#the animal's angry state becomes longer while the normal state stays
+#the same or becomes shorter
+#potentially for a boss version: the irritability progressively gets longer the longer you wait until it becomes 100% and you lose.
+#restart this on each pet, each successful pet adds a heart until you hit 3 and then it gets happy
+
+#touch up the bottom of the jaws on the alligator
+
 @export var bgs: Array[Texture] = []
 @onready var bg = $TextureRect
 
@@ -9,6 +17,9 @@ var pet_start_state
 var pet_state
 var is_being_pet = false
 var pet_change_state_time = 0.8
+#can use the below to modulate the 
+var pet_angry_time
+var pet_normal_time
 
 func _ready():
 	boilerplate_ready()
@@ -30,7 +41,25 @@ func randomize_start_emotion():
 			
 func randomize_background():
 	var my_bg = randi_range(0, bgs.size()-1)
+	var ran_orientation = false
+	var ran_orientation_int = randi_range(0,1)
 	bg.set_texture(bgs[my_bg])
+	match ran_orientation:
+		0:
+			pass
+			#ran_orientation = false
+		1:
+			ran_orientation = true
+	bg.flip_h = ran_orientation
+	
+func _set_boss(boss):
+	boilerplate_set_boss(boss)
+	match is_boss:
+		false:
+			pass
+		true:
+			#set the game up to be a boss game.
+			pass
 
 func _set_difficulty(dif):
 	match dif:
@@ -79,7 +108,7 @@ func randomize_pet_orientation():
 			#$Animal.flip_v = true
 
 func _start():
-	boiler_plate_start()
+	boilerplate_start()
 	set_pet_state(pet_state)
 	start_anims()
 
@@ -122,7 +151,7 @@ func animate_animal():
 
 			"Angry":
 				set_pet_state("Normal")
-
+		#above this you can set the pet_change_state_time in the pet_state state machine
 		timer.start(pet_change_state_time)
 		await timer.timeout
 	

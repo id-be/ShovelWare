@@ -38,8 +38,9 @@ func _process(delta):
 	elif menu_parent is HBoxContainer:
 			set_cursor_from_index(cursor_index + input.x)
 	elif menu_parent is GridContainer:
+#			set_cursor_from_index(cursor_index + input.x + input.y * menu_parent.columns)
 			set_cursor_from_index(cursor_index + input.x + input.y * menu_parent.columns)
-	
+
 	if Input.is_action_just_pressed("button_1"):
 		var current_menu_item := get_menu_item_at_index(cursor_index)
 		if current_menu_item != null:

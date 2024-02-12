@@ -143,6 +143,8 @@ position_smoothing_enabled = true
 [node name="MicroGamesHandler" parent="." instance=ExtResource("4_f57pk")]
 position = Vector2(576, 232)
 scale = Vector2(3, 3)
+cur_microgame_difficulty = "medium"
+microgames_queue = Array[String](["res://Scenes/MicroGames/PetThePet.tscn"])
 
 [node name="PauseScreenTint" type="ColorRect" parent="."]
 process_mode = 3

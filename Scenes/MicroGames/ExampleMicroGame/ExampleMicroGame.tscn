@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c3f6kj2tkyjog"]
 
 [ext_resource type="Script" path="res://Scenes/MicroGames/ExampleMicroGame/Scripts/example_micro_game.gd" id="1_i8beg"]
-[ext_resource type="AudioStream" uid="uid://chsledvoinutr" path="res://Scenes/MicroGames/ExampleMicroGame/Assets/Audio/DebugTrack.ogg" id="2_b8h88"]
+[ext_resource type="AudioStream" uid="uid://chsledvoinutr" path="res://Scenes/MicroGames/CommonAssets/Audio/DebugTrack.ogg" id="2_b8h88"]
 [ext_resource type="Texture2D" uid="uid://bucjr426s70d2" path="res://Assets/DEBUG/2D/Defaults/Square.png" id="2_d2r2n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dl1u"]
