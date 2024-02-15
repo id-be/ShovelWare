@@ -58,8 +58,8 @@ func _set_boss(boss):
 		false:
 			pass
 		true:
-			#set the game up to be a boss game.
-			pass
+			#refactor this into basemicrogame
+			add_heart_handler()
 
 func _set_difficulty(dif):
 	match dif:
@@ -131,10 +131,32 @@ func set_pet_state(state):
 				Globals.set_and_play_sfx(_sfx[1])
 				end_state = "failure"
 				$Animal.scale = $Animal.scale * 1.3
+				if is_boss:
+					end_state = "boss_failure"
+					timer.start(2.0)
+					await timer.timeout
+					_end_game()
 			else:
-				Globals.set_and_play_music(_music_tracks[2])
-				Globals.set_and_play_sfx(_sfx[2])
-				end_state = "success"
+				if is_boss:
+					heart_handler_instance.change_hearts_state()
+					Globals.set_and_play_music(_music_tracks[2])
+					if heart_handler_instance.is_done && is_being_pet:
+						Globals.set_and_play_sfx(_sfx[2])
+						end_state = "boss_success"
+						pet_state = "Happy"
+						$Animal.set_animation(pet_state)
+						$Animal.play()
+						timer.start(2.0)
+						await timer.timeout
+						_end_game()
+						return
+					state = "Normal"
+					await Globals.music_player.finished
+					reset_pet()
+				else:
+					Globals.set_and_play_music(_music_tracks[2])
+					Globals.set_and_play_sfx(_sfx[2])
+					end_state = "success"
 	pet_state = state
 	$Animal.set_animation(pet_state)
 	$Animal.play()
@@ -148,7 +170,6 @@ func animate_animal():
 		match pet_state:
 			"Normal":
 				set_pet_state("Angry")
-
 			"Angry":
 				set_pet_state("Normal")
 		#above this you can set the pet_change_state_time in the pet_state state machine
@@ -167,3 +188,24 @@ func end_anim_pet():
 
 	Globals.stop_music()
 	set_pet_state("Happy")
+
+func reset_pet():
+	is_being_pet = false
+	$Hand/AnimationPlayer.stop()
+	$Hand/AnimationPlayer.seek(0)
+	$Hand/AnimationPlayer.current_animation = "Idle"
+	$Hand/AnimationPlayer.play()
+	timer.start(pet_change_state_time)
+	await timer.timeout
+	set_process_input(true)
+	#this hasn't been implemented correctly, the state doesn't always match the face
+	var start_state = randi_range(0,1)
+	pet_start_state = start_state
+	match pet_start_state:
+		0:
+			queue_pet_state("Angry")
+		1:
+			queue_pet_state("Normal")
+
+func _on_last_heart():
+	pass

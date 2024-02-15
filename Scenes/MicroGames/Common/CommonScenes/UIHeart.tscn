@@ -1,10 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdky2qgp6nrpp"]
+[gd_scene load_steps=3 format=3 uid="uid://cdky2qgp6nrpp"]
 
-[ext_resource type="SpriteFrames" uid="uid://dp0hg1v570of1" path="res://Scenes/MicroGames/CommonAssets/Animations/HeartFrames.tres" id="1_ywxsw"]
+[ext_resource type="Script" path="res://Scenes/MicroGames/Common/CommonScripts/ui_heart.gd" id="1_ry86x"]
+[ext_resource type="SpriteFrames" uid="uid://dp0hg1v570of1" path="res://Scenes/MicroGames/Common/CommonAssets/Animations/HeartFrames.tres" id="1_ywxsw"]
 
 [node name="UIHeart" type="Node2D"]
+script = ExtResource("1_ry86x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_ywxsw")
-animation = &"Beat"
-frame_progress = 0.227721
+animation = &"BeatGray"

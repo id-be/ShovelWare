@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scenes/MicroGames/MicroGameScripts/DateFight/correct_choice.gd" id="2_xwqtc"]
 [ext_resource type="Script" path="res://Scenes/MicroGames/MicroGameScripts/DateFight/wrong_choice.gd" id="3_w5se0"]
 [ext_resource type="Script" path="res://Scenes/MicroGames/MicroGameScripts/DateFight/false_choice.gd" id="4_tc5gw"]
-[ext_resource type="AudioStream" uid="uid://chsledvoinutr" path="res://Scenes/MicroGames/CommonAssets/Audio/DebugTrack.ogg" id="5_v6cd1"]
+[ext_resource type="AudioStream" uid="uid://chsledvoinutr" path="res://Scenes/MicroGames/Common/CommonAssets/Audio/DebugTrack.ogg" id="5_v6cd1"]
 [ext_resource type="AudioStream" uid="uid://wiok4lshgtcc" path="res://Scenes/MicroGames/MicroGameAssets/DateFight/Audio/SFX/airhorn-6466.mp3" id="6_bbsix"]
 [ext_resource type="Texture2D" uid="uid://bucjr426s70d2" path="res://Assets/DEBUG/2D/Defaults/Square.png" id="7_y2il0"]
 [ext_resource type="FontFile" uid="uid://dpqwbdgn4khd3" path="res://Assets/2D/Fonts/squarefont/Square.ttf" id="8_7tg0j"]

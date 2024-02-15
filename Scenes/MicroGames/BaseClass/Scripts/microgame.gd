@@ -30,6 +30,9 @@ class_name microgame
 @export_enum("failure", "success", "boss_failure", "boss_success") var default_end_state: String = "failure"
 @onready var end_state = default_end_state
 
+var heart_handler_instance
+signal last_heart
+
 signal start_game
 signal end_game
 signal increment_timer
@@ -95,6 +98,17 @@ func track_time():
 	await timer.timeout
 	emit_signal("increment_timer")
 	track_time()
+
+func add_heart_handler(num_hearts = 3, handler_pos = Vector2(22 , 17)):
+	var heart_handler = load("res://Scenes/MicroGames/Common/CommonScenes/HeartsHandler.tscn")
+	heart_handler_instance = heart_handler.instantiate()
+	add_child(heart_handler_instance)
+	heart_handler_instance.set_num_hearts(num_hearts)
+	heart_handler_instance.position = handler_pos
+	heart_handler_instance.connect("last_heart", Callable(self, "_on_last_heart"))
+	
+func _on_last_heart():
+	pass
 
 func _end_game(state = end_state):
 	emit_signal("end_game", state)

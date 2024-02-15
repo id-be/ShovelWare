@@ -1,6 +1,7 @@
-[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://dp0hg1v570of1"]
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://dp0hg1v570of1"]
 
-[ext_resource type="Texture2D" uid="uid://dwiuof0r8f8ll" path="res://Scenes/MicroGames/CommonAssets/2D/Sprites/HeartIcon.png" id="1_vs0xq"]
+[ext_resource type="Texture2D" uid="uid://dwiuof0r8f8ll" path="res://Scenes/MicroGames/Common/CommonAssets/2D/Sprites/HeartIcon.png" id="1_vs0xq"]
+[ext_resource type="Texture2D" uid="uid://bjicwwj1fk657" path="res://Scenes/MicroGames/Common/CommonAssets/2D/Sprites/HeartIconGray.png" id="2_ltcxm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wsow6"]
 atlas = ExtResource("1_vs0xq")
@@ -8,6 +9,14 @@ region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0bhsf"]
 atlas = ExtResource("1_vs0xq")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jlxu"]
+atlas = ExtResource("2_ltcxm")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csr37"]
+atlas = ExtResource("2_ltcxm")
 region = Rect2(16, 0, 16, 16)
 
 [resource]
@@ -21,5 +30,16 @@ animations = [{
 }],
 "loop": true,
 "name": &"Beat",
-"speed": 2.0
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6jlxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csr37")
+}],
+"loop": true,
+"name": &"BeatGray",
+"speed": 1.25
 }]

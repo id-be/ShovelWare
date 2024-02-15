@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ftkh155jwal2"]
+[gd_scene load_steps=11 format=3 uid="uid://ftkh155jwal2"]
 
 [ext_resource type="Script" path="res://Scenes/MicroGamesHandler/Scripts/micro_games_handler.gd" id="1_bkbri"]
 [ext_resource type="Texture2D" uid="uid://f53rs58kvlfq" path="res://Scenes/MicroGamesHandler/Assets/2D/Cloud2.png" id="2_g468g"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://datfnkmlcyc6v" path="res://Scenes/MicroGamesHandler/Assets/2D/Bomb1.png" id="3_sa4kw"]
 [ext_resource type="AudioStream" uid="uid://llqshaenjyfn" path="res://Scenes/MicroGamesHandler/Assets/Audio/BombSplode.ogg" id="3_yxg65"]
 [ext_resource type="AudioStream" uid="uid://cjr7t5vifoyu" path="res://Scenes/MicroGamesHandler/Assets/Audio/BombBump.ogg" id="4_tk4ib"]
+[ext_resource type="Material" uid="uid://dse046wvbee6j" path="res://Scenes/MicroGamesHandler/Assets/Shaders/ShaderMaterials/TVStaticShader.tres" id="4_yk03m"]
 
 [sub_resource type="Animation" id="Animation_8cyig"]
 length = 0.001
@@ -47,9 +48,11 @@ _data = {
 [node name="MicroGamesHandler" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_bkbri")
+tv_shader = ExtResource("4_yk03m")
 bomb_explode_texture = ExtResource("2_hv17n")
 bomb_splode = ExtResource("3_yxg65")
-microgames_queue = Array[String](["res://Scenes/MicroGames/PetThePet.tscn"])
+microgame_playmode = "boss_queue"
+boss_mcg_counter = 1
 
 [node name="SubViewPortContainer" type="SubViewportContainer" parent="."]
 process_mode = 1
@@ -78,12 +81,30 @@ size = Vector2i(240, 160)
 render_target_update_mode = 4
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_left = -108.0
 offset_top = -72.0
 offset_right = 108.0
 offset_bottom = 72.0
 mouse_filter = 1
 color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -80.0
+offset_right = 120.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(120, 80)
+mouse_filter = 1
 
 [node name="WinLossRect" type="ColorRect" parent="."]
 process_mode = 3

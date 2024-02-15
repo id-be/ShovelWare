@@ -13,6 +13,8 @@ var game_state = "loss"
 @onready var prompt_label = $PromptLabel
 var prompt_label_initial_text = "Ready?"
 @onready var screen_cover = $ColorRect
+@onready var screen_fx = $ColorRect2
+@export var tv_shader : ShaderMaterial
 
 @export var max_hearts : int  = 4
 var num_hearts = max_hearts
@@ -31,6 +33,7 @@ var microgames_dir = "res://Scenes/MicroGames/"
 var all_microgames = DirAccess.get_files_at(microgames_dir)
 
 var microgames_count = 0
+var prev_microgames_count = microgames_count
 
 var microgames_max_index = all_microgames.size() - 1
 
@@ -43,18 +46,22 @@ var debug_microgame_path = "res://Scenes/MicroGames/ExampleMicroGame/ExampleMicr
 
 @export_enum("easy", "medium", "hard") var cur_microgame_difficulty : String = "easy"
 
-@export_enum("random_shuffle", "shuffle", "queue") var microgame_playmode: String = "random_shuffle"#shuffle from queue, go through queue, etc
+@export_enum("random_shuffle", "shuffle", "queue", "boss_queue") var microgame_playmode: String = "random_shuffle"#shuffle from queue, go through queue, etc
 var microgames_pool = all_microgames
 
 var previous_microgame
 var current_microgame
 var next_microgame
 @export var microgames_queue: Array[String]
+@export var boss_microgames_queue: Array[String]
 var mcg_index_in_queue = 0
 
 @export var boss_mcg_counter = 8#every n, you get a boss mcg. 
 #this will be handled differently in that you have to win or 
 #else it keeps rerolling, and after this one ends you hit a speed up
+var is_cur_mcg_boss = false
+
+signal screen_fx_toggled
 
 signal zoom_into_microgame
 signal get_input_flags
@@ -64,8 +71,64 @@ func _ready():
 	$PromptLabel/DEBUGHearts.text = str(num_hearts)
 	mcg_timer.connect("timeout", Callable(self, "on_increment_timer"))
 	
-	pick_microgame()
+	toggle_prompts()
+#	screen_fx_toggle()
+#	pick_microgame()
+#	pick_microgame(true)
 
+func toggle_tv_shader():
+	if screen_fx.material == null:
+		screen_fx.material = tv_shader
+	else:
+		screen_fx.material = null
+
+func screen_fx_toggle():
+	var tween
+	tween = get_tree().create_tween()
+	#tween.set_parallel(true)
+	#tween.tween_property($Camera2D, "position", $MicroGamesHandler.position, 0.01)
+##	tween.tween_property($Camera2D, "zoom", Vector2(2.25, 2.25), 0.5)
+	#tween.tween_property($Camera2D, "zoom", Vector2(1.35, 1.35), 0.5)
+	print(screen_fx.scale)
+	match screen_fx.scale:
+		Vector2(1,1):
+			toggle_tv_shader()
+			tween.tween_property(screen_fx, "scale", Vector2(0.8, 0.1), 0.1)
+			tween.tween_property(screen_fx, "scale", Vector2(0, 0), 0.1)
+			await tween.finished; toggle_tv_shader()
+			Globals.set_and_play_sfx(Globals.stings[5])
+#			screen_fx.size = Vector2(0,0)
+		Vector2(0.00001, 0.00001):#i have no clue why we can't get this to 0.
+			screen_fx.show()
+			tween.tween_property(screen_fx, "scale", Vector2(0.8, 0.1), 0.1)
+			toggle_tv_shader()
+			tween.tween_property(screen_fx, "scale", Vector2(1,1), 0.1)
+			screen_fx.size = Vector2(240,160)
+			Globals.set_and_play_sfx(Globals.stings[5])
+			await tween.finished; await get_tree().create_timer(1.0).timeout
+			screen_fx.hide()
+		Vector2(0.0, 0.0):#just in case this fucking bug gets fixed
+			screen_fx.show()
+			tween.tween_property(screen_fx, "scale", Vector2(0.8, 0.1), 0.1)
+			toggle_tv_shader()
+			tween.tween_property(screen_fx, "scale", Vector2(1,1), 0.1)
+			screen_fx.size = Vector2(240,160)
+			Globals.set_and_play_sfx(Globals.stings[5])
+			await tween.finished; await get_tree().create_timer(1.0).timeout
+			screen_fx.hide()
+	screen_fx.hide()		
+	emit_signal("screen_fx_toggled")
+	#match screen_fx.scale:
+		#Vector2(240,160):
+			#tween.tween_property(screen_fx, "size", Vector2(192, 16), 0.1)
+			#tween.tween_property(screen_fx, "size", Vector2(0, 0), 0.1)
+		#Vector2(0, 0):
+			#tween.tween_property(screen_fx, "size", Vector2(0.8, 0.1), 0.1)
+			#tween.tween_property(screen_fx, "size", Vector2(1,1), 0.1)
+	#print(screen_fx.size)
+	
+func toggle_prompts():
+	prompt_label.visible = !prompt_label.visible
 
 func flash_ready():
 	$PromptLabel/AnimationPlayer.play("flash_ready")
@@ -85,6 +148,9 @@ func queue_microgames():
 #	temp_microgames_array
 
 func pick_microgame(is_boss = false):
+	is_cur_mcg_boss = is_boss
+	if microgame_playmode == "boss_queue":
+		is_cur_mcg_boss = true
 	var my_game_index
 	var my_game_path
 	match microgame_playmode:
@@ -100,14 +166,22 @@ func pick_microgame(is_boss = false):
 					pass
 				else:
 					mcg_index_in_queue +=1
-	load_microgame(my_game_path, is_boss)
+		"boss_queue":
+			for mcg in boss_microgames_queue:
+				my_game_path = boss_microgames_queue[mcg_index_in_queue]
+				if mcg_index_in_queue == boss_microgames_queue.size() - 1:
+					pass
+				else:
+					if prev_microgames_count != microgames_count:
+						mcg_index_in_queue +=1
+	load_microgame(my_game_path)
 
-func load_microgame(mcg, is_boss = false):
+func load_microgame(mcg):
 	await flash_ready()
 	ResourceLoader.load_threaded_request(mcg)
-	add_and_initialize_microgame(mcg, is_boss)
+	add_and_initialize_microgame(mcg)
 
-func add_and_initialize_microgame(mcg, is_boss = false):
+func add_and_initialize_microgame(mcg):
 	bomb_sfx.stream = bomb_bump
 	screen_cover.show()
 	var microgame_scn = ResourceLoader.load_threaded_get(mcg)
@@ -117,7 +191,7 @@ func add_and_initialize_microgame(mcg, is_boss = false):
 #	microgame's _init() is called here ^
 	current_microgame = microgame_instance
 	
-	current_microgame._set_boss(is_boss)
+	current_microgame._set_boss(is_cur_mcg_boss)
 	current_microgame._set_difficulty(cur_microgame_difficulty)
 	
 	current_microgame.connect("start_game", Callable(self, "on_start_game"))
@@ -143,22 +217,26 @@ func on_end_game(end_state):
 	Globals.kill_sounds()
 	bomb_timer.hide()
 	$WinLossRect.show()
+	prev_microgames_count = microgames_count
 	match end_state:
 		"success":
 			$WinLossRect/WinLabel.show()
+			microgames_count += 1
 		"failure":
 			$WinLossRect/LossLabel.show()
+			microgames_count += 1
 		"boss_success":
-			pass
+			$WinLossRect/WinLabel.show()
+			microgames_count += 1
 		"boss_failure":
-			pass
+			$WinLossRect/LossLabel.show()
 	update_num_hearts(end_state)
 # here is where you need to await the win_time
 #	current_microgame.disconnect("start_game", Callable(self, "on_start_game"))
 #	current_microgame.disconnect("end_game", Callable(self, "on_end_game"))
 	emit_signal("zoom_out_of_microgame")
 	current_microgame.queue_free()
-	microgames_count += 1
+
 	$PromptLabel/DEBUGMCGCount.text = str(microgames_count)
 #	update the counter
 	mcg_timer.start(win_loss_time)
@@ -170,7 +248,7 @@ func on_end_game(end_state):
 	$WinLossRect/WinLabel.hide()
 	$WinLossRect/LossLabel.hide()
 	
-	#check game_state
+	#check game_state--in other words, see if you have any more hearts left and if you don't and you just lost, game over!
 	
 func on_done_zoom_in():
 #HERE IS WHERE WE NEED TO DEBUG!
@@ -182,11 +260,14 @@ func on_done_zoom_in():
 	if current_microgame._init_music_track:
 		Globals.set_and_play_music(current_microgame._init_music_track)
 	
-	initialize_bomb_timer_visuals()
+	if !is_cur_mcg_boss:
 	
+		initialize_bomb_timer_visuals()
+		
+		
+		mcg_timer.start(current_microgame._time_step)
 	current_microgame._start()
-	mcg_timer.start(current_microgame._time_step)
-
+	
 func on_done_zoom_out():
 	#couple things here... don't immediately pick the microgame, wait a little and also offload this to the maingame
 	#second off: save the previous microgame for reference, even if only as a name
@@ -207,6 +288,8 @@ func initialize_bomb_timer_visuals():
 
 
 func on_increment_timer():
+	if is_cur_mcg_boss:
+		return
 	if current_microgame == null:
 		mcg_timer.stop()
 		return
@@ -226,9 +309,11 @@ func on_increment_timer():
 
 func update_num_hearts(update_type):#only add hearts every 10 or so, or maybe after every boss
 	match update_type:
+		"boss_failure":
+			num_hearts -=1
 		"failure":
 			num_hearts -=1
-		"success":
+		"boss_success":
 			if num_hearts < max_hearts:
 				num_hearts += 1
 	if num_hearts == 0:

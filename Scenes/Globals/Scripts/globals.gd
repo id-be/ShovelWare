@@ -8,7 +8,8 @@ extends Node
 	load("res://Scenes/MainGame/Assets/Sound/Ready2.ogg"),
 	load("res://Scenes/MainGame/Assets/Sound/Ominous.ogg"),
 	load("res://Scenes/MainGame/Assets/Sound/ULose.ogg"),
-	load("res://Scenes/MainGame/Assets/Sound/Win2.ogg")
+	load("res://Scenes/MainGame/Assets/Sound/Win2.ogg"),
+	load("res://Scenes/MicroGamesHandler/Assets/Audio/Static.wav")
 ]
 
 var cur_music_track_pos
@@ -28,6 +29,23 @@ func _ready():
 
 #	pick a random track for the menu
 	pass # Replace with function body.
+
+func check_os():
+	var os_name
+	match OS.get_name():
+		"Windows":
+			os_name = "Windows"
+		"macOS":
+			os_name = "macOS"
+		"Linux", "FreeBSD", "NetBSD", "OpenBSD", "BSD":
+			os_name = "Linux/BSD"
+		"Android":
+			os_name = "Android"
+		"iOS":
+			os_name = "iOS"
+		"Web":
+			os_name = "Web"
+	return os_name
 
 func _create_microgames_input_array():
 	pass

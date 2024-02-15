@@ -22,12 +22,21 @@ signal done_zoom_out
 var tween
 
 func _ready():
-	$MicroGamesHandler.connect("zoom_into_microgame", Callable(self, "zoom_in"))
-	$MicroGamesHandler.connect("zoom_out_of_microgame", Callable(self, "zoom_out"))
-	$MicroGamesHandler.connect("get_input_flags", Callable(self, "get_input_flags"))
+#	print(Globals.check_os())
+	#$Camera2D.zoom = Vector2(1.35, 1.35)
+	#$Camera2D.position = $MicroGamesHandler.position
+	#zoom_in()
+	
+	$GameConsole.hide()
+	games_handler.connect("screen_fx_toggled", Callable(self,"on_screen_fx_toggled"))
+	games_handler.connect("zoom_into_microgame", Callable(self, "zoom_in"))
+	games_handler.connect("zoom_out_of_microgame", Callable(self, "zoom_out"))
+	games_handler.connect("get_input_flags", Callable(self, "get_input_flags"))
 
-	connect("done_zoom_in", Callable($MicroGamesHandler, "on_done_zoom_in"))
-	connect("done_zoom_out", Callable($MicroGamesHandler, "on_done_zoom_out"))
+	games_handler.screen_fx_toggle()
+
+	connect("done_zoom_in", Callable(games_handler, "on_done_zoom_in"))
+	connect("done_zoom_out", Callable(games_handler, "on_done_zoom_out"))
 	hide_hint_buttons()
 func _input(_event):
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -67,6 +76,9 @@ func toggle_tutorial_mode():
 	else:
 		tutorial_time = 1
 
+func on_screen_fx_toggled():
+	print("ROBBIE")
+	
 func zoom_in():
 	tutorial_timer.start(tutorial_time)
 	await tutorial_timer.timeout

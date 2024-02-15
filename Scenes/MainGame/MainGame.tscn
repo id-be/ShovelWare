@@ -10,6 +10,8 @@
 process_mode = 3
 position = Vector2(-576, -324)
 script = ExtResource("1_71tmm")
+tutorial_mode = false
+tutorial_time = 1
 
 [node name="GameConsole" type="Sprite2D" parent="."]
 z_index = -1
@@ -129,7 +131,8 @@ metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 texture_filter = 1
-position = Vector2(576, 324)
+position = Vector2(576, 232)
+zoom = Vector2(1.35, 1.35)
 position_smoothing_enabled = true
 
 [node name="Camera2D2" type="Camera2D" parent="."]
@@ -143,8 +146,8 @@ position_smoothing_enabled = true
 [node name="MicroGamesHandler" parent="." instance=ExtResource("4_f57pk")]
 position = Vector2(576, 232)
 scale = Vector2(3, 3)
-cur_microgame_difficulty = "medium"
 microgames_queue = Array[String](["res://Scenes/MicroGames/PetThePet.tscn"])
+boss_microgames_queue = Array[String](["res://Scenes/MicroGames/PetThePet.tscn"])
 
 [node name="PauseScreenTint" type="ColorRect" parent="."]
 process_mode = 3
