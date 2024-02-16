@@ -1,26 +1,26 @@
 extends microgame
 
-#Constants
-const SPEED = 50
-const SPEED_STEP = 0.05
-const TURN_STEP = 0.05
 
 #Adjustable export variables
 @export_range(25, 200) var speed: int = 60
-@export_range(0.01, 0.20) var speed_step: float = 0.05
-@export_range(0.01, 0.20) var turn_step: float = 0.05
-@export_range(5, 20) var attack_radius: int = 30
 
 #Scene node variables
-@onready var dragon = $Dragon
-@onready var dragon_anim = $Dragon/AnimationPlayer
+@onready var dragon = $Path/DragonFollowPath/Dragon
+@onready var dragon_anim = $Path/DragonFollowPath/Dragon/DragonAnimationPlayer
 @onready var castle = $Castle
+@onready var castle_anim = $Castle/CastleAnimationPlayer
+@onready var dragon_path = $Path/DragonFollowPath
+@onready var cursor_path = $Path/CursorFollowPath
+@onready var loadouts = $Loadouts
+@onready var timer_gen_path = $GeneratePathTimer
+@onready var timer_gen_point = $GeneratePathTimer/GeneratePointTimer
 
 #State variable(s)
+var dragging = true
 var chasing = false
 var attacking = false
 var score = 0
-var dragon_path_points = []
+
 
 func _ready():
 	#boilerplate_ready()
@@ -28,55 +28,79 @@ func _ready():
 	pass
 	
 func _set_difficulty(dif):
-	$Loadouts.play(dif)
+	loadouts.play(dif)
 	
 func _start():
 	boiler_plate_start()
 	
-	for castle in $Castles.get_children():
-		#Connect crate's "break" animation to increase_score function
-		castle.get_node("AnimationPlayer").animation_started.connect(Callable(self,"increase_score"))
-		castle.get_node("AnimationPlayer").play("normal")
-	$CatSound.play()
+
+	#castle.get_node("AnimationPlayer").animation_started.connect(Callable(self,"increase_score"))
+	castle.get_node("AnimationPlayer").play("normal")
+
 	
-func increase_score(anim):
-	if anim != "burning":
-		return
-	score += 1
-	if score >= 1:
-		end_state = "success"
+func increase_score():
+	end_state = "success"
 		
 func _unhandled_input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				print("Left button was clicked at ", event.position)
-			else:
-				print("Left button was released at", event.position)
-		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			print("Wheel down")
+	if dragging:
+		if event is InputEventMouseButton:
+			if event.button_index == MOUSE_BUTTON_LEFT:
+				if event.pressed:
+					cursor_path.show()
+					timer_gen_path.start()
+					timer_gen_point.start()
+				else:
+					if timer_gen_path.time_left > 0:
+						timer_gen_path.stop()
+						timer_gen_path.emit_signal("timeout")
 	
-func _physics_process(_delta):
-	
-	if chasing:
-		dragon_anim.play("fly")
-		#follow along path
-		
-	if attacking:
-		pass
-		#produce flame
+func _physics_process(delta):
+	if !dragging:
+		if chasing:
+			#follow along path
+			dragon_path.set_progress(dragon_path.get_progress() + (speed * delta))
+
+		if attacking:
+			pass
+			#produce flame
 
 func _on_detect_area_area_entered(area):
-	#dragon gets hit with bolt
-	pass # Replace with function body.
+	area.monitoring = false
+	area.monitorable = false
+	area.hide()
 
 
 func _on_generate_path_timer_timeout():
+	dragging = false
 	chasing = true
+	cursor_path.hide()
+	#dragon_path.show()
 	#set pathfollow points to generated array. 
 	#step timer subtimer of this one. 
 
 func _on_generate_point_timer_timeout():
-	var nextpos = get_global_mouse_position()
+	if timer_gen_path.time_left > 0:
+		var nextpos = get_global_mouse_position()
+		$Path.curve.add_point(nextpos)
+		cursor_path.set_progress_ratio(100)
+		timer_gen_point.start()
+	else:
+		$Path.curve.add_point(castle.position + Vector2(200, 0))
+		timer_gen_point.stop()
+	
 
-	$GeneratePathTimer/GeneratePointTimer.start()
+
+func _on_attack_area_area_entered(area):
+	if area == $Castle/CastleArea2D:
+		increase_score()
+		if $Path/DragonFollowPath/Dragon/Breath.is_playing():
+			castle_anim.play("Burning")
+		else:
+			var timer = Timer.new()
+			timer.start(0.2)
+			await timer.timeout
+			castle_anim.play("Burning")
+			
+			
+		
+		
