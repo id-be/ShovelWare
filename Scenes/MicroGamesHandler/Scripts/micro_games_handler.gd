@@ -269,20 +269,13 @@ func on_done_zoom_out():
 	#couple things here... don't immediately pick the microgame, wait a little and also offload this to the maingame
 	#second off: save the previous microgame for reference, even if only as a name
 #	print(current_microgame)
-#wait here in case we need to speed up!
-<<<<<<< Updated upstream
-	print(microgames_count)
-	if microgames_count % boss_mcg_counter == 0 && microgames_count != 0:
-		microgame_playmode = "queue"
+#wait here in case we need to speed up!]
+#
+	if microgames_count % mcg_count_to_gen_boss == 0 && microgames_count != 0:
+		microgame_playmode = "queue"#switch to a mode that allows you to pick just boss games
 		pick_microgame(true)
 	else:
-		microgame_playmode = "random_shuffle"
-=======
-	if microgames_count % mcg_count_to_gen_boss == 0:
-		#pick boss_mcg()
-		print("FUCK")
-	else:
->>>>>>> Stashed changes
+		microgame_playmode = "random_shuffle"#regularly scheduled programming
 		pick_microgame()
 
 
