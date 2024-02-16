@@ -30,8 +30,13 @@ input_flags = {
 "ui_right": true,
 "ui_up": true
 }
+<<<<<<< Updated upstream:Scenes/MicroGames/DateFight.tscn
 _music_tracks = Array[AudioStream]([ExtResource("5_v6cd1")])
 _sfx = Array[AudioStream]([ExtResource("6_bbsix")])
+=======
+_music_tracks = Array[AudioStream]([ExtResource("2_f66gb")])
+_sfx = Array[AudioStream]([ExtResource("6_85627")])
+>>>>>>> Stashed changes:Scenes/MicroGames/WIP/DateFight.tscn
 _time_step = 0.4
 
 [node name="Bounds" type="Node2D" parent="."]
