@@ -51,8 +51,6 @@ script = ExtResource("1_bkbri")
 tv_shader = ExtResource("4_yk03m")
 bomb_explode_texture = ExtResource("2_hv17n")
 bomb_splode = ExtResource("3_yxg65")
-microgame_playmode = "boss_queue"
-boss_mcg_counter = 1
 
 [node name="SubViewPortContainer" type="SubViewportContainer" parent="."]
 process_mode = 1

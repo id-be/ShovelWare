@@ -10,7 +10,8 @@ main_menu
 	options
 		volume mixer
 		input binding --> change which button does what
-	credits --> a gallery to look at the microgames and see who contributed what to them (maybe a short demo to play if you click on them)
+	credits --> a gallery to look at the microgames and see who contributed what to them
+	(maybe a short demo to play if you click on them)
 	quit --> quit game
 
 game (framing device)
@@ -19,6 +20,13 @@ game (framing device)
 	hold lives (shows you how many you have, lose one if you lose a microgame)
 
 microgame
-	short (5-15 seconds apiece)
+	short (3-15 seconds apiece)
 	should start with a clear one-word instruction
 	should have consistent input-output logic (with signals), clear fail/success state
+
+boss microgame
+	longer, can be open-ended. doesn't use then
+	generally more difficult or more involved
+	have a special fail condition that makes you lose a life but you replay until success or 
+	you're out of lives
+	doesn't contribute to microgame counter until succeeded

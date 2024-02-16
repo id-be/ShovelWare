@@ -77,14 +77,21 @@ func toggle_tutorial_mode():
 		tutorial_time = 1
 
 func on_screen_fx_toggled():
-	print("ROBBIE")
+#	print("ROBBIE")
+	if $Camera2D.zoom == Vector2(1,1):
+		print("ROBBIE")
+		return
+	zoom_out(true)
+	$GameConsole.show()
+	games_handler.screen_fx_toggle()
+	games_handler.pick_microgame()
 	
-func zoom_in():
+func zoom_in(during_play = false):
 	tutorial_timer.start(tutorial_time)
 	await tutorial_timer.timeout
 	hide_hint_buttons()
-	Globals.set_and_play_music(Globals.stings[1])
-#	games_handler.current_microgame.set_process(false)
+	if !during_play:
+		Globals.set_and_play_music(Globals.stings[1])
 #	also need to pause the microgame...
 
 	tween = get_tree().create_tween()
@@ -94,10 +101,10 @@ func zoom_in():
 	tween.tween_property($Camera2D, "zoom", Vector2(1.35, 1.35), 0.5)
 
 	await tween.finished
-	
-	emit_signal("done_zoom_in")
+	if !during_play:
+		emit_signal("done_zoom_in")
 #	games_handler.current_microgame.set_process(true)#this line is throwing errors
-func zoom_out():
+func zoom_out(during_play = false):
 	#also need to pause the microgame....
 	tween = get_tree().create_tween()
 #	$Camera2D.position = camera_init_pos
@@ -105,12 +112,14 @@ func zoom_out():
 	tween.tween_property($Camera2D, "position", Vector2(576, 324), 0.1)
 	tween.tween_property($Camera2D, "zoom", Vector2(1, 1), 0.1)
 	await tween.finished
-	Globals.set_and_play_music(Globals.stings[4])
+	if !during_play:
+		Globals.set_and_play_music(Globals.stings[4])
 	#wait here for the music to finish plus some amount of time
 	tutorial_timer.start(end_time)
 	await tutorial_timer.timeout
 #	await get_tree().create_timer(5).timeout
-	emit_signal("done_zoom_out")
+	if !during_play:
+		emit_signal("done_zoom_out")
 	
 func toggle_pause():
 		get_tree().paused = !get_tree().paused#this pauses the game

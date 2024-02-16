@@ -89,33 +89,33 @@ func screen_fx_toggle():
 	#tween.tween_property($Camera2D, "position", $MicroGamesHandler.position, 0.01)
 ##	tween.tween_property($Camera2D, "zoom", Vector2(2.25, 2.25), 0.5)
 	#tween.tween_property($Camera2D, "zoom", Vector2(1.35, 1.35), 0.5)
-	print(screen_fx.scale)
+#	print(screen_fx.scale)
+	screen_fx.show()
 	match screen_fx.scale:
 		Vector2(1,1):
+			screen_fx.scale = Vector2(1,1)
 			toggle_tv_shader()
+
 			tween.tween_property(screen_fx, "scale", Vector2(0.8, 0.1), 0.1)
 			tween.tween_property(screen_fx, "scale", Vector2(0, 0), 0.1)
 			await tween.finished; toggle_tv_shader()
 			Globals.set_and_play_sfx(Globals.stings[5])
+
 #			screen_fx.size = Vector2(0,0)
 		Vector2(0.00001, 0.00001):#i have no clue why we can't get this to 0.
-			screen_fx.show()
 			tween.tween_property(screen_fx, "scale", Vector2(0.8, 0.1), 0.1)
 			toggle_tv_shader()
 			tween.tween_property(screen_fx, "scale", Vector2(1,1), 0.1)
 			screen_fx.size = Vector2(240,160)
 			Globals.set_and_play_sfx(Globals.stings[5])
 			await tween.finished; await get_tree().create_timer(1.0).timeout
-			screen_fx.hide()
 		Vector2(0.0, 0.0):#just in case this fucking bug gets fixed
-			screen_fx.show()
 			tween.tween_property(screen_fx, "scale", Vector2(0.8, 0.1), 0.1)
 			toggle_tv_shader()
 			tween.tween_property(screen_fx, "scale", Vector2(1,1), 0.1)
 			screen_fx.size = Vector2(240,160)
 			Globals.set_and_play_sfx(Globals.stings[5])
 			await tween.finished; await get_tree().create_timer(1.0).timeout
-			screen_fx.hide()
 	screen_fx.hide()		
 	emit_signal("screen_fx_toggled")
 	#match screen_fx.scale:
@@ -261,10 +261,7 @@ func on_done_zoom_in():
 		Globals.set_and_play_music(current_microgame._init_music_track)
 	
 	if !is_cur_mcg_boss:
-	
 		initialize_bomb_timer_visuals()
-		
-		
 		mcg_timer.start(current_microgame._time_step)
 	current_microgame._start()
 	
@@ -273,7 +270,8 @@ func on_done_zoom_out():
 	#second off: save the previous microgame for reference, even if only as a name
 #	print(current_microgame)
 #wait here in case we need to speed up!
-	if microgames_count % boss_mcg_counter == 0:
+	print(microgames_count)
+	if microgames_count % boss_mcg_counter == 0 && microgames_count != 0:
 		microgame_playmode = "queue"
 		pick_microgame(true)
 	else:
