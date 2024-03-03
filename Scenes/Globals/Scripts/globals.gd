@@ -9,7 +9,8 @@ extends Node
 	load("res://Scenes/MainGame/Assets/Sound/Ominous.ogg"),
 	load("res://Scenes/MainGame/Assets/Sound/ULose.ogg"),
 	load("res://Scenes/MainGame/Assets/Sound/Win2.ogg"),
-	load("res://Scenes/MicroGamesHandler/Assets/Audio/Static.wav")
+	load("res://Scenes/MicroGamesHandler/Assets/Audio/Static.wav"),
+	load("res://Scenes/MicroGamesHandler/Assets/Audio/TVTurnOff.wav")
 ]
 
 var cur_music_track_pos

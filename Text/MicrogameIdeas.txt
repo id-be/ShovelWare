@@ -10,7 +10,7 @@ pop the balloons (a kid holding balloons [cries], a clown holding balloons
 balloons float around a little bit and sometimes wind blows and makes them go to
 one side
 
-3) date!
+3) date! --> sometimes the girls turn into monsters so you then use attacks
 select the right response from a menu within a time frame (a dating sim, an rpg, etc)
 |_> kick/fireball
 |_> kiss :3

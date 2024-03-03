@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpj70iee05f63"]
+
+[ext_resource type="PackedScene" uid="uid://ftkh155jwal2" path="res://Scenes/MicroGamesHandler/MicroGamesHandler.tscn" id="1_0lird"]
+[ext_resource type="Script" path="res://Scenes/DEBUG/DEBUG_play_game.gd" id="1_8dr51"]
+
+[node name="DebugPlayGame" type="Node"]
+script = ExtResource("1_8dr51")
+
+[node name="MicroGamesHandler" parent="." instance=ExtResource("1_0lird")]
+microgames_queue = Array[String](["res://Scenes/MicroGames/PetThePet.tscn"])
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4.045, 4.045)

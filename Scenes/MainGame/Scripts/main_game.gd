@@ -1,5 +1,7 @@
 extends Node2D
 
+var intro_flag = 0
+
 @onready var tutorial_timer = $Timer
 
 @onready var games_handler = $MicroGamesHandler
@@ -11,6 +13,8 @@ extends Node2D
 @export var game_speed_multiplier = 1.0
 @export var game_speed_increment = 0.1
 @export var max_game_speed_up_increments = 6
+
+@export var skip_intro = true
 
 @export var tutorial_mode = true#false will NOT show the button inputs.
 @export var tutorial_time = 3
@@ -27,17 +31,40 @@ func _ready():
 	#$Camera2D.position = $MicroGamesHandler.position
 	#zoom_in()
 	
-	$GameConsole.hide()
+
 	games_handler.connect("screen_fx_toggled", Callable(self,"on_screen_fx_toggled"))
 	games_handler.connect("zoom_into_microgame", Callable(self, "zoom_in"))
 	games_handler.connect("zoom_out_of_microgame", Callable(self, "zoom_out"))
 	games_handler.connect("get_input_flags", Callable(self, "get_input_flags"))
-
-	games_handler.screen_fx_toggle()
-
 	connect("done_zoom_in", Callable(games_handler, "on_done_zoom_in"))
 	connect("done_zoom_out", Callable(games_handler, "on_done_zoom_out"))
 	hide_hint_buttons()
+	if !skip_intro:
+		await play_intro_cinematic()
+
+func play_intro_cinematic():
+	$GameConsole.hide()
+	
+	await games_handler.screen_fx_toggle()
+	await play_cinematic("Deanboy")
+	tutorial_timer.start(0.2)
+	await tutorial_timer.timeout
+
+	await games_handler.screen_fx_toggle()
+
+	await games_handler.screen_fx_toggle()
+	zoom_out(true)
+	$GameConsole.show()
+	await games_handler.screen_fx_toggle()
+	
+	
+func play_cinematic(cinematic):
+	$CinematicsHandler.show()
+	$CinematicsHandler.play(cinematic)
+	await $CinematicsHandler
+	await $CinematicsHandler.animation_finished
+	$CinematicsHandler.hide()
+
 func _input(_event):
 	if Input.is_action_just_pressed("ui_cancel"):
 		toggle_pause()
@@ -77,14 +104,14 @@ func toggle_tutorial_mode():
 		tutorial_time = 1
 
 func on_screen_fx_toggled():
-#	print("ROBBIE")
-	if $Camera2D.zoom == Vector2(1,1):
-		print("ROBBIE")
-		return
-	zoom_out(true)
-	$GameConsole.show()
-	games_handler.screen_fx_toggle()
-	games_handler.pick_microgame()
+	#if $Camera2D.zoom == Vector2(1,1):
+		#return
+	#zoom_out(true)
+	#$GameConsole.show()
+	#games_handler.screen_fx_toggle()
+##	
+	#games_handler.pick_microgame()
+	pass
 	
 func zoom_in(during_play = false):
 	tutorial_timer.start(tutorial_time)

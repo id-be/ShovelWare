@@ -73,7 +73,7 @@ func _ready():
 	
 	toggle_prompts()
 #	screen_fx_toggle()
-#	pick_microgame()
+	pick_microgame()
 #	pick_microgame(true)
 
 func toggle_tv_shader():
@@ -83,40 +83,37 @@ func toggle_tv_shader():
 		screen_fx.material = null
 
 func screen_fx_toggle():
+	#print(screen_fx.scale)
+	#screen_fx.material starts off null. so:
 	var tween
 	tween = get_tree().create_tween()
-	#tween.set_parallel(true)
+	tween.set_parallel(false)
 	#tween.tween_property($Camera2D, "position", $MicroGamesHandler.position, 0.01)
 ##	tween.tween_property($Camera2D, "zoom", Vector2(2.25, 2.25), 0.5)
 	#tween.tween_property($Camera2D, "zoom", Vector2(1.35, 1.35), 0.5)
 #	print(screen_fx.scale)
 	screen_fx.show()
+	toggle_tv_shader()
 	match screen_fx.scale:
 		Vector2(1,1):
-			screen_fx.scale = Vector2(1,1)
-			toggle_tv_shader()
-
 			tween.tween_property(screen_fx, "scale", Vector2(0.8, 0.1), 0.1)
-			tween.tween_property(screen_fx, "scale", Vector2(0, 0), 0.1)
-			await tween.finished; toggle_tv_shader()
-			Globals.set_and_play_sfx(Globals.stings[5])
-
+			tween.tween_property(screen_fx, "scale", Vector2(0.00001, 0.00001), 0.1)
+			Globals.set_and_play_sfx(Globals.stings[6])
 #			screen_fx.size = Vector2(0,0)
-		Vector2(0.00001, 0.00001):#i have no clue why we can't get this to 0.
+		Vector2(0.00001, 0.00001):#apparently, scaling to 0 led to a ton of issues in 
+			#engine so the best you can scale down to is an epsilon.
+			
 			tween.tween_property(screen_fx, "scale", Vector2(0.8, 0.1), 0.1)
-			toggle_tv_shader()
+
+			#await tween.finished; tween.stop()
 			tween.tween_property(screen_fx, "scale", Vector2(1,1), 0.1)
+
 			screen_fx.size = Vector2(240,160)
 			Globals.set_and_play_sfx(Globals.stings[5])
-			await tween.finished; await get_tree().create_timer(1.0).timeout
-		Vector2(0.0, 0.0):#just in case this fucking bug gets fixed
-			tween.tween_property(screen_fx, "scale", Vector2(0.8, 0.1), 0.1)
-			toggle_tv_shader()
-			tween.tween_property(screen_fx, "scale", Vector2(1,1), 0.1)
-			screen_fx.size = Vector2(240,160)
-			Globals.set_and_play_sfx(Globals.stings[5])
-			await tween.finished; await get_tree().create_timer(1.0).timeout
-	screen_fx.hide()		
+			
+	await tween.finished; mcg_timer.start(1.0); await mcg_timer.timeout
+#	toggle_tv_shader()
+	screen_fx.hide()
 	emit_signal("screen_fx_toggled")
 	#match screen_fx.scale:
 		#Vector2(240,160):

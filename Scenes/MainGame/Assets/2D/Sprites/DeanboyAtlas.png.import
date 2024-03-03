@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqubm3piu8dw1"
-path="res://.godot/imported/GameConsoleNew.png-ce911b2feb934ac7579b83db0f29e5aa.ctex"
+uid="uid://btshr73qco3dw"
+path="res://.godot/imported/DeanboyAtlas.png-19ca763523bef506baa8687c093a7b15.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/MainGame/Assets/2D/GameConsoleNew.png"
-dest_files=["res://.godot/imported/GameConsoleNew.png-ce911b2feb934ac7579b83db0f29e5aa.ctex"]
+source_file="res://Scenes/MainGame/Assets/2D/Sprites/DeanboyAtlas.png"
+dest_files=["res://.godot/imported/DeanboyAtlas.png-19ca763523bef506baa8687c093a7b15.ctex"]
 
 [params]
 

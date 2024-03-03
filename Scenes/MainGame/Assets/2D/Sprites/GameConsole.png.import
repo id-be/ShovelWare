@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxfnddc05txxu"
-path="res://.godot/imported/ActionCircleOver.png-19d026c94c2f93d297a757d89614d58b.ctex"
+uid="uid://dgbl75xwva0rl"
+path="res://.godot/imported/GameConsole.png-9ecb00393f1f599824b54f8b2cd1cb8e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/MainGame/Assets/2D/ActionCircleOver.png"
-dest_files=["res://.godot/imported/ActionCircleOver.png-19d026c94c2f93d297a757d89614d58b.ctex"]
+source_file="res://Scenes/MainGame/Assets/2D/Sprites/GameConsole.png"
+dest_files=["res://.godot/imported/GameConsole.png-9ecb00393f1f599824b54f8b2cd1cb8e.ctex"]
 
 [params]
 
