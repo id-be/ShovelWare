@@ -15,14 +15,18 @@ Dragon's fire:
 Created by sanctumpixel
 https://sanctumpixel.itch.io/fire-column-pixel-art-effect
 
+Dragon's explosion:
+Created by Will Tice
+https://untiedgames.com/files/license.txt
+https://untiedgames.itch.io/super-pixel-effects-mini-pack-1
 
 
+Ballista:
+bluecarrot16 - CC-BY 4.0 https://opengameart.org/content/lpc-siege-weapons
 
-Dean notes:
+Grass (GRASS+.png):
+Created by SciGho CC-BY 4.0
+https://ninjikin.itch.io/grass
 
-replace finish line with yarn or meat or something
-alphatransparent line 
-highlight box
-hand pointer, middle bottom. 
 
 
