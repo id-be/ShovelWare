@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://dsbmtybm5n1f6"]
+[gd_scene load_steps=59 format=3 uid="uid://dsbmtybm5n1f6"]
 
 [ext_resource type="Script" path="res://Scenes/MicroGames/Scripts/dragon_drop.gd" id="1_e7pk4"]
 [ext_resource type="PackedScene" uid="uid://0heqek8cf68e" path="res://Scenes/MicroGames/BaseClass/BaseBounds.tscn" id="2_xllr7"]
@@ -487,45 +487,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_11rbu"]
 size = Vector2(26, 14)
 
-[sub_resource type="Animation" id="Animation_ccakw"]
-resource_name = "Normal"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Smoke:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FireCenter:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_bwh2s"]
 resource_name = "Burning"
 length = 1.9
@@ -616,62 +577,49 @@ tracks/6/keys = {
 "values": [Color(0.462745, 0.462745, 0.462745, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_1fy7m"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_ccakw"]
+resource_name = "Normal"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Smoke:frame")
+tracks/0/path = NodePath("Smoke:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FireCenter:frame")
+tracks/1/path = NodePath("FireCenter:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("FireCenter/FireLeft:frame")
+tracks/2/path = NodePath("Sprite2D:self_modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("FireCenter/FireRight:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iarne"]
 _data = {
 "Burning": SubResource("Animation_bwh2s"),
-"Normal": SubResource("Animation_ccakw"),
-"RESET": SubResource("Animation_1fy7m")
+"Normal": SubResource("Animation_ccakw")
 }
 
 [sub_resource type="Curve2D" id="Curve2D_5l57j"]
@@ -740,6 +688,35 @@ radius = 4.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o2ebg"]
 size = Vector2(26, 12)
 
+[sub_resource type="Animation" id="Animation_2omck"]
+resource_name = "fly"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_k7fs1")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1]
+}
+
 [sub_resource type="Animation" id="Animation_hf6tg"]
 resource_name = "idle"
 length = 0.4
@@ -778,35 +755,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0.3, 0.3)]
-}
-
-[sub_resource type="Animation" id="Animation_2omck"]
-resource_name = "fly"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_k7fs1")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 1]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0i1fn"]
@@ -964,7 +912,6 @@ position = Vector2(1, -35)
 texture = ExtResource("4_pyhsp")
 hframes = 4
 vframes = 5
-frame = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="Castle"]
 scale = Vector2(0.3, 0.3)
@@ -993,7 +940,6 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("8_72w4l")
 hframes = 4
 vframes = 5
-frame = 1
 
 [node name="FireLeft" type="Sprite2D" parent="Castle/FireCenter"]
 position = Vector2(-20, -2.5)
@@ -1058,7 +1004,7 @@ rotation = 1.5708
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_k7fs1")
 hframes = 3
-frame = 1
+frame = 2
 
 [node name="DetectArea" type="Area2D" parent="Path/DragonFollowPath/Dragon"]
 
@@ -1067,8 +1013,6 @@ shape = SubResource("CircleShape2D_lqbi2")
 metadata/_edit_lock_ = true
 
 [node name="AttackArea" type="Area2D" parent="Path/DragonFollowPath/Dragon"]
-monitoring = false
-monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path/DragonFollowPath/Dragon/AttackArea"]
 position = Vector2(23, 0)
@@ -1110,6 +1054,8 @@ libraries = {
 [node name="DragonSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_bndaf")
 
+[connection signal="animation_finished" from="Path/DragonFollowPath/Dragon/Breath" to="." method="_on_breath_animation_finished"]
+[connection signal="frame_changed" from="Path/DragonFollowPath/Dragon/Breath" to="." method="_on_breath_frame_changed"]
 [connection signal="area_entered" from="Path/DragonFollowPath/Dragon/DetectArea" to="." method="_on_detect_area_area_entered"]
 [connection signal="area_entered" from="Path/DragonFollowPath/Dragon/AttackArea" to="." method="_on_attack_area_area_entered"]
 [connection signal="timeout" from="GeneratePathTimer" to="." method="_on_generate_path_timer_timeout"]

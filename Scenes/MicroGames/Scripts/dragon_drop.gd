@@ -36,7 +36,7 @@ func _start():
 
 	#castle.get_node("AnimationPlayer").animation_started.connect(Callable(self,"increase_score"))
 	castle.get_node("AnimationPlayer").play("normal")
-
+	$Path/DragonFollowPath/Dragon/AttackArea/CollisionShape2D.disabled = true
 	
 func increase_score():
 	end_state = "success"
@@ -57,16 +57,21 @@ func _unhandled_input(event):
 func _physics_process(delta):
 	if !dragging:
 		if chasing:
+			if dragon.global_position.x >= castle.global_position.x - 30:
+				
+				$Path/DragonFollowPath/Dragon/Breath.play()
+				attacking = true
 			#follow along path
-			dragon_path.set_progress(dragon_path.get_progress() + (speed * delta))
 
 		if attacking:
-			pass
+			if dragon.global_position.x >= castle.global_position.x + 30:
+				attacking = false
 			#produce flame
+		dragon_path.set_progress(dragon_path.get_progress() + (speed * delta))
 
 func _on_detect_area_area_entered(area):
-	area.monitoring = false
-	area.monitorable = false
+	area.set_deferred("monitoring", false)
+	area.set_deferred("monitorable", false)
 	area.hide()
 
 
@@ -102,5 +107,10 @@ func _on_attack_area_area_entered(area):
 			castle_anim.play("Burning")
 			
 			
-		
-		
+
+func _on_breath_animation_finished():
+	attacking = false
+
+func _on_breath_frame_changed():
+	if $Path/DragonFollowPath/Dragon/Breath.frame >= 3:
+		$Path/DragonFollowPath/Dragon/AttackArea/CollisionShape2D.disabled = false
