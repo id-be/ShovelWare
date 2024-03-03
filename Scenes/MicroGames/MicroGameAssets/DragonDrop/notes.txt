@@ -1,0 +1,14 @@
+path2d points are set to the array of points generated after user clicks and holds mouse down.
+
+if user releases, path drawing auto-stops and set and dragon follows path.
+timer goes off as soon as user presses mouse.
+if user releases, timer auto-stops.
+once timer goes off, dragon follow path is set on points collected every __ (step) seconds of timer. 
+ballistas pre-fixed and facing one way. if dragon passes there, it gets hit with bolt and falls to death. might need to make animation for it.
+
+
+if final point.x isn't castle's x, add penultimate point that is castle's coordinate, then add the final off grid point (see below).
+
+final point in path should be hard coded to half screen height, 1.5 * screen width (0.5 * height, 1.5 * width) to take dragon off screen.
+
+nice-to-have: make dragoncursor sprite rotate according to the previous point's look_at rotation to its current position? or to the next generated point. something like that.
