@@ -1,7 +1,6 @@
 [gd_scene load_steps=58 format=3 uid="uid://dd5fyyt0hcvbo"]
 
 [ext_resource type="Script" path="res://Scenes/MicroGames/MicroGameScripts/cat_scratch.gd" id="1_yo2xv"]
-
 [ext_resource type="PackedScene" uid="uid://0heqek8cf68e" path="res://Scenes/MicroGames/BaseClass/BaseBounds.tscn" id="2_xllr7"]
 [ext_resource type="Texture2D" uid="uid://cx5062nxrg7kf" path="res://Scenes/MicroGames/MicroGameAssets/CatScratch/2D/Attacks.png" id="3_sj4ne"]
 [ext_resource type="Texture2D" uid="uid://c3qr0qvgmtohu" path="res://Scenes/MicroGames/MicroGameAssets/CatScratch/2D/Idle.png" id="4_xxa72"]

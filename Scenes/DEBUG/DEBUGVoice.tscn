@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bx0p3li5rrmd0"]
+
+[ext_resource type="Script" path="res://Scenes/DEBUG/DEBUG_Voice.gd" id="1_qettu"]
+
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_pxmg2"]
+
+[node name="DebugVoice" type="Node"]
+script = ExtResource("1_qettu")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamMicrophone_pxmg2")
+bus = &"VoiceBus"

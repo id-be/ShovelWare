@@ -1,6 +1,6 @@
 [gd_scene load_steps=59 format=3 uid="uid://dsbmtybm5n1f6"]
 
-[ext_resource type="Script" path="res://Scenes/MicroGames/Scripts/dragon_drop.gd" id="1_e7pk4"]
+[ext_resource type="Script" path="res://Scenes/MicroGames/MicroGameScripts/dragon_drop.gd" id="1_e7pk4"]
 [ext_resource type="PackedScene" uid="uid://0heqek8cf68e" path="res://Scenes/MicroGames/BaseClass/BaseBounds.tscn" id="2_xllr7"]
 [ext_resource type="PackedScene" uid="uid://d4le6aoqnmq47" path="res://Scenes/MicroGames/MicroGameAssets/DragonDrop/Ballista/Ballista.tscn" id="3_1yyib"]
 [ext_resource type="Texture2D" uid="uid://dhrs5ryr1qf4w" path="res://Scenes/MicroGames/MicroGameAssets/DragonDrop/GRASS+.png" id="3_62ndo"]

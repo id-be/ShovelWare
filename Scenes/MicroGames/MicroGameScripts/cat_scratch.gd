@@ -41,7 +41,7 @@ func _set_difficulty(dif):
 	$Loadouts.play(dif)
 	
 func _start():
-	boiler_plate_start()
+	boilerplate_start()
 	
 	#Set laser and point on.
 	laser.get_node("LaserParticles2D").emitting = true

@@ -14,18 +14,29 @@ var intro_flag = 0
 @export var game_speed_increment = 0.1
 @export var max_game_speed_up_increments = 6
 
+var can_pause: bool = false
+
 @export var skip_intro = true
 
 @export var tutorial_mode = true#false will NOT show the button inputs.
 @export var tutorial_time = 3
 @export var end_time = 3
 
+var zoom_in_multiplier = 1.35
+#var zoom_out_multiplier = 1.0
+var zoom_out_multiplier = 1.0
+
 signal done_zoom_in
 signal done_zoom_out
 
 var tween
 
+#things to change: we need the pause menu to go back to the main menu, the help button to do something, the quit button to quit or possibly be moved to the main menu..
+
 func _ready():
+	if Globals.check_os() == "iOS" or Globals.check_os() == "Android":
+		zoom_out_multiplier = 0.95
+		zoom_in_multiplier = zoom_out_multiplier
 #	print(Globals.check_os())
 	#$Camera2D.zoom = Vector2(1.35, 1.35)
 	#$Camera2D.position = $MicroGamesHandler.position
@@ -39,35 +50,73 @@ func _ready():
 	connect("done_zoom_in", Callable(games_handler, "on_done_zoom_in"))
 	connect("done_zoom_out", Callable(games_handler, "on_done_zoom_out"))
 	hide_hint_buttons()
-	if !skip_intro:
-		await play_intro_cinematic()
+	await play_intro_cinematic()
 
 func play_intro_cinematic():
+	if skip_intro:
+		zoom_out(true)
+		$GameConsole.show()
+		$MicroGamesHandler.pick_microgame()
+		can_pause = true
+		return
 	$GameConsole.hide()
 	
 	await games_handler.screen_fx_toggle()
+	$AnimSprite.scale = Vector2(7,7)
+	Globals.set_and_play_sfx(load("res://Scenes/MainGame/Assets/Sound/Ooo.wav"))
 	await play_cinematic("Deanboy")
 	tutorial_timer.start(0.2)
 	await tutorial_timer.timeout
+	await games_handler.screen_fx_toggle()
+	
 
 	await games_handler.screen_fx_toggle()
-
-	await games_handler.screen_fx_toggle()
+	#here is where we play the shovelware cinematic
+	#add a tween in
+	var beach_sound = load("res://Scenes/MainGame/Assets/Sound/Beach.wav")
+	var my_cur_sound_len = beach_sound.get_length()
+	$AnimSprite.scale = Vector2(3,3)
+	$AnimSprite.modulate = Color(0.0,0.0,0.0,0.0)
+	
+	tween = get_tree().create_tween()
+	tween.tween_property($AnimSprite, "modulate", Color(1.0,1.0,1.0,1.0), 1.0)
+	
+	play_cinematic("Shovel")
+	Globals.set_and_play_sfx(beach_sound)
+	
+	var go_away_time = 0.5
+	
+	tutorial_timer.wait_time = my_cur_sound_len - go_away_time
+	tutorial_timer.start()
+	#add a tween out
+	#hide the cinematics handler
+	await tutorial_timer.timeout
+	tween = get_tree().create_tween()
+	tween.tween_property($AnimSprite, "modulate", Color(0.0,0.0,0.0,1.0), go_away_time)
+	await tween.finished
+	
+	tutorial_timer.wait_time = go_away_time
+	tutorial_timer.start()
+	await tutorial_timer.timeout
+	
 	zoom_out(true)
 	$GameConsole.show()
+	$MicroGamesHandler.pick_microgame()
+	can_pause = true
+	
 	await games_handler.screen_fx_toggle()
-	
-	
-func play_cinematic(cinematic):
-	$CinematicsHandler.show()
-	$CinematicsHandler.play(cinematic)
-	await $CinematicsHandler
-	await $CinematicsHandler.animation_finished
-	$CinematicsHandler.hide()
+
+func play_cinematic(cinematic):#a different idea here: we need to create a cinematic "script" object
+	#
+	$AnimSprite.show()
+	$AnimSprite.play(cinematic)
+	await $AnimSprite.animation_finished
+	$AnimSprite.hide()
 
 func _input(_event):
-	if Input.is_action_just_pressed("ui_cancel"):
-		toggle_pause()
+	if Input.is_action_pressed("start_button"):
+		if can_pause:
+			toggle_pause()
 	#if Input.is_action_just_pressed("plus"):
 		#set_game_speed(game_speed_multiplier+0.1)
 	#if Input.is_action_just_pressed("minus"):
@@ -112,7 +161,7 @@ func on_screen_fx_toggled():
 ##	
 	#games_handler.pick_microgame()
 	pass
-	
+
 func zoom_in(during_play = false):
 	tutorial_timer.start(tutorial_time)
 	await tutorial_timer.timeout
@@ -125,7 +174,7 @@ func zoom_in(during_play = false):
 	tween.set_parallel(true)
 	tween.tween_property($Camera2D, "position", $MicroGamesHandler.position, 0.01)
 #	tween.tween_property($Camera2D, "zoom", Vector2(2.25, 2.25), 0.5)
-	tween.tween_property($Camera2D, "zoom", Vector2(1.35, 1.35), 0.5)
+	tween.tween_property($Camera2D, "zoom", Vector2(zoom_in_multiplier, zoom_in_multiplier), 0.5)
 
 	await tween.finished
 	if !during_play:
@@ -137,7 +186,7 @@ func zoom_out(during_play = false):
 #	$Camera2D.position = camera_init_pos
 	tween.set_parallel(true)
 	tween.tween_property($Camera2D, "position", Vector2(576, 324), 0.1)
-	tween.tween_property($Camera2D, "zoom", Vector2(1, 1), 0.1)
+	tween.tween_property($Camera2D, "zoom", Vector2(zoom_out_multiplier, zoom_out_multiplier), 0.1)
 	await tween.finished
 	if !during_play:
 		Globals.set_and_play_music(Globals.stings[4])
@@ -147,7 +196,7 @@ func zoom_out(during_play = false):
 #	await get_tree().create_timer(5).timeout
 	if !during_play:
 		emit_signal("done_zoom_out")
-	
+
 func toggle_pause():
 		get_tree().paused = !get_tree().paused#this pauses the game
 		Globals.toggle_sounds()

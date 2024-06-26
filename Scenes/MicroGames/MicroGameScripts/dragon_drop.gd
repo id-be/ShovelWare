@@ -31,7 +31,7 @@ func _set_difficulty(dif):
 	loadouts.play(dif)
 	
 func _start():
-	boiler_plate_start()
+	boilerplate_start()
 	
 
 	#castle.get_node("AnimationPlayer").animation_started.connect(Callable(self,"increase_score"))

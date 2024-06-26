@@ -24,10 +24,9 @@ func _ready():
 	print(game_inputs)
 #	print(InputMap.get_actions())
 
-func _input(event):
-	var action_as_string
+func _input(_event):
+#	var action_as_string
 #	print(event.is_action_type())
-#	print("FUCK")
 	if is_comboing:
 		for input in game_inputs:
 			if Input.is_action_just_pressed(input) && Input.is_action_just_pressed(cur_combo[cur_input_index]):
@@ -105,11 +104,11 @@ func randomize_fighters():
 func randomize_bg():
 	pass
 
-func end_combo(end_state):
+func end_combo(_end_state):
 	pass
 
 func flash_and_disappear_combo():
 	pass
 	
-func _process(delta):
+func _process(_delta):
 	pass

@@ -1,9 +1,10 @@
 extends Node2D
 #og colorrect pos: -108, -72
-#sadly will need to do a lot of refactoring to account
-#for boss microgames which won't have a timer...... that
-#means that we can either USE the full screen space OR
+#either USE the full screen space OR
 #we can replace the debugrects with some sort of nice border
+
+
+
 var game_state = "loss"
 
 @onready var mcg_timer = $Timer
@@ -68,12 +69,14 @@ signal get_input_flags
 signal zoom_out_of_microgame
 
 func _ready():
+#	set_editor_description("valuebutt")
 	$PromptLabel/DEBUGHearts.text = str(num_hearts)
+#	mcg_timer.timeout.connect("on_increment_timer")
 	mcg_timer.connect("timeout", Callable(self, "on_increment_timer"))
 	
 	toggle_prompts()
 #	screen_fx_toggle()
-	pick_microgame()
+#	pick_microgame()
 #	pick_microgame(true)
 
 func toggle_tv_shader():
@@ -83,7 +86,6 @@ func toggle_tv_shader():
 		screen_fx.material = null
 
 func screen_fx_toggle():
-	#print(screen_fx.scale)
 	#screen_fx.material starts off null. so:
 	var tween
 	tween = get_tree().create_tween()
@@ -171,7 +173,7 @@ func pick_microgame(is_boss = false):
 				else:
 					if prev_microgames_count != microgames_count:
 						mcg_index_in_queue +=1
-	load_microgame(my_game_path)
+	load_microgame(my_game_path.trim_suffix(".remap"))#need this because of the stupid fucking exporter adding ".remap" to the ends of files for no discernible reason and the files then being unloadable
 
 func load_microgame(mcg):
 	await flash_ready()
@@ -181,6 +183,7 @@ func load_microgame(mcg):
 func add_and_initialize_microgame(mcg):
 	bomb_sfx.stream = bomb_bump
 	screen_cover.show()
+	
 	var microgame_scn = ResourceLoader.load_threaded_get(mcg)
 
 	var microgame_instance = microgame_scn.instantiate()

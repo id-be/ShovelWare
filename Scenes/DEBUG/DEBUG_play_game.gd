@@ -7,7 +7,6 @@ func _ready():
 	#$Camera2D.zoom = Vector2(1.35, 1.35)
 	#$Camera2D.position = $MicroGamesHandler.position
 	zoom_in()
-	
 
 	games_handler.connect("screen_fx_toggled", Callable(self,"on_screen_fx_toggled"))
 	games_handler.connect("zoom_into_microgame", Callable(self, "zoom_in"))
