@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bx0p3li5rrmd0"]
 
-[ext_resource type="Script" path="res://Scenes/DEBUG/DEBUG_Voice.gd" id="1_qettu"]
+[ext_resource type="Script" uid="uid://bitqvyweyyct1" path="res://Scenes/DEBUG/DEBUG_Voice.gd" id="1_qettu"]
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_pxmg2"]
 

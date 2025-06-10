@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://ftkh155jwal2"]
 
-[ext_resource type="Script" path="res://Scenes/MicroGamesHandler/Scripts/micro_games_handler.gd" id="1_bkbri"]
+[ext_resource type="Script" uid="uid://cnhaam1l7g08p" path="res://Scenes/MicroGamesHandler/Scripts/micro_games_handler.gd" id="1_bkbri"]
 [ext_resource type="Texture2D" uid="uid://f53rs58kvlfq" path="res://Scenes/MicroGamesHandler/Assets/2D/Cloud2.png" id="2_g468g"]
 [ext_resource type="Texture2D" uid="uid://b2rsyo5v88vf2" path="res://Scenes/MicroGamesHandler/Assets/2D/EndBomb.png" id="2_hv17n"]
 [ext_resource type="Texture2D" uid="uid://datfnkmlcyc6v" path="res://Scenes/MicroGamesHandler/Assets/2D/Bomb1.png" id="3_sa4kw"]
@@ -41,8 +41,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m847m"]
 _data = {
-"RESET": SubResource("Animation_8cyig"),
-"flash_ready": SubResource("Animation_650cc")
+&"RESET": SubResource("Animation_8cyig"),
+&"flash_ready": SubResource("Animation_650cc")
 }
 
 [node name="MicroGamesHandler" type="Node2D"]

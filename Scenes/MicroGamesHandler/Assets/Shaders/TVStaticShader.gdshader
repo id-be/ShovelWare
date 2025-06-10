@@ -23,7 +23,7 @@ void fragment() {
 ////	float a = fract(sin(dot(UV, vec2(12.9898, 78.233)*TIME)) * 1.9);
 ////	float a = fract(sin(dot(UV, vec2(12.9898, 78.233)*TIME)) * 1.9);
 	//float a = fract(UV.x*TIME);//scanline effect
-	
+
 	vec4 col = texture(TEXTURE, UV);
 	col.a *= pow(a, amount);
 	COLOR.a = col.a;

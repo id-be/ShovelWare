@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dwgwsdxtumtbu"]
 
-[ext_resource type="Script" path="res://Scenes/Menu/Scripts/main_menu.gd" id="1_suhlw"]
+[ext_resource type="Script" uid="uid://b40l135gvf4gv" path="res://Scenes/Menu/Scripts/main_menu.gd" id="1_suhlw"]
 [ext_resource type="Texture2D" uid="uid://ds5qttitbkcpn" path="res://Assets/DEBUG/2D/DEBUGTitle.png" id="2_bplf2"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("menu_start_box", "menu_play_box", "menu_help_box", "menu_options_box", "menu_gallery_box", "quit_pop_up")]

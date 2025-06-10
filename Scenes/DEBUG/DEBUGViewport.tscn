@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b8ei7a3uqh7vl"]
 
-[ext_resource type="Script" path="res://Scenes/DEBUG/DEBUG_viewport.gd" id="1_fdsah"]
+[ext_resource type="Script" uid="uid://bgjkohqknceii" path="res://Scenes/DEBUG/DEBUG_viewport.gd" id="1_fdsah"]
 [ext_resource type="PackedScene" uid="uid://c3f6kj2tkyjog" path="res://Scenes/MicroGames/ExampleMicroGame/ExampleMicroGame.tscn" id="2_faggv"]
 
 [node name="Node2D" type="Node2D"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://d4le6aoqnmq47"]
 
 [ext_resource type="Texture2D" uid="uid://c8jikwnvinwtw" path="res://Scenes/MicroGames/MicroGameAssets/DragonDrop/Ballista/ballista-arm.png" id="1_2fq1q"]
-[ext_resource type="Script" path="res://Scenes/MicroGames/MicroGameAssets/DragonDrop/Ballista/ballista.gd" id="1_ts16g"]
+[ext_resource type="Script" uid="uid://bro251f4m7d5q" path="res://Scenes/MicroGames/MicroGameAssets/DragonDrop/Ballista/ballista.gd" id="1_ts16g"]
 [ext_resource type="Texture2D" uid="uid://cs0a1k8j7g6pt" path="res://Scenes/MicroGames/MicroGameAssets/DragonDrop/Ballista/ballista-bolts.png" id="2_emr4u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m0ik6"]

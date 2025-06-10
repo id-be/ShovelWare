@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c8drgd0uraxil"]
 
-[ext_resource type="Script" path="res://Scenes/Splash/Scripts/splash.gd" id="1_6gutw"]
+[ext_resource type="Script" uid="uid://byiwvl7svno0t" path="res://Scenes/Splash/Scripts/splash.gd" id="1_6gutw"]
 [ext_resource type="Texture2D" uid="uid://bkw1wpd1u8lbd" path="res://Scenes/Splash/Assets/MagicConch.png" id="2_alfd8"]
 [ext_resource type="AudioStream" uid="uid://kfsaxknyauxk" path="res://Scenes/Splash/Assets/HornBlow.wav" id="2_d4mqu"]
 

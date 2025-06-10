@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bsbyf1lx7fwi8"]
 
-[ext_resource type="Script" path="res://Scenes/Core/Scripts/cursor.gd" id="1_3gnos"]
+[ext_resource type="Script" uid="uid://bwv0qmwy6oyis" path="res://Scenes/Core/Scripts/cursor.gd" id="1_3gnos"]
 [ext_resource type="FontFile" uid="uid://cjj8j680nneju" path="res://Assets/2D/Fonts/PromptFont/promptfont.otf" id="2_nqwoj"]
 
 [node name="Cursor" type="Control"]

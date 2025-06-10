@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://er6iov1vaprh"]
 
-[ext_resource type="Script" path="res://Scenes/DEBUG/DEBUG_pass_input.gd" id="1_kison"]
-[ext_resource type="Script" path="res://Scenes/DEBUG/sub_viewport_container.gd" id="2_3udi7"]
+[ext_resource type="Script" uid="uid://cpaydejrv1sxj" path="res://Scenes/DEBUG/DEBUG_pass_input.gd" id="1_kison"]
+[ext_resource type="Script" uid="uid://jf8lxrvtmaw2" path="res://Scenes/DEBUG/sub_viewport_container.gd" id="2_3udi7"]
 [ext_resource type="PackedScene" uid="uid://dvyfsxkfu508j" path="res://Scenes/MicroGames/PopIt.tscn" id="2_4x6lc"]
 
 [node name="Node2D" type="Node2D"]

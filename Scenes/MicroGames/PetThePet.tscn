@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://dy30skcparclc"]
 
-[ext_resource type="Script" path="res://Scenes/MicroGames/MicroGameScripts/pet_the_pet.gd" id="1_tufc1"]
+[ext_resource type="Script" uid="uid://8muoyhenjqvv" path="res://Scenes/MicroGames/MicroGameScripts/pet_the_pet.gd" id="1_tufc1"]
 [ext_resource type="Texture2D" uid="uid://d2s2xdefqh2g8" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Backgrounds/GreenField.jpg" id="2_scoiw"]
 [ext_resource type="Texture2D" uid="uid://cv8dg0ebed4n0" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Backgrounds/House.jpg" id="3_k6d71"]
 [ext_resource type="Texture2D" uid="uid://cxx85q454jhdn" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Backgrounds/NiceMountain.jpg" id="4_qi80w"]
@@ -72,9 +72,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nvmmb"]
 _data = {
-"Idle": SubResource("Animation_sxd85"),
-"Pet": SubResource("Animation_ph8cb"),
-"RESET": SubResource("Animation_m8xeq")
+&"Idle": SubResource("Animation_sxd85"),
+&"Pet": SubResource("Animation_ph8cb"),
+&"RESET": SubResource("Animation_m8xeq")
 }
 
 [node name="PetThePet" type="Node2D"]

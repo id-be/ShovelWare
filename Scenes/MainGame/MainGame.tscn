@@ -1,6 +1,6 @@
 [gd_scene load_steps=52 format=3 uid="uid://lbdswjcvmuip"]
 
-[ext_resource type="Script" path="res://Scenes/MainGame/Scripts/main_game.gd" id="1_71tmm"]
+[ext_resource type="Script" uid="uid://duyrhd8jch663" path="res://Scenes/MainGame/Scripts/main_game.gd" id="1_71tmm"]
 [ext_resource type="Texture2D" uid="uid://dqubm3piu8dw1" path="res://Scenes/MainGame/Assets/2D/Sprites/GameConsoleNew.png" id="2_m0for"]
 [ext_resource type="PackedScene" uid="uid://ftkh155jwal2" path="res://Scenes/MicroGamesHandler/MicroGamesHandler.tscn" id="4_f57pk"]
 [ext_resource type="Texture2D" uid="uid://cxfnddc05txxu" path="res://Scenes/MainGame/Assets/2D/Sprites/ActionCircleOver.png" id="4_x7xhr"]
@@ -267,7 +267,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_abqhi"]
 _data = {
-"Shovel": SubResource("Animation_t1mpn")
+&"Shovel": SubResource("Animation_t1mpn")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_frooh"]
@@ -518,7 +518,7 @@ animation = &"Shovel"
 
 [node name="CinematicsHandler" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_abqhi")
+&"": SubResource("AnimationLibrary_abqhi")
 }
 
 [node name="TouchButtons" type="Node2D" parent="."]
