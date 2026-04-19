@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://lbdswjcvmuip"]
+[gd_scene load_steps=55 format=3 uid="uid://lbdswjcvmuip"]
 
 [ext_resource type="Script" uid="uid://duyrhd8jch663" path="res://Scenes/MainGame/Scripts/main_game.gd" id="1_71tmm"]
 [ext_resource type="Texture2D" uid="uid://dqubm3piu8dw1" path="res://Scenes/MainGame/Assets/2D/Sprites/GameConsoleNew.png" id="2_m0for"]
@@ -8,7 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://bsbyf1lx7fwi8" path="res://Scenes/Core/Cursor.tscn" id="6_gr8tv"]
 [ext_resource type="Texture2D" uid="uid://btshr73qco3dw" path="res://Scenes/MainGame/Assets/2D/Sprites/DeanboyAtlas.png" id="6_sxla3"]
 [ext_resource type="Texture2D" uid="uid://37gsqj4fl3sq" path="res://Scenes/MainGame/Assets/2D/Sprites/ShovelScaled.png" id="7_i0i84"]
+[ext_resource type="Texture2D" uid="uid://bpxkb8hkvf7uc" path="res://Scenes/MainGame/Assets/2D/Sprites/PlusPad.png" id="9_6rap8"]
 [ext_resource type="Texture2D" uid="uid://bcph45dyakb0e" path="res://Assets/DEBUG/2D/Defaults/SquareFlatBlack.png" id="9_w16aj"]
+[ext_resource type="Texture2D" uid="uid://b1m831qsy268k" path="res://Scenes/MainGame/Assets/2D/Sprites/1Button.png" id="10_r0wif"]
+[ext_resource type="Texture2D" uid="uid://gp4f04gt11de" path="res://Scenes/MainGame/Assets/2D/Sprites/0Button.png" id="11_v8u3g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_revbe"]
 atlas = ExtResource("6_sxla3")
@@ -293,9 +296,7 @@ size = Vector2(140, 70)
 
 [node name="MainGame" type="Node2D"]
 process_mode = 3
-position = Vector2(-576, -324)
 script = ExtResource("1_71tmm")
-tutorial_mode = false
 tutorial_time = 1
 
 [node name="GameConsole" type="Sprite2D" parent="."]
@@ -431,6 +432,7 @@ position_smoothing_enabled = true
 [node name="MicroGamesHandler" parent="." instance=ExtResource("4_f57pk")]
 position = Vector2(576, 232)
 scale = Vector2(3, 3)
+microgame_playmode = "queue"
 microgames_queue = Array[String](["res://Scenes/MicroGames/DateFight.tscn"])
 boss_microgames_queue = Array[String](["res://Scenes/MicroGames/PetThePet.tscn"])
 
@@ -523,6 +525,11 @@ libraries = {
 
 [node name="TouchButtons" type="Node2D" parent="."]
 
+[node name="PlusPad" type="Sprite2D" parent="TouchButtons"]
+position = Vector2(83, 406)
+scale = Vector2(3, 3)
+texture = ExtResource("9_6rap8")
+
 [node name="Up" type="TouchScreenButton" parent="TouchButtons"]
 position = Vector2(90, 346)
 shape = SubResource("CircleShape2D_frooh")
@@ -548,10 +555,20 @@ position = Vector2(1125, 343)
 shape = SubResource("CircleShape2D_ocukl")
 action = "button_1"
 
+[node name="1Button" type="Sprite2D" parent="TouchButtons/A"]
+position = Vector2(1, 3)
+scale = Vector2(2, 2)
+texture = ExtResource("10_r0wif")
+
 [node name="B" type="TouchScreenButton" parent="TouchButtons"]
 position = Vector2(1032, 421)
 shape = SubResource("CircleShape2D_quutk")
 action = "button_0"
+
+[node name="0Button" type="Sprite2D" parent="TouchButtons/B"]
+position = Vector2(2, 2)
+scale = Vector2(2, 2)
+texture = ExtResource("11_v8u3g")
 
 [node name="Select" type="TouchScreenButton" parent="TouchButtons"]
 position = Vector2(-14, 277)

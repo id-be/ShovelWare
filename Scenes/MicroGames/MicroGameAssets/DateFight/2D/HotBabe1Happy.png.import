@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brfx1jgj122ax"
-path="res://.godot/imported/PumpBalloon.png-c576b8d1904d3283a78b2d72ce975603.ctex"
+uid="uid://ded46l34746pv"
+path="res://.godot/imported/HotBabe1Happy.png-e58e9296e9769a65cc80467d380aff2f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/MicroGames/MicroGameAssets/PumpIt/PumpBalloon.png"
-dest_files=["res://.godot/imported/PumpBalloon.png-c576b8d1904d3283a78b2d72ce975603.ctex"]
+source_file="res://Scenes/MicroGames/MicroGameAssets/DateFight/2D/HotBabe1Happy.png"
+dest_files=["res://.godot/imported/HotBabe1Happy.png-e58e9296e9769a65cc80467d380aff2f.ctex"]
 
 [params]
 

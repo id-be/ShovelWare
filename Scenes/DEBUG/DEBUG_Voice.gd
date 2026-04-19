@@ -2,7 +2,6 @@ extends Node
 
 func _ready():
 	print(AudioServer.get_input_device_list())
-	pass
 
 func _input(event):
 	pass

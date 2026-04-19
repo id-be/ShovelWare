@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cta4lwcvmxyua"
-path="res://.godot/imported/PumpTop.png-f8591312fc9829d9660d53b6b18aa46a.ctex"
+uid="uid://qm3m03obaobp"
+path="res://.godot/imported/Nowooga.jpg-f49bd1df90ef0d3e4837db3cd8124cf3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/MicroGames/MicroGameAssets/PumpIt/PumpTop.png"
-dest_files=["res://.godot/imported/PumpTop.png-f8591312fc9829d9660d53b6b18aa46a.ctex"]
+source_file="res://Scenes/MicroGames/MicroGameAssets/DateFight/2D/Nowooga.jpg"
+dest_files=["res://.godot/imported/Nowooga.jpg-f49bd1df90ef0d3e4837db3cd8124cf3.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://055jhnxslgl5"
-path="res://.godot/imported/PumpBase.png-7b02102a0f4de618d687a55471071410.ctex"
+uid="uid://cta4lwcvmxyua"
+path="res://.godot/imported/PumpTop.png-eea679b8363f62905d68393267d58270.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/MicroGames/MicroGameAssets/PumpIt/PumpBase.png"
-dest_files=["res://.godot/imported/PumpBase.png-7b02102a0f4de618d687a55471071410.ctex"]
+source_file="res://Scenes/MicroGames/MicroGameAssets/PumpIt/2D/PumpTop.png"
+dest_files=["res://.godot/imported/PumpTop.png-eea679b8363f62905d68393267d58270.ctex"]
 
 [params]
 

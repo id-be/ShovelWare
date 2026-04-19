@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c7jgo7y8haq2y"]
+[gd_scene load_steps=15 format=3 uid="uid://c7jgo7y8haq2y"]
 
 [ext_resource type="Script" uid="uid://bgim2irkreukc" path="res://Scenes/MicroGames/MicroGameScripts/DateFight/date_fight.gd" id="1_7vp34"]
 [ext_resource type="AudioStream" uid="uid://chsledvoinutr" path="res://Scenes/MicroGames/Common/CommonAssets/Audio/DebugTrack.ogg" id="2_f66gb"]
@@ -7,8 +7,11 @@
 [ext_resource type="Script" uid="uid://vu4lgcfpouxs" path="res://Scenes/MicroGames/MicroGameScripts/DateFight/wrong_choice.gd" id="3_xjgb8"]
 [ext_resource type="Script" uid="uid://8rkrua4s6yfw" path="res://Scenes/MicroGames/MicroGameScripts/DateFight/false_choice.gd" id="4_o1vdi"]
 [ext_resource type="FontFile" uid="uid://dpqwbdgn4khd3" path="res://Assets/2D/Fonts/squarefont/Square.ttf" id="4_swpm3"]
+[ext_resource type="Texture2D" uid="uid://daay1xgi1tvof" path="res://Scenes/MicroGames/MicroGameAssets/DateFight/2D/HotBabe1Neutral.png" id="5_ib1v5"]
 [ext_resource type="PackedScene" uid="uid://bsbyf1lx7fwi8" path="res://Scenes/Core/Cursor.tscn" id="5_js453"]
-[ext_resource type="AudioStream" uid="uid://wiok4lshgtcc" path="res://Scenes/MicroGames/MicroGameAssets/DateFight/Audio/SFX/airhorn-6466.mp3" id="6_85627"]
+[ext_resource type="Texture2D" uid="uid://ded46l34746pv" path="res://Scenes/MicroGames/MicroGameAssets/DateFight/2D/HotBabe1Happy.png" id="6_s0xu7"]
+[ext_resource type="Texture2D" uid="uid://ncje5f2j1avp" path="res://Scenes/MicroGames/MicroGameAssets/DateFight/2D/HotBabe1Sad.png" id="7_mi501"]
+[ext_resource type="AudioStream" uid="uid://3jy7kmi6son6" path="res://Scenes/MicroGames/MicroGameAssets/DateFight/Audio/SFX/buzzer-or-wrong-answer-20582.mp3" id="8_3o0yv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7eon1"]
 size = Vector2(240, 16)
@@ -19,9 +22,10 @@ size = Vector2(16, 160)
 [node name="DateFight" type="Node2D"]
 script = ExtResource("1_7vp34")
 choice_scripts = Array[Script]([ExtResource("2_jfv8c"), ExtResource("3_xjgb8"), ExtResource("4_o1vdi")])
+girlsgirlsgirls = [ExtResource("5_ib1v5"), ExtResource("6_s0xu7"), ExtResource("7_mi501")]
 _prompt = "Date!"
 _music_tracks = Array[AudioStream]([ExtResource("2_f66gb")])
-_sfx = Array[AudioStream]([ExtResource("6_85627")])
+_sfx = Array[AudioStream]([ExtResource("8_3o0yv"), null])
 _time_step = 0.4
 
 [node name="Bounds" type="Node2D" parent="."]
@@ -72,6 +76,10 @@ texture = ExtResource("3_medmk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightBound"]
 shape = SubResource("RectangleShape2D_48eb0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(120, 60)
+texture = ExtResource("5_ib1v5")
 
 [node name="Panel" type="Panel" parent="."]
 offset_left = 19.0

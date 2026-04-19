@@ -114,7 +114,7 @@ func play_cinematic(cinematic):#a different idea here: we need to create a cinem
 	$AnimSprite.hide()
 
 func _input(_event):
-	if Input.is_action_pressed("start_button"):
+	if Input.is_action_just_pressed("start_button"):
 		if can_pause:
 			toggle_pause()
 	#if Input.is_action_just_pressed("plus"):

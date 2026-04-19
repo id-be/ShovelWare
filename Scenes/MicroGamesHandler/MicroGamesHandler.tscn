@@ -171,7 +171,7 @@ vertical_alignment = 1
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PromptLabel"]
 process_mode = 1
 libraries = {
-"": SubResource("AnimationLibrary_m847m")
+&"": SubResource("AnimationLibrary_m847m")
 }
 
 [node name="DEBUGHearts" type="Label" parent="PromptLabel"]

@@ -2,4 +2,3 @@ allowed inputs: d-pad, action button 1, action button 2, microphone, mouse/touch
 
 some games require all inputs. in order to set which inputs are necessary
 for a particular game, please use the attached
-

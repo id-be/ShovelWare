@@ -2,7 +2,8 @@ extends microgame
 
 @export var max_pump_val = 3
 var current_pump_val = 0
-var is_up = false	
+var is_up = false
+var can_pump = true
 	
 func _set_difficulty(dif):
 	match dif:
@@ -27,36 +28,43 @@ func _process(_delta):
 		$DirectionText.text = "Down!"
 	else:
 		$DirectionText.text = "Up!"
+	if can_pump == false:
+		$DirectionText.text = "POP!"
 #Maybe look at this logic again lol
 
 func check_win():
 	if current_pump_val > max_pump_val:
 		end_state = "success"
+		can_pump = false
+		Globals.set_and_play_sfx(_sfx[2])
+		$BalloonOrigin.visible = false
+		$Sprite2D.visible = true
 
 func press_down():
 	is_up = false
+	Globals.set_and_play_sfx(_sfx[0])
 	current_pump_val += 1
 	$BalloonOrigin.scale *= 1.05
+	$Sprite2D.scale *= 1.05
 	$PumpTop.position.y = 96
 	
 func press_up():
 	is_up = true
+	Globals.set_and_play_sfx(_sfx[1])
 	current_pump_val += 1
 	$BalloonOrigin.scale *= 1.05
+	$Sprite2D.scale *= 1.05
 	$PumpTop.position.y = 80
-	
-	
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_up") && !event.is_echo():
-		if(is_up == false):
+		if(is_up == false && can_pump):
 			press_up()
 			check_win()
 	if Input.is_action_just_pressed("ui_down") && !event.is_echo():
-		if(is_up == true):
+		if(is_up == true && can_pump):
 			press_down()
 			check_win()
-		
 
 func _on_button_pressed():
 	set_process(false)

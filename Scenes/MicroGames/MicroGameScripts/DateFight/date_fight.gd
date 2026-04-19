@@ -9,10 +9,14 @@ var cursor_location = 0
 
 @export var choice_scripts : Array[Script]
 
+@export var girlsgirlsgirls = [Object]
+#Axechop
+#SwordChop
+#Mace
 var bad_actions = ["Punch", "Kick", "Hit", "Smack", "Blast", "Bash", "Shout", 
 "Roman Tactics", "WWII History", "Mindmeld", "Fireball", "MagicMissl", 
-"Blizzanga", "Fireango", "Thundoblast", "ThoraxChew", "Suplex", "Poison", 
-"ThrowGlass", "MakeScene", "UnwntdGift", "Phrenology", "Rob", "GlandChop", 
+"Blizzanga", "Fireango", "Thundoblast", "ThoraxKick", "Suplex", "Poison", 
+"ThrowGlass", "AxeChop", "SwordChop", "Phrenology", "Rob", "LegSweep", 
 "Lick", "KarateChop", "JudoThrow", "SumoSlam", "EyeGouge", "Bore", "Snort", 
 "NoseBlow", "NosePick", "JudoChop", "Uppercut", "KiBlast", "Brag", "Headbutt", 
 "Spit"]
@@ -118,8 +122,12 @@ func make_choice(choice):
 	match choice:
 		"correct":
 			update_hearts("up")
+			$Sprite2D.texture = girlsgirlsgirls[1]
+#			Globals.set_and_play_sfx()
 		"wrong":
 			update_hearts("down")
+			$Sprite2D.texture = girlsgirlsgirls[2]
+#			Globals.set_and_play_sfx()
 		"false":
 			Globals.set_and_play_sfx(_sfx[0])
 

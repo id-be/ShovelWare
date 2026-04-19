@@ -1,3 +1,5 @@
 # Godot 4+ specific ignores
 .godot/
 project.godot
+Assets/.RAW/UnsortedDump/HotBabe1.kra~
+android/
