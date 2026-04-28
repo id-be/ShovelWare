@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 #the base window size is 240x160, there are 12 pixels missing
 #from left and right as well as 8 from top and bottom--this

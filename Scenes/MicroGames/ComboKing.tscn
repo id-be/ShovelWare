@@ -1,9 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://1p5q3jc517pa"]
+[gd_scene format=3 uid="uid://1p5q3jc517pa"]
 
 [ext_resource type="Script" uid="uid://cunoopedisdnx" path="res://Scenes/MicroGames/MicroGameScripts/combo_king.gd" id="1_v3bi1"]
-[ext_resource type="AudioStream" uid="uid://chsledvoinutr" path="res://Scenes/MicroGames/Common/CommonAssets/Audio/DebugTrack.ogg" id="2_eocbj"]
+[ext_resource type="Texture2D" uid="uid://cdijkfgg1mg7c" path="res://Scenes/MicroGames/MicroGameAssets/ComboKing/HinduTemple.png" id="2_xgjwq"]
 [ext_resource type="FontFile" uid="uid://d34ql3sx3d5kh" path="res://Assets/2D/Fonts/PromptFont/promptfont.ttf" id="3_bouyl"]
+[ext_resource type="Texture2D" uid="uid://crrs7p344wki0" path="res://Scenes/MicroGames/MicroGameAssets/ComboKing/Pyramids.png" id="3_m4y2r"]
 [ext_resource type="Texture2D" uid="uid://bucjr426s70d2" path="res://Assets/DEBUG/2D/Defaults/Square.png" id="4_maaab"]
+[ext_resource type="Texture2D" uid="uid://dlwcps3bjejyd" path="res://Scenes/MicroGames/MicroGameAssets/ComboKing/Temple.png" id="4_ypphq"]
+[ext_resource type="Texture2D" uid="uid://bxoc38ccct4qg" path="res://Scenes/MicroGames/MicroGameAssets/ComboKing/Waho.png" id="5_f8bcm"]
+[ext_resource type="AudioStream" uid="uid://4geu12qh3bte" path="res://Scenes/MicroGames/MicroGameAssets/ComboKing/freesound_community-risingtide-76733.mp3" id="6_ypphq"]
+[ext_resource type="PackedScene" uid="uid://b02l6dmid3wjd" path="res://Scenes/MicroGames/MicroGameAssets/ComboKing/Nunya.tscn" id="7_ypphq"]
+[ext_resource type="PackedScene" uid="uid://dk7g4rqd8r2dr" path="res://Scenes/MicroGames/MicroGameAssets/ComboKing/Brobot.glb" id="8_ypphq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_55qyn"]
 size = Vector2(240, 16)
@@ -11,8 +17,9 @@ size = Vector2(240, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_igb7u"]
 size = Vector2(16, 160)
 
-[node name="ComboKing" type="Node2D"]
+[node name="ComboKing" type="Node2D" unique_id=991542836]
 script = ExtResource("1_v3bi1")
+bgs = [ExtResource("2_xgjwq"), ExtResource("3_m4y2r"), ExtResource("4_ypphq"), ExtResource("5_f8bcm")]
 _prompt = "Combo!"
 input_flags = {
 "button_0": true,
@@ -24,10 +31,59 @@ input_flags = {
 "ui_right": true,
 "ui_up": true
 }
-_music_tracks = Array[AudioStream]([ExtResource("2_eocbj")])
+_music_tracks = Array[AudioStream]([ExtResource("6_ypphq")])
 _time_step = 0.4
 
-[node name="Label" type="Label" parent="."]
+[node name="BG" type="Sprite2D" parent="." unique_id=929777389]
+position = Vector2(120, 72)
+texture = ExtResource("5_f8bcm")
+
+[node name="Player" type="SubViewportContainer" parent="." unique_id=2104588185]
+offset_left = 56.0
+offset_top = 77.00001
+offset_right = 696.0
+offset_bottom = 717.0
+scale = Vector2(0.1144354, 0.11782654)
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Player" unique_id=1623625868]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(640, 640)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="Player/SubViewport" unique_id=61671508]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6948979, 7.3414154, 9.199482)
+
+[node name="Nunya" parent="Player/SubViewport" unique_id=105859620 instance=ExtResource("7_ypphq")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player/SubViewport" unique_id=732336212]
+
+[node name="Enemy" type="SubViewportContainer" parent="." unique_id=882897156]
+offset_left = 180.0
+offset_top = 73.0
+offset_right = 861.56396
+offset_bottom = 839.34564
+scale = Vector2(-0.114, 0.118)
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Enemy" unique_id=1700931190]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(681, 766)
+render_target_update_mode = 4
+
+[node name="Brobot" parent="Enemy/SubViewport" unique_id=1158211698 instance=ExtResource("8_ypphq")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Enemy/SubViewport" unique_id=2128771344]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.695, 7.341, 13.356431)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Enemy/SubViewport" unique_id=1618139445]
+
+[node name="Label" type="Label" parent="." unique_id=335529293]
 offset_left = 15.0
 offset_top = 8.0
 offset_right = 223.0
@@ -36,7 +92,7 @@ theme_override_fonts/font = ExtResource("3_bouyl")
 text = "⓿⓵≺≻≼≽⏴⏵⏶⏷"
 autowrap_mode = 1
 
-[node name="Label2" type="Label" parent="."]
+[node name="Label2" type="Label" parent="." unique_id=1740116959]
 offset_left = 15.0
 offset_top = 8.0
 offset_right = 223.0
@@ -52,62 +108,62 @@ autowrap_mode = 1
 visible_characters = 0
 visible_ratio = 0.0
 
-[node name="Label3" type="Label" parent="."]
+[node name="Label3" type="Label" parent="." unique_id=1817418519]
 visible = false
 offset_right = 40.0
 offset_bottom = 20.0
 text = "COMBO ACHIEVED!!!"
 
-[node name="Label4" type="Label" parent="."]
+[node name="Label4" type="Label" parent="." unique_id=451808386]
 visible = false
 offset_right = 40.0
 offset_bottom = 20.0
 text = "FAILURE!!!"
 
-[node name="Bounds" type="Node2D" parent="."]
+[node name="Bounds" type="Node2D" parent="." unique_id=965600493]
 top_level = true
 metadata/_edit_lock_ = true
 
-[node name="TopBound" type="StaticBody2D" parent="Bounds"]
+[node name="TopBound" type="StaticBody2D" parent="Bounds" unique_id=452911389]
 position = Vector2(120, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="Bounds/TopBound"]
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/TopBound" unique_id=703103794]
 texture_filter = 1
 scale = Vector2(3.75, 0.25)
 texture = ExtResource("4_maaab")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/TopBound"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/TopBound" unique_id=520855852]
 shape = SubResource("RectangleShape2D_55qyn")
 
-[node name="BottomBound" type="StaticBody2D" parent="Bounds"]
+[node name="BottomBound" type="StaticBody2D" parent="Bounds" unique_id=1987132430]
 position = Vector2(120, 160)
 
-[node name="Sprite2D" type="Sprite2D" parent="Bounds/BottomBound"]
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/BottomBound" unique_id=1260534605]
 texture_filter = 1
 scale = Vector2(3.75, 0.25)
 texture = ExtResource("4_maaab")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BottomBound"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BottomBound" unique_id=1407254944]
 shape = SubResource("RectangleShape2D_55qyn")
 
-[node name="LeftBound" type="StaticBody2D" parent="Bounds"]
+[node name="LeftBound" type="StaticBody2D" parent="Bounds" unique_id=1894912263]
 position = Vector2(4, 80)
 
-[node name="Sprite2D" type="Sprite2D" parent="Bounds/LeftBound"]
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/LeftBound" unique_id=1409778053]
 texture_filter = 1
 scale = Vector2(0.25, 2.5)
 texture = ExtResource("4_maaab")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/LeftBound"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/LeftBound" unique_id=1215006885]
 shape = SubResource("RectangleShape2D_igb7u")
 
-[node name="RightBound" type="StaticBody2D" parent="Bounds"]
+[node name="RightBound" type="StaticBody2D" parent="Bounds" unique_id=1240422521]
 position = Vector2(236, 80)
 
-[node name="Sprite2D" type="Sprite2D" parent="Bounds/RightBound"]
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/RightBound" unique_id=1236560736]
 texture_filter = 1
 scale = Vector2(0.25, 2.5)
 texture = ExtResource("4_maaab")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightBound"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightBound" unique_id=1546584429]
 shape = SubResource("RectangleShape2D_igb7u")

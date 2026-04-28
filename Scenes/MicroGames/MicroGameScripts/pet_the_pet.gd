@@ -1,5 +1,6 @@
 extends microgame
 
+#Change the input to be a click (actual "petting")
 #really the irritability to make this more difficult would mean that
 #the animal's angry state becomes longer while the normal state stays
 #the same or becomes shorter

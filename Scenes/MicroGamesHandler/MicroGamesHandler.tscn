@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ftkh155jwal2"]
+[gd_scene format=3 uid="uid://ftkh155jwal2"]
 
 [ext_resource type="Script" uid="uid://cnhaam1l7g08p" path="res://Scenes/MicroGamesHandler/Scripts/micro_games_handler.gd" id="1_bkbri"]
 [ext_resource type="Texture2D" uid="uid://f53rs58kvlfq" path="res://Scenes/MicroGamesHandler/Assets/2D/Cloud2.png" id="2_g468g"]
@@ -45,14 +45,14 @@ _data = {
 &"flash_ready": SubResource("Animation_650cc")
 }
 
-[node name="MicroGamesHandler" type="Node2D"]
+[node name="MicroGamesHandler" type="Node2D" unique_id=1387874159]
 process_mode = 1
 script = ExtResource("1_bkbri")
 tv_shader = ExtResource("4_yk03m")
 bomb_explode_texture = ExtResource("2_hv17n")
 bomb_splode = ExtResource("3_yxg65")
 
-[node name="SubViewPortContainer" type="SubViewportContainer" parent="."]
+[node name="SubViewPortContainer" type="SubViewportContainer" parent="." unique_id=1536643310]
 process_mode = 1
 texture_filter = 1
 clip_contents = true
@@ -71,14 +71,14 @@ mouse_filter = 0
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
-[node name="SubViewPort" type="SubViewport" parent="SubViewPortContainer"]
+[node name="SubViewPort" type="SubViewport" parent="SubViewPortContainer" unique_id=259508142]
 handle_input_locally = false
 snap_2d_vertices_to_pixel = true
 physics_object_picking = true
 size = Vector2i(240, 160)
 render_target_update_mode = 4
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=561278466]
 visible = false
 offset_left = -108.0
 offset_top = -72.0
@@ -87,7 +87,7 @@ offset_bottom = 72.0
 mouse_filter = 1
 color = Color(0, 0, 0, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="."]
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=41639163]
 clip_contents = true
 anchors_preset = 8
 anchor_left = 0.5
@@ -104,7 +104,7 @@ scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(120, 80)
 mouse_filter = 1
 
-[node name="WinLossRect" type="ColorRect" parent="."]
+[node name="WinLossRect" type="ColorRect" parent="." unique_id=548834448]
 process_mode = 3
 visible = false
 anchors_preset = -1
@@ -120,7 +120,7 @@ size_flags_vertical = 4
 mouse_filter = 1
 metadata/_edit_lock_ = true
 
-[node name="WinLabel" type="Label" parent="WinLossRect"]
+[node name="WinLabel" type="Label" parent="WinLossRect" unique_id=699867483]
 visible = false
 texture_filter = 1
 layout_mode = 1
@@ -135,7 +135,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="LossLabel" type="Label" parent="WinLossRect"]
+[node name="LossLabel" type="Label" parent="WinLossRect" unique_id=1497382887]
 visible = false
 texture_filter = 1
 layout_mode = 1
@@ -150,7 +150,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="PromptLabel" type="Label" parent="."]
+[node name="PromptLabel" type="Label" parent="." unique_id=2063363411]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -168,13 +168,11 @@ text = "READY???"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PromptLabel"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PromptLabel" unique_id=54875357]
 process_mode = 1
-libraries = {
-&"": SubResource("AnimationLibrary_m847m")
-}
+libraries/ = SubResource("AnimationLibrary_m847m")
 
-[node name="DEBUGHearts" type="Label" parent="PromptLabel"]
+[node name="DEBUGHearts" type="Label" parent="PromptLabel" unique_id=1852291676]
 layout_mode = 0
 offset_left = 1.5
 offset_top = 46.5
@@ -183,7 +181,7 @@ offset_bottom = 66.5
 text = "
 "
 
-[node name="DEBUGMCGCount" type="Label" parent="PromptLabel"]
+[node name="DEBUGMCGCount" type="Label" parent="PromptLabel" unique_id=13587513]
 layout_mode = 0
 offset_left = 66.5
 offset_top = 46.5
@@ -191,11 +189,11 @@ offset_right = 106.5
 offset_bottom = 66.5
 text = "0"
 
-[node name="BombTimer" type="Node2D" parent="."]
+[node name="BombTimer" type="Node2D" parent="." unique_id=1914615803]
 process_mode = 1
 visible = false
 
-[node name="Sky" type="ColorRect" parent="BombTimer"]
+[node name="Sky" type="ColorRect" parent="BombTimer" unique_id=1249329501]
 clip_contents = true
 offset_left = -120.0
 offset_top = -80.0
@@ -203,23 +201,23 @@ offset_right = -108.0
 offset_bottom = 80.0
 color = Color(0, 1, 1, 1)
 
-[node name="Ground" type="ColorRect" parent="BombTimer/Sky"]
+[node name="Ground" type="ColorRect" parent="BombTimer/Sky" unique_id=31994869]
 layout_mode = 0
 offset_top = 148.0
 offset_right = 12.0
 offset_bottom = 160.0
 color = Color(0.984314, 0.701961, 0.592157, 1)
 
-[node name="Cloud1" type="Sprite2D" parent="BombTimer/Sky"]
+[node name="Cloud1" type="Sprite2D" parent="BombTimer/Sky" unique_id=1521322429]
 position = Vector2(6, 11)
 texture = ExtResource("2_g468g")
 
-[node name="Bomb" type="Sprite2D" parent="BombTimer/Sky"]
+[node name="Bomb" type="Sprite2D" parent="BombTimer/Sky" unique_id=280670389]
 position = Vector2(6, 10)
 texture = ExtResource("3_sa4kw")
 
-[node name="BombSFX" type="AudioStreamPlayer" parent="."]
+[node name="BombSFX" type="AudioStreamPlayer" parent="." unique_id=1669899278]
 stream = ExtResource("4_tk4ib")
 bus = &"SFXBus"
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=223106751]

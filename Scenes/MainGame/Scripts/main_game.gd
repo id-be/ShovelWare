@@ -55,11 +55,11 @@ func _ready():
 func play_intro_cinematic():
 	if skip_intro:
 		zoom_out(true)
-		$GameConsole.show()
+		$DeanBoy.show()
 		$MicroGamesHandler.pick_microgame()
 		can_pause = true
 		return
-	$GameConsole.hide()
+	$DeanBoy.hide()
 	
 	await games_handler.screen_fx_toggle()
 	$AnimSprite.scale = Vector2(7,7)
@@ -100,7 +100,7 @@ func play_intro_cinematic():
 	await tutorial_timer.timeout
 	
 	zoom_out(true)
-	$GameConsole.show()
+	$DeanBoy.show()
 	$MicroGamesHandler.pick_microgame()
 	can_pause = true
 	
@@ -124,7 +124,7 @@ func _input(_event):
 func get_input_flags(input_flags):
 	if !tutorial_mode:
 		return
-	var buttons_root_node = $GameConsole/ActionButtonHints
+	var buttons_root_node = $DeanBoy/ActionButtonHints
 	var on_buttons_root_node = buttons_root_node.find_child("ButtonsOn")
 	var off_buttons_root_node = buttons_root_node.find_child("ButtonsOff")
 	var flag_button_names = {
@@ -140,9 +140,9 @@ func get_input_flags(input_flags):
 #				off_buttons_root_node.find_child(flag_button_names[flag]).show()
 				pass
 func hide_hint_buttons():
-	for hint_off in $GameConsole/ActionButtonHints/ButtonsOff.get_children():
+	for hint_off in $DeanBoy/ActionButtonHints/ButtonsOff.get_children():
 		hint_off.hide()
-	for hint_on in $GameConsole/ActionButtonHints/ButtonsOn.get_children():
+	for hint_on in $DeanBoy/ActionButtonHints/ButtonsOn.get_children():
 		hint_on.hide()
 
 func toggle_tutorial_mode():

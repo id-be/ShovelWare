@@ -1,6 +1,6 @@
 extends microgame
 
-@export_range(5,12) var combo_length: int = 5
+@export_range(3,5) var combo_length: int = 5
 var game_inputs = []
 var max_num_inputs
 
@@ -11,6 +11,9 @@ var cur_input_index = 0
 var cur_combo = []
 
 var is_comboing = true
+
+@export var bgs := []
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	boilerplate_ready()
@@ -21,8 +24,17 @@ func _ready():
 	randomize_fighters()
 	randomize_bg()
 	generate_combo()
-	print(game_inputs)
+	fight()
+	#print(game_inputs)
 #	print(InputMap.get_actions())
+func _set_difficulty(dif):
+	match dif:
+		"easy":
+			combo_length=3
+		"medium":
+			combo_length=4
+		"hard":
+			combo_length=5
 
 func _input(_event):
 #	var action_as_string
@@ -32,14 +44,15 @@ func _input(_event):
 			if Input.is_action_just_pressed(input) && Input.is_action_just_pressed(cur_combo[cur_input_index]):
 				if cur_input_index == combo_length - 1:
 					is_comboing = false
-					$Label3.show()
+					#$Label3.show()
 					end_state = "success"
+					end_combo(end_state)
 					flash_and_disappear_combo()
 				cur_input_index += 1
 				$Label2.visible_characters = cur_input_index
 			elif Input.is_action_just_pressed(input):
 				is_comboing = false
-				$Label4.show()
+				#$Label4.show()
 	
 
 #	print(InputMap.event_is_action(event, action_as_string))
@@ -99,13 +112,37 @@ func generate_combo():
 #≺≻≼≽ == left, up, right, down
 #⏴⏵⏶⏷ == left, right, up, down
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+
+func fight():
+	$Player/SubViewport/Nunya/AnimationPlayer.play("Idle")
+	$Enemy/SubViewport/Brobot/AnimationPlayer.play("Idle")
+
 func randomize_fighters():
 	pass
 func randomize_bg():
-	pass
+	var my_bg = randi_range(0,3)
+	match my_bg:
+		0:
+			pass
+		1:
+			$BG.position.y = 84
+		2:
+			pass
+		3:
+			$BG.position.y = 51
+		_:
+			pass
+	$BG.texture = bgs[my_bg]
 
 func end_combo(_end_state):
-	pass
+	match _end_state:
+		"success":
+			$Player/SubViewport/Nunya/AnimationPlayer.play("Attack")
+			Globals.set_and_play_sfx(load("res://Scenes/MicroGames/MicroGameAssets/ComboKing/phatphrogstudio-rpg-female-attack-grunt-no-ai-481720.mp3"))
+			await $Player/SubViewport/Nunya/AnimationPlayer.animation_finished
+			$Enemy/SubViewport/Brobot/AnimationPlayer.play("Die")
+		"failure":
+			$Player/SubViewport/Nunya/AnimationPlayer.play("Die")
 
 func flash_and_disappear_combo():
 	pass

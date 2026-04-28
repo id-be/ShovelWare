@@ -14,7 +14,7 @@ func _set_difficulty(dif):
 		"hard":
 			max_pump_val = 10
 func _set_initial_values():
-	var screen_size = get_viewport_rect().size
+	#var screen_size = get_viewport_rect().size
 	var start_num_1 = randf_range(-1,1)
 	var start_num_2 = randf_range(-1,1)
 	#$TestText.text = str(current_pump_val)

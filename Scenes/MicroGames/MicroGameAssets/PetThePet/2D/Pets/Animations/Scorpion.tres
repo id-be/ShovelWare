@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=14 format=3 uid="uid://cbwel8mqo10gy"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://cbwel8mqo10gy"]
 
 [ext_resource type="Texture2D" uid="uid://cnneqvptjnw2h" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Pets/ScorpionAngry.png" id="1_iryrv"]
 [ext_resource type="Texture2D" uid="uid://dq5gld6kmk0r6" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Pets/ScorpionHappy.png" id="2_vevqr"]

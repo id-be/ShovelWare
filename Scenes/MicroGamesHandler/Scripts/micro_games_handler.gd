@@ -270,7 +270,8 @@ func on_done_zoom_out():
 	#second off: save the previous microgame for reference, even if only as a name
 #	print(current_microgame)
 #wait here in case we need to speed up!]
-#
+#	
+	#print(microgame_playmode)
 	if microgames_count % mcg_count_to_gen_boss == 0 && microgames_count != 0:
 		microgame_playmode = "queue"#switch to a mode that allows you to pick just boss games
 		pick_microgame(true)

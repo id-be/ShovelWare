@@ -100,7 +100,7 @@ class balloon extends AnimatedSprite2D:
 		left_right_bound = Vector2(anchor_pos_x-x_delta, anchor_pos_x+x_delta)
 		top_down_bound = Vector2(anchor_pos_y-y_delta,anchor_pos_y+y_delta)
 		position = anchor_pos
-		var init_pos
+		#var init_pos
 	func randomize_phase():
 		pass
 	func set_speed():
@@ -117,7 +117,8 @@ class balloon extends AnimatedSprite2D:
 				move_type = "ellipsoid"
 #		print(my_rand_int)
 	func _process(delta):
-		move_around(delta)
+		if is_moving:
+			move_around(delta)
 
 	func _unhandled_input(event):
 		if can_be_clicked:
@@ -159,28 +160,40 @@ class balloon extends AnimatedSprite2D:
 	func move_around(delta):
 		match move_type:
 			"zigzag":
-				if is_moving:
-					if position.x >= left_right_bound.y:
-						moving_left = true
-					elif position.x <= left_right_bound.x:
-						moving_left = false
-					if position.y >= top_down_bound.y:
-						moving_up = true
-					elif position.y <= top_down_bound.x:
-						moving_up = false
+				if position.x >= left_right_bound.y:
+					moving_left = true
+				elif position.x <= left_right_bound.x:
+					moving_left = false
+				if position.y >= top_down_bound.y:
+					moving_up = true
+				elif position.y <= top_down_bound.x:
+					moving_up = false
 
-					match moving_left:
-						true:
-							position.x -= hor_speed
-						false:
-							position.x += hor_speed
-					match moving_up:
-						true:
-							position.y -= vert_speed
-						false:
-							position.y += vert_speed
+				match moving_left:
+					true:
+						position.x -= hor_speed
+					false:
+						position.x += hor_speed
+				match moving_up:
+					true:
+						position.y -= vert_speed
+					false:
+						position.y += vert_speed
 			"sinusoidal":
-				pass
+				angle += vert_speed
+				if position.x >= left_right_bound.y:
+					moving_left = true
+				elif position.x <= left_right_bound.x:
+					moving_left = false
+
+				match moving_left:
+					true:
+						position.x -= hor_speed
+					false:
+						position.x += hor_speed
+				var y = radius*sin(angle)
+				position.y = anchor_pos.y+y
+
 			"ellipsoid":
 				angle += vert_speed # * delta
 				var x = radius * cos(angle)
@@ -212,7 +225,7 @@ func _set_difficulty(dif):
 
 func _ready():
 	boilerplate_ready()
-	for balloon in num_balloons:
+	for bln in num_balloons:
 		spawn_balloon()
 	var points = $Path2D.curve.get_baked_points()
 #	$BalloonHandler.process_mode = Node.PROCESS_MODE_DISABLED#this line disables the balloon handler and all children, until start is called!
