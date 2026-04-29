@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dvyfsxkfu508j"]
 
 [ext_resource type="Script" uid="uid://dr404ntoxjj88" path="res://Scenes/MicroGames/MicroGameScripts/pop_it.gd" id="1_hd6qi"]
-[ext_resource type="AudioStream" uid="uid://chsledvoinutr" path="res://Scenes/MicroGames/Common/CommonAssets/Audio/DebugTrack.ogg" id="2_bxurd"]
 [ext_resource type="Texture2D" uid="uid://bucjr426s70d2" path="res://Assets/DEBUG/2D/Defaults/Square.png" id="2_fv0p8"]
+[ext_resource type="AudioStream" uid="uid://by2yqkkurbp4t" path="res://Scenes/MicroGames/MicroGameAssets/PopIt/Audio/freesound_community-soft-etheral-background-music-32574.mp3" id="2_k1cde"]
 [ext_resource type="Texture2D" uid="uid://tvcc8pyuc04" path="res://Scenes/MicroGames/MicroGameAssets/PopIt/2D/Sky.png" id="5_ul35b"]
 
 [sub_resource type="Curve2D" id="Curve2D_1fy8l"]
@@ -35,7 +35,7 @@ input_flags = {
 "ui_right": false,
 "ui_up": false
 }
-_music_tracks = Array[AudioStream]([ExtResource("2_bxurd")])
+_music_tracks = Array[AudioStream]([ExtResource("2_k1cde")])
 
 [node name="Path2D" type="Path2D" parent="." unique_id=347628923]
 curve = SubResource("Curve2D_1fy8l")

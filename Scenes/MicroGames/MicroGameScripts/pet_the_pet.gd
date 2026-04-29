@@ -1,5 +1,5 @@
 extends microgame
-
+#issue: currently, there is some delay between the switch of state and animation... some delay in when you  can pet!
 #Change the input to be a click (actual "petting")
 #really the irritability to make this more difficult would mean that
 #the animal's angry state becomes longer while the normal state stays
@@ -118,6 +118,8 @@ func queue_pet_state(state):
 
 func set_pet_state(state):
 	Globals.stop_sfx()
+	pet_state = state
+	$Label.text = pet_state
 	match state:
 		"Angry":
 			Globals.set_and_play_music(_music_tracks[1])
@@ -158,7 +160,7 @@ func set_pet_state(state):
 					Globals.set_and_play_music(_music_tracks[2])
 					Globals.set_and_play_sfx(_sfx[2])
 					end_state = "success"
-	pet_state = state
+	
 	$Animal.set_animation(pet_state)
 	$Animal.play()
 func start_anims():

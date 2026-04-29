@@ -2,7 +2,7 @@ extends Node2D
 #og colorrect pos: -108, -72
 #either USE the full screen space OR
 #we can replace the debugrects with some sort of nice border
-
+#fix the queueing so that you only have things in queue play, not default to random shuffle once the queue is depleted
 
 
 var game_state = "loss"
@@ -49,6 +49,7 @@ var debug_microgame_path = "res://Scenes/MicroGames/ExampleMicroGame/ExampleMicr
 
 @export_enum("random_shuffle", "shuffle", "queue", "boss_queue") var microgame_playmode: String = "random_shuffle"#shuffle from queue, go through queue, etc
 var microgames_pool = all_microgames
+@export var boss_microgames_pool = []
 
 var previous_microgame
 var current_microgame
@@ -131,6 +132,10 @@ func toggle_prompts():
 
 func flash_ready():
 	$PromptLabel/AnimationPlayer.play("flash_ready")
+	if is_cur_mcg_boss:
+		$PromptLabel/BossLabel.show()
+	else:
+		$PromptLabel/BossLabel.hide()
 	await $PromptLabel/AnimationPlayer.animation_finished
 	return
 
@@ -148,7 +153,7 @@ func queue_microgames():
 
 func pick_microgame(is_boss = false):
 	is_cur_mcg_boss = is_boss
-	if microgame_playmode == "boss_queue":
+	if microgame_playmode == "boss_queue":#consider moving this to _ready.
 		is_cur_mcg_boss = true
 	var my_game_index
 	var my_game_path
@@ -160,7 +165,10 @@ func pick_microgame(is_boss = false):
 			pass
 		"queue":
 			for mcg in microgames_queue:
-				my_game_path = microgames_queue[mcg_index_in_queue]
+				if is_cur_mcg_boss:
+					my_game_path = boss_microgames_queue[mcg_index_in_queue]
+				else:
+					my_game_path = microgames_queue[mcg_index_in_queue]
 				if mcg_index_in_queue == microgames_queue.size() - 1:
 					pass
 				else:
@@ -200,6 +208,7 @@ func add_and_initialize_microgame(mcg):
 	
 	prompt_label.text = current_microgame._prompt
 	prompt_label.show()
+	$PromptLabel/BossLabel.hide()
 	
 	mcg_port.add_child(current_microgame)#this needs to be at the end so that we can emit start_game in the ready function.
 #	microgame's _ready() is called here ^

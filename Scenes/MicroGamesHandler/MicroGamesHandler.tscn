@@ -51,6 +51,7 @@ script = ExtResource("1_bkbri")
 tv_shader = ExtResource("4_yk03m")
 bomb_explode_texture = ExtResource("2_hv17n")
 bomb_splode = ExtResource("3_yxg65")
+metadata/_edit_lock_ = true
 
 [node name="SubViewPortContainer" type="SubViewportContainer" parent="." unique_id=1536643310]
 process_mode = 1
@@ -79,13 +80,14 @@ size = Vector2i(240, 160)
 render_target_update_mode = 4
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=561278466]
-visible = false
 offset_left = -108.0
 offset_top = -72.0
 offset_right = 108.0
 offset_bottom = 72.0
 mouse_filter = 1
 color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=41639163]
 clip_contents = true
@@ -103,6 +105,8 @@ grow_vertical = 2
 scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(120, 80)
 mouse_filter = 1
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="WinLossRect" type="ColorRect" parent="." unique_id=548834448]
 process_mode = 3
@@ -134,6 +138,7 @@ text = "You Win!"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="LossLabel" type="Label" parent="WinLossRect" unique_id=1497382887]
 visible = false
@@ -149,6 +154,7 @@ text = "You Lose!"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="PromptLabel" type="Label" parent="." unique_id=2063363411]
 anchors_preset = 8
@@ -167,6 +173,8 @@ mouse_filter = 1
 text = "READY???"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PromptLabel" unique_id=54875357]
 process_mode = 1
@@ -180,6 +188,8 @@ offset_right = 41.5
 offset_bottom = 66.5
 text = "
 "
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="DEBUGMCGCount" type="Label" parent="PromptLabel" unique_id=13587513]
 layout_mode = 0
@@ -188,10 +198,31 @@ offset_top = 46.5
 offset_right = 106.5
 offset_bottom = 66.5
 text = "0"
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="BossLabel" type="Label" parent="PromptLabel" unique_id=1458125229]
+visible = false
+layout_mode = 0
+offset_left = -11.5
+offset_top = 20.5
+offset_right = 98.5
+offset_bottom = 40.5
+text = "BOSS  TIME!!!"
+
+[node name="SpeedUpLabel" type="Label" parent="PromptLabel" unique_id=1965615373]
+visible = false
+layout_mode = 0
+offset_left = -11.5
+offset_top = 20.5
+offset_right = 98.5
+offset_bottom = 40.5
+text = "Speed Up!!!!!"
 
 [node name="BombTimer" type="Node2D" parent="." unique_id=1914615803]
 process_mode = 1
 visible = false
+metadata/_edit_lock_ = true
 
 [node name="Sky" type="ColorRect" parent="BombTimer" unique_id=1249329501]
 clip_contents = true
@@ -200,6 +231,7 @@ offset_top = -80.0
 offset_right = -108.0
 offset_bottom = 80.0
 color = Color(0, 1, 1, 1)
+metadata/_edit_lock_ = true
 
 [node name="Ground" type="ColorRect" parent="BombTimer/Sky" unique_id=31994869]
 layout_mode = 0
@@ -207,14 +239,17 @@ offset_top = 148.0
 offset_right = 12.0
 offset_bottom = 160.0
 color = Color(0.984314, 0.701961, 0.592157, 1)
+metadata/_edit_lock_ = true
 
 [node name="Cloud1" type="Sprite2D" parent="BombTimer/Sky" unique_id=1521322429]
 position = Vector2(6, 11)
 texture = ExtResource("2_g468g")
+metadata/_edit_lock_ = true
 
 [node name="Bomb" type="Sprite2D" parent="BombTimer/Sky" unique_id=280670389]
 position = Vector2(6, 10)
 texture = ExtResource("3_sa4kw")
+metadata/_edit_lock_ = true
 
 [node name="BombSFX" type="AudioStreamPlayer" parent="." unique_id=1669899278]
 stream = ExtResource("4_tk4ib")

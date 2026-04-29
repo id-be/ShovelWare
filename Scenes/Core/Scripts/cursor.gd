@@ -10,23 +10,23 @@
 
 extends Control
 
-@export var cursor_offset = Vector2(20,9)
-@export var texture_offset = Vector2(0,0)
-@export var label_offset = Vector2(0,0)
+@export var cursor_offset := Vector2(20,9);
+@export var texture_offset := Vector2(0,0);
+@export var label_offset := Vector2(0,0);
 
-@export_enum("texture", "label") var cursor_type = "label"
-@export_enum("mouse", "keys", "both") var nav_type = "both"
+@export_enum("texture", "label") var cursor_type = "label";
+@export_enum("mouse", "keys", "both") var nav_type = "both";
 
-@export var menu_parent_path : NodePath
-@onready var menu_parent := get_node(menu_parent_path)
+@export var menu_parent_path : NodePath;
+@onready var menu_parent := get_node(menu_parent_path);
 
-var cursor_index : int = 0
-var prev_cursor_index = cursor_index
-var current_menu_item : Node#make this saved as opposed to getting it when button_1 is pressed
+var cursor_index : int = 0;
+var prev_cursor_index := cursor_index;
+var current_menu_item : Node;#make this saved as opposed to getting it when button_1 is pressed
 # Called when the node enters the scene tree for the first time.
-var menu_diagonal# this will be the vector across the element from top left to bottom right.
+var menu_diagonal;# this will be the vector across the element from top left to bottom right.
 
-func _ready():
+func _ready() -> void:
 #	self.position = cursor_offset
 #	self.global_position = cursor_offset
 #	global_position = Vector2(10,10)

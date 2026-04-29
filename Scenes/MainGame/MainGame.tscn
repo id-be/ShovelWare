@@ -320,13 +320,13 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_x7xhr")
 metadata/_edit_lock_ = true
 
-[node name="Mic" type="Sprite2D" parent="DeanBoy/ActionButtonHints/ButtonsOn" unique_id=141683227]
+[node name="Tap" type="Sprite2D" parent="DeanBoy/ActionButtonHints/ButtonsOn" unique_id=141683227]
 position = Vector2(149.5, 84.0001)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_x7xhr")
 metadata/_edit_lock_ = true
 
-[node name="Tap" type="Sprite2D" parent="DeanBoy/ActionButtonHints/ButtonsOn" unique_id=560357928]
+[node name="Mic" type="Sprite2D" parent="DeanBoy/ActionButtonHints/ButtonsOn" unique_id=560357928]
 position = Vector2(60.5, 179)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_x7xhr")
@@ -431,8 +431,10 @@ position_smoothing_enabled = true
 [node name="MicroGamesHandler" parent="." unique_id=578347088 instance=ExtResource("4_f57pk")]
 position = Vector2(576, 232)
 scale = Vector2(3, 3)
+microgame_playmode = "boss_queue"
 microgames_queue = Array[String](["res://Scenes/MicroGames/ComboKing.tscn"])
 boss_microgames_queue = Array[String](["res://Scenes/MicroGames/PetThePet.tscn"])
+mcg_count_to_gen_boss = 2
 
 [node name="PauseScreenTint" type="ColorRect" parent="." unique_id=451637156]
 process_mode = 3
@@ -590,7 +592,7 @@ rotation = 2.0029123
 scale = Vector2(3.9065413, 3.9673288)
 texture = ExtResource("13_r0wif")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=239021217]
+[node name="DeanBoyLogoRect" type="ColorRect" parent="." unique_id=239021217]
 offset_left = 351.0
 offset_top = 483.0
 offset_right = 796.0
