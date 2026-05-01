@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ftkh155jwal2" path="res://Scenes/MicroGamesHandler/MicroGamesHandler.tscn" id="4_f57pk"]
 [ext_resource type="Texture2D" uid="uid://cxfnddc05txxu" path="res://Scenes/MainGame/Assets/2D/Sprites/ActionCircleOver.png" id="4_x7xhr"]
 [ext_resource type="Texture2D" uid="uid://cx0qj47m3ajsh" path="res://Scenes/MainGame/Assets/2D/Sprites/ActionXOver.png" id="5_bf5pv"]
-[ext_resource type="Texture2D" uid="uid://ccwihqn5obtsl" path="res://Assets/2D/Sprites/DeanBoy.png" id="5_r0wif"]
+[ext_resource type="Texture2D" uid="uid://ccwihqn5obtsl" path="res://Scenes/MainGame/Assets/2D/Sprites/DeanBoy.png" id="5_r0wif"]
 [ext_resource type="PackedScene" uid="uid://bsbyf1lx7fwi8" path="res://Scenes/Core/Cursor.tscn" id="6_gr8tv"]
 [ext_resource type="Texture2D" uid="uid://btshr73qco3dw" path="res://Scenes/MainGame/Assets/2D/Sprites/DeanboyAtlas.png" id="6_sxla3"]
 [ext_resource type="Texture2D" uid="uid://37gsqj4fl3sq" path="res://Scenes/MainGame/Assets/2D/Sprites/ShovelScaled.png" id="7_i0i84"]
@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://b1m831qsy268k" path="res://Scenes/MainGame/Assets/2D/Sprites/1Button.png" id="10_r0wif"]
 [ext_resource type="Texture2D" uid="uid://gp4f04gt11de" path="res://Scenes/MainGame/Assets/2D/Sprites/0Button.png" id="11_v8u3g"]
 [ext_resource type="Texture2D" uid="uid://dw1a8bmndsyru" path="res://Assets/2D/Sprites/Hand.png" id="13_r0wif"]
-[ext_resource type="Texture2D" uid="uid://oe3gfugw8f25" path="res://Assets/2D/Sprites/DeanBoyLogo.png" id="14_v8u3g"]
+[ext_resource type="Texture2D" uid="uid://oe3gfugw8f25" path="res://Scenes/MainGame/Assets/2D/Sprites/DeanBoyLogo.png" id="14_v8u3g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_revbe"]
 atlas = ExtResource("6_sxla3")
@@ -431,10 +431,8 @@ position_smoothing_enabled = true
 [node name="MicroGamesHandler" parent="." unique_id=578347088 instance=ExtResource("4_f57pk")]
 position = Vector2(576, 232)
 scale = Vector2(3, 3)
-microgame_playmode = "boss_queue"
-microgames_queue = Array[String](["res://Scenes/MicroGames/ComboKing.tscn"])
+microgames_queue = Array[String](["res://Scenes/MicroGames/PetThePet.tscn"])
 boss_microgames_queue = Array[String](["res://Scenes/MicroGames/PetThePet.tscn"])
-mcg_count_to_gen_boss = 2
 
 [node name="PauseScreenTint" type="ColorRect" parent="." unique_id=451637156]
 process_mode = 3

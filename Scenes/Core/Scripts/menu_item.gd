@@ -1,6 +1,6 @@
 #intended to work with cursor, example
-extends Control
+extends Control;
 
 
 func _cursor_select():
-	print(self.name)
+	print(self.name);

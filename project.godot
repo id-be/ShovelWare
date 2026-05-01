@@ -17,7 +17,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="ShovelWare"
 run/main_scene="res://Scenes/MainGame/MainGame.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://Assets/GodotDefaults/icon.svg"
+config/icon="uid://bljxbv4pvj7se"
 
 [audio]
 

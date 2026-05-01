@@ -7,8 +7,8 @@ func _ready() -> void:
 
 func _gui_input(event) -> void:
 #	print(event)
-	$SubViewport.push_input(event, true)
-	$SubViewport.push_unhandled_input(event, true)
+	$SubViewport.push_input(event, true);
+	$SubViewport.push_unhandled_input(event, true);
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta) -> void:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccwihqn5obtsl"
-path="res://.godot/imported/DeanBoy.png-37e0ec59aedd0eee63a5004b0df31387.ctex"
+uid="uid://oe3gfugw8f25"
+path="res://.godot/imported/DeanBoyLogo.png-ee93a3da504f37fec320ec862dcb024b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/2D/Sprites/DeanBoy.png"
-dest_files=["res://.godot/imported/DeanBoy.png-37e0ec59aedd0eee63a5004b0df31387.ctex"]
+source_file="res://Scenes/MainGame/Assets/2D/Sprites/DeanBoyLogo.png"
+dest_files=["res://.godot/imported/DeanBoyLogo.png-ee93a3da504f37fec320ec862dcb024b.ctex"]
 
 [params]
 

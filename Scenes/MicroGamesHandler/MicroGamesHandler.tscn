@@ -219,6 +219,15 @@ offset_right = 98.5
 offset_bottom = 40.5
 text = "Speed Up!!!!!"
 
+[node name="ChallengeLabel" type="Label" parent="PromptLabel" unique_id=177572821]
+visible = false
+layout_mode = 0
+offset_left = -20.5
+offset_top = 20.5
+offset_right = 107.5
+offset_bottom = 40.5
+text = "Challenge UP!"
+
 [node name="BombTimer" type="Node2D" parent="." unique_id=1914615803]
 process_mode = 1
 visible = false

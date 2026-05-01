@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oe3gfugw8f25"
-path="res://.godot/imported/DeanBoyLogo.png-3fae805ad99f0e2fd212d3381f5acb05.ctex"
+uid="uid://bljxbv4pvj7se"
+path="res://.godot/imported/shovel.png-d155ed1e44a3bcf8daf0cba0514474bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/2D/Sprites/DeanBoyLogo.png"
-dest_files=["res://.godot/imported/DeanBoyLogo.png-3fae805ad99f0e2fd212d3381f5acb05.ctex"]
+source_file="res://Assets/2D/Sprites/shovel.png"
+dest_files=["res://.godot/imported/shovel.png-d155ed1e44a3bcf8daf0cba0514474bc.ctex"]
 
 [params]
 

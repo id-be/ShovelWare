@@ -11,6 +11,8 @@ class_name microgame
 
 @export var is_boss = false
 
+#@export var should_phaser
+
 @export var input_flags: Dictionary = {"ui_up":false, "ui_down":false, 
 "ui_left":false, "ui_right":false, "button_0":false, 
 "button_1":false, "mouse_touch":false, "microphone":false}

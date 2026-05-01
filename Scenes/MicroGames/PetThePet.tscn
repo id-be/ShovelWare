@@ -170,7 +170,7 @@ position = Vector2(136, 67)
 [node name="Marker2D" type="Marker2D" parent="." unique_id=416836695]
 position = Vector2(95, 80)
 
-[node name="Label" type="Label" parent="." unique_id=1679458292]
+[node name="DEBUGLabel" type="Label" parent="." unique_id=1679458292]
 offset_left = 83.0
 offset_top = 8.0
 offset_right = 149.0
