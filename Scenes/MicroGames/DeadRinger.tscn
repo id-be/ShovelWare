@@ -182,6 +182,7 @@ sprite_frames = SubResource("SpriteFrames_b041u")
 animation = &"Close"
 
 [node name="IndexFinger" type="AnimatedSprite2D" parent="HandAndThumb" unique_id=311592990]
+visible = false
 position = Vector2(-5, -22.5)
 sprite_frames = SubResource("SpriteFrames_fn73q")
 animation = &"Close"
@@ -202,6 +203,7 @@ shape = SubResource("CircleShape2D_1tfn6")
 disabled = true
 
 [node name="MiddleFinger" type="AnimatedSprite2D" parent="HandAndThumb" unique_id=1783499711]
+visible = false
 position = Vector2(5, -26)
 sprite_frames = SubResource("SpriteFrames_pes88")
 animation = &"Close"
@@ -221,6 +223,7 @@ shape = SubResource("CircleShape2D_cdsyj")
 disabled = true
 
 [node name="RingFinger" type="AnimatedSprite2D" parent="HandAndThumb" unique_id=2086203412]
+visible = false
 position = Vector2(15, -23.5)
 sprite_frames = SubResource("SpriteFrames_cgjvi")
 animation = &"Close"
@@ -240,6 +243,7 @@ shape = SubResource("CircleShape2D_nbrr8")
 disabled = true
 
 [node name="PinkyFinger" type="AnimatedSprite2D" parent="HandAndThumb" unique_id=1273061598]
+visible = false
 position = Vector2(26.5, -2)
 sprite_frames = SubResource("SpriteFrames_rdyq1")
 animation = &"Close"
