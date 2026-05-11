@@ -56,6 +56,7 @@ func randomize_background() -> void:
 	bg.flip_h = ran_orientation;
 
 func _set_difficulty(dif) -> void:
+	boilerplate_set_difficulty(dif)
 	match dif:
 		"easy":
 			$Animal.sprite_frames = anims[0];

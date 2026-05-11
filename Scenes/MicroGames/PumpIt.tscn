@@ -1,6 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://dlfkwidbm687i"]
+[gd_scene format=3 uid="uid://dlfkwidbm687i"]
 
-[ext_resource type="Script" uid="uid://7acylujiw88d" path="res://Scenes/MicroGames/MicroGameScripts/pump_it.gd" id="1_rr2sd"]
+[ext_resource type="Script" uid="uid://7acylujiw88d" path="res://Scenes/MicroGames/MicroGameScriptsAndSubscenes/pump_it.gd" id="1_rr2sd"]
 [ext_resource type="AudioStream" uid="uid://chsledvoinutr" path="res://Scenes/MicroGames/Common/CommonAssets/Audio/DebugTrack.ogg" id="2_24aq0"]
 [ext_resource type="Texture2D" uid="uid://bucjr426s70d2" path="res://Assets/DEBUG/2D/Defaults/Square.png" id="2_stfri"]
 [ext_resource type="AudioStream" uid="uid://b2trr6eskl6u" path="res://Scenes/MicroGames/MicroGameAssets/PumpIt/Audio/pumpin.ogg" id="3_ealky"]
@@ -20,7 +20,7 @@ size = Vector2(16, 160)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gumn2"]
 size = Vector2(78, 66)
 
-[node name="PumpIt" type="Node2D"]
+[node name="PumpIt" type="Node2D" unique_id=649045633]
 texture_filter = 1
 script = ExtResource("1_rr2sd")
 _prompt = "Pump!"
@@ -38,7 +38,8 @@ _music_tracks = Array[AudioStream]([ExtResource("2_24aq0")])
 _sfx = Array[AudioStream]([ExtResource("3_ealky"), ExtResource("4_8de2l"), ExtResource("3_fcs6y")])
 metadata/_edit_lock_ = true
 
-[node name="PumpValue" type="Label" parent="."]
+[node name="PumpValue" type="Label" parent="." unique_id=873681720]
+visible = false
 offset_left = 23.0
 offset_top = 125.0
 offset_right = 122.0
@@ -48,7 +49,7 @@ text = "PumpValue
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DirectionText" type="Label" parent="."]
+[node name="DirectionText" type="Label" parent="." unique_id=1646293137]
 offset_left = 117.0
 offset_top = 81.0
 offset_right = 216.0
@@ -57,78 +58,78 @@ text = "Up!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Bounds" type="Node2D" parent="."]
+[node name="Bounds" type="Node2D" parent="." unique_id=171269018]
 metadata/_edit_lock_ = true
 
-[node name="TopBound" type="StaticBody2D" parent="Bounds"]
+[node name="TopBound" type="StaticBody2D" parent="Bounds" unique_id=853991487]
 position = Vector2(120, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="Bounds/TopBound"]
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/TopBound" unique_id=1296604488]
 texture_filter = 1
 scale = Vector2(3.75, 0.25)
 texture = ExtResource("2_stfri")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/TopBound"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/TopBound" unique_id=784733884]
 shape = SubResource("RectangleShape2D_avj4k")
 
-[node name="BottomBound" type="StaticBody2D" parent="Bounds"]
+[node name="BottomBound" type="StaticBody2D" parent="Bounds" unique_id=167863735]
 position = Vector2(120, 160)
 
-[node name="Sprite2D" type="Sprite2D" parent="Bounds/BottomBound"]
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/BottomBound" unique_id=1264793995]
 texture_filter = 1
 scale = Vector2(3.75, 0.25)
 texture = ExtResource("2_stfri")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BottomBound"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BottomBound" unique_id=54303786]
 shape = SubResource("RectangleShape2D_avj4k")
 
-[node name="LeftBound" type="StaticBody2D" parent="Bounds"]
+[node name="LeftBound" type="StaticBody2D" parent="Bounds" unique_id=229442867]
 position = Vector2(4, 80)
 
-[node name="Sprite2D" type="Sprite2D" parent="Bounds/LeftBound"]
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/LeftBound" unique_id=1405223203]
 texture_filter = 1
 position = Vector2(-2.98023e-08, 0)
 scale = Vector2(0.25, 2.5)
 texture = ExtResource("2_stfri")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/LeftBound"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/LeftBound" unique_id=1331254916]
 shape = SubResource("RectangleShape2D_mbgb8")
 
-[node name="RightBound" type="StaticBody2D" parent="Bounds"]
+[node name="RightBound" type="StaticBody2D" parent="Bounds" unique_id=472135777]
 position = Vector2(236, 80)
 
-[node name="Sprite2D" type="Sprite2D" parent="Bounds/RightBound"]
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/RightBound" unique_id=855748669]
 texture_filter = 1
 scale = Vector2(0.25, 2.5)
 texture = ExtResource("2_stfri")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightBound"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightBound" unique_id=2145969887]
 shape = SubResource("RectangleShape2D_mbgb8")
 
-[node name="PumpTop" type="Sprite2D" parent="."]
+[node name="PumpTop" type="Sprite2D" parent="." unique_id=168805588]
 position = Vector2(53, 96)
 texture = ExtResource("4_t3laj")
 
-[node name="PumpBase" type="Sprite2D" parent="."]
+[node name="PumpBase" type="Sprite2D" parent="." unique_id=154282730]
 position = Vector2(53, 96)
 texture = ExtResource("5_bhbee")
 
-[node name="BalloonOrigin" type="Node2D" parent="."]
+[node name="BalloonOrigin" type="Node2D" parent="." unique_id=1687875317]
 position = Vector2(75, 90)
 
-[node name="PumpBalloon" type="Sprite2D" parent="BalloonOrigin"]
+[node name="PumpBalloon" type="Sprite2D" parent="BalloonOrigin" unique_id=863331044]
 position = Vector2(0, -26)
 texture = ExtResource("6_ucnfb")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1049606570]
 visible = false
 texture_filter = 1
 position = Vector2(82, 75)
 texture = ExtResource("3_x81re")
 
-[node name="Area2D" type="Area2D" parent="Sprite2D"]
+[node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=1443684315]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=956978573]
 position = Vector2(-1, -12)
 shape = SubResource("RectangleShape2D_gumn2")
 

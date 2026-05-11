@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dy30skcparclc"]
 
-[ext_resource type="Script" uid="uid://8muoyhenjqvv" path="res://Scenes/MicroGames/MicroGameScripts/pet_the_pet.gd" id="1_tufc1"]
+[ext_resource type="Script" uid="uid://8muoyhenjqvv" path="res://Scenes/MicroGames/MicroGameScriptsAndSubscenes/pet_the_pet.gd" id="1_tufc1"]
 [ext_resource type="Texture2D" uid="uid://d2s2xdefqh2g8" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Backgrounds/GreenField.jpg" id="2_scoiw"]
 [ext_resource type="Texture2D" uid="uid://cv8dg0ebed4n0" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Backgrounds/House.jpg" id="3_k6d71"]
 [ext_resource type="Texture2D" uid="uid://cxx85q454jhdn" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Backgrounds/NiceMountain.jpg" id="4_qi80w"]
@@ -171,6 +171,7 @@ position = Vector2(136, 67)
 position = Vector2(95, 80)
 
 [node name="DEBUGLabel" type="Label" parent="." unique_id=1679458292]
+visible = false
 offset_left = 83.0
 offset_top = 8.0
 offset_right = 149.0

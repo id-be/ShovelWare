@@ -276,16 +276,16 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_frooh"]
-radius = 23.65
+radius = 46.82
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wgjj5"]
-radius = 23.65
+radius = 46.82
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ag1we"]
-radius = 23.65
+radius = 46.82
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2heg5"]
-radius = 23.65
+radius = 46.82
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ocukl"]
 radius = 44.13
@@ -294,7 +294,7 @@ radius = 44.13
 radius = 44.13
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xmfes"]
-size = Vector2(140, 70)
+size = Vector2(108, 70)
 
 [node name="MainGame" type="Node2D" unique_id=1770344533]
 process_mode = 3
@@ -312,10 +312,11 @@ metadata/_edit_lock_ = true
 
 [node name="ButtonsOn" type="Node2D" parent="DeanBoy/ActionButtonHints" unique_id=206602555]
 modulate = Color(0.388235, 0.956863, 0.756863, 1)
+z_index = 1
 metadata/_edit_lock_ = true
 
 [node name="Up" type="Sprite2D" parent="DeanBoy/ActionButtonHints/ButtonsOn" unique_id=750255931]
-position = Vector2(89, 346)
+position = Vector2(83.50004, 335.00034)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_x7xhr")
 metadata/_edit_lock_ = true
@@ -333,19 +334,19 @@ texture = ExtResource("4_x7xhr")
 metadata/_edit_lock_ = true
 
 [node name="Left" type="Sprite2D" parent="DeanBoy/ActionButtonHints/ButtonsOn" unique_id=202110247]
-position = Vector2(21.5, 395)
+position = Vector2(11.499959, 405.0004)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_x7xhr")
 metadata/_edit_lock_ = true
 
 [node name="Right" type="Sprite2D" parent="DeanBoy/ActionButtonHints/ButtonsOn" unique_id=1155692302]
-position = Vector2(134.5, 420)
+position = Vector2(155.5001, 407.00043)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_x7xhr")
 metadata/_edit_lock_ = true
 
 [node name="Down" type="Sprite2D" parent="DeanBoy/ActionButtonHints/ButtonsOn" unique_id=397710260]
-position = Vector2(64.5, 470)
+position = Vector2(83.50004, 479.00046)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_x7xhr")
 metadata/_edit_lock_ = true
@@ -364,10 +365,11 @@ metadata/_edit_lock_ = true
 
 [node name="ButtonsOff" type="Node2D" parent="DeanBoy/ActionButtonHints" unique_id=1198201727]
 modulate = Color(1, 0, 0, 1)
+z_index = 1
 metadata/_edit_lock_ = true
 
 [node name="Up" type="Sprite2D" parent="DeanBoy/ActionButtonHints/ButtonsOff" unique_id=2097479455]
-position = Vector2(94, 345)
+position = Vector2(88.50004, 334.00034)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("5_bf5pv")
 metadata/_edit_lock_ = true
@@ -385,19 +387,19 @@ texture = ExtResource("5_bf5pv")
 metadata/_edit_lock_ = true
 
 [node name="Left" type="Sprite2D" parent="DeanBoy/ActionButtonHints/ButtonsOff" unique_id=211025235]
-position = Vector2(26.5, 394)
+position = Vector2(16.499958, 404.0004)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("5_bf5pv")
 metadata/_edit_lock_ = true
 
 [node name="Right" type="Sprite2D" parent="DeanBoy/ActionButtonHints/ButtonsOff" unique_id=354370776]
-position = Vector2(139.5, 419)
+position = Vector2(160.5001, 406.00043)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("5_bf5pv")
 metadata/_edit_lock_ = true
 
 [node name="Down" type="Sprite2D" parent="DeanBoy/ActionButtonHints/ButtonsOff" unique_id=930176541]
-position = Vector2(69.5, 469)
+position = Vector2(88.50004, 478.00046)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("5_bf5pv")
 metadata/_edit_lock_ = true
@@ -432,7 +434,7 @@ position_smoothing_enabled = true
 position = Vector2(576, 232)
 scale = Vector2(3, 3)
 microgames_queue = Array[String](["res://Scenes/MicroGames/PetThePet.tscn"])
-boss_microgames_queue = Array[String](["res://Scenes/MicroGames/PetThePet.tscn"])
+boss_microgames_queue = Array[String](["res://Scenes/MicroGames/DeadRinger.tscn"])
 
 [node name="PauseScreenTint" type="ColorRect" parent="." unique_id=451637156]
 process_mode = 3
@@ -527,22 +529,23 @@ scale = Vector2(3, 3)
 texture = ExtResource("9_6rap8")
 
 [node name="Up" type="TouchScreenButton" parent="TouchButtons" unique_id=2003540546]
-position = Vector2(90, 346)
+position = Vector2(83, 334)
 shape = SubResource("CircleShape2D_frooh")
 action = "ui_up"
 
 [node name="Down" type="TouchScreenButton" parent="TouchButtons" unique_id=1246927443]
-position = Vector2(69, 473)
+position = Vector2(83, 478)
 shape = SubResource("CircleShape2D_wgjj5")
 action = "ui_down"
 
 [node name="Left" type="TouchScreenButton" parent="TouchButtons" unique_id=1840826830]
-position = Vector2(15, 397)
+position = Vector2(11, 405)
 shape = SubResource("CircleShape2D_ag1we")
+shape_centered = false
 action = "ui_left"
 
 [node name="Right" type="TouchScreenButton" parent="TouchButtons" unique_id=572094683]
-position = Vector2(142, 419)
+position = Vector2(155, 407)
 shape = SubResource("CircleShape2D_2heg5")
 action = "ui_right"
 
@@ -589,6 +592,14 @@ position = Vector2(178, 101.99998)
 rotation = 2.0029123
 scale = Vector2(3.9065413, 3.9673288)
 texture = ExtResource("13_r0wif")
+
+[node name="Label" type="Label" parent="TouchButtons/Hand" unique_id=1620248950]
+offset_left = -21.755936
+offset_top = -7.3297453
+offset_right = 16.244064
+offset_bottom = 12.670255
+rotation = -1.7515769
+text = "Tap!"
 
 [node name="DeanBoyLogoRect" type="ColorRect" parent="." unique_id=239021217]
 offset_left = 351.0

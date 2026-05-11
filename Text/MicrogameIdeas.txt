@@ -4,7 +4,7 @@ please number ideas and add an X once they are implemented.
 pet the animal (cat, cat with claws up don't pet), 
 (dog, dog with mouth open growling don't pet), scorpion (stings you), crocodile
 
-2) pop!
+2) pop! X
 pop the balloons (a kid holding balloons [cries], a clown holding balloons 
 [takes out butcher knife], a set of air balloons [people fall out of sky]), 
 balloons float around a little bit and sometimes wind blows and makes them go to
@@ -21,31 +21,31 @@ could also make this one a boss microgame
 4) hatch!
 (tap eggs until they crack, little animals inside... multiple eggs for harder difficulties)
 
-5) dip! -- floppy sword
+5) dip!
 dip a chip in salsa when the hand is going back and forth
 difficulty scaling would be speed of motion and the size of the salsa dish
 convolutions: different chips, different hands, different motion patterns, different salsas
 
-6) shave! -- floppy sword
+6) shave!
 use a razor to shave a man's beard/mustache/armpits (think like wooly willy)
 
-7) combo!
+7) combo! X
 put in a series of inputs to do the correct attack combo
 --make this a simple version, upgrade for a boss version as well
 
-8) pump! -- larry
+8) pump! -- larry X
 go up and down to pump up an inflatable thing
 
 9) worship!/pray!
 move up and down to bend and pray to an idol or something
 
-10) lift! -- floppy sword
+10) lift!
 move up and down to lift a weight
 
-11) marry!
+11) marry! X
 a ring moves side to side, put it on the correct finger
 
-12) chop! --connor idea --floppy sword
+12) chop! --connor idea
 chop vegetables but don't chop your hand off! a comically long carrot
 
 13) pacify!
@@ -53,7 +53,7 @@ put a pacifier in a baby's mouth that's crying (hand going up and
 down, if you miss the baby cries even harder and zooms towards the 
 screen)
 
-14) get caught(?)! -- floppy sword
+14) get caught(?)!
 you're a fly, fly into a bug zapper or a spiderweb or a venus flytrap
 
 15) count!

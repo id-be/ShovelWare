@@ -4,7 +4,7 @@ extends Node2D
 #we can replace the debugrects with some sort of nice border
 #fix the queueing so that you only have things in queue play, not default to random shuffle once the queue is depleted
 
-
+#for some reason after a boss, random_shuffle breaks unless the queue has a valid 
 var game_state = "loss"
 
 @onready var mcg_timer = $Timer
@@ -76,7 +76,7 @@ func _ready():
 	mcg_timer.connect("timeout", Callable(self, "on_increment_timer"))
 	
 	toggle_prompts()
-#	screen_fx_toggle()
+	screen_fx_toggle()
 #	pick_microgame()
 #	pick_microgame(true)
 
@@ -100,24 +100,24 @@ func screen_fx_toggle():
 	match screen_fx.scale:
 		Vector2(1,1):
 			tween.tween_property(screen_fx, "scale", Vector2(0.8, 0.1), 0.1)
-			tween.tween_property(screen_fx, "scale", Vector2(0.00001, 0.00001), 0.1)
+			tween.tween_property(screen_fx, "scale", Vector2(0, 0), 0.1)
 			Globals.set_and_play_sfx(Globals.stings[6])
 #			screen_fx.size = Vector2(0,0)
-		Vector2(0.00001, 0.00001):#apparently, scaling to 0 led to a ton of issues in 
-			#engine so the best you can scale down to is an epsilon.
+		Vector2(0, 0):#apparently, scaling to 0 led to a ton of issues in 
+			#engine so the best you can scale down to is an epsilon. #NO LONGER TRUE
 			
 			tween.tween_property(screen_fx, "scale", Vector2(0.8, 0.1), 0.1)
 
 			#await tween.finished; tween.stop()
 			tween.tween_property(screen_fx, "scale", Vector2(1,1), 0.1)
 
-			screen_fx.size = Vector2(240,160)
+			screen_fx.size = Vector2(216,144)
 			Globals.set_and_play_sfx(Globals.stings[5])
 			
 	await tween.finished; mcg_timer.start(1.0); await mcg_timer.timeout
-#	toggle_tv_shader()
+	toggle_tv_shader()
 	screen_fx.hide()
-	emit_signal("screen_fx_toggled")
+	#emit_signal("screen_fx_toggled")
 	#match screen_fx.scale:
 		#Vector2(240,160):
 			#tween.tween_property(screen_fx, "size", Vector2(192, 16), 0.1)
@@ -126,6 +126,7 @@ func screen_fx_toggle():
 			#tween.tween_property(screen_fx, "size", Vector2(0.8, 0.1), 0.1)
 			#tween.tween_property(screen_fx, "size", Vector2(1,1), 0.1)
 	#print(screen_fx.size)
+	return;
 	
 func toggle_prompts():
 	prompt_label.visible = !prompt_label.visible
@@ -181,6 +182,7 @@ func pick_microgame(is_boss = false):
 				else:
 					if prev_microgames_count != microgames_count:
 						mcg_index_in_queue +=1
+	print(my_game_path)
 	load_microgame(my_game_path.trim_suffix(".remap"))#need this because of the stupid fucking exporter adding ".remap" to the ends of files for no discernible reason and the files then being unloadable
 
 func load_microgame(mcg):

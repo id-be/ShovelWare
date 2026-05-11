@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://kgoxj0cr5lva"]
+
+[ext_resource type="Script" uid="uid://brqvxdl7652dc" path="res://Scenes/MicroGames/MicroGameScriptsAndSubscenes/dip_the_chip.gd" id="1_n0e21"]
+
+[node name="DipTheChip" type="Node2D" unique_id=1400565221]
+script = ExtResource("1_n0e21")

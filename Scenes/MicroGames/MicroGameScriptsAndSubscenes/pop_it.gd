@@ -212,6 +212,7 @@ class string_balloon extends balloon:
 	pass
 
 func _set_difficulty(dif):
+	boilerplate_set_difficulty(dif)
 	match dif:
 		"easy":
 			num_balloons = 3

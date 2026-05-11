@@ -37,6 +37,7 @@ func _ready():
 
 
 func _set_difficulty(dif):
+	boilerplate_set_difficulty(dif)
 	match dif:
 		"easy":
 			num_actions = 2

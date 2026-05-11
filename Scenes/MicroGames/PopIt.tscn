@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dvyfsxkfu508j"]
 
-[ext_resource type="Script" uid="uid://dr404ntoxjj88" path="res://Scenes/MicroGames/MicroGameScripts/pop_it.gd" id="1_hd6qi"]
+[ext_resource type="Script" uid="uid://dr404ntoxjj88" path="res://Scenes/MicroGames/MicroGameScriptsAndSubscenes/pop_it.gd" id="1_hd6qi"]
 [ext_resource type="Texture2D" uid="uid://bucjr426s70d2" path="res://Assets/DEBUG/2D/Defaults/Square.png" id="2_fv0p8"]
 [ext_resource type="AudioStream" uid="uid://by2yqkkurbp4t" path="res://Scenes/MicroGames/MicroGameAssets/PopIt/Audio/freesound_community-soft-etheral-background-music-32574.mp3" id="2_k1cde"]
 [ext_resource type="Texture2D" uid="uid://tvcc8pyuc04" path="res://Scenes/MicroGames/MicroGameAssets/PopIt/2D/Sky.png" id="5_ul35b"]

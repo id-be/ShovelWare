@@ -33,19 +33,17 @@ func _ready() -> void:
 
 func check_os() -> String:
 	var os_name
-	match OS.get_name():
-		"Windows":
-			os_name = "Windows";
-		"macOS":
-			os_name = "macOS";
-		"Linux", "FreeBSD", "NetBSD", "OpenBSD", "BSD":
-			os_name = "Linux/BSD"
-		"Android":
-			os_name = "Android";
-		"iOS":
-			os_name = "iOS";
-		"Web":
-			os_name = "Web";
+	
+	#change this to OS.has_feature(feature) so you have more control
+	if OS.has_feature("pc"):
+		os_name="pc"
+	elif OS.has_feature("mobile"):
+		os_name="mobile"
+	elif OS.has_feature("web"):
+		if OS.has_feature("web_android") or OS.has_feature("web_ios"):
+			os_name="mobile"
+		else:
+			os_name="pc"
 	return os_name;
 
 #func _create_microgames_input_array():

@@ -28,6 +28,7 @@ func _ready():
 	#print(game_inputs)
 #	print(InputMap.get_actions())
 func _set_difficulty(dif):
+	boilerplate_set_difficulty(dif)
 	match dif:
 		"easy":
 			combo_length=3

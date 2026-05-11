@@ -38,6 +38,7 @@ func _ready():
 	#pointer.get_node("PointerParticles2D").emitting = true
 	
 func _set_difficulty(dif):
+	boilerplate_set_difficulty(dif)
 	$Loadouts.play(dif)
 	
 func _start():
@@ -65,7 +66,7 @@ func increase_score(anim):
 	
 func _physics_process(_delta):
 	#Constantly update laser position
-	laser.global_position = get_global_mouse_position()
+	laser.global_position = get_viewport().get_mouse_position()
 	pointer.look_at(laser.global_position)
 	get_node("PointerLine2D").points[0] = get_node("Pointer/PointerParticles2D").global_position
 	get_node("PointerLine2D").points[1] = laser.global_position

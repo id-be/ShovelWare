@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://1p5q3jc517pa"]
 
-[ext_resource type="Script" uid="uid://cunoopedisdnx" path="res://Scenes/MicroGames/MicroGameScripts/combo_king.gd" id="1_v3bi1"]
+[ext_resource type="Script" uid="uid://cunoopedisdnx" path="res://Scenes/MicroGames/MicroGameScriptsAndSubscenes/combo_king.gd" id="1_v3bi1"]
 [ext_resource type="Texture2D" uid="uid://cdijkfgg1mg7c" path="res://Scenes/MicroGames/MicroGameAssets/ComboKing/HinduTemple.png" id="2_xgjwq"]
 [ext_resource type="FontFile" uid="uid://d34ql3sx3d5kh" path="res://Assets/2D/Fonts/PromptFont/promptfont.ttf" id="3_bouyl"]
 [ext_resource type="Texture2D" uid="uid://crrs7p344wki0" path="res://Scenes/MicroGames/MicroGameAssets/ComboKing/Pyramids.png" id="3_m4y2r"]

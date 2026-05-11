@@ -23,19 +23,18 @@ var score = 0
 
 
 func _ready():
-	#boilerplate_ready()
-	
-	pass
+	boilerplate_ready()
 	
 func _set_difficulty(dif):
-	loadouts.play(dif)
+	boilerplate_set_difficulty(dif)
+	$Loadouts.play(dif)
 	
 func _start():
 	boilerplate_start()
 	
 
 	#castle.get_node("AnimationPlayer").animation_started.connect(Callable(self,"increase_score"))
-	castle.get_node("AnimationPlayer").play("normal")
+	$Castle.get_node("CastleAnimationPlayer").play("normal")
 	$Path/DragonFollowPath/Dragon/AttackArea/CollisionShape2D.disabled = true
 	
 func increase_score():
@@ -85,7 +84,7 @@ func _on_generate_path_timer_timeout():
 
 func _on_generate_point_timer_timeout():
 	if timer_gen_path.time_left > 0:
-		var nextpos = get_global_mouse_position()
+		var nextpos =get_viewport().get_mouse_position()
 		$Path.curve.add_point(nextpos)
 		cursor_path.set_progress_ratio(100)
 		timer_gen_point.start()

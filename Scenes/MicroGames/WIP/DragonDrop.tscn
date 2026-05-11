@@ -1,6 +1,6 @@
-[gd_scene load_steps=59 format=4 uid="uid://dsbmtybm5n1f6"]
+[gd_scene format=4 uid="uid://dsbmtybm5n1f6"]
 
-[ext_resource type="Script" uid="uid://bfqu4dhtfx3uu" path="res://Scenes/MicroGames/MicroGameScripts/dragon_drop.gd" id="1_e7pk4"]
+[ext_resource type="Script" uid="uid://bfqu4dhtfx3uu" path="res://Scenes/MicroGames/MicroGameScriptsAndSubscenes/dragon_drop.gd" id="1_e7pk4"]
 [ext_resource type="PackedScene" uid="uid://0heqek8cf68e" path="res://Scenes/MicroGames/BaseClass/BaseBounds.tscn" id="2_xllr7"]
 [ext_resource type="PackedScene" uid="uid://d4le6aoqnmq47" path="res://Scenes/MicroGames/MicroGameAssets/DragonDrop/Ballista/Ballista.tscn" id="3_1yyib"]
 [ext_resource type="Texture2D" uid="uid://dhrs5ryr1qf4w" path="res://Scenes/MicroGames/MicroGameAssets/DragonDrop/GRASS+.png" id="3_62ndo"]
@@ -33,6 +33,9 @@ sampling_rate = 44100.0
 
 [sub_resource type="AudioStreamOggVorbis" id="AudioStreamOggVorbis_3olvy"]
 packet_sequence = SubResource("OggPacketSequence_84e5p")
+tags = {
+"encoder": "REAPER"
+}
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pdw3m"]
 texture = ExtResource("3_62ndo")
@@ -887,45 +890,46 @@ _data = {
 &"medium": SubResource("Animation_syu0f")
 }
 
-[node name="DragonDrop" type="Node2D"]
+[node name="DragonDrop" type="Node2D" unique_id=697502659]
 script = ExtResource("1_e7pk4")
 _music_tracks = Array[AudioStream]([SubResource("AudioStreamOggVorbis_3olvy")])
 
-[node name="DebugCamera2DDisable" type="Camera2D" parent="."]
+[node name="DebugCamera2DDisable" type="Camera2D" parent="." unique_id=631711496]
+visible = false
 position = Vector2(100, 76)
 zoom = Vector2(3, 3)
 
-[node name="Bounds" parent="." instance=ExtResource("2_xllr7")]
+[node name="Bounds" parent="." unique_id=1599441981 instance=ExtResource("2_xllr7")]
 
-[node name="Grass" type="TileMap" parent="."]
+[node name="Grass" type="TileMap" parent="." unique_id=144117297]
 tile_set = SubResource("TileSet_a45w2")
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 524289, 2, 1, 524289, 2, 2, 524289, 2, 3, 524289, 2, 4, 524289, 2, 5, 524289, 2, 6, 524289, 2, 7, 524289, 2, 8, 524289, 2, 9, 524289, 2, 10, 524289, 2, 11, 524289, 2, 12, 524289, 2, 13, 524289, 2, 14, 524289, 2, 65550, 524289, 2, 131086, 524289, 2, 196622, 524289, 2, 262158, 524289, 2, 327694, 524289, 2, 393230, 524289, 2, 458766, 524289, 2, 524302, 524289, 2, 589838, 524289, 2, 589837, 524289, 2, 589836, 524289, 2, 589835, 524289, 2, 589834, 524289, 2, 589833, 524289, 2, 589832, 524289, 2, 589831, 524289, 2, 589830, 524289, 2, 589829, 524289, 2, 589828, 524289, 2, 589827, 524289, 2, 589826, 524289, 2, 589825, 524289, 2, 589824, 524289, 2, 524288, 524289, 2, 458752, 524289, 2, 393216, 524289, 2, 327680, 524289, 2, 262144, 524289, 2, 196608, 524289, 2, 131072, 524289, 2, 65536, 524289, 2, 327687, 524289, 2, 262151, 524289, 2, 196615, 524289, 2, 131079, 524289, 2, 65543, 524289, 2, 65542, 524289, 2, 65541, 524289, 2, 65540, 524289, 2, 65539, 524289, 2, 65538, 524289, 2, 65537, 524289, 2, 131073, 524289, 2, 196609, 524289, 2, 262145, 524289, 2, 327681, 524289, 2, 393217, 524289, 2, 458753, 524289, 2, 524289, 524289, 2, 524290, 524289, 2, 458754, 524289, 2, 393218, 524289, 2, 327682, 524289, 2, 262146, 524289, 2, 196610, 524289, 2, 131074, 524289, 2, 131075, 524289, 2, 196611, 524289, 2, 262147, 524289, 2, 327683, 524289, 2, 393219, 524289, 2, 458755, 524289, 2, 524291, 524289, 2, 524292, 524289, 2, 458756, 524289, 2, 393220, 524289, 2, 327684, 524289, 2, 262148, 524289, 2, 196612, 524289, 2, 131076, 524289, 2, 131077, 524289, 2, 196613, 524289, 2, 262149, 524289, 2, 327685, 524289, 2, 393221, 524289, 2, 458757, 524289, 2, 524293, 524289, 2, 524294, 524289, 2, 458758, 524289, 2, 393222, 524289, 2, 327686, 524289, 2, 262150, 524289, 2, 196614, 524289, 2, 131078, 524289, 2, 393223, 524289, 2, 458759, 524289, 2, 524295, 524289, 2, 524296, 524289, 2, 458760, 524289, 2, 393224, 524289, 2, 327688, 524289, 2, 262152, 524289, 2, 196616, 524289, 2, 131080, 524289, 2, 65544, 524289, 2, 65545, 524289, 2, 131081, 524289, 2, 196617, 524289, 2, 262153, 524289, 2, 327689, 524289, 2, 393225, 524289, 2, 458761, 524289, 2, 524297, 524289, 2, 524298, 524289, 2, 458762, 524289, 2, 393226, 524289, 2, 327690, 524289, 2, 262154, 524289, 2, 196618, 524289, 2, 131082, 524289, 2, 65546, 524289, 2, 65547, 524289, 2, 131083, 524289, 2, 196619, 524289, 2, 262155, 524289, 2, 327691, 524289, 2, 393227, 524289, 2, 458763, 524289, 2, 524299, 524289, 2, 524300, 524289, 2, 458764, 524289, 2, 393228, 524289, 2, 327692, 524289, 2, 262156, 524289, 2, 196620, 524289, 2, 131084, 524289, 2, 65548, 524289, 2, 65549, 524289, 2, 131085, 524289, 2, 196621, 524289, 2, 262157, 524289, 2, 327693, 524289, 2, 393229, 524289, 2, 458765, 524289, 2, 524301, 524289, 2)
 
-[node name="Castle" type="Node2D" parent="."]
+[node name="Castle" type="Node2D" parent="." unique_id=189142001]
 position = Vector2(202, 103)
 metadata/_edit_group_ = true
 
-[node name="Smoke" type="Sprite2D" parent="Castle"]
+[node name="Smoke" type="Sprite2D" parent="Castle" unique_id=788361030]
 visible = false
 position = Vector2(1, -35)
 texture = ExtResource("4_pyhsp")
 hframes = 4
 vframes = 5
 
-[node name="Sprite2D" type="Sprite2D" parent="Castle"]
+[node name="Sprite2D" type="Sprite2D" parent="Castle" unique_id=763141626]
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_dtswp")
 metadata/_edit_lock_ = true
 
-[node name="Pole" type="Sprite2D" parent="Castle"]
+[node name="Pole" type="Sprite2D" parent="Castle" unique_id=1803640410]
 self_modulate = Color(0, 0, 0, 1)
 position = Vector2(0, -5)
 scale = Vector2(0.0156252, 0.115625)
 texture = ExtResource("4_3vb33")
 metadata/_edit_lock_ = true
 
-[node name="Flag" type="AnimatedSprite2D" parent="Castle"]
+[node name="Flag" type="AnimatedSprite2D" parent="Castle" unique_id=1080783401]
 position = Vector2(3, -8)
 scale = Vector2(0.333334, 0.4)
 sprite_frames = SubResource("SpriteFrames_sjtwh")
@@ -933,7 +937,7 @@ frame_progress = 0.541939
 speed_scale = 2.0
 metadata/_edit_lock_ = true
 
-[node name="FireCenter" type="Sprite2D" parent="Castle"]
+[node name="FireCenter" type="Sprite2D" parent="Castle" unique_id=937209770]
 visible = false
 position = Vector2(0, -14)
 scale = Vector2(0.4, 0.4)
@@ -941,64 +945,62 @@ texture = ExtResource("8_72w4l")
 hframes = 4
 vframes = 5
 
-[node name="FireLeft" type="Sprite2D" parent="Castle/FireCenter"]
+[node name="FireLeft" type="Sprite2D" parent="Castle/FireCenter" unique_id=1838967938]
 position = Vector2(-20, -2.5)
 scale = Vector2(0.625, 0.625)
 texture = ExtResource("8_72w4l")
 hframes = 4
 vframes = 5
 
-[node name="FireRight" type="Sprite2D" parent="Castle/FireCenter"]
+[node name="FireRight" type="Sprite2D" parent="Castle/FireCenter" unique_id=351517736]
 position = Vector2(17.5, -2.5)
 scale = Vector2(0.625, 0.625)
 texture = ExtResource("8_72w4l")
 hframes = 4
 vframes = 5
 
-[node name="CastleArea2D" type="Area2D" parent="Castle"]
+[node name="CastleArea2D" type="Area2D" parent="Castle" unique_id=819156018]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Castle/CastleArea2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Castle/CastleArea2D" unique_id=963175110]
 shape = SubResource("RectangleShape2D_11rbu")
 
-[node name="CastleAnimationPlayer" type="AnimationPlayer" parent="Castle"]
-libraries = {
-"": SubResource("AnimationLibrary_iarne")
-}
-autoplay = "Normal"
+[node name="CastleAnimationPlayer" type="AnimationPlayer" parent="Castle" unique_id=1729652149]
+libraries/ = SubResource("AnimationLibrary_iarne")
+autoplay = &"Normal"
 
-[node name="Ballista1" parent="." instance=ExtResource("3_1yyib")]
-position = Vector2(69, 58)
+[node name="Ballista1" parent="." unique_id=1560803023 instance=ExtResource("3_1yyib")]
+position = Vector2(122, 58)
 
-[node name="Ballista2" parent="." instance=ExtResource("3_1yyib")]
-position = Vector2(154, 102)
+[node name="Ballista2" parent="." unique_id=413442277 instance=ExtResource("3_1yyib")]
+position = Vector2(-43, 108)
 scale = Vector2(0.15, -0.15)
 
-[node name="Ballista3" parent="." instance=ExtResource("3_1yyib")]
+[node name="Ballista3" parent="." unique_id=542208999 instance=ExtResource("3_1yyib")]
 position = Vector2(-79, 108)
 
-[node name="DragArea" type="Area2D" parent="."]
+[node name="DragArea" type="Area2D" parent="." unique_id=415502722]
 position = Vector2(33, 102)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DragArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DragArea" unique_id=521355257]
 
-[node name="Path" type="Path2D" parent="."]
+[node name="Path" type="Path2D" parent="." unique_id=2080056838]
 curve = SubResource("Curve2D_5l57j")
 
-[node name="DragonFollowPath" type="PathFollow2D" parent="Path"]
+[node name="DragonFollowPath" type="PathFollow2D" parent="Path" unique_id=1304860429]
 position = Vector2(33, 102)
 loop = false
 
-[node name="Dragon" type="Node2D" parent="Path/DragonFollowPath"]
+[node name="Dragon" type="Node2D" parent="Path/DragonFollowPath" unique_id=1283405596]
 metadata/_edit_group_ = true
 
-[node name="Breath" type="AnimatedSprite2D" parent="Path/DragonFollowPath/Dragon"]
+[node name="Breath" type="AnimatedSprite2D" parent="Path/DragonFollowPath/Dragon" unique_id=1552862360]
 position = Vector2(44, 0)
 rotation = 1.57079
 sprite_frames = SubResource("SpriteFrames_fb075")
 frame = 14
 frame_progress = 1.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Path/DragonFollowPath/Dragon"]
+[node name="Sprite2D" type="Sprite2D" parent="Path/DragonFollowPath/Dragon" unique_id=45415096]
 position = Vector2(-6, 0)
 rotation = 1.5708
 scale = Vector2(0.3, 0.3)
@@ -1006,31 +1008,29 @@ texture = ExtResource("3_k7fs1")
 hframes = 3
 frame = 2
 
-[node name="DetectArea" type="Area2D" parent="Path/DragonFollowPath/Dragon"]
+[node name="DetectArea" type="Area2D" parent="Path/DragonFollowPath/Dragon" unique_id=927134497]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path/DragonFollowPath/Dragon/DetectArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path/DragonFollowPath/Dragon/DetectArea" unique_id=173110630]
 shape = SubResource("CircleShape2D_lqbi2")
 metadata/_edit_lock_ = true
 
-[node name="AttackArea" type="Area2D" parent="Path/DragonFollowPath/Dragon"]
+[node name="AttackArea" type="Area2D" parent="Path/DragonFollowPath/Dragon" unique_id=1200912921]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path/DragonFollowPath/Dragon/AttackArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path/DragonFollowPath/Dragon/AttackArea" unique_id=541282473]
 position = Vector2(23, 0)
 shape = SubResource("RectangleShape2D_o2ebg")
 disabled = true
 
-[node name="DragonAnimationPlayer" type="AnimationPlayer" parent="Path/DragonFollowPath/Dragon"]
-libraries = {
-"": SubResource("AnimationLibrary_0i1fn")
-}
-autoplay = "fly"
+[node name="DragonAnimationPlayer" type="AnimationPlayer" parent="Path/DragonFollowPath/Dragon" unique_id=1534044029]
+libraries/ = SubResource("AnimationLibrary_0i1fn")
+autoplay = &"fly"
 
-[node name="CursorFollowPath" type="PathFollow2D" parent="Path"]
+[node name="CursorFollowPath" type="PathFollow2D" parent="Path" unique_id=938941707]
 visible = false
 position = Vector2(33, 102)
 loop = false
 
-[node name="DragonCursor" type="Sprite2D" parent="Path/CursorFollowPath"]
+[node name="DragonCursor" type="Sprite2D" parent="Path/CursorFollowPath" unique_id=1446797636]
 self_modulate = Color(1, 1, 1, 0.501961)
 position = Vector2(-6, 0)
 rotation = 1.5708
@@ -1039,19 +1039,17 @@ texture = ExtResource("3_k7fs1")
 hframes = 3
 frame = 2
 
-[node name="GeneratePathTimer" type="Timer" parent="."]
+[node name="GeneratePathTimer" type="Timer" parent="." unique_id=2095843022]
 wait_time = 2.0
 one_shot = true
 
-[node name="GeneratePointTimer" type="Timer" parent="GeneratePathTimer"]
+[node name="GeneratePointTimer" type="Timer" parent="GeneratePathTimer" unique_id=607242455]
 wait_time = 0.2
 
-[node name="Loadouts" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_bekgj")
-}
+[node name="Loadouts" type="AnimationPlayer" parent="." unique_id=1663112951]
+libraries/ = SubResource("AnimationLibrary_bekgj")
 
-[node name="DragonSound" type="AudioStreamPlayer" parent="."]
+[node name="DragonSound" type="AudioStreamPlayer" parent="." unique_id=1536395398]
 stream = ExtResource("11_bndaf")
 
 [connection signal="animation_finished" from="Path/DragonFollowPath/Dragon/Breath" to="." method="_on_breath_animation_finished"]

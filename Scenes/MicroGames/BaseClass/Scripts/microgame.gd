@@ -3,7 +3,7 @@ extends Node
 #the base window size is 240x160, there are 12 pixels missing
 #from left and right as well as 8 from top and bottom--this
 #leaves the usable, unbordered area as 216 x 144.
-#this is a 216:144 = 1.5 = 3:2 aspect ratio
+#this is a 216:144 = 1.5 = 3:2 aspect ratio.
 
 class_name microgame
 
@@ -67,7 +67,11 @@ func _set_boss(boss):
 func boilerplate_set_boss(boss):
 	is_boss = boss
 
+func boilerplate_set_difficulty(dif):
+	difficulty = dif
+
 func _set_difficulty(dif):
+	boilerplate_set_difficulty(dif)
 	match dif:
 		"easy":
 			pass

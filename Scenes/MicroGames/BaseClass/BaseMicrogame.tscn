@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://6x6el2de0mt3"]
 
 [ext_resource type="Script" uid="uid://d12kf1vtmjlpb" path="res://Scenes/MicroGames/BaseClass/Scripts/microgame.gd" id="1_m4jyf"]
+[ext_resource type="AudioStream" uid="uid://chsledvoinutr" path="res://Scenes/MicroGames/Common/CommonAssets/Audio/DebugTrack.ogg" id="2_rkkcm"]
 
 [node name="Node" type="Node" unique_id=682949229]
 script = ExtResource("1_m4jyf")
+_music_tracks = Array[AudioStream]([ExtResource("2_rkkcm")])

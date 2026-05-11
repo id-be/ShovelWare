@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://cjau652iam6s6"]
+
+[ext_resource type="Texture2D" uid="uid://c804tqgc5m81m" path="res://Scenes/MicroGames/MicroGameAssets/DeadRinger/Ring.png" id="1_av7yl"]
+[ext_resource type="Script" uid="uid://bdlt80o5x8q87" path="res://Scenes/MicroGames/MicroGameScriptsAndSubscenes/DeadRinger/dead_ringer_ring.gd" id="2_nf3e2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0iex"]
+atlas = ExtResource("1_av7yl")
+region = Rect2(0, 0, 11, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6anyu"]
+atlas = ExtResource("1_av7yl")
+region = Rect2(11, 0, 11, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpooc"]
+atlas = ExtResource("1_av7yl")
+region = Rect2(22, 0, 11, 5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1dbx1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0iex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6anyu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpooc")
+}],
+"loop": true,
+"name": &"Jiggle",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nf3e2"]
+resource_local_to_scene = true
+radius = 2.0
+height = 4.0
+
+[node name="Ring" type="CharacterBody2D" unique_id=726695317]
+slide_on_ceiling = false
+script = ExtResource("2_nf3e2")
+
+[node name="RingSprite" type="AnimatedSprite2D" parent="." unique_id=654559607]
+modulate = Color(1, 0.8, 0.33333334, 1)
+sprite_frames = SubResource("SpriteFrames_1dbx1")
+animation = &"Jiggle"
+
+[node name="MainBody" type="CollisionShape2D" parent="." unique_id=1434012253]
+position = Vector2(0, 0.5)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_nf3e2")

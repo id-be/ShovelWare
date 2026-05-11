@@ -34,10 +34,10 @@ var tween;
 #things to change: we need the pause menu to go back to the main menu, the help button to do something, the quit button to quit or possibly be moved to the main menu..
 
 func _ready() -> void:
-	if Globals.check_os() == "iOS" or Globals.check_os() == "Android":
+	if Globals.check_os() == "mobile":
 		zoom_out_multiplier = 0.95;
 		zoom_in_multiplier = zoom_out_multiplier;
-#	print(Globals.check_os())
+#	-(Globals.check_os())
 	#$Camera2D.zoom = Vector2(1.35, 1.35)
 	#$Camera2D.position = $MicroGamesHandler.position
 	#zoom_in()
@@ -135,6 +135,8 @@ func get_input_flags(input_flags) -> void:
 	for flag in input_flags:
 		match input_flags[flag]:
 			true:
+				if flag=="mouse_touch":
+					$TouchButtons/Hand.show()
 				on_buttons_root_node.find_child(flag_button_names[flag]).show();
 			false:
 #				off_buttons_root_node.find_child(flag_button_names[flag]).show()
@@ -144,6 +146,7 @@ func hide_hint_buttons() -> void:
 		hint_off.hide();
 	for hint_on in $DeanBoy/ActionButtonHints/ButtonsOn.get_children():
 		hint_on.hide();
+	$TouchButtons/Hand.hide()
 
 func toggle_tutorial_mode() -> void:
 	tutorial_mode = !tutorial_mode;
