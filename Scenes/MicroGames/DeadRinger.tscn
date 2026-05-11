@@ -1,30 +1,30 @@
 [gd_scene format=3 uid="uid://lt2saaidu2vu"]
 
-[ext_resource type="Script" uid="uid://c6vlytm174k15" path="res://Scenes/MicroGames/MicroGameScriptsAndSubscenes/DeadRinger/dead_ringer.gd" id="1_evy3r"]
-[ext_resource type="Texture2D" uid="uid://g0k0j7ts6k77" path="res://Scenes/MicroGames/MicroGameAssets/DeadRinger/BaseHand.png" id="2_2oi8m"]
-[ext_resource type="AudioStream" uid="uid://chsledvoinutr" path="res://Scenes/MicroGames/Common/CommonAssets/Audio/DebugTrack.ogg" id="2_qjmjp"]
-[ext_resource type="Texture2D" uid="uid://cjcy6mmhrw6g6" path="res://Scenes/MicroGames/MicroGameAssets/DeadRinger/IndexFinger.png" id="4_trgii"]
-[ext_resource type="Texture2D" uid="uid://m7d333fg6f63" path="res://Scenes/MicroGames/MicroGameAssets/DeadRinger/MiddleFinger.png" id="5_b041u"]
-[ext_resource type="Texture2D" uid="uid://dsamequxt1s3o" path="res://Scenes/MicroGames/MicroGameAssets/DeadRinger/RingFinger.png" id="6_1tfn6"]
-[ext_resource type="Texture2D" uid="uid://rfl5c0avgsd1" path="res://Scenes/MicroGames/MicroGameAssets/DeadRinger/PinkyFinger.png" id="7_cdsyj"]
-[ext_resource type="Texture2D" uid="uid://bucjr426s70d2" path="res://Assets/DEBUG/2D/Defaults/Square.png" id="8_b041u"]
-[ext_resource type="PackedScene" uid="uid://cjau652iam6s6" path="res://Scenes/MicroGames/MicroGameScriptsAndSubscenes/DeadRinger/DeadRingerRing.tscn" id="9_1tfn6"]
-[ext_resource type="Script" uid="uid://duufjgs5xmgdo" path="res://Scenes/MicroGames/MicroGameScriptsAndSubscenes/DeadRinger/ring_handler.gd" id="9_cdsyj"]
+[ext_resource type="Script" uid="uid://c6vlytm174k15" path="res://Scenes/MicroGames/MicroGameScriptsAndSubscenes/DeadRinger/dead_ringer.gd" id="1_wmp20"]
+[ext_resource type="AudioStream" uid="uid://chsledvoinutr" path="res://Scenes/MicroGames/Common/CommonAssets/Audio/DebugTrack.ogg" id="2_kmcvk"]
+[ext_resource type="Texture2D" uid="uid://g0k0j7ts6k77" path="res://Scenes/MicroGames/MicroGameAssets/DeadRinger/BaseHand.png" id="3_elde4"]
+[ext_resource type="Texture2D" uid="uid://cjcy6mmhrw6g6" path="res://Scenes/MicroGames/MicroGameAssets/DeadRinger/IndexFinger.png" id="4_vpmi0"]
+[ext_resource type="Texture2D" uid="uid://m7d333fg6f63" path="res://Scenes/MicroGames/MicroGameAssets/DeadRinger/MiddleFinger.png" id="5_5woat"]
+[ext_resource type="Texture2D" uid="uid://dsamequxt1s3o" path="res://Scenes/MicroGames/MicroGameAssets/DeadRinger/RingFinger.png" id="6_oqrws"]
+[ext_resource type="Texture2D" uid="uid://rfl5c0avgsd1" path="res://Scenes/MicroGames/MicroGameAssets/DeadRinger/PinkyFinger.png" id="7_kvtju"]
+[ext_resource type="Texture2D" uid="uid://bucjr426s70d2" path="res://Assets/DEBUG/2D/Defaults/Square.png" id="8_iod14"]
+[ext_resource type="Script" uid="uid://duufjgs5xmgdo" path="res://Scenes/MicroGames/MicroGameScriptsAndSubscenes/DeadRinger/ring_handler.gd" id="9_q27s0"]
+[ext_resource type="PackedScene" uid="uid://cjau652iam6s6" path="res://Scenes/MicroGames/MicroGameScriptsAndSubscenes/DeadRinger/DeadRingerRing.tscn" id="10_mhpm4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iusgo"]
-atlas = ExtResource("2_2oi8m")
+atlas = ExtResource("3_elde4")
 region = Rect2(0, 0, 65, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_trgii"]
-atlas = ExtResource("2_2oi8m")
+atlas = ExtResource("3_elde4")
 region = Rect2(65, 0, 65, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b041u"]
-atlas = ExtResource("2_2oi8m")
+atlas = ExtResource("3_elde4")
 region = Rect2(130, 0, 65, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1tfn6"]
-atlas = ExtResource("2_2oi8m")
+atlas = ExtResource("3_elde4")
 region = Rect2(195, 0, 65, 90)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b041u"]
@@ -48,11 +48,11 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cdsyj"]
-atlas = ExtResource("4_trgii")
+atlas = ExtResource("4_vpmi0")
 region = Rect2(0, 0, 11, 31)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nbrr8"]
-atlas = ExtResource("4_trgii")
+atlas = ExtResource("4_vpmi0")
 region = Rect2(11, 0, 11, 31)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fn73q"]
@@ -77,11 +77,11 @@ height = 10.0
 radius = 5.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yc5jm"]
-atlas = ExtResource("5_b041u")
+atlas = ExtResource("5_5woat")
 region = Rect2(0, 0, 11, 38)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fn73q"]
-atlas = ExtResource("5_b041u")
+atlas = ExtResource("5_5woat")
 region = Rect2(11, 0, 11, 38)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pes88"]
@@ -102,11 +102,11 @@ animations = [{
 radius = 5.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fgnfc"]
-atlas = ExtResource("6_1tfn6")
+atlas = ExtResource("6_oqrws")
 region = Rect2(0, 0, 11, 35)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6cpjs"]
-atlas = ExtResource("6_1tfn6")
+atlas = ExtResource("6_oqrws")
 region = Rect2(11, 0, 11, 35)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cgjvi"]
@@ -127,11 +127,11 @@ animations = [{
 radius = 5.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pes88"]
-atlas = ExtResource("7_cdsyj")
+atlas = ExtResource("7_kvtju")
 region = Rect2(0, 0, 14, 60)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uxurh"]
-atlas = ExtResource("7_cdsyj")
+atlas = ExtResource("7_kvtju")
 region = Rect2(14, 0, 14, 60)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rdyq1"]
@@ -162,7 +162,7 @@ size = Vector2(240, 16)
 size = Vector2(16, 160)
 
 [node name="DeadRinger" type="Node2D" unique_id=1114886730]
-script = ExtResource("1_evy3r")
+script = ExtResource("1_wmp20")
 _prompt = "Wear!"
 input_flags = {
 "button_0": false,
@@ -174,7 +174,7 @@ input_flags = {
 "ui_right": false,
 "ui_up": false
 }
-_music_tracks = Array[AudioStream]([ExtResource("2_qjmjp")])
+_music_tracks = Array[AudioStream]([ExtResource("2_kmcvk")])
 
 [node name="HandAndThumb" type="AnimatedSprite2D" parent="." unique_id=143504659]
 position = Vector2(115, 107)
@@ -269,7 +269,7 @@ position = Vector2(120, 0)
 [node name="Sprite2D" type="Sprite2D" parent="Bounds/TopBound" unique_id=1630623742]
 texture_filter = 1
 scale = Vector2(3.75, 0.25)
-texture = ExtResource("8_b041u")
+texture = ExtResource("8_iod14")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/TopBound" unique_id=1182235654]
 shape = SubResource("RectangleShape2D_1tfn6")
@@ -281,7 +281,7 @@ position = Vector2(120, 160)
 [node name="Sprite2D" type="Sprite2D" parent="Bounds/BottomBound" unique_id=609641041]
 texture_filter = 1
 scale = Vector2(3.75, 0.25)
-texture = ExtResource("8_b041u")
+texture = ExtResource("8_iod14")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BottomBound" unique_id=826756124]
 position = Vector2(0, 10)
@@ -293,7 +293,7 @@ position = Vector2(4, 80)
 [node name="Sprite2D" type="Sprite2D" parent="Bounds/LeftBound" unique_id=1307096513]
 texture_filter = 1
 scale = Vector2(0.25, 2.5)
-texture = ExtResource("8_b041u")
+texture = ExtResource("8_iod14")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/LeftBound" unique_id=481907956]
 shape = SubResource("RectangleShape2D_cdsyj")
@@ -305,7 +305,7 @@ position = Vector2(236, 80)
 [node name="Sprite2D" type="Sprite2D" parent="Bounds/RightBound" unique_id=866174223]
 texture_filter = 1
 scale = Vector2(0.25, 2.5)
-texture = ExtResource("8_b041u")
+texture = ExtResource("8_iod14")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightBound" unique_id=475733563]
 shape = SubResource("RectangleShape2D_cdsyj")
@@ -313,8 +313,8 @@ disabled = true
 
 [node name="RingHandler" type="Node2D" parent="." unique_id=637876019]
 position = Vector2(125, 42)
-script = ExtResource("9_cdsyj")
+script = ExtResource("9_q27s0")
 
-[node name="Ring" parent="RingHandler" unique_id=654559607 instance=ExtResource("9_1tfn6")]
+[node name="Ring" parent="RingHandler" unique_id=654559607 instance=ExtResource("10_mhpm4")]
 
 [connection signal="frame_changed" from="HandAndThumb" to="." method="_on_hand_and_thumb_frame_changed"]

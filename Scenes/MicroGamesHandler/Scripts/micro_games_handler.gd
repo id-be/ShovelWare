@@ -1,21 +1,21 @@
-extends Node2D
+extends Node2D;
 #og colorrect pos: -108, -72
 #either USE the full screen space OR
 #we can replace the debugrects with some sort of nice border
 #fix the queueing so that you only have things in queue play, not default to random shuffle once the queue is depleted
 
 #for some reason after a boss, random_shuffle breaks unless the queue has a valid 
-var game_state = "loss"
+var game_state = "loss";
 
-@onready var mcg_timer = $Timer
+@onready var mcg_timer = $Timer;
 
-@onready var mcg_port = $SubViewPortContainer/SubViewPort
-@onready var mcg_port_container = $SubViewPortContainer
-@onready var prompt_label = $PromptLabel
-var prompt_label_initial_text = "Ready?"
-@onready var screen_cover = $ColorRect
-@onready var screen_fx = $ColorRect2
-@export var tv_shader : ShaderMaterial
+@onready var mcg_port = $SubViewPortContainer/SubViewPort;
+@onready var mcg_port_container = $SubViewPortContainer;
+@onready var prompt_label = $PromptLabel;
+var prompt_label_initial_text = "Ready?";
+@onready var screen_cover = $ColorRect;
+@onready var screen_fx = $ColorRect2;
+@export var tv_shader : ShaderMaterial;
 
 @export var max_hearts : int  = 4
 var num_hearts = max_hearts
@@ -58,7 +58,7 @@ var next_microgame
 @export var boss_microgames_queue: Array[String]
 var mcg_index_in_queue = 0
 
-@export var mcg_count_to_gen_boss = 8#every n, you get a boss mcg. 
+@export var mcg_count_to_gen_boss = 8#every n, you get a boss mcg.
 #this will be handled differently in that you have to win or 
 #else it keeps rerolling, and after this one ends you hit a speed up
 var is_cur_mcg_boss = false
@@ -76,7 +76,8 @@ func _ready():
 	mcg_timer.connect("timeout", Callable(self, "on_increment_timer"))
 	
 	toggle_prompts()
-	screen_fx_toggle()
+	#screen_fx_toggle()
+	#toggle_tv_shader()
 #	pick_microgame()
 #	pick_microgame(true)
 
@@ -89,34 +90,39 @@ func toggle_tv_shader():
 func screen_fx_toggle():
 	#screen_fx.material starts off null. so:
 	var tween
-	tween = get_tree().create_tween()
-	tween.set_parallel(false)
+
 	#tween.tween_property($Camera2D, "position", $MicroGamesHandler.position, 0.01)
 ##	tween.tween_property($Camera2D, "zoom", Vector2(2.25, 2.25), 0.5)
 	#tween.tween_property($Camera2D, "zoom", Vector2(1.35, 1.35), 0.5)
 #	print(screen_fx.scale)
 	screen_fx.show()
-	toggle_tv_shader()
+	#toggle_tv_shader()
+	#toggle_tv_shader()
 	match screen_fx.scale:
 		Vector2(1,1):
+			tween = get_tree().create_tween()
+			tween.set_parallel(false)
 			tween.tween_property(screen_fx, "scale", Vector2(0.8, 0.1), 0.1)
-			tween.tween_property(screen_fx, "scale", Vector2(0, 0), 0.1)
+			tween.tween_property(screen_fx, "scale", Vector2(0.0, 0.0), 0.1)
 			Globals.set_and_play_sfx(Globals.stings[6])
+			#await tween.finished
 #			screen_fx.size = Vector2(0,0)
-		Vector2(0, 0):#apparently, scaling to 0 led to a ton of issues in 
-			#engine so the best you can scale down to is an epsilon. #NO LONGER TRUE
-			
+			#print(screen_fx.scale)
+		Vector2(0.00001, 0.00001):
+			tween = get_tree().create_tween()
+			tween.set_parallel(false)
 			tween.tween_property(screen_fx, "scale", Vector2(0.8, 0.1), 0.1)
 
 			#await tween.finished; tween.stop()
-			tween.tween_property(screen_fx, "scale", Vector2(1,1), 0.1)
+			tween.tween_property(screen_fx, "scale", Vector2(1.0,1.0), 0.1)
 
 			screen_fx.size = Vector2(216,144)
 			Globals.set_and_play_sfx(Globals.stings[5])
+			#await tween.finished
 			
-	await tween.finished; mcg_timer.start(1.0); await mcg_timer.timeout
-	toggle_tv_shader()
-	screen_fx.hide()
+	#mcg_timer.start(1.0); await mcg_timer.timeout
+	#toggle_tv_shader()
+	#screen_fx.hide()
 	#emit_signal("screen_fx_toggled")
 	#match screen_fx.scale:
 		#Vector2(240,160):
@@ -130,6 +136,7 @@ func screen_fx_toggle():
 	
 func toggle_prompts():
 	prompt_label.visible = !prompt_label.visible
+	screen_fx_toggle()
 
 func flash_ready():
 	$PromptLabel/AnimationPlayer.play("flash_ready")
@@ -162,7 +169,7 @@ func pick_microgame(is_boss = false):
 		"random_shuffle":
 			my_game_index = randi_range(0, microgames_pool.size()-1)
 			my_game_path = microgames_dir + microgames_pool[my_game_index]
-		"shuffle":
+		"shuffle":#the same as random_shuffle but guarantees no repeats.	
 			pass
 		"queue":
 			for mcg in microgames_queue:
@@ -182,10 +189,12 @@ func pick_microgame(is_boss = false):
 				else:
 					if prev_microgames_count != microgames_count:
 						mcg_index_in_queue +=1
-	print(my_game_path)
+	#print(my_game_path)
 	load_microgame(my_game_path.trim_suffix(".remap"))#need this because of the stupid fucking exporter adding ".remap" to the ends of files for no discernible reason and the files then being unloadable
 
 func load_microgame(mcg):
+	toggle_tv_shader()
+	screen_fx_toggle()
 	await flash_ready()
 	ResourceLoader.load_threaded_request(mcg)
 	add_and_initialize_microgame(mcg)
@@ -258,6 +267,8 @@ func on_end_game(end_state):
 	$WinLossRect.hide()
 	$WinLossRect/WinLabel.hide()
 	$WinLossRect/LossLabel.hide()
+	toggle_tv_shader()
+	screen_fx_toggle()
 	
 	#check game_state--in other words, see if you have any more hearts left and if you don't and you just lost, game over!
 	

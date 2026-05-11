@@ -104,7 +104,6 @@ func set_cursor_from_index(index : int) -> void:
 
 	if menu_item == null:
 		#this is where we check if the next slot is null (we have reached the edge of our grid!)
-#		print("NO NEXT STEP!")
 		return;
 	var my_position = menu_item.global_position;
 	var my_size = menu_item.size;

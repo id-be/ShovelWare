@@ -156,14 +156,8 @@ func toggle_tutorial_mode() -> void:
 		tutorial_time = 1;
 
 func on_screen_fx_toggled():
-	#if $Camera2D.zoom == Vector2(1,1):
-		#return
-	#zoom_out(true)
-	#$GameConsole.show()
 	games_handler.screen_fx_toggle();
 ##	
-	#games_handler.pick_microgame()
-	pass;
 
 func zoom_in(during_play = false) -> void:
 	tutorial_timer.start(tutorial_time);
