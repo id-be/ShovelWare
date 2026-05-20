@@ -1,9 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5v1v2e08j5a5"]
+[gd_scene format=3 uid="uid://b5v1v2e08j5a5"]
 
-[ext_resource type="Texture2D" uid="uid://dx872tet7lcj0" path="res://Scenes/MicroGames/MicroGameAssets/CatScratch/2D/Destructible Objects Sprite Sheet.png" id="1_fdn86"]
+[ext_resource type="Texture2D" uid="uid://bmxya1g2glphu" path="res://Scenes/MicroGames/MicroGameAssets/CatScratch/2D/ScratchingPost.png" id="1_0acli"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j4l4u"]
 size = Vector2(19, 19)
+
+[sub_resource type="Animation" id="Animation_rdgjs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_dxxev"]
 resource_name = "break"
@@ -15,10 +30,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.06666666, 0.13333333, 0.2, 0.23333333, 0.26666665, 0.3, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [22, 23, 24, 25, 26, 27]
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -58,7 +73,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [21]
+"values": [0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -87,26 +102,23 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gcfov"]
 _data = {
+&"RESET": SubResource("Animation_rdgjs"),
 &"break": SubResource("Animation_dxxev"),
 &"idle": SubResource("Animation_j1ma3")
 }
 
-[node name="Crate" type="StaticBody2D"]
+[node name="Crate" type="StaticBody2D" unique_id=1279902777]
 z_index = 1
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=870015715]
 position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_j4l4u")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=189888473]
 position = Vector2(-3, -4)
-texture = ExtResource("1_fdn86")
-hframes = 7
-vframes = 12
-frame = 21
+texture = ExtResource("1_0acli")
+hframes = 8
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_gcfov")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2138184257]
+libraries/ = SubResource("AnimationLibrary_gcfov")

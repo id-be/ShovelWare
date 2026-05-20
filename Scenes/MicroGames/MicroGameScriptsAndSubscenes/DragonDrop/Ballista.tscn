@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://d4le6aoqnmq47"]
+[gd_scene format=3 uid="uid://d4le6aoqnmq47"]
 
 [ext_resource type="Texture2D" uid="uid://c8jikwnvinwtw" path="res://Scenes/MicroGames/MicroGameAssets/DragonDrop/Ballista/ballista-arm.png" id="1_2fq1q"]
-[ext_resource type="Script" uid="uid://bro251f4m7d5q" path="res://Scenes/MicroGames/MicroGameAssets/DragonDrop/Ballista/ballista.gd" id="1_ts16g"]
+[ext_resource type="Script" uid="uid://bro251f4m7d5q" path="res://Scenes/MicroGames/MicroGameScriptsAndSubscenes/DragonDrop/Ballista.gd" id="1_ts16g"]
 [ext_resource type="Texture2D" uid="uid://cs0a1k8j7g6pt" path="res://Scenes/MicroGames/MicroGameAssets/DragonDrop/Ballista/ballista-bolts.png" id="2_emr4u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m0ik6"]
@@ -48,33 +48,36 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_l8yml"]
 radius = 12.0
 
-[node name="Ballista" type="Node2D"]
+[node name="Ballista" type="Node2D" unique_id=108492942]
 scale = Vector2(0.15, 0.15)
 script = ExtResource("1_ts16g")
+bolt_speed = 500
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=980027861]
 position = Vector2(0, 53.3333)
 target_position = Vector2(-250, 2000)
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1483250898]
 self_modulate = Color(2, 2, 2, 1)
 sprite_frames = SubResource("SpriteFrames_crvcu")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="Bolt" type="Area2D" parent="."]
+[node name="Bolt" type="Area2D" parent="." unique_id=1814611441]
 
-[node name="Sprite2D" type="Sprite2D" parent="Bolt"]
+[node name="Sprite2D" type="Sprite2D" parent="Bolt" unique_id=1161393463]
 texture = ExtResource("2_emr4u")
 hframes = 6
 frame = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bolt"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bolt" unique_id=1478480961]
 position = Vector2(1, 33)
 shape = SubResource("CircleShape2D_l8yml")
 
-[node name="HomingTimer" type="Timer" parent="."]
-wait_time = 0.3
+[node name="HomingTimer" type="Timer" parent="." unique_id=534848210]
+wait_time = 0.1
 one_shot = true
+
+[connection signal="area_entered" from="Bolt" to="." method="_on_bolt_area_entered"]

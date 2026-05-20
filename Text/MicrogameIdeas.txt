@@ -15,7 +15,7 @@ select the right response from a menu within a time frame (a dating sim, an rpg,
 |_> kick/fireball
 |_> kiss :3
 |_> punch/ultrablast
-could also make this one a boss microgame 
+could also make this one a boss microgame where you need to flirt 3 times
 
 
 4) hatch!
@@ -75,5 +75,11 @@ dragon-drop
 20) find!
 a where's waldo type game
 
-21) guide! -- floppy sword
+21) guide! -- floppy sword X
 guide a cat with a laser pointer to a goal
+
+22) flappy bat--flappy bird but with a bat and stalactites/stalagmites. could be a minigame for endless version.
+
+23) mate! -- do a checkmate, the piece and the position to move to are highlighted
+
+24) tic tac toe--win a game of tic tac toe

@@ -11,14 +11,14 @@
 [ext_resource type="Texture2D" uid="uid://055jhnxslgl5" path="res://Scenes/MicroGames/MicroGameAssets/PumpIt/2D/PumpBase.png" id="5_bhbee"]
 [ext_resource type="Texture2D" uid="uid://brfx1jgj122ax" path="res://Scenes/MicroGames/MicroGameAssets/PumpIt/2D/PumpBalloon.png" id="6_ucnfb"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gumn2"]
+size = Vector2(78, 66)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_avj4k"]
 size = Vector2(240, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mbgb8"]
 size = Vector2(16, 160)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gumn2"]
-size = Vector2(78, 66)
 
 [node name="PumpIt" type="Node2D" unique_id=649045633]
 texture_filter = 1
@@ -57,6 +57,33 @@ offset_bottom = 104.0
 text = "Up!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PumpTop" type="Sprite2D" parent="." unique_id=168805588]
+position = Vector2(53, 96)
+texture = ExtResource("4_t3laj")
+
+[node name="PumpBase" type="Sprite2D" parent="." unique_id=154282730]
+position = Vector2(53, 96)
+texture = ExtResource("5_bhbee")
+
+[node name="BalloonOrigin" type="Node2D" parent="." unique_id=1687875317]
+position = Vector2(75, 90)
+
+[node name="PumpBalloon" type="Sprite2D" parent="BalloonOrigin" unique_id=863331044]
+position = Vector2(0, -26)
+texture = ExtResource("6_ucnfb")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1049606570]
+visible = false
+texture_filter = 1
+position = Vector2(82, 75)
+texture = ExtResource("3_x81re")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=1443684315]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=956978573]
+position = Vector2(-1, -12)
+shape = SubResource("RectangleShape2D_gumn2")
 
 [node name="Bounds" type="Node2D" parent="." unique_id=171269018]
 metadata/_edit_lock_ = true
@@ -105,33 +132,6 @@ texture = ExtResource("2_stfri")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightBound" unique_id=2145969887]
 shape = SubResource("RectangleShape2D_mbgb8")
-
-[node name="PumpTop" type="Sprite2D" parent="." unique_id=168805588]
-position = Vector2(53, 96)
-texture = ExtResource("4_t3laj")
-
-[node name="PumpBase" type="Sprite2D" parent="." unique_id=154282730]
-position = Vector2(53, 96)
-texture = ExtResource("5_bhbee")
-
-[node name="BalloonOrigin" type="Node2D" parent="." unique_id=1687875317]
-position = Vector2(75, 90)
-
-[node name="PumpBalloon" type="Sprite2D" parent="BalloonOrigin" unique_id=863331044]
-position = Vector2(0, -26)
-texture = ExtResource("6_ucnfb")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1049606570]
-visible = false
-texture_filter = 1
-position = Vector2(82, 75)
-texture = ExtResource("3_x81re")
-
-[node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=1443684315]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=956978573]
-position = Vector2(-1, -12)
-shape = SubResource("RectangleShape2D_gumn2")
 
 [connection signal="mouse_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_shape_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_mouse_shape_entered"]

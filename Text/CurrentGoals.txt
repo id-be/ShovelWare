@@ -1,8 +1,6 @@
-add a tv static shader for when you zoom into and out of the game
+reconfigure petthepet to be touch based
 
 refactor the title screen and the splash to take place on the deanboy
-
-create a 3d model of the deanboy to use (take pics of it to make the sprite)
 
 popit could use different flight paths (circular, sinusoid, wavy, etc), set up
 the balloons to be in a random phase, set them to scale up or down based on
@@ -10,8 +8,3 @@ the difficulty, get the balloons to have a pop sound, drop people that scream an
 fall after you pop a balloon
 
 make sure the sfx and music are mono not stereo* and bitcrush them!
-
-looks like you can still do inputs when the microgame should be ending
-(the bomb explodes) and not sure if this is good or not. sounds not good?
-so make sure to add a way to toggle taking mouse input on/off in microgameshandler
-

@@ -3,7 +3,7 @@ extends Node2D
 var dragon = null
 var dragon_ahead_pos
 
-@export_range(20,200) var bolt_speed: int = 120
+@export_range(20,500) var bolt_speed: int = 120
 #@export_range(-30, 30) var overcorrection: int = -40
 
 func _physics_process(delta):
@@ -17,7 +17,14 @@ func _physics_process(delta):
 		if $RayCast2D.is_colliding():
 			#rotation_degrees = overcorrection
 			dragon = $RayCast2D.get_collider()
-			dragon_ahead_pos = dragon.global_position + Vector2(10, 0)
+			dragon_ahead_pos = dragon.global_position + Vector2(30, 0)
+			#print(dragon.get_parent())
 			$RayCast2D.enabled = false
 			$AnimatedSprite2D.play("shoot")
 			$HomingTimer.start()
+
+
+func _on_bolt_area_entered(area: Area2D) -> void:
+	if area.get_parent().name == "Dragon":
+		$Bolt.hide()
+		area.get_parent().die()

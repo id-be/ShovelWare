@@ -2,7 +2,7 @@ extends microgame
 
 
 #Adjustable export variables
-@export_range(25, 200) var speed: int = 60
+@export_range(25, 360) var speed: int = 60
 
 #Scene node variables
 @onready var dragon = $Path/DragonFollowPath/Dragon
@@ -34,7 +34,7 @@ func _start():
 	
 
 	#castle.get_node("AnimationPlayer").animation_started.connect(Callable(self,"increase_score"))
-	$Castle.get_node("CastleAnimationPlayer").play("normal")
+	$Castle.get_node("CastleAnimationPlayer").play("Normal")
 	$Path/DragonFollowPath/Dragon/AttackArea/CollisionShape2D.disabled = true
 	
 func increase_score():
@@ -59,19 +59,25 @@ func _physics_process(delta):
 			if dragon.global_position.x >= castle.global_position.x - 30:
 				
 				$Path/DragonFollowPath/Dragon/Breath.play()
+				if !$DragonSound.playing:
+					$DragonSound.play()
+				
 				attacking = true
 			#follow along path
 
 		if attacking:
 			if dragon.global_position.x >= castle.global_position.x + 30:
 				attacking = false
+				
 			#produce flame
 		dragon_path.set_progress(dragon_path.get_progress() + (speed * delta))
 
 func _on_detect_area_area_entered(area):
-	area.set_deferred("monitoring", false)
-	area.set_deferred("monitorable", false)
-	area.hide()
+
+	#area.set_deferred("monitoring", false)
+	#area.set_deferred("monitorable", false)
+#	area.hide()
+	pass
 
 
 func _on_generate_path_timer_timeout():
@@ -95,15 +101,18 @@ func _on_generate_point_timer_timeout():
 
 
 func _on_attack_area_area_entered(area):
+	#print(area.name)
 	if area == $Castle/CastleArea2D:
 		increase_score()
-		if $Path/DragonFollowPath/Dragon/Breath.is_playing():
-			castle_anim.play("Burning")
-		else:
-			var timer = Timer.new()
-			timer.start(0.2)
-			await timer.timeout
-			castle_anim.play("Burning")
+		castle_anim.play("Burning")
+		
+		#if $Path/DragonFollowPath/Dragon/Breath.is_playing():
+			#castle_anim.play("Burning")
+		#else:
+			#var timer = Timer.new()
+			#timer.start(0.2)
+			#await timer.timeout
+			#castle_anim.play("Burning")
 			
 			
 
@@ -111,5 +120,5 @@ func _on_breath_animation_finished():
 	attacking = false
 
 func _on_breath_frame_changed():
-	if $Path/DragonFollowPath/Dragon/Breath.frame >= 3:
+	if $Path/DragonFollowPath/Dragon/Breath.frame >= 0:
 		$Path/DragonFollowPath/Dragon/AttackArea/CollisionShape2D.disabled = false

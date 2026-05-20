@@ -1,15 +1,15 @@
 extends microgame
 
 #Constants
-const SPEED = 50
-const SPEED_STEP = 0.05
-const TURN_STEP = 0.05
+#const SPEED = 120#50
+#const SPEED_STEP = 0.05
+#const TURN_STEP = 0.05
 
 #Adjustable export variables
 @export_range(25, 200) var speed: int = 60
 @export_range(0.01, 0.20) var speed_step: float = 0.05
 @export_range(0.01, 0.20) var turn_step: float = 0.05
-@export_range(5, 20) var attack_radius: int = 30
+@export_range(5, 30) var attack_radius: int = 20
 
 #Scene node variables
 @onready var cat = $Cat
@@ -39,8 +39,37 @@ func _ready():
 	
 func _set_difficulty(dif):
 	boilerplate_set_difficulty(dif)
-	$Loadouts.play(dif)
-	
+	#$Loadouts.play(dif)
+	match dif:
+		"easy":
+			_prompt="Scratch 1!"
+		"medium":
+			_prompt="Scratch 2!"
+		"hard":
+			_prompt="Scratch 3!"
+	place_cat()
+	place_boxes()
+	#here is where we can set the cat position and the boxes
+
+func place_cat():
+	var cat_pos = Vector2(randf_range($Marker2D.position.x, $Marker2D4.position.x), 
+	randf_range($Marker2D2.position.y, $Marker2D3.position.y-24))
+	$Cat.position = cat_pos
+	$Cat.look_at($Marker2D5.position)
+	var crate_1_pos
+	$Crates/Crate.position = Vector2(randf_range($Marker2D.position.x+24, $Marker2D4.position.x-24), 
+	randf_range($Marker2D2.position.y+24, $Marker2D3.position.y-24))
+	$Crates/Crate2.position = Vector2(randf_range($Marker2D.position.x+24, $Marker2D4.position.x-24), 
+	randf_range($Marker2D2.position.y+24, $Marker2D3.position.y-24))
+	match difficulty:
+		"hard":
+			$Crates/Crate3.position = Vector2(randf_range($Marker2D.position.x+24, $Marker2D4.position.x-24), 
+			randf_range($Marker2D2.position.y+24, $Marker2D3.position.y-24))
+		_:
+			$Crates/Crate3.position = Vector2(-1000,-1000)
+func place_boxes():
+	pass
+
 func _start():
 	boilerplate_start()
 	
@@ -57,8 +86,11 @@ func increase_score(anim):
 	if anim != "break":
 		return
 	score += 1
+	if score ==1:
+		if difficulty == "easy":
+			end_state = "success"
 	if score == 2:
-		if difficulty in ["easy","medium"]:
+		if difficulty == "medium":
 			end_state = "success"
 	elif score == 3:
 		if difficulty == "hard":

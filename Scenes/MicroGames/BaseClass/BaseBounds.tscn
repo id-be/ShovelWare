@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://0heqek8cf68e"]
+[gd_scene format=3 uid="uid://0heqek8cf68e"]
 
 [ext_resource type="Texture2D" uid="uid://bucjr426s70d2" path="res://Assets/DEBUG/2D/Defaults/Square.png" id="1_afugh"]
 
@@ -8,54 +8,50 @@ size = Vector2(240, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c2ysg"]
 size = Vector2(16, 160)
 
-[node name="Bounds" type="Node2D"]
+[node name="Bounds" type="Node2D" unique_id=1454137925]
 top_level = true
 metadata/_edit_lock_ = true
 
-[node name="TopBound" type="StaticBody2D" parent="."]
+[node name="TopBound" type="StaticBody2D" parent="." unique_id=763305467]
 position = Vector2(120, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="TopBound"]
-visible = false
+[node name="Sprite2D" type="Sprite2D" parent="TopBound" unique_id=900803816]
 texture_filter = 1
 scale = Vector2(3.75, 0.25)
 texture = ExtResource("1_afugh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TopBound"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopBound" unique_id=319094227]
 shape = SubResource("RectangleShape2D_4kb10")
 
-[node name="BottomBound" type="StaticBody2D" parent="."]
+[node name="BottomBound" type="StaticBody2D" parent="." unique_id=970955307]
 position = Vector2(120, 160)
 
-[node name="Sprite2D" type="Sprite2D" parent="BottomBound"]
-visible = false
+[node name="Sprite2D" type="Sprite2D" parent="BottomBound" unique_id=262477300]
 texture_filter = 1
 scale = Vector2(3.75, 0.25)
 texture = ExtResource("1_afugh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBound"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBound" unique_id=1767522699]
 shape = SubResource("RectangleShape2D_4kb10")
 
-[node name="LeftBound" type="StaticBody2D" parent="."]
+[node name="LeftBound" type="StaticBody2D" parent="." unique_id=832438093]
 position = Vector2(4, 80)
 
-[node name="Sprite2D" type="Sprite2D" parent="LeftBound"]
-visible = false
+[node name="Sprite2D" type="Sprite2D" parent="LeftBound" unique_id=44655077]
 texture_filter = 1
 scale = Vector2(0.25, 2.5)
 texture = ExtResource("1_afugh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBound"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBound" unique_id=566334092]
 shape = SubResource("RectangleShape2D_c2ysg")
 
-[node name="RightBound" type="StaticBody2D" parent="."]
+[node name="RightBound" type="StaticBody2D" parent="." unique_id=627298329]
 position = Vector2(236, 80)
 
-[node name="Sprite2D" type="Sprite2D" parent="RightBound"]
-visible = false
+[node name="Sprite2D" type="Sprite2D" parent="RightBound" unique_id=1355689980]
 texture_filter = 1
 scale = Vector2(0.25, 2.5)
 texture = ExtResource("1_afugh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBound"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBound" unique_id=1012151353]
 shape = SubResource("RectangleShape2D_c2ysg")

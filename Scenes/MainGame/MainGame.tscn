@@ -433,7 +433,9 @@ position_smoothing_enabled = true
 [node name="MicroGamesHandler" parent="." unique_id=578347088 instance=ExtResource("4_f57pk")]
 position = Vector2(576, 232)
 scale = Vector2(3, 3)
-microgames_queue = Array[String](["res://Scenes/MicroGames/PetThePet.tscn"])
+cur_microgame_difficulty = "hard"
+microgame_playmode = "queue"
+microgames_queue = Array[String](["res://Scenes/MicroGames/WIP/DragonDrop.tscn"])
 boss_microgames_queue = Array[String](["res://Scenes/MicroGames/DeadRinger.tscn"])
 
 [node name="PauseScreenTint" type="ColorRect" parent="." unique_id=451637156]
@@ -594,10 +596,10 @@ scale = Vector2(3.9065413, 3.9673288)
 texture = ExtResource("13_r0wif")
 
 [node name="Label" type="Label" parent="TouchButtons/Hand" unique_id=1620248950]
-offset_left = -21.755936
-offset_top = -7.3297453
-offset_right = 16.244064
-offset_bottom = 12.670255
+offset_left = -25.453909
+offset_top = -17.030914
+offset_right = 12.546091
+offset_bottom = 2.9690857
 rotation = -1.7515769
 text = "Tap!"
 

@@ -62,6 +62,8 @@ var mcg_index_in_queue = 0
 #this will be handled differently in that you have to win or 
 #else it keeps rerolling, and after this one ends you hit a speed up
 var is_cur_mcg_boss = false
+@export var mcg_count_to_speedup = 10
+@export var mcg_count_to_raise_difficulty = 20
 
 signal screen_fx_toggled
 
@@ -108,7 +110,7 @@ func screen_fx_toggle():
 			#await tween.finished
 #			screen_fx.size = Vector2(0,0)
 			#print(screen_fx.scale)
-		Vector2(0.00001, 0.00001):
+		Vector2(0.00001, 0.00001):#really the scale is set to some small epsilon, not 0.
 			tween = get_tree().create_tween()
 			tween.set_parallel(false)
 			tween.tween_property(screen_fx, "scale", Vector2(0.8, 0.1), 0.1)
