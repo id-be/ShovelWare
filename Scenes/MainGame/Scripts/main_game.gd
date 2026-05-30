@@ -155,7 +155,7 @@ func toggle_tutorial_mode() -> void:
 	else:
 		tutorial_time = 1;
 
-func on_screen_fx_toggled():
+func on_screen_fx_toggled() -> void:
 	games_handler.screen_fx_toggle();
 ##	
 
@@ -216,10 +216,10 @@ func set_game_speed(speed) -> void:
 	AudioServer.playback_speed_scale = game_speed_multiplier;
 	Engine.time_scale = game_speed_multiplier;
 
-func _on_resume_pressed():
+func _on_resume_pressed() -> void:
 	toggle_pause();
-func _on_help_pressed():
+func _on_help_pressed() -> void:
 	pass # Replace with function body.
-func _on_to_menu_pressed():
+func _on_to_menu_pressed() -> void:
 	get_tree().paused = false;
 	get_tree().change_scene_to_file("res://Scenes/Menu/MainMenu.tscn");

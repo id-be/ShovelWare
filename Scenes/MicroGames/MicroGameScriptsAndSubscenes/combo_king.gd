@@ -16,7 +16,6 @@ var is_comboing = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	boilerplate_ready()
 	max_num_inputs = game_inputs.size() - 1
 	for input in input_flags.keys():
 		if input_flags[input]:
@@ -28,7 +27,6 @@ func _ready():
 	#print(game_inputs)
 #	print(InputMap.get_actions())
 func _set_difficulty(dif):
-	boilerplate_set_difficulty(dif)
 	match dif:
 		"easy":
 			combo_length=3

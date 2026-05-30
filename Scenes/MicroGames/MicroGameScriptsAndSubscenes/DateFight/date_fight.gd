@@ -37,7 +37,6 @@ func _ready():
 
 
 func _set_difficulty(dif):
-	boilerplate_set_difficulty(dif)
 	match dif:
 		"easy":
 			num_actions = 2
@@ -116,7 +115,6 @@ func generate_flirts():
 		#pass
 	
 func _start():
-	boilerplate_start()
 	$Cursor.toggle_self(true)
 
 func make_choice(choice):

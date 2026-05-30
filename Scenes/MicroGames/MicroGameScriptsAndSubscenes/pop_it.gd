@@ -212,7 +212,6 @@ class string_balloon extends balloon:
 	pass
 
 func _set_difficulty(dif):
-	boilerplate_set_difficulty(dif)
 	match dif:
 		"easy":
 			num_balloons = 3
@@ -225,7 +224,6 @@ func _set_difficulty(dif):
 			balloons_type = "birthday"
 
 func _ready():
-	boilerplate_ready()
 	for bln in num_balloons:
 		spawn_balloon()
 	var points = $Path2D.curve.get_baked_points()

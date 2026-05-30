@@ -6,7 +6,6 @@ var is_up = false
 var can_pump = true
 	
 func _set_difficulty(dif):
-	boilerplate_set_difficulty(dif)
 	match dif:
 		"easy":
 			max_pump_val = 5

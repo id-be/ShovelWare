@@ -35,18 +35,24 @@ class_name microgame
 var heart_handler_instance
 signal last_heart
 
+signal set_boss
+signal set_difficulty
+signal start
+
 signal start_game
 signal end_game
 signal increment_timer
 
 #	called when the node is initialized (loaded into memory)
 func _init():
+	connect("ready",boilerplate_ready)
 #	only use this for stuff that doesn't need to be loaded.
 #	anything set in the editor is unavailable here 
 #	(eg, _music_tracks) until the ready function is called 
 #	(which is ALWAYS after _init).
 	pass
-	
+
+
 func _ready():
 	boilerplate_ready()
 
@@ -57,6 +63,7 @@ func boilerplate_ready():
 	emit_signal("start_game")
 
 func _set_boss(boss):
+	
 	boilerplate_set_boss(boss)
 	match is_boss:
 		true:

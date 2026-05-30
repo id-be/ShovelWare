@@ -212,8 +212,12 @@ func add_and_initialize_microgame(mcg):
 #	microgame's _init() is called here ^
 	current_microgame = microgame_instance
 	
+	current_microgame.boilerplate_set_boss(is_cur_mcg_boss)
 	current_microgame._set_boss(is_cur_mcg_boss)
+	
+	current_microgame.boilerplate_set_difficulty(cur_microgame_difficulty)
 	current_microgame._set_difficulty(cur_microgame_difficulty)
+	
 	
 	current_microgame.connect("start_game", Callable(self, "on_start_game"))
 	current_microgame.connect("end_game", Callable(self, "on_end_game"))
@@ -287,6 +291,7 @@ func on_done_zoom_in():
 	if !is_cur_mcg_boss:
 		initialize_bomb_timer_visuals()
 		mcg_timer.start(current_microgame._time_step)
+	current_microgame.boilerplate_start()
 	current_microgame._start()
 	
 func on_done_zoom_out():

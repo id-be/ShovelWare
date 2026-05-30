@@ -1,6 +1,6 @@
 shader_type canvas_item;
 
-uniform float amount = 40.0;
+uniform float amount = 400;
 
 void vertex() {
 

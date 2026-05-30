@@ -21,10 +21,9 @@ var score = 0;
 
 
 func _ready() -> void:
-	boilerplate_ready();
+	pass
 	
 func _set_difficulty(dif) -> void:
-	boilerplate_set_difficulty(dif);
 	#change this to semi-randomize the crossbow positions
 	match dif:
 		"easy":
@@ -59,7 +58,7 @@ func _set_difficulty(dif) -> void:
 	#$Loadouts.play(dif)
 	
 func _start() -> void:
-	boilerplate_start();
+	#boilerplate_start();
 	
 
 	#castle.get_node("AnimationPlayer").animation_started.connect(Callable(self,"increase_score"))

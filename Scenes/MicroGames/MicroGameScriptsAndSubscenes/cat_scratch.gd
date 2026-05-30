@@ -28,7 +28,7 @@ var target_pos = Vector2.ZERO
 var box_to_break = null
 
 func _ready():
-	boilerplate_ready()
+	pass;
 	
 	#DEBUG STUFF, COMMENT OUT WHEN NOT DEBUGGING
 	#AND UNCOMMENT ABOVE boilerplate_ready()
@@ -38,7 +38,6 @@ func _ready():
 	#pointer.get_node("PointerParticles2D").emitting = true
 	
 func _set_difficulty(dif):
-	boilerplate_set_difficulty(dif)
 	#$Loadouts.play(dif)
 	match dif:
 		"easy":
@@ -47,31 +46,30 @@ func _set_difficulty(dif):
 			_prompt="Scratch 2!"
 		"hard":
 			_prompt="Scratch 3!"
-	place_cat()
-	place_boxes()
+	place_cat();
+	place_boxes();
 	#here is where we can set the cat position and the boxes
 
 func place_cat():
 	var cat_pos = Vector2(randf_range($Marker2D.position.x, $Marker2D4.position.x), 
-	randf_range($Marker2D2.position.y, $Marker2D3.position.y-24))
-	$Cat.position = cat_pos
-	$Cat.look_at($Marker2D5.position)
-	var crate_1_pos
+	randf_range($Marker2D2.position.y, $Marker2D3.position.y-24));
+	$Cat.position = cat_pos;
+	$Cat.look_at($Marker2D5.position);
+	var crate_1_pos;
 	$Crates/Crate.position = Vector2(randf_range($Marker2D.position.x+24, $Marker2D4.position.x-24), 
-	randf_range($Marker2D2.position.y+24, $Marker2D3.position.y-24))
+	randf_range($Marker2D2.position.y+24, $Marker2D3.position.y-24));
 	$Crates/Crate2.position = Vector2(randf_range($Marker2D.position.x+24, $Marker2D4.position.x-24), 
-	randf_range($Marker2D2.position.y+24, $Marker2D3.position.y-24))
+	randf_range($Marker2D2.position.y+24, $Marker2D3.position.y-24));
 	match difficulty:
 		"hard":
 			$Crates/Crate3.position = Vector2(randf_range($Marker2D.position.x+24, $Marker2D4.position.x-24), 
-			randf_range($Marker2D2.position.y+24, $Marker2D3.position.y-24))
+			randf_range($Marker2D2.position.y+24, $Marker2D3.position.y-24));
 		_:
-			$Crates/Crate3.position = Vector2(-1000,-1000)
+			$Crates/Crate3.position = Vector2(-1000,-1000);
 func place_boxes():
-	pass
+	pass;
 
 func _start():
-	boilerplate_start()
 	
 	#Set laser and point on.
 	laser.get_node("LaserParticles2D").emitting = true

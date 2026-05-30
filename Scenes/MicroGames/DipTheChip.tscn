@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://kgoxj0cr5lva"]
+
+[ext_resource type="Script" uid="uid://brqvxdl7652dc" path="res://Scenes/MicroGames/MicroGameScriptsAndSubscenes/DipTheChip/dip_the_chip.gd" id="1_p7x5u"]
+[ext_resource type="AudioStream" uid="uid://epvb1ts4o83v" path="res://Scenes/MicroGames/MicroGameAssets/DipTheChip/beetpro-tribal-by-beetpro-huaracha-circuit-loop-16-12773.mp3" id="2_ummad"]
+[ext_resource type="Texture2D" uid="uid://daegdwt57uq8v" path="res://Scenes/MicroGames/MicroGameAssets/DipTheChip/Dip.png" id="3_sousq"]
+[ext_resource type="PackedScene" uid="uid://0heqek8cf68e" path="res://Scenes/MicroGames/BaseClass/BaseBounds.tscn" id="4_iccst"]
+[ext_resource type="Script" uid="uid://drxjym3epg7wo" path="res://Scenes/MicroGames/MicroGameScriptsAndSubscenes/DipTheChip/chip_dip.gd" id="5_l5hd8"]
+[ext_resource type="Texture2D" uid="uid://c2vmat3jr5sxi" path="res://Scenes/MicroGames/MicroGameAssets/DipTheChip/ChipDip.png" id="6_88pky"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_osxhm"]
+size = Vector2(47, 18.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8ho2"]
+size = Vector2(10, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qi0hn"]
+size = Vector2(11, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_osxhm"]
+
+[node name="DipTheChip" type="Node2D" unique_id=1400565221]
+script = ExtResource("1_p7x5u")
+_prompt = "Dip!"
+_music_tracks = Array[AudioStream]([ExtResource("2_ummad")])
+
+[node name="DipTop" type="Sprite2D" parent="." unique_id=1545460349]
+position = Vector2(122, 120)
+texture = ExtResource("3_sousq")
+region_enabled = true
+region_rect = Rect2(0, 0, 69, 65)
+
+[node name="DipBottom" type="Sprite2D" parent="DipTop" unique_id=1597976529]
+top_level = true
+position = Vector2(122, 120)
+texture = ExtResource("3_sousq")
+region_enabled = true
+region_rect = Rect2(69, 0, 69, 65)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="DipTop" unique_id=1056570811]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DipTop/StaticBody2D" unique_id=1667052455]
+position = Vector2(-0.5, -3.75)
+shape = SubResource("RectangleShape2D_osxhm")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DipTop/StaticBody2D" unique_id=1607727195]
+position = Vector2(-29, -9)
+shape = SubResource("RectangleShape2D_j8ho2")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="DipTop/StaticBody2D" unique_id=1990229567]
+position = Vector2(28.5, -9)
+shape = SubResource("RectangleShape2D_qi0hn")
+
+[node name="Bounds" parent="." unique_id=1454137925 instance=ExtResource("4_iccst")]
+
+[node name="ChipDip" type="CharacterBody2D" parent="." unique_id=1349817355]
+position = Vector2(124, 55)
+script = ExtResource("5_l5hd8")
+
+[node name="ChipDipSprite" type="Sprite2D" parent="ChipDip" unique_id=1260625505]
+position = Vector2(-19, -10)
+scale = Vector2(0.47, 0.47)
+texture = ExtResource("6_88pky")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChipDip" unique_id=259981386]
+position = Vector2(0, 9)
+shape = SubResource("CircleShape2D_osxhm")

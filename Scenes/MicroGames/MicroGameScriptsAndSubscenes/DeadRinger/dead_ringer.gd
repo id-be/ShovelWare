@@ -5,11 +5,9 @@ var score := 0;
 var current_fingers = [];
 
 func _ready() -> void:
-	boilerplate_ready();
 	randomize_fingers();
 
 func _set_difficulty(dif) -> void:
-	boilerplate_set_difficulty(dif)
 	match dif:
 		"easy":
 			num_fingers_down = 1;
@@ -23,7 +21,7 @@ func _input(event: InputEvent) -> void:
 		drop_ring();
 
 func _start() -> void:
-	boilerplate_start();
+	#boilerplate_start();
 	$HandAndThumb.play("Close");
 	$RingHandler/Ring.set_physics_process(true);
 

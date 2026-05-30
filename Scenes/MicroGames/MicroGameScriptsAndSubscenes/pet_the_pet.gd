@@ -25,7 +25,7 @@ var pet_angry_time;
 var pet_normal_time;
 
 func _ready() -> void:
-	boilerplate_ready();
+	pet_start_state = randi_range(0,1)
 	match pet_start_state:
 		0:
 			queue_pet_state("Angry");
@@ -36,6 +36,12 @@ func _ready() -> void:
 func randomize_start_emotion() -> void:
 	var start_state = randi_range(0,1);
 	pet_start_state = start_state;
+	match pet_start_state:
+		0:
+			pass
+		1:
+			pass
+
 	#match pet_start_state:
 		#0:
 			#Globals.set_and_play_music(_music_tracks[1])
@@ -56,7 +62,6 @@ func randomize_background() -> void:
 	bg.flip_h = ran_orientation;
 
 func _set_difficulty(dif) -> void:
-	boilerplate_set_difficulty(dif)
 	match dif:
 		"easy":
 			$Animal.sprite_frames = anims[0];
@@ -75,7 +80,6 @@ func _set_initial_values() -> void:
 	randomize_start_emotion();
 
 func _set_boss(boss):
-	boilerplate_set_boss(boss)
 	match is_boss:
 		true:
 			add_heart_handler()
@@ -112,7 +116,6 @@ func randomize_pet_orientation() -> void:
 			#$Animal.flip_v = true
 
 func _start() -> void:
-	boilerplate_start();
 	set_pet_state(pet_state);
 	start_anims();
 
@@ -123,7 +126,6 @@ func set_pet_state(state) -> void:
 	Globals.stop_sfx();
 	var prev_pet_state = pet_state;
 	queue_pet_state(state);
-	$DEBUGLabel.text = pet_state;
 	match state:
 		"Angry":
 			Globals.set_and_play_music(_music_tracks[1]);
