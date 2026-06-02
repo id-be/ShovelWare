@@ -435,7 +435,7 @@ position = Vector2(576, 232)
 scale = Vector2(3, 3)
 cur_microgame_difficulty = "hard"
 microgame_playmode = "queue"
-microgames_queue = Array[String](["res://Scenes/MicroGames/WIP/DipTheChip.tscn"])
+microgames_queue = Array[String](["res://Scenes/MicroGames/HatchIt.tscn"])
 boss_microgames_queue = Array[String](["res://Scenes/MicroGames/DeadRinger.tscn"])
 
 [node name="PauseScreenTint" type="ColorRect" parent="." unique_id=451637156]

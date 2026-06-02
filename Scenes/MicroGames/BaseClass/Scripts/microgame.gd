@@ -46,15 +46,15 @@ signal increment_timer
 #	called when the node is initialized (loaded into memory)
 func _init():
 	connect("ready",boilerplate_ready)
+	#ABSOLUTELY NEED THE ABOVE.
 #	only use this for stuff that doesn't need to be loaded.
 #	anything set in the editor is unavailable here 
 #	(eg, _music_tracks) until the ready function is called 
 #	(which is ALWAYS after _init).
-	pass
 
 
 func _ready():
-	boilerplate_ready()
+	pass
 
 func boilerplate_ready():
 	add_child(timer)

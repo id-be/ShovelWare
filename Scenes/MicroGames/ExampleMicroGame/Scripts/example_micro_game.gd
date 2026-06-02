@@ -4,7 +4,6 @@ extends microgame
 @export var base_speed_multiplier = 40
 
 func _set_difficulty(dif):
-	boilerplate_set_difficulty(dif)
 	var temp_col
 	match dif:
 		"easy":

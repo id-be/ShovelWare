@@ -7,7 +7,6 @@ resource_name = "Phaser"
 resource_name = "Capture"
 
 [resource]
-bus/0/mute = true
 bus/1/name = &"SFXBus"
 bus/1/solo = false
 bus/1/mute = false

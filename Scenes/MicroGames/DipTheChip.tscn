@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://0heqek8cf68e" path="res://Scenes/MicroGames/BaseClass/BaseBounds.tscn" id="4_iccst"]
 [ext_resource type="Script" uid="uid://drxjym3epg7wo" path="res://Scenes/MicroGames/MicroGameScriptsAndSubscenes/DipTheChip/chip_dip.gd" id="5_l5hd8"]
 [ext_resource type="Texture2D" uid="uid://c2vmat3jr5sxi" path="res://Scenes/MicroGames/MicroGameAssets/DipTheChip/ChipDip.png" id="6_88pky"]
+[ext_resource type="Texture2D" uid="uid://dbtmp14s52q0c" path="res://Scenes/MicroGames/MicroGameAssets/DipTheChip/BG_Scaled.jpg" id="7_ummad"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_osxhm"]
 size = Vector2(47, 18.5)
@@ -64,3 +65,9 @@ texture = ExtResource("6_88pky")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChipDip" unique_id=259981386]
 position = Vector2(0, 9)
 shape = SubResource("CircleShape2D_osxhm")
+
+[node name="BgScaled" type="Sprite2D" parent="." unique_id=1081694074]
+z_index = -1
+position = Vector2(120, 79.99999)
+scale = Vector2(0.84375, 0.7539267)
+texture = ExtResource("7_ummad")

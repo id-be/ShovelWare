@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://bjlsxir31aid3"]
+
+[ext_resource type="Script" uid="uid://bomx6xyjrrfqc" path="res://Scenes/MicroGames/MicroGameScriptsAndSubscenes/HatchIt/hatch_it.gd" id="1_5u6sw"]
+[ext_resource type="AudioStream" uid="uid://qk60ih8ebrr" path="res://Scenes/MicroGames/Common/CommonAssets/Audio/Jingle.ogg" id="2_4o1o2"]
+[ext_resource type="Texture2D" uid="uid://b1gfljo6uttcj" path="res://Scenes/MicroGames/MicroGameAssets/HatchIt/Sprites/EggTop.png" id="3_p2fum"]
+[ext_resource type="Texture2D" uid="uid://bucjr426s70d2" path="res://Assets/DEBUG/2D/Defaults/Square.png" id="4_fhprn"]
+[ext_resource type="Texture2D" uid="uid://bcagdqa4jdw7m" path="res://Scenes/MicroGames/MicroGameAssets/HatchIt/Sprites/EggBottom.png" id="4_l4vse"]
+[ext_resource type="Texture2D" uid="uid://b434a4aeplpyv" path="res://Scenes/MicroGames/MicroGameAssets/HatchIt/Sprites/Cracks.png" id="5_7qwyu"]
+[ext_resource type="Texture2D" uid="uid://bs0v8w7vtpx0s" path="res://Scenes/MicroGames/MicroGameAssets/HatchIt/Sprites/bbduck-export.png" id="6_7qwyu"]
+[ext_resource type="Texture2D" uid="uid://ccyafdnsm1c5p" path="res://Scenes/MicroGames/MicroGameAssets/HatchIt/Sprites/EggHatch.png" id="7_l4vse"]
+[ext_resource type="AudioStream" uid="uid://b5yacwukohl1b" path="res://Scenes/MicroGames/MicroGameAssets/HatchIt/SFX/crack.mp3" id="9_7qwyu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l4vse"]
+size = Vector2(240, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qwyu"]
+size = Vector2(16, 160)
+
+[node name="HatchIt" type="Node2D" unique_id=1632871846]
+script = ExtResource("1_5u6sw")
+_prompt = "Hatch!"
+_music_tracks = Array[AudioStream]([ExtResource("2_4o1o2")])
+
+[node name="AnimalSprite" type="Sprite2D" parent="." unique_id=371484837]
+
+[node name="BGSprite" type="Sprite2D" parent="." unique_id=1632178252]
+z_index = -1
+position = Vector2(120.00001, 45)
+scale = Vector2(0.79120886, 0.7955801)
+texture = ExtResource("3_p2fum")
+
+[node name="FGSprite" type="Sprite2D" parent="BGSprite" unique_id=1990389956]
+z_index = 2
+position = Vector2(-9.642707e-06, 90.5)
+texture = ExtResource("4_l4vse")
+
+[node name="CracksSprite" type="Sprite2D" parent="BGSprite" unique_id=469961494]
+z_index = 2
+position = Vector2(0, 44)
+scale = Vector2(1.01, 1.01)
+texture = ExtResource("5_7qwyu")
+hframes = 5
+
+[node name="AnimalSprite" type="Sprite2D" parent="BGSprite" unique_id=1546901524]
+z_index = 1
+position = Vector2(10, 113)
+texture = ExtResource("6_7qwyu")
+
+[node name="EggHatchSprite" type="Sprite2D" parent="BGSprite" unique_id=750339482]
+z_index = 1
+position = Vector2(11.374995, 49.020836)
+scale = Vector2(1.0160497, 1.2626833)
+texture = ExtResource("7_l4vse")
+
+[node name="Bounds" type="Node2D" parent="." unique_id=1856636774]
+top_level = true
+metadata/_edit_lock_ = true
+
+[node name="TopBound" type="StaticBody2D" parent="Bounds" unique_id=51010429]
+position = Vector2(120, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/TopBound" unique_id=1745006193]
+texture_filter = 1
+scale = Vector2(3.75, 0.25)
+texture = ExtResource("4_fhprn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/TopBound" unique_id=1395765720]
+shape = SubResource("RectangleShape2D_l4vse")
+
+[node name="BottomBound" type="StaticBody2D" parent="Bounds" unique_id=1256202045]
+position = Vector2(120, 160)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/BottomBound" unique_id=232191760]
+texture_filter = 1
+scale = Vector2(3.75, 0.25)
+texture = ExtResource("4_fhprn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BottomBound" unique_id=651072279]
+shape = SubResource("RectangleShape2D_l4vse")
+
+[node name="LeftBound" type="StaticBody2D" parent="Bounds" unique_id=1977280710]
+position = Vector2(4, 80)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/LeftBound" unique_id=638166884]
+texture_filter = 1
+scale = Vector2(0.25, 2.5)
+texture = ExtResource("4_fhprn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/LeftBound" unique_id=803686396]
+shape = SubResource("RectangleShape2D_7qwyu")
+
+[node name="RightBound" type="StaticBody2D" parent="Bounds" unique_id=1912816316]
+position = Vector2(236, 80)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/RightBound" unique_id=2029498182]
+texture_filter = 1
+scale = Vector2(0.25, 2.5)
+texture = ExtResource("4_fhprn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightBound" unique_id=777238316]
+shape = SubResource("RectangleShape2D_7qwyu")
+
+[node name="Button" type="Button" parent="." unique_id=1583607173]
+offset_left = 88.0
+offset_top = 69.0
+offset_right = 96.0
+offset_bottom = 77.0
+scale = Vector2(9.712461, 7.8647656)
+flat = true
+
+[node name="AnimalSound" type="AudioStreamPlayer" parent="." unique_id=888364304]
+stream = ExtResource("9_7qwyu")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
