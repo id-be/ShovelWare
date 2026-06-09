@@ -110,15 +110,18 @@ _data = {
 [node name="Crate" type="StaticBody2D" unique_id=1279902777]
 z_index = 1
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=870015715]
 position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_j4l4u")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=189888473]
 position = Vector2(-3, -4)
 texture = ExtResource("1_0acli")
 hframes = 8
+metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2138184257]
 libraries/ = SubResource("AnimationLibrary_gcfov")

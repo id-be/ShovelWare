@@ -22,6 +22,16 @@ size = Vector2(11, 20)
 [node name="DipTheChip" type="Node2D" unique_id=1400565221]
 script = ExtResource("1_p7x5u")
 _prompt = "Dip!"
+input_flags = {
+"button_0": false,
+"button_1": true,
+"microphone": false,
+"mouse_touch": false,
+"ui_down": false,
+"ui_left": false,
+"ui_right": false,
+"ui_up": false
+}
 _music_tracks = Array[AudioStream]([ExtResource("2_ummad")])
 
 [node name="DipTop" type="Sprite2D" parent="." unique_id=1545460349]

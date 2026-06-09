@@ -223,6 +223,3 @@ func reset_pet():
 			queue_pet_state("Angry");
 		1:
 			queue_pet_state("Normal");
-
-func _on_last_heart():
-	pass

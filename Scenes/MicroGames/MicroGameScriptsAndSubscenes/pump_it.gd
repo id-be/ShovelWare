@@ -71,9 +71,9 @@ func _on_button_pressed():
 	end_state = "success"
 
 func _on_area_2d_mouse_entered():
-	print("STUFF")
-
+	#print("STUFF")
+	pass
 
 func _on_area_2d_mouse_shape_entered(shape_idx):
-	print("STUFF2")
+	#print("STUFF2")
 	pass # Replace with function body.

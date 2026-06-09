@@ -40,13 +40,16 @@ height = 4.0
 [node name="Ring" type="CharacterBody2D" unique_id=726695317]
 slide_on_ceiling = false
 script = ExtResource("2_nf3e2")
+metadata/_edit_lock_ = true
 
 [node name="RingSprite" type="AnimatedSprite2D" parent="." unique_id=654559607]
 modulate = Color(1, 0.8, 0.33333334, 1)
 sprite_frames = SubResource("SpriteFrames_1dbx1")
 animation = &"Jiggle"
+metadata/_edit_lock_ = true
 
 [node name="MainBody" type="CollisionShape2D" parent="." unique_id=1434012253]
 position = Vector2(0, 0.5)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_nf3e2")
+metadata/_edit_lock_ = true

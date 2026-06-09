@@ -82,7 +82,7 @@ func _unhandled_input(event) -> void:
 						timer_gen_path.stop();
 						timer_gen_path.emit_signal("timeout");
 	
-func _physics_process(delta) -> void:
+func _process(delta) -> void:
 	if !dragging:
 		if chasing:
 			if dragon.global_position.x >= castle.global_position.x - 30:

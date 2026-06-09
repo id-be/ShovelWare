@@ -31,7 +31,6 @@ var hl_text_bg = Color("a40082")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	boilerplate_ready()
 	$Cursor.toggle_self(false)
 	generate_flirts()
 
@@ -47,22 +46,6 @@ func _set_difficulty(dif):
 		"hard":
 			num_actions = 6
 			num_bad_actions = 5
-
-func _input(event):
-	if Input.is_action_just_pressed("ui_up"):
-		pass
-	elif Input.is_action_just_pressed("ui_left"):
-		pass
-	elif Input.is_action_just_pressed("ui_right"):
-		pass
-	elif Input.is_action_just_pressed("ui_down"):
-		pass
-
-#func hide_all_labels():
-	#$Panel/Label.hide()
-	#$Panel/Label2.hide()
-	#$Panel/Label3.hide()
-	#$Panel/Label4.hide()
 
 func generate_flirts():
 	#all we need to do here--randomly select which of 6 items will have the good thing, attach script

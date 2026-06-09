@@ -18,7 +18,7 @@ func descend() -> void:
 		return;
 	descend();
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	angle += theta_step;
 	
 	velocity.x = amplitude*cos(angle/20);

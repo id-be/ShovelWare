@@ -502,6 +502,7 @@ input_flags = {
 "ui_up": false
 }
 _music_tracks = Array[AudioStream]([SubResource("AudioStreamOggVorbis_3olvy")])
+metadata/_edit_lock_ = true
 
 [node name="Bounds" parent="." unique_id=1537456464 instance=ExtResource("2_k86r8")]
 
@@ -510,8 +511,10 @@ offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(5.84, 4.04)
 color = Color(0, 0.301961, 0.0352941, 1)
+metadata/_edit_lock_ = true
 
 [node name="Crates" type="Node2D" parent="." unique_id=919785880]
+metadata/_edit_lock_ = true
 
 [node name="Crate" parent="Crates" unique_id=1072542022 instance=ExtResource("3_gxglv")]
 position = Vector2(71, 21)
@@ -527,42 +530,52 @@ position = Vector2(38, 76)
 motion_mode = 1
 wall_min_slide_angle = 0.0
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Cat" unique_id=1112698969]
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_g31f8")
 animation = &"attack_pounce"
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cat" unique_id=1106748520]
 position = Vector2(2, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_rhx26")
+metadata/_edit_lock_ = true
 
 [node name="RayCast2D" type="RayCast2D" parent="Cat" unique_id=659378220]
 position = Vector2(19, 0)
 target_position = Vector2(15, 0)
+metadata/_edit_lock_ = true
 
 [node name="DetectArea2D" type="Area2D" parent="Cat" unique_id=1116501654]
 monitorable = false
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Cat/DetectArea2D" unique_id=453279884]
 polygon = PackedVector2Array(-14, 0, 75, 26, 75, -26)
+metadata/_edit_lock_ = true
 
 [node name="UndetectArea2D" type="Area2D" parent="Cat" unique_id=728503811]
 position = Vector2(58, 0)
 monitorable = false
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cat/UndetectArea2D" unique_id=667192824]
 position = Vector2(18, 0)
 shape = SubResource("CircleShape2D_lokmq")
+metadata/_edit_lock_ = true
 
 [node name="Laser" type="Area2D" parent="." unique_id=462137676]
 z_index = 1
 position = Vector2(137, 29)
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Laser" unique_id=1807062686]
 shape = SubResource("CircleShape2D_o48ed")
+metadata/_edit_lock_ = true
 
 [node name="LaserParticles2D" type="CPUParticles2D" parent="Laser" unique_id=358508008]
 emitting = false
@@ -574,12 +587,14 @@ gravity = Vector2(0, 0)
 scale_amount_min = 2.0
 scale_amount_max = 2.0
 color = Color(1, 0, 0.235294, 1)
+metadata/_edit_lock_ = true
 
 [node name="Pointer" type="Node2D" parent="." unique_id=136691864]
 top_level = true
 z_index = 1
 position = Vector2(123, 138)
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="PointerParticles2D" type="CPUParticles2D" parent="Pointer" unique_id=864865216]
 position = Vector2(10.6667, 0)
@@ -592,16 +607,19 @@ gravity = Vector2(0, 0)
 initial_velocity_min = 60.0
 initial_velocity_max = 120.71
 color = Color(1, 0, 0.235294, 1)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Pointer" unique_id=1069636395]
 rotation = -1.5708
 texture = ExtResource("9_t2q6i")
+metadata/_edit_lock_ = true
 
 [node name="PointerLine2D" type="Line2D" parent="." unique_id=1877239400]
 z_index = 1
 points = PackedVector2Array(47, 36, 100, 100)
 width = 1.5
 default_color = Color(1, 0, 0.23529412, 0.4745098)
+metadata/_edit_lock_ = true
 
 [node name="Loadouts" type="AnimationPlayer" parent="." unique_id=452373970]
 libraries/ = SubResource("AnimationLibrary_bekgj")
@@ -611,18 +629,23 @@ stream = ExtResource("10_er3i5")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=922928411]
 position = Vector2(26, 76)
+metadata/_edit_lock_ = true
 
 [node name="Marker2D2" type="Marker2D" parent="." unique_id=1962367306]
 position = Vector2(126, 14)
+metadata/_edit_lock_ = true
 
 [node name="Marker2D3" type="Marker2D" parent="." unique_id=1842156182]
 position = Vector2(98, 146)
+metadata/_edit_lock_ = true
 
 [node name="Marker2D4" type="Marker2D" parent="." unique_id=2055297151]
 position = Vector2(210, 96)
+metadata/_edit_lock_ = true
 
 [node name="Marker2D5" type="Marker2D" parent="." unique_id=467982785]
 position = Vector2(114, 77)
+metadata/_edit_lock_ = true
 
 [connection signal="animation_finished" from="Cat/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Cat/DetectArea2D" to="." method="_on_detect_area_2d_area_entered"]

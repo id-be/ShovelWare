@@ -3,6 +3,8 @@ extends Node;
 @onready var music_player = $Music;
 @onready var sfx_player = $SFX;
 
+var skip_intro = false;
+
 @onready var stings = [
 	load("res://Scenes/MainGame/Assets/Sound/Ready.ogg"),
 	load("res://Scenes/MainGame/Assets/Sound/Ready2.ogg"),
@@ -53,8 +55,6 @@ func _input(_event):
 	if OS.is_debug_build():
 		if Input.is_action_just_pressed("DEBUG_Quit"):	
 			get_tree().quit();
-	else:
-		self.set_process_input(false);
 
 func _queue_music_track() -> void:
 	pass;

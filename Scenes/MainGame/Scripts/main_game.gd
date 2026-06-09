@@ -13,6 +13,7 @@ var intro_flag = 0;
 @export var game_speed_multiplier = 1.0;
 @export var game_speed_increment = 0.1;
 @export var max_game_speed_up_increments = 6;
+@export var max_game_speed = 1.6;
 
 var can_pause: bool = false;
 
@@ -29,14 +30,19 @@ var zoom_out_multiplier = 1.0;
 signal done_zoom_in;
 signal done_zoom_out;
 
+signal game_speed_up;
+
 var tween;
 
 #things to change: we need the pause menu to go back to the main menu, the help button to do something, the quit button to quit or possibly be moved to the main menu..
 
 func _ready() -> void:
+	$RetryButton.hide();
+	$RetryButton.disabled = true;
 	if Globals.check_os() == "mobile":
 		zoom_out_multiplier = 0.95;
 		zoom_in_multiplier = zoom_out_multiplier;
+	
 #	-(Globals.check_os())
 	#$Camera2D.zoom = Vector2(1.35, 1.35)
 	#$Camera2D.position = $MicroGamesHandler.position
@@ -47,19 +53,21 @@ func _ready() -> void:
 	games_handler.connect("zoom_into_microgame", Callable(self, "zoom_in"));
 	games_handler.connect("zoom_out_of_microgame", Callable(self, "zoom_out"));
 	games_handler.connect("get_input_flags", Callable(self, "get_input_flags"));
+	games_handler.connect("speed_up", Callable(self, "speed_up_game"));
 	connect("done_zoom_in", Callable(games_handler, "on_done_zoom_in"));
 	connect("done_zoom_out", Callable(games_handler, "on_done_zoom_out"));
 	hide_hint_buttons();
 	await play_intro_cinematic();
 
 func play_intro_cinematic() -> void:
-	if skip_intro:
+	if Globals.skip_intro:
 		zoom_out(true);
 		$DeanBoy.show();
 		$MicroGamesHandler.pick_microgame();
 		can_pause = true;
 		return;
 	$DeanBoy.hide();
+	$TouchButtons.hide();
 	
 	await games_handler.screen_fx_toggle();
 	$AnimSprite.scale = Vector2(7,7);
@@ -101,19 +109,21 @@ func play_intro_cinematic() -> void:
 	
 	zoom_out(true);
 	$DeanBoy.show();
+	$TouchButtons.show();
 	$MicroGamesHandler.pick_microgame();
 	can_pause = true;
 	
 	await games_handler.screen_fx_toggle();
+	Globals.skip_intro = true;
 
 func play_cinematic(cinematic) -> void:#a different idea here: we need to create a cinematic "script" object
-	#
+
 	$AnimSprite.show();
 	$AnimSprite.play(cinematic);
 	await $AnimSprite.animation_finished;
 	$AnimSprite.hide();
 
-func _input(_event) -> void:
+func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("start_button"):
 		if can_pause:
 			toggle_pause();
@@ -175,7 +185,7 @@ func zoom_in(during_play = false) -> void:
 
 	await tween.finished;
 	if !during_play:
-		emit_signal("done_zoom_in");
+		done_zoom_in.emit();
 #	games_handler.current_microgame.set_process(true)#this line is throwing errors
 func zoom_out(during_play = false) -> void:
 	#also need to pause the microgame....
@@ -192,10 +202,10 @@ func zoom_out(during_play = false) -> void:
 	await tutorial_timer.timeout;
 #	await get_tree().create_timer(5).timeout
 	if !during_play:
-		emit_signal("done_zoom_out");
+		done_zoom_out.emit();
 
 func toggle_pause() -> void:
-		get_tree().paused = !get_tree().paused;#this pauses the game
+		get_tree().paused = !get_tree().paused;#this toggles pause
 		Globals.toggle_sounds();
 		if get_tree().paused:
 			$PauseMenuMarginContainer.show();
@@ -211,15 +221,40 @@ func toggle_pause() -> void:
 			Globals.music_player.set_stream_paused(false);
 			#resume the sound
 
+func speed_up_game() -> void:
+	if game_speed_multiplier < max_game_speed:
+		game_speed_multiplier += game_speed_increment;
+		set_game_speed(game_speed_multiplier);
+		await $MicroGamesHandler.flash_speed_up();
+	#WHY do you need this???
+	await get_tree().create_timer(0.1).timeout;
+	game_speed_up.emit();
+
 func set_game_speed(speed) -> void:
 	game_speed_multiplier = speed;
 	AudioServer.playback_speed_scale = game_speed_multiplier;
 	Engine.time_scale = game_speed_multiplier;
+	
 
 func _on_resume_pressed() -> void:
 	toggle_pause();
 func _on_help_pressed() -> void:
 	pass # Replace with function body.
 func _on_to_menu_pressed() -> void:
+	$PauseScreenTint.show();
+	$PauseMenuMarginContainer.hide();
+	$MainMenu.show();
+
+func _on_retry_button_pressed() -> void:
+	#Here's where we need to retry the game!
 	get_tree().paused = false;
-	get_tree().change_scene_to_file("res://Scenes/Menu/MainMenu.tscn");
+	get_tree().reload_current_scene();
+
+
+func _on_quit_button_pressed() -> void:
+	get_tree().quit();
+
+
+func _on_singleplayer_button_pressed() -> void:
+	get_tree().paused = false;
+	get_tree().reload_current_scene();

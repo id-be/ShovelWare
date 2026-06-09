@@ -5,7 +5,7 @@ var dragon_ahead_pos;
 
 @export_range(20,500) var bolt_speed: int = 120;
 
-func _physics_process(delta) -> void:
+func _process(delta) -> void:
 	if dragon:
 		if $HomingTimer.time_left > 0:
 			$Bolt.global_position = $Bolt.global_position.move_toward(dragon_ahead_pos, bolt_speed * delta);

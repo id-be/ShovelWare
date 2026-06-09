@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://cjr7t5vifoyu" path="res://Scenes/MicroGamesHandler/Assets/Audio/BombBump.ogg" id="4_tk4ib"]
 [ext_resource type="Material" uid="uid://dse046wvbee6j" path="res://Scenes/MicroGamesHandler/Assets/Shaders/ShaderMaterials/TVStaticShader.tres" id="4_yk03m"]
 [ext_resource type="Shader" uid="uid://diglj43h367c5" path="res://Scenes/MicroGamesHandler/Assets/Shaders/TVStaticShader.gdshader" id="5_72du8"]
+[ext_resource type="AudioStream" uid="uid://7lihmhyu1qa4" path="res://Scenes/MicroGamesHandler/Assets/Audio/Static.wav" id="9_stq7r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_stq7r"]
 shader = ExtResource("5_72du8")
@@ -27,6 +28,70 @@ tracks/0/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ChallengeLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpeedUpLabel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ReadyLabel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_72du8"]
+resource_name = "flash_challenge"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ChallengeLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false]
+}
 
 [sub_resource type="Animation" id="Animation_650cc"]
 resource_name = "flash_ready"
@@ -43,11 +108,53 @@ tracks/0/keys = {
 "update": 1,
 "values": [true, false, true, false, true, false, true, false, true, false]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ReadyLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_stq7r"]
+resource_name = "flash_speed_up"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpeedUpLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m847m"]
 _data = {
 &"RESET": SubResource("Animation_8cyig"),
-&"flash_ready": SubResource("Animation_650cc")
+&"flash_challenge": SubResource("Animation_72du8"),
+&"flash_ready": SubResource("Animation_650cc"),
+&"flash_speed_up": SubResource("Animation_stq7r")
 }
 
 [node name="MicroGamesHandler" type="Node2D" unique_id=1387874159]
@@ -163,7 +270,8 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
-[node name="PromptLabel" type="Label" parent="." unique_id=2063363411]
+[node name="Prompts" type="Control" parent="." unique_id=365340294]
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -177,17 +285,23 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 mouse_filter = 1
-text = "READY???"
-horizontal_alignment = 1
-vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PromptLabel" unique_id=54875357]
+[node name="ReadyLabel" type="Label" parent="Prompts" unique_id=920368121]
+layout_mode = 0
+offset_left = 0.5
+offset_top = 1.5
+offset_right = 87.5
+offset_bottom = 21.5
+text = "Ready???"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Prompts" unique_id=54875357]
 process_mode = 1
 libraries/ = SubResource("AnimationLibrary_m847m")
 
-[node name="DEBUGHearts" type="Label" parent="PromptLabel" unique_id=1852291676]
+[node name="DEBUGHearts" type="Label" parent="Prompts" unique_id=1852291676]
 layout_mode = 0
 offset_left = 1.5
 offset_top = 46.5
@@ -198,7 +312,7 @@ text = "
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
-[node name="DEBUGMCGCount" type="Label" parent="PromptLabel" unique_id=13587513]
+[node name="DEBUGMCGCount" type="Label" parent="Prompts" unique_id=13587513]
 layout_mode = 0
 offset_left = 66.5
 offset_top = 46.5
@@ -208,7 +322,7 @@ text = "0"
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
-[node name="BossLabel" type="Label" parent="PromptLabel" unique_id=1458125229]
+[node name="BossLabel" type="Label" parent="Prompts" unique_id=1458125229]
 visible = false
 layout_mode = 0
 offset_left = -11.5
@@ -216,8 +330,9 @@ offset_top = 20.5
 offset_right = 98.5
 offset_bottom = 40.5
 text = "BOSS  TIME!!!"
+horizontal_alignment = 1
 
-[node name="SpeedUpLabel" type="Label" parent="PromptLabel" unique_id=1965615373]
+[node name="SpeedUpLabel" type="Label" parent="Prompts" unique_id=1965615373]
 visible = false
 layout_mode = 0
 offset_left = -11.5
@@ -225,8 +340,9 @@ offset_top = 20.5
 offset_right = 98.5
 offset_bottom = 40.5
 text = "Speed Up!!!!!"
+horizontal_alignment = 1
 
-[node name="ChallengeLabel" type="Label" parent="PromptLabel" unique_id=177572821]
+[node name="ChallengeLabel" type="Label" parent="Prompts" unique_id=177572821]
 visible = false
 layout_mode = 0
 offset_left = -20.5
@@ -234,6 +350,17 @@ offset_top = 20.5
 offset_right = 107.5
 offset_bottom = 40.5
 text = "Challenge UP!"
+horizontal_alignment = 1
+
+[node name="PromptLabel" type="Label" parent="Prompts" unique_id=1840177535]
+visible = false
+layout_mode = 0
+offset_left = 0.5
+offset_top = 1.5
+offset_right = 87.5
+offset_bottom = 21.5
+text = "Prompt!"
+horizontal_alignment = 1
 
 [node name="BombTimer" type="Node2D" parent="." unique_id=1914615803]
 process_mode = 1
@@ -272,3 +399,6 @@ stream = ExtResource("4_tk4ib")
 bus = &"SFXBus"
 
 [node name="Timer" type="Timer" parent="." unique_id=223106751]
+
+[node name="ScreenToggleSFX" type="AudioStreamPlayer" parent="." unique_id=1579377810]
+stream = ExtResource("9_stq7r")

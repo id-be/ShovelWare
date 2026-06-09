@@ -4,7 +4,7 @@ var angle := 0.0;
 var theta_step := PI/8;
 var amplitude := 64#3000#0.03000.0;#64
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	angle += theta_step;
 	
 	velocity.x = amplitude*cos(angle/20);

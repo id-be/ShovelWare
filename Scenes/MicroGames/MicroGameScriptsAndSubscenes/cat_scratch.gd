@@ -94,7 +94,7 @@ func increase_score(anim):
 		if difficulty == "hard":
 			end_state = "success"
 	
-func _physics_process(_delta):
+func _process(_delta):
 	#Constantly update laser position
 	laser.global_position = get_viewport().get_mouse_position()
 	pointer.look_at(laser.global_position)

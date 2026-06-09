@@ -33,10 +33,12 @@ input_flags = {
 }
 _music_tracks = Array[AudioStream]([ExtResource("6_ypphq")])
 _time_step = 0.4
+metadata/_edit_lock_ = true
 
 [node name="BG" type="Sprite2D" parent="." unique_id=929777389]
 position = Vector2(120, 72)
 texture = ExtResource("5_f8bcm")
+metadata/_edit_lock_ = true
 
 [node name="Player" type="SubViewportContainer" parent="." unique_id=2104588185]
 offset_left = 56.0
@@ -45,6 +47,8 @@ offset_right = 696.0
 offset_bottom = 717.0
 scale = Vector2(0.1144354, 0.11782654)
 stretch = true
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="SubViewport" type="SubViewport" parent="Player" unique_id=1623625868]
 own_world_3d = true
@@ -55,11 +59,14 @@ render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="Player/SubViewport" unique_id=61671508]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6948979, 7.3414154, 9.199482)
+metadata/_edit_lock_ = true
 
 [node name="Nunya" parent="Player/SubViewport" unique_id=105859620 instance=ExtResource("7_ypphq")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+metadata/_edit_lock_ = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player/SubViewport" unique_id=732336212]
+metadata/_edit_lock_ = true
 
 [node name="Enemy" type="SubViewportContainer" parent="." unique_id=882897156]
 offset_left = 180.0
@@ -68,6 +75,8 @@ offset_right = 861.56396
 offset_bottom = 839.34564
 scale = Vector2(-0.114, 0.118)
 stretch = true
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="SubViewport" type="SubViewport" parent="Enemy" unique_id=1700931190]
 transparent_bg = true
@@ -77,11 +86,14 @@ render_target_update_mode = 4
 
 [node name="Brobot" parent="Enemy/SubViewport" unique_id=1158211698 instance=ExtResource("8_ypphq")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+metadata/_edit_lock_ = true
 
 [node name="Camera3D" type="Camera3D" parent="Enemy/SubViewport" unique_id=2128771344]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.695, 7.341, 13.356431)
+metadata/_edit_lock_ = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Enemy/SubViewport" unique_id=1618139445]
+metadata/_edit_lock_ = true
 
 [node name="Label" type="Label" parent="." unique_id=335529293]
 offset_left = 15.0
@@ -91,6 +103,7 @@ offset_bottom = 152.0
 theme_override_fonts/font = ExtResource("3_bouyl")
 text = "⓿⓵≺≻≼≽⏴⏵⏶⏷"
 autowrap_mode = 1
+metadata/_edit_lock_ = true
 
 [node name="Label2" type="Label" parent="." unique_id=1740116959]
 offset_left = 15.0
@@ -107,18 +120,21 @@ text = "⓿⓵≺≻≼≽⏴⏵⏶⏷"
 autowrap_mode = 1
 visible_characters = 0
 visible_ratio = 0.0
+metadata/_edit_lock_ = true
 
 [node name="Label3" type="Label" parent="." unique_id=1817418519]
 visible = false
 offset_right = 40.0
 offset_bottom = 20.0
 text = "COMBO ACHIEVED!!!"
+metadata/_edit_lock_ = true
 
 [node name="Label4" type="Label" parent="." unique_id=451808386]
 visible = false
 offset_right = 40.0
 offset_bottom = 20.0
 text = "FAILURE!!!"
+metadata/_edit_lock_ = true
 
 [node name="Bounds" type="Node2D" parent="." unique_id=965600493]
 top_level = true
@@ -126,44 +142,56 @@ metadata/_edit_lock_ = true
 
 [node name="TopBound" type="StaticBody2D" parent="Bounds" unique_id=452911389]
 position = Vector2(120, 0)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Bounds/TopBound" unique_id=703103794]
 texture_filter = 1
 scale = Vector2(3.75, 0.25)
 texture = ExtResource("4_maaab")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/TopBound" unique_id=520855852]
 shape = SubResource("RectangleShape2D_55qyn")
+metadata/_edit_lock_ = true
 
 [node name="BottomBound" type="StaticBody2D" parent="Bounds" unique_id=1987132430]
 position = Vector2(120, 160)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Bounds/BottomBound" unique_id=1260534605]
 texture_filter = 1
 scale = Vector2(3.75, 0.25)
 texture = ExtResource("4_maaab")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BottomBound" unique_id=1407254944]
 shape = SubResource("RectangleShape2D_55qyn")
+metadata/_edit_lock_ = true
 
 [node name="LeftBound" type="StaticBody2D" parent="Bounds" unique_id=1894912263]
 position = Vector2(4, 80)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Bounds/LeftBound" unique_id=1409778053]
 texture_filter = 1
 scale = Vector2(0.25, 2.5)
 texture = ExtResource("4_maaab")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/LeftBound" unique_id=1215006885]
 shape = SubResource("RectangleShape2D_igb7u")
+metadata/_edit_lock_ = true
 
 [node name="RightBound" type="StaticBody2D" parent="Bounds" unique_id=1240422521]
 position = Vector2(236, 80)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Bounds/RightBound" unique_id=1236560736]
 texture_filter = 1
 scale = Vector2(0.25, 2.5)
 texture = ExtResource("4_maaab")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightBound" unique_id=1546584429]
 shape = SubResource("RectangleShape2D_igb7u")
+metadata/_edit_lock_ = true

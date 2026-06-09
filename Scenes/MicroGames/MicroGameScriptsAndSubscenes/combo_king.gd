@@ -35,7 +35,7 @@ func _set_difficulty(dif):
 		"hard":
 			combo_length=5
 
-func _input(_event):
+func _process(delta: float) -> void:
 #	var action_as_string
 #	print(event.is_action_type())
 	if is_comboing:
@@ -144,7 +144,4 @@ func end_combo(_end_state):
 			$Player/SubViewport/Nunya/AnimationPlayer.play("Die")
 
 func flash_and_disappear_combo():
-	pass
-	
-func _process(_delta):
 	pass
