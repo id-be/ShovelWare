@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dse046wvbee6j"]
+
+[ext_resource type="Shader" uid="uid://diglj43h367c5" path="res://Scenes/MicroGamesHandler/Assets/Shaders/TVStaticShader.gdshader" id="1_smerl"]
+
+[resource]
+shader = ExtResource("1_smerl")
+shader_parameter/amount = 40.0

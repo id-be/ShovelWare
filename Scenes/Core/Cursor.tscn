@@ -1,21 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://bsbyf1lx7fwi8"]
+[gd_scene format=3 uid="uid://bsbyf1lx7fwi8"]
 
-[ext_resource type="Script" path="res://Scenes/Core/Scripts/cursor.gd" id="1_3gnos"]
+[ext_resource type="Script" uid="uid://bwv0qmwy6oyis" path="res://Scenes/Core/Scripts/cursor.gd" id="1_3gnos"]
 [ext_resource type="FontFile" uid="uid://cjj8j680nneju" path="res://Assets/2D/Fonts/PromptFont/promptfont.otf" id="2_nqwoj"]
 
-[node name="Cursor" type="Control"]
+[node name="Cursor" type="Control" unique_id=799273295]
 layout_mode = 3
 anchors_preset = 0
+mouse_filter = 2
 script = ExtResource("1_3gnos")
+metadata/_edit_lock_ = true
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1865519922]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1982351766]
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 20.0
 theme_override_fonts/font = ExtResource("2_nqwoj")
 text = "࢐∁"
+metadata/_edit_lock_ = true

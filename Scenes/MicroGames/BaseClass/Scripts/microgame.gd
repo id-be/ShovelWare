@@ -1,13 +1,17 @@
-extends Node2D
+extends Node
 
 #the base window size is 240x160, there are 12 pixels missing
 #from left and right as well as 8 from top and bottom--this
 #leaves the usable, unbordered area as 216 x 144.
-#this is a 216:144 = 1.5 = 3:2 aspect ratio
+#this is a 216:144 = 1.5 = 3:2 aspect ratio.
 
 class_name microgame
 
 @export var _prompt: String = "Task!"
+
+@export var is_boss = false
+
+#@export var should_phaser
 
 @export var input_flags: Dictionary = {"ui_up":false, "ui_down":false, 
 "ui_left":false, "ui_right":false, "button_0":false, 
@@ -28,20 +32,29 @@ class_name microgame
 @export_enum("failure", "success", "boss_failure", "boss_success") var default_end_state: String = "failure"
 @onready var end_state = default_end_state
 
+var heart_handler_instance
+signal last_heart
+
+signal set_boss
+signal set_difficulty
+signal start
+
 signal start_game
 signal end_game
 signal increment_timer
 
 #	called when the node is initialized (loaded into memory)
 func _init():
+	connect("ready",boilerplate_ready)
+	#ABSOLUTELY NEED THE ABOVE.
 #	only use this for stuff that doesn't need to be loaded.
 #	anything set in the editor is unavailable here 
 #	(eg, _music_tracks) until the ready function is called 
 #	(which is ALWAYS after _init).
-	pass
-	
+
+
 func _ready():
-	boilerplate_ready()
+	pass
 
 func boilerplate_ready():
 	add_child(timer)
@@ -49,7 +62,23 @@ func boilerplate_ready():
 	_set_initial_values()
 	emit_signal("start_game")
 
+func _set_boss(boss):
+	
+	boilerplate_set_boss(boss)
+	match is_boss:
+		true:
+			pass
+		false:
+			pass
+
+func boilerplate_set_boss(boss):
+	is_boss = boss
+
+func boilerplate_set_difficulty(dif):
+	difficulty = dif
+
 func _set_difficulty(dif):
+	boilerplate_set_difficulty(dif)
 	match dif:
 		"easy":
 			pass
@@ -66,7 +95,7 @@ func _set_initial_values():
 
 #you shouldn't need to override this
 func _start():
-	boiler_plate_start()
+	boilerplate_start()
 
 func process_toggle(state):
 	set_process(state)
@@ -74,7 +103,7 @@ func process_toggle(state):
 	set_process_input(state)
 	set_process_unhandled_input(state)
 
-func boiler_plate_start():
+func boilerplate_start():
 	process_toggle(true)
 
 func track_time():
@@ -82,6 +111,17 @@ func track_time():
 	await timer.timeout
 	emit_signal("increment_timer")
 	track_time()
+
+func add_heart_handler(num_hearts = 3, handler_pos = Vector2(22 , 17)):
+	var heart_handler = load("res://Scenes/MicroGames/Common/CommonScenes/HeartsHandler.tscn")
+	heart_handler_instance = heart_handler.instantiate()
+	add_child(heart_handler_instance)
+	heart_handler_instance.set_num_hearts(num_hearts)
+	heart_handler_instance.position = handler_pos
+	heart_handler_instance.connect("last_heart", Callable(self, "_on_last_heart"))
+	
+func _on_last_heart():
+	pass
 
 func _end_game(state = end_state):
 	emit_signal("end_game", state)

@@ -1,18 +1,20 @@
-extends Node2D
+extends Node2D;
 #og colorrect pos: -108, -72
-#sadly will need to do a lot of refactoring to account
-#for boss microgames which won't have a timer...... that
-#means that we can either USE the full screen space OR
+#either USE the full screen space OR
 #we can replace the debugrects with some sort of nice border
-var game_state = "loss"
+#fix the queueing so that you only have things in queue play, not default to random shuffle once the queue is depleted
 
-@onready var mcg_timer = $Timer
+#for some reason after a boss, random_shuffle breaks unless the queue has a valid 
+var game_state = "loss";
 
-@onready var mcg_port = $SubViewPortContainer/SubViewPort
-@onready var mcg_port_container = $SubViewPortContainer
-@onready var prompt_label = $PromptLabel
-var prompt_label_initial_text = "Ready?"
-@onready var screen_cover = $ColorRect
+@onready var mcg_timer = $Timer;
+
+@onready var mcg_port = $SubViewPortContainer/SubViewPort;
+@onready var mcg_port_container = $SubViewPortContainer;
+
+@onready var screen_cover = $ColorRect;
+@onready var screen_fx = $ColorRect2;
+@export var tv_shader : ShaderMaterial;
 
 @export var max_hearts : int  = 4
 var num_hearts = max_hearts
@@ -31,6 +33,7 @@ var microgames_dir = "res://Scenes/MicroGames/"
 var all_microgames = DirAccess.get_files_at(microgames_dir)
 
 var microgames_count = 0
+var prev_microgames_count = microgames_count
 
 var microgames_max_index = all_microgames.size() - 1
 
@@ -41,35 +44,125 @@ var ready_time
 
 var debug_microgame_path = "res://Scenes/MicroGames/ExampleMicroGame/ExampleMicroGame.tscn"
 
-var cur_microgame_difficulty = "easy"
+@export_enum("easy", "medium", "hard") var cur_microgame_difficulty : String = "easy"
 
-@export_enum("random_shuffle", "shuffle", "queue") var microgame_playmode: String = "random_shuffle"#shuffle from queue, go through queue, etc
+@export_enum("random_shuffle", "shuffle", "queue", "boss_queue", "cycle") var microgame_playmode: String = "random_shuffle"#shuffle from queue, go through queue, etc
 var microgames_pool = all_microgames
+@export var boss_microgames_pool = []
 
 var previous_microgame
 var current_microgame
 var next_microgame
 @export var microgames_queue: Array[String]
+@export var boss_microgames_queue: Array[String]
 var mcg_index_in_queue = 0
 
-@export var boss_mcg_counter = 8#every n, you get a boss mcg. 
+@export var mcg_count_to_gen_boss = 8#every n, you get a boss mcg.
 #this will be handled differently in that you have to win or 
 #else it keeps rerolling, and after this one ends you hit a speed up
+var is_cur_mcg_boss = false
+@export var mcg_count_to_speedup = 10
+@export var mcg_count_to_raise_difficulty = 20
+
+signal screen_fx_toggled
 
 signal zoom_into_microgame
 signal get_input_flags
 signal zoom_out_of_microgame
 
+signal speed_up
+
 func _ready():
-	$PromptLabel/DEBUGHearts.text = str(num_hearts)
+#	set_editor_description("valuebutt")
+	$Prompts/DEBUGHearts.text = str(num_hearts)
+#	mcg_timer.timeout.connect("on_increment_timer")
 	mcg_timer.connect("timeout", Callable(self, "on_increment_timer"))
 	
-	pick_microgame()
+	toggle_prompts()
+	#screen_fx_toggle()
+	#toggle_tv_shader()
+#	pick_microgame()
+#	pick_microgame(true)
 
+func toggle_tv_shader():
+	if screen_fx.material == null:
+		screen_fx.material = tv_shader
+	else:
+		screen_fx.material = null
+
+func screen_fx_toggle():
+	#screen_fx.material starts off null. so:
+	var tween
+
+	#tween.tween_property($Camera2D, "position", $MicroGamesHandler.position, 0.01)
+##	tween.tween_property($Camera2D, "zoom", Vector2(2.25, 2.25), 0.5)
+	#tween.tween_property($Camera2D, "zoom", Vector2(1.35, 1.35), 0.5)
+#	print(screen_fx.scale)
+	screen_fx.show()
+	#toggle_tv_shader()
+	#toggle_tv_shader()
+	match screen_fx.scale:
+		Vector2(1,1):
+			tween = get_tree().create_tween()
+			tween.set_parallel(false)
+			tween.tween_property(screen_fx, "scale", Vector2(0.8, 0.1), 0.1)
+			tween.tween_property(screen_fx, "scale", Vector2(0.0, 0.0), 0.1)
+			$ScreenToggleSFX.stream = load("res://Scenes/MicroGamesHandler/Assets/Audio/TVTurnOff.wav")
+			$ScreenToggleSFX.play()
+			#Globals.set_and_play_sfx(Globals.stings[6])
+			#await tween.finished
+#			screen_fx.size = Vector2(0,0)
+			#print(screen_fx.scale)
+		Vector2(0.00001, 0.00001):#really the scale is set to some small epsilon, not 0.
+			tween = get_tree().create_tween()
+			tween.set_parallel(false)
+			tween.tween_property(screen_fx, "scale", Vector2(0.8, 0.1), 0.1)
+
+			#await tween.finished; tween.stop()
+			tween.tween_property(screen_fx, "scale", Vector2(1.0,1.0), 0.1)
+
+			screen_fx.size = Vector2(216,144)
+			$ScreenToggleSFX.stream = load("res://Scenes/MicroGamesHandler/Assets/Audio/Static.wav")
+			$ScreenToggleSFX.play()
+			#await tween.finished
+			
+	#mcg_timer.start(1.0); await mcg_timer.timeout
+	#toggle_tv_shader()
+	#screen_fx.hide()
+	#emit_signal("screen_fx_toggled")
+	#match screen_fx.scale:
+		#Vector2(240,160):
+			#tween.tween_property(screen_fx, "size", Vector2(192, 16), 0.1)
+			#tween.tween_property(screen_fx, "size", Vector2(0, 0), 0.1)
+		#Vector2(0, 0):
+			#tween.tween_property(screen_fx, "size", Vector2(0.8, 0.1), 0.1)
+			#tween.tween_property(screen_fx, "size", Vector2(1,1), 0.1)
+	#print(screen_fx.size)
+	return;
+	
+func toggle_prompts():
+	$Prompts.visible = !$Prompts.visible
+	screen_fx_toggle()
 
 func flash_ready():
-	$PromptLabel/AnimationPlayer.play("flash_ready")
-	await $PromptLabel/AnimationPlayer.animation_finished
+	$Prompts/AnimationPlayer.play("flash_ready")
+	if is_cur_mcg_boss:
+		$Prompts/BossLabel.show()
+	else:
+		$Prompts/BossLabel.hide()
+	await $Prompts/AnimationPlayer.animation_finished
+	return
+	
+func attempt_speed_up():
+	speed_up.emit()
+	return
+func flash_speed_up():
+	$Prompts/AnimationPlayer.play("flash_speed_up")
+	await $Prompts/AnimationPlayer.animation_finished
+	return
+func flash_difficulty_up():
+	$Prompts/AnimationPlayer.play("flash_challenge")
+	await $Prompts/AnimationPlayer.animation_finished
 	return
 
 
@@ -85,52 +178,96 @@ func queue_microgames():
 #	temp_microgames_array
 
 func pick_microgame(is_boss = false):
+	is_cur_mcg_boss = is_boss
+	if microgame_playmode == "boss_queue":#consider moving this to _ready.
+		is_cur_mcg_boss = true
 	var my_game_index
 	var my_game_path
 	match microgame_playmode:
 		"random_shuffle":
-			my_game_index = randi_range(0, microgames_pool.size()-1)
-			my_game_path = microgames_dir + microgames_pool[my_game_index]
-		"shuffle":
+			if is_cur_mcg_boss:
+				my_game_index = randi_range(0,boss_microgames_queue.size()-1)
+				my_game_path = boss_microgames_queue[my_game_index]
+			else:
+				my_game_index = randi_range(0, microgames_pool.size()-1)
+				my_game_path = microgames_dir + microgames_pool[my_game_index]
+
+		"shuffle":#the same as random_shuffle but guarantees no repeats.	
 			pass
 		"queue":
 			for mcg in microgames_queue:
-				my_game_path = microgames_queue[mcg_index_in_queue]
+				if is_cur_mcg_boss:
+					my_game_path = boss_microgames_queue[mcg_index_in_queue]
+				else:
+					my_game_path = microgames_queue[mcg_index_in_queue]
 				if mcg_index_in_queue == microgames_queue.size() - 1:
 					pass
 				else:
 					mcg_index_in_queue +=1
-	load_microgame(my_game_path, is_boss)
+		"boss_queue":
+			for mcg in boss_microgames_queue:
+				my_game_path = boss_microgames_queue[mcg_index_in_queue]
+				if mcg_index_in_queue == boss_microgames_queue.size() - 1:
+					pass
+				else:
+					if prev_microgames_count != microgames_count:
+						mcg_index_in_queue +=1
+	#print(my_game_path)
+	load_microgame(my_game_path.trim_suffix(".remap"))#need this because of the stupid fucking exporter adding ".remap" to the ends of files for no discernible reason and the files then being unloadable
 
-func load_microgame(mcg, is_boss = false):
+func load_microgame(mcg):
+	toggle_tv_shader()
+	screen_fx_toggle()
+
+	if microgames_count % mcg_count_to_speedup == 0 && microgames_count != 0:
+		await attempt_speed_up()
+		await get_parent().game_speed_up
+	if microgames_count % mcg_count_to_raise_difficulty == 0 && microgames_count !=0 && cur_microgame_difficulty != "hard":
+		await flash_difficulty_up()
+		match cur_microgame_difficulty:
+			"easy":
+				cur_microgame_difficulty = "medium"
+			"medium":
+				cur_microgame_difficulty = "hard"
+
+
 	await flash_ready()
 	ResourceLoader.load_threaded_request(mcg)
-	add_and_initialize_microgame(mcg, is_boss)
+	add_and_initialize_microgame(mcg)
 
-func add_and_initialize_microgame(mcg, is_boss = false):
+func add_and_initialize_microgame(mcg):
 	bomb_sfx.stream = bomb_bump
 	screen_cover.show()
+	
 	var microgame_scn = ResourceLoader.load_threaded_get(mcg)
 
 	var microgame_instance = microgame_scn.instantiate()
-	emit_signal("get_input_flags", microgame_instance.input_flags)
+	get_input_flags.emit(microgame_instance.input_flags)
+	#emit_signal("get_input_flags", microgame_instance.input_flags)
 #	microgame's _init() is called here ^
 	current_microgame = microgame_instance
 	
+	current_microgame.boilerplate_set_boss(is_cur_mcg_boss)
+	current_microgame._set_boss(is_cur_mcg_boss)
+	
+	current_microgame.boilerplate_set_difficulty(cur_microgame_difficulty)
 	current_microgame._set_difficulty(cur_microgame_difficulty)
+	
 	
 	current_microgame.connect("start_game", Callable(self, "on_start_game"))
 	current_microgame.connect("end_game", Callable(self, "on_end_game"))
 #	mcg_timer.connect("timeout", Callable(self, "on_increment_timer"))
 	
-	prompt_label.text = current_microgame._prompt
-	prompt_label.show()
+	$Prompts/PromptLabel.text = current_microgame._prompt
+	$Prompts.show()
+	$Prompts/PromptLabel.show()
+	$Prompts/BossLabel.hide()
 	
 	mcg_port.add_child(current_microgame)#this needs to be at the end so that we can emit start_game in the ready function.
 #	microgame's _ready() is called here ^
 
 func on_start_game():
-	emit_signal("zoom_into_microgame")
+	zoom_into_microgame.emit()
 #	mcg_timer.start(start_game_breather_time)
 #	await mcg_timer.timeout#this should be based on the time you want them to read the prompt
 #	this part really should be in base microgame :/
@@ -142,23 +279,27 @@ func on_end_game(end_state):
 	Globals.kill_sounds()
 	bomb_timer.hide()
 	$WinLossRect.show()
+	prev_microgames_count = microgames_count
 	match end_state:
 		"success":
 			$WinLossRect/WinLabel.show()
+			microgames_count += 1
 		"failure":
 			$WinLossRect/LossLabel.show()
+			microgames_count += 1
 		"boss_success":
-			pass
+			$WinLossRect/WinLabel.show()
+			microgames_count += 1
 		"boss_failure":
-			pass
+			$WinLossRect/LossLabel.show()
 	update_num_hearts(end_state)
 # here is where you need to await the win_time
 #	current_microgame.disconnect("start_game", Callable(self, "on_start_game"))
 #	current_microgame.disconnect("end_game", Callable(self, "on_end_game"))
-	emit_signal("zoom_out_of_microgame")
+	zoom_out_of_microgame.emit()
 	current_microgame.queue_free()
-	microgames_count += 1
-	$PromptLabel/DEBUGMCGCount.text = str(microgames_count)
+
+	$Prompts/DEBUGMCGCount.text = str(microgames_count)
 #	update the counter
 	mcg_timer.start(win_loss_time)
 	await mcg_timer.timeout
@@ -168,32 +309,42 @@ func on_end_game(end_state):
 	$WinLossRect.hide()
 	$WinLossRect/WinLabel.hide()
 	$WinLossRect/LossLabel.hide()
+	toggle_tv_shader()
+	screen_fx_toggle()
 	
-	#check game_state
+	#check game_state--in other words, see if you have any more hearts left and if you don't and you just lost, game over!
 	
 func on_done_zoom_in():
 #HERE IS WHERE WE NEED TO DEBUG!
 #	from here, we await a couple seconds for the timer to run out and remove the colorrect
 	mcg_timer.start(start_game_breather_time)
 	await mcg_timer.timeout
-	screen_cover.hide(); prompt_label.hide();prompt_label.text = prompt_label_initial_text
+	screen_cover.hide();
 	#mcg_port_container.set_gui_input(true)
 	if current_microgame._init_music_track:
 		Globals.set_and_play_music(current_microgame._init_music_track)
 	
-	initialize_bomb_timer_visuals()
-	
+	if !is_cur_mcg_boss:
+		initialize_bomb_timer_visuals()
+		mcg_timer.start(current_microgame._time_step)
+	current_microgame.boilerplate_start()
 	current_microgame._start()
-	mcg_timer.start(current_microgame._time_step)
-
+	$Prompts.hide()
+	$Prompts/PromptLabel.hide()
+	
 func on_done_zoom_out():
 	#couple things here... don't immediately pick the microgame, wait a little and also offload this to the maingame
 	#second off: save the previous microgame for reference, even if only as a name
 #	print(current_microgame)
-#wait here in case we need to speed up!
-	if microgames_count % boss_mcg_counter == 0:
-		print("FUCK")
-	pick_microgame()
+#wait here in case we need to speed up!]
+#	
+	#print(microgame_playmode)
+
+	if microgames_count % mcg_count_to_gen_boss == 0 && microgames_count != 0:
+		pick_microgame(true)
+	else:
+		microgame_playmode = "random_shuffle"#regularly scheduled programming
+		pick_microgame()
 
 
 func initialize_bomb_timer_visuals():
@@ -203,6 +354,8 @@ func initialize_bomb_timer_visuals():
 
 
 func on_increment_timer():
+	if is_cur_mcg_boss:
+		return
 	if current_microgame == null:
 		mcg_timer.stop()
 		return
@@ -222,15 +375,24 @@ func on_increment_timer():
 
 func update_num_hearts(update_type):#only add hearts every 10 or so, or maybe after every boss
 	match update_type:
+		"boss_failure":
+			num_hearts -=1
 		"failure":
 			num_hearts -=1
-		"success":
+		"boss_success":
 			if num_hearts < max_hearts:
 				num_hearts += 1
 	if num_hearts == 0:
-		pass
-		#you lose!!!!
-	$PromptLabel/DEBUGHearts.text = str(num_hearts)
+		lose()
+	$Prompts/DEBUGHearts.text = str(num_hearts)
+	
+func lose():
+	get_parent().can_pause = false;
+	var retry_button = get_parent().get_child(-1)
+
+	retry_button.show()
+	retry_button.disabled = false
+	get_tree().paused = true;
 #	for normal microgames, we'd move onto the next one (or if you lose all lives, lose)
 
 #	for boss microgames, we'd retry until success or until we're out of lives

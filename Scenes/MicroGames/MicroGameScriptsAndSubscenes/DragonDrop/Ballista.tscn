@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://d4le6aoqnmq47"]
+
+[ext_resource type="Texture2D" uid="uid://c8jikwnvinwtw" path="res://Scenes/MicroGames/MicroGameAssets/DragonDrop/Ballista/ballista-arm.png" id="1_2fq1q"]
+[ext_resource type="Script" uid="uid://bro251f4m7d5q" path="res://Scenes/MicroGames/MicroGameScriptsAndSubscenes/DragonDrop/Ballista.gd" id="1_ts16g"]
+[ext_resource type="Texture2D" uid="uid://cs0a1k8j7g6pt" path="res://Scenes/MicroGames/MicroGameAssets/DragonDrop/Ballista/ballista-bolts.png" id="2_emr4u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0ik6"]
+atlas = ExtResource("1_2fq1q")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfntx"]
+atlas = ExtResource("1_2fq1q")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pjjo"]
+atlas = ExtResource("1_2fq1q")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgd2r"]
+atlas = ExtResource("1_2fq1q")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_crvcu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0ik6")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfntx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pjjo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgd2r")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l8yml"]
+radius = 12.0
+
+[node name="Ballista" type="Node2D" unique_id=108492942]
+scale = Vector2(0.15, 0.15)
+script = ExtResource("1_ts16g")
+bolt_speed = 500
+metadata/_edit_lock_ = true
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=980027861]
+position = Vector2(0, 53.3333)
+target_position = Vector2(-250, 2000)
+collide_with_areas = true
+collide_with_bodies = false
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1483250898]
+self_modulate = Color(2, 2, 2, 1)
+sprite_frames = SubResource("SpriteFrames_crvcu")
+animation = &"idle"
+autoplay = "idle"
+metadata/_edit_lock_ = true
+
+[node name="Bolt" type="Area2D" parent="." unique_id=1814611441]
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Bolt" unique_id=1161393463]
+texture = ExtResource("2_emr4u")
+hframes = 6
+frame = 1
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bolt" unique_id=1478480961]
+position = Vector2(1, 33)
+shape = SubResource("CircleShape2D_l8yml")
+metadata/_edit_lock_ = true
+
+[node name="HomingTimer" type="Timer" parent="." unique_id=534848210]
+wait_time = 0.1
+one_shot = true
+
+[node name="Line2D" type="Line2D" parent="." unique_id=619370124]
+position = Vector2(6.6666665, -6.6666665)
+points = PackedVector2Array(-6.6666665, 40, -253.33333, 2053.3333, -253.33333, 2053.3333, -253.33333, 2053.3333)
+width = 1.5
+default_color = Color(1, 0, 0, 1)
+
+[connection signal="area_entered" from="Bolt" to="." method="_on_bolt_area_entered"]

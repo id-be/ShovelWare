@@ -4,21 +4,20 @@ extends microgame
 @export var base_speed_multiplier = 40
 
 func _set_difficulty(dif):
-	difficulty = dif
 	var temp_col
 	match dif:
 		"easy":
 			move_speed = 3
-			temp_col = Color(0,0,1)
+			temp_col = Color(0.0, 0.0, 1.0, 1.0)
 		"medium":
 			move_speed = 4
-			temp_col = Color(0,1,0)
+			temp_col = Color(0.0, 1.0, 0.0, 1.0)
 		"hard":
 			move_speed = 6
-			temp_col = Color(1,0,0)
+			temp_col = Color(1.0, 0.0, 0.0, 1.0)
 	$MoveButton.modulate = temp_col
 func _set_initial_values():
-	var screen_size = get_viewport_rect().size
+	var screen_size = DisplayServer.window_get_size(0)
 	var start_num_1 = randf_range(-1,1)
 	var start_num_2 = randf_range(-1,1)
 

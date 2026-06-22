@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://b02l6dmid3wjd"]
+
+[ext_resource type="PackedScene" uid="uid://disf5kcbi1vf8" path="res://Scenes/MicroGames/MicroGameAssets/ComboKing/Nunya.glb" id="1_qy5y5"]
+
+[node name="Nunya" unique_id=105859620 instance=ExtResource("1_qy5y5")]
+
+[node name="Skeleton3D" parent="nunya_rig" parent_id_path=PackedInt32Array(1050044851) index="0" unique_id=825105484]
+bones/0/position = Vector3(-3.0373038e-25, 0.8561065, -0.0552)
+bones/0/rotation = Quaternion(0.056854118, -2.9206041e-18, -2.9206041e-18, 0.9983825)
+bones/1/rotation = Quaternion(0.09901887, -0.38168877, 0.08598423, 0.9149403)
+bones/3/rotation = Quaternion(0.023367783, 2.2616904e-08, 2.9955582e-10, 0.99972695)
+bones/8/rotation = Quaternion(-0.06969341, -0.51765394, 0.50827277, 0.684716)
+bones/9/rotation = Quaternion(0.20617282, 0.32867992, 0.3019958, 0.8707817)
+bones/10/rotation = Quaternion(0.08213919, 0.14236794, 0.31748644, 0.9339095)
+bones/12/rotation = Quaternion(0.27970567, 0.4575717, -0.2850556, 0.7944408)
+bones/13/rotation = Quaternion(0.7272753, -0.172008, -0.14089578, 0.6493322)
+bones/14/rotation = Quaternion(0.4342791, -0.2901557, 0.17793132, 0.8339974)
+bones/16/position = Vector3(-0.15298197, 0.07877112, 0.02584996)
+bones/16/rotation = Quaternion(0.9687473, -0.02485145, 0.011664644, -0.24652582)
+bones/17/rotation = Quaternion(0.07216241, -0.009039439, 0.046867654, 0.99625015)
+bones/18/rotation = Quaternion(-0.5434913, 0.40868753, -0.0075165285, 0.733168)
+bones/19/rotation = Quaternion(0.09606305, 0.8775556, -0.4642289, -0.07183037)
+bones/20/rotation = Quaternion(-0.5526001, 0.6884517, -0.27746662, -0.379051)
+bones/22/rotation = Quaternion(0.9091039, 0.024505682, -0.012376719, 0.41566384)
+bones/23/rotation = Quaternion(0.43707678, 0.046168543, -0.04238653, 0.8972379)
+bones/24/rotation = Quaternion(-0.34045035, -0.04954455, -0.048240293, 0.93771636)

@@ -1,0 +1,168 @@
+[gd_scene format=3 uid="uid://dmrrv2bbo4twp"]
+
+[ext_resource type="Script" uid="uid://c85byf6yt4tir" path="res://Scenes/MicroGames/MicroGameScriptsAndSubscenes/smoke_em.gd" id="1_e8dod"]
+[ext_resource type="AudioStream" uid="uid://dhd7w7mtg843j" path="res://Scenes/MicroGames/MicroGameAssets/SmokeEm/malvarrosadesigns-cyber-noir-jazz-neon-pulse-amp-digital-glitch-instrumental-488371.mp3" id="2_7rlap"]
+[ext_resource type="Texture2D" uid="uid://bucjr426s70d2" path="res://Assets/DEBUG/2D/Defaults/Square.png" id="2_n654a"]
+[ext_resource type="Texture2D" uid="uid://cqb84rnea1482" path="res://Scenes/MicroGames/MicroGameAssets/SmokeEm/BG.png" id="4_2dkry"]
+[ext_resource type="AudioStream" uid="uid://c2anvbbuexljv" path="res://Scenes/MicroGames/MicroGameAssets/SmokeEm/freesound_community-vibraphone-chord-42410.mp3" id="4_m6tcr"]
+[ext_resource type="Texture2D" uid="uid://33v27ggdmkwg" path="res://Scenes/MicroGames/MicroGameAssets/SmokeEm/Flame.png" id="6_m6tcr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7rlap"]
+size = Vector2(240, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2dkry"]
+size = Vector2(16, 160)
+
+[sub_resource type="Curve" id="Curve_hgbqg"]
+_data = [Vector2(0, 0.14290643), 0.0, 0.0, 0, 0, Vector2(0.26628894, 0.19675529), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_m6tcr"]
+offsets = PackedFloat32Array(0.114285715, 0.3904762, 0.6698413, 0.95238096)
+colors = PackedColorArray(0.09019608, 0.05882353, 0.10980392, 1, 0.24705882, 0.07450981, 0.07058824, 1, 0.7254902, 0.36078432, 0.09019608, 1, 0.96862745, 0.9098039, 0.7411765, 1)
+
+[sub_resource type="Curve" id="Curve_m6tcr"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0.07365439, -1), 0.0, 0.0, 0, 0, Vector2(0.41643056, 0.030721545), 0.0, 0.0, 0, 0, Vector2(0.76203966, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_f8n3w"]
+_data = [Vector2(0, 0.02623403), 0.0, 0.0, 0, 0, Vector2(0.7308782, 0.08008289), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_64nml"]
+offsets = PackedFloat32Array(0.053968254, 0.8698413)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.59607846, 0.003921569, 1)
+
+[node name="SmokeEm" type="Node2D" unique_id=2111333300]
+script = ExtResource("1_e8dod")
+_prompt = "Smoke!"
+input_flags = {
+"button_0": false,
+"button_1": true,
+"microphone": false,
+"mouse_touch": false,
+"ui_down": false,
+"ui_left": false,
+"ui_right": false,
+"ui_up": false
+}
+_music_tracks = Array[AudioStream]([ExtResource("2_7rlap")])
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=870197573]
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 228.0
+offset_bottom = 152.0
+color = Color(0.050980393, 0.047058824, 0.10980392, 1)
+
+[node name="Bounds" type="Node2D" parent="." unique_id=597287836]
+metadata/_edit_lock_ = true
+
+[node name="TopBound" type="StaticBody2D" parent="Bounds" unique_id=1841240456]
+position = Vector2(120, 0)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/TopBound" unique_id=1657039481]
+texture_filter = 1
+scale = Vector2(3.75, 0.25)
+texture = ExtResource("2_n654a")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/TopBound" unique_id=1561128174]
+shape = SubResource("RectangleShape2D_7rlap")
+metadata/_edit_lock_ = true
+
+[node name="BottomBound" type="StaticBody2D" parent="Bounds" unique_id=1498903177]
+position = Vector2(120, 160)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/BottomBound" unique_id=679200251]
+texture_filter = 1
+scale = Vector2(3.75, 0.25)
+texture = ExtResource("2_n654a")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BottomBound" unique_id=455455390]
+shape = SubResource("RectangleShape2D_7rlap")
+metadata/_edit_lock_ = true
+
+[node name="LeftBound" type="StaticBody2D" parent="Bounds" unique_id=1683183294]
+position = Vector2(4, 80)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/LeftBound" unique_id=453465645]
+texture_filter = 1
+position = Vector2(-2.98023e-08, 0)
+scale = Vector2(0.25, 2.5)
+texture = ExtResource("2_n654a")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/LeftBound" unique_id=564260960]
+shape = SubResource("RectangleShape2D_2dkry")
+metadata/_edit_lock_ = true
+
+[node name="RightBound" type="StaticBody2D" parent="Bounds" unique_id=1220950437]
+position = Vector2(236, 80)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/RightBound" unique_id=1711678219]
+texture_filter = 1
+scale = Vector2(0.25, 2.5)
+texture = ExtResource("2_n654a")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightBound" unique_id=971479498]
+shape = SubResource("RectangleShape2D_2dkry")
+metadata/_edit_lock_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2032235370]
+stream = ExtResource("4_m6tcr")
+
+[node name="BGSprite" type="Sprite2D" parent="." unique_id=292972626]
+position = Vector2(119.99999, 80)
+scale = Vector2(0.615, 0.615)
+texture = ExtResource("4_2dkry")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=564713184]
+points = PackedVector2Array(128, 98, 93, 112)
+width = 3.825
+default_color = Color(0.11372549, 0.06666667, 0.12156863, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="SmokeParticles" type="CPUParticles2D" parent="." unique_id=800827549]
+position = Vector2(94, 112)
+amount = 24
+texture = ExtResource("6_m6tcr")
+randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector2(0, -80)
+linear_accel_min = -0.2
+linear_accel_max = 0.2
+radial_accel_min = 5.35
+radial_accel_max = 11.77
+tangential_accel_min = -70.06
+scale_amount_min = 0.0
+scale_amount_curve = SubResource("Curve_hgbqg")
+color = Color(1.0608752, 0.6966936, 0.9243071, 0.7372549)
+color_ramp = SubResource("Gradient_m6tcr")
+hue_variation_curve = SubResource("Curve_m6tcr")
+
+[node name="CherryParticles" type="CPUParticles2D" parent="." unique_id=533259064]
+position = Vector2(93, 112)
+texture = ExtResource("6_m6tcr")
+speed_scale = 2.03
+explosiveness = 0.05
+randomness = 0.12
+lifetime_randomness = 0.14
+emission_shape = 1
+emission_sphere_radius = 0.01
+gravity = Vector2(0, -8)
+orbit_velocity_min = -0.2
+orbit_velocity_max = 0.2
+scale_amount_curve = SubResource("Curve_f8n3w")
+color_ramp = SubResource("Gradient_64nml")
+hue_variation_min = -1.0
+hue_variation_max = 1.0

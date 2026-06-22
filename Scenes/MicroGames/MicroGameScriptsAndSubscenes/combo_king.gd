@@ -1,0 +1,147 @@
+extends microgame
+
+@export_range(3,5) var combo_length: int = 5
+var game_inputs = []
+var max_num_inputs
+
+var game_input_glyphs = []
+var temp_game_inputs = []
+var cur_input_index = 0
+
+var cur_combo = []
+
+var is_comboing = true
+
+@export var bgs := []
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	max_num_inputs = game_inputs.size() - 1
+	for input in input_flags.keys():
+		if input_flags[input]:
+			game_inputs.append(input)
+	randomize_fighters()
+	randomize_bg()
+	generate_combo()
+	fight()
+	#print(game_inputs)
+#	print(InputMap.get_actions())
+func _set_difficulty(dif):
+	match dif:
+		"easy":
+			combo_length=3
+		"medium":
+			combo_length=4
+		"hard":
+			combo_length=5
+
+func _process(delta: float) -> void:
+#	var action_as_string
+#	print(event.is_action_type())
+	if is_comboing:
+		for input in game_inputs:
+			if Input.is_action_just_pressed(input) && Input.is_action_just_pressed(cur_combo[cur_input_index]):
+				if cur_input_index == combo_length - 1:
+					is_comboing = false
+					#$Label3.show()
+					end_state = "success"
+					end_combo(end_state)
+					flash_and_disappear_combo()
+				cur_input_index += 1
+				$Label2.visible_characters = cur_input_index
+			elif Input.is_action_just_pressed(input):
+				is_comboing = false
+				#$Label4.show()
+	
+
+#	print(InputMap.event_is_action(event, action_as_string))
+#	print(event.as_text())
+
+func generate_combo():
+	cur_input_index = 0
+	var new_combo = []
+	var new_glyph_combo = []
+	var last_input
+	for input in combo_length:
+		temp_game_inputs = game_inputs.duplicate()
+		temp_game_inputs.shuffle()
+		var next_input = temp_game_inputs.pop_back()
+		if new_combo.size() > 0:
+			last_input = new_combo[-1]
+		if last_input == next_input:
+			next_input = temp_game_inputs.pop_back()
+#		print(temp_game_inputs)
+		new_combo.append(next_input)
+	for unparsed_input in new_combo:
+		match unparsed_input:
+			"button_0":
+				new_glyph_combo.append("⓿")
+			"button_1":
+				new_glyph_combo.append("⓵")
+			"ui_up":
+				new_glyph_combo.append("⏶")
+			"ui_down":
+				new_glyph_combo.append("⏷")
+			"ui_left":
+				new_glyph_combo.append("⏴")
+			"ui_right":
+				new_glyph_combo.append("⏵")
+#	print(new_glyph_combo)
+#	print(new_combo)
+	cur_combo = new_combo
+	var my_label_text = ""
+	for glyph in new_glyph_combo:
+		my_label_text += glyph
+	$Label.text = my_label_text; $Label.show()
+	$Label2.text = my_label_text; $Label2.visible_characters = 0; $Label2.show()
+		#
+		#if is_truncated:
+			#temp_game_inputs = game_inputs.duplicate()
+			#is_truncated = false
+		#new_combo.append(temp_game_inputs[rand_input])
+#	print(new_combo)
+		#temp_game_inputs.shuffle()
+#for input in combo_length:
+		#
+		#pass
+	
+	#for input in temp_game_inputs:
+		#print(input)
+#⓿⓵ == 0,1
+#≺≻≼≽ == left, up, right, down
+#⏴⏵⏶⏷ == left, right, up, down
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+
+func fight():
+	$Player/SubViewport/Nunya/AnimationPlayer.play("Idle")
+	$Enemy/SubViewport/Brobot/AnimationPlayer.play("Idle")
+
+func randomize_fighters():
+	pass
+func randomize_bg():
+	var my_bg = randi_range(0,3)
+	match my_bg:
+		0:
+			pass
+		1:
+			$BG.position.y = 84
+		2:
+			pass
+		3:
+			$BG.position.y = 51
+		_:
+			pass
+	$BG.texture = bgs[my_bg]
+
+func end_combo(_end_state):
+	match _end_state:
+		"success":
+			$Player/SubViewport/Nunya/AnimationPlayer.play("Attack")
+			Globals.set_and_play_sfx(load("res://Scenes/MicroGames/MicroGameAssets/ComboKing/phatphrogstudio-rpg-female-attack-grunt-no-ai-481720.mp3"))
+			await $Player/SubViewport/Nunya/AnimationPlayer.animation_finished
+			$Enemy/SubViewport/Brobot/AnimationPlayer.play("Die")
+		"failure":
+			$Player/SubViewport/Nunya/AnimationPlayer.play("Die")
+
+func flash_and_disappear_combo():
+	pass

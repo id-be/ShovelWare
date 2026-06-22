@@ -1,19 +1,19 @@
-[gd_scene load_steps=22 format=3 uid="uid://dy30skcparclc"]
+[gd_scene format=3 uid="uid://dy30skcparclc"]
 
-[ext_resource type="Script" path="res://Scenes/MicroGames/Scripts/pet_the_pet.gd" id="1_tufc1"]
+[ext_resource type="Script" uid="uid://8muoyhenjqvv" path="res://Scenes/MicroGames/MicroGameScriptsAndSubscenes/pet_the_pet.gd" id="1_tufc1"]
 [ext_resource type="Texture2D" uid="uid://d2s2xdefqh2g8" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Backgrounds/GreenField.jpg" id="2_scoiw"]
 [ext_resource type="Texture2D" uid="uid://cv8dg0ebed4n0" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Backgrounds/House.jpg" id="3_k6d71"]
 [ext_resource type="Texture2D" uid="uid://cxx85q454jhdn" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Backgrounds/NiceMountain.jpg" id="4_qi80w"]
 [ext_resource type="Texture2D" uid="uid://bucjr426s70d2" path="res://Assets/DEBUG/2D/Defaults/Square.png" id="5_582kv"]
 [ext_resource type="SpriteFrames" uid="uid://culihm8rvdc6w" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Pets/Animations/Tiger.tres" id="5_gfekf"]
-[ext_resource type="AudioStream" uid="uid://qk60ih8ebrr" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/Audio/Jingle.ogg" id="5_hlebc"]
+[ext_resource type="AudioStream" uid="uid://qk60ih8ebrr" path="res://Scenes/MicroGames/Common/CommonAssets/Audio/Jingle.ogg" id="5_hlebc"]
 [ext_resource type="SpriteFrames" uid="uid://cbwel8mqo10gy" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Pets/Animations/Scorpion.tres" id="6_2kcny"]
 [ext_resource type="AudioStream" uid="uid://brhir2r5fmytb" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/Audio/2Scary.ogg" id="6_atgnb"]
 [ext_resource type="SpriteFrames" uid="uid://b3wuj62rruwx7" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Pets/Animations/Gator.tres" id="7_0cil3"]
 [ext_resource type="AudioStream" uid="uid://dpd1offxi1mbk" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/Audio/Woohoo.ogg" id="7_3hpdn"]
 [ext_resource type="Texture2D" uid="uid://bhsywumns0h8x" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Hand.png" id="7_4u1pm"]
 [ext_resource type="AudioStream" uid="uid://dhsefakh3jugq" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/Audio/Grrr.ogg" id="8_jghi8"]
-[ext_resource type="AudioStream" uid="uid://de3u7334jj6u5" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/Audio/Growl.ogg" id="9_ggytq"]
+[ext_resource type="AudioStream" uid="uid://de3u7334jj6u5" path="res://Scenes/MicroGames/Common/CommonAssets/Audio/Growl.ogg" id="9_ggytq"]
 [ext_resource type="AudioStream" uid="uid://c1rr2lokxm5hq" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/Audio/Moan.ogg" id="10_v1jas"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4kb10"]
@@ -72,12 +72,12 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nvmmb"]
 _data = {
-"Idle": SubResource("Animation_sxd85"),
-"Pet": SubResource("Animation_ph8cb"),
-"RESET": SubResource("Animation_m8xeq")
+&"Idle": SubResource("Animation_sxd85"),
+&"Pet": SubResource("Animation_ph8cb"),
+&"RESET": SubResource("Animation_m8xeq")
 }
 
-[node name="PetThePet" type="Node2D"]
+[node name="PetThePet" type="Node2D" unique_id=1820089910]
 script = ExtResource("1_tufc1")
 bgs = Array[Texture]([ExtResource("2_scoiw"), ExtResource("3_k6d71"), ExtResource("4_qi80w")])
 anims = Array[SpriteFrames]([ExtResource("5_gfekf"), ExtResource("6_2kcny"), ExtResource("7_0cil3")])
@@ -96,78 +96,84 @@ _music_tracks = Array[AudioStream]([ExtResource("5_hlebc"), ExtResource("6_atgnb
 _sfx = Array[AudioStream]([ExtResource("8_jghi8"), ExtResource("9_ggytq"), ExtResource("10_v1jas")])
 _time_step = 0.4
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1171434458]
 offset_left = 12.0
 offset_top = 8.0
 offset_right = 228.0
 offset_bottom = 152.0
 
-[node name="Bounds" type="Node2D" parent="."]
+[node name="Bounds" type="Node2D" parent="." unique_id=698230122]
 top_level = true
 metadata/_edit_lock_ = true
 
-[node name="TopBound" type="StaticBody2D" parent="Bounds"]
+[node name="TopBound" type="StaticBody2D" parent="Bounds" unique_id=549848691]
 position = Vector2(120, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="Bounds/TopBound"]
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/TopBound" unique_id=1305265643]
 texture_filter = 1
 scale = Vector2(3.75, 0.25)
 texture = ExtResource("5_582kv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/TopBound"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/TopBound" unique_id=1893635172]
 shape = SubResource("RectangleShape2D_4kb10")
 
-[node name="BottomBound" type="StaticBody2D" parent="Bounds"]
+[node name="BottomBound" type="StaticBody2D" parent="Bounds" unique_id=188102257]
 position = Vector2(120, 160)
 
-[node name="Sprite2D" type="Sprite2D" parent="Bounds/BottomBound"]
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/BottomBound" unique_id=1032737626]
 texture_filter = 1
 scale = Vector2(3.75, 0.25)
 texture = ExtResource("5_582kv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BottomBound"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BottomBound" unique_id=1715852028]
 shape = SubResource("RectangleShape2D_4kb10")
 
-[node name="LeftBound" type="StaticBody2D" parent="Bounds"]
+[node name="LeftBound" type="StaticBody2D" parent="Bounds" unique_id=197741010]
 position = Vector2(4, 80)
 
-[node name="Sprite2D" type="Sprite2D" parent="Bounds/LeftBound"]
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/LeftBound" unique_id=678030395]
 texture_filter = 1
 scale = Vector2(0.25, 2.5)
 texture = ExtResource("5_582kv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/LeftBound"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/LeftBound" unique_id=1631400473]
 shape = SubResource("RectangleShape2D_c2ysg")
 
-[node name="RightBound" type="StaticBody2D" parent="Bounds"]
+[node name="RightBound" type="StaticBody2D" parent="Bounds" unique_id=2037962564]
 position = Vector2(236, 80)
 
-[node name="Sprite2D" type="Sprite2D" parent="Bounds/RightBound"]
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/RightBound" unique_id=992190687]
 texture_filter = 1
 scale = Vector2(0.25, 2.5)
 texture = ExtResource("5_582kv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightBound"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightBound" unique_id=1376336883]
 shape = SubResource("RectangleShape2D_c2ysg")
 
-[node name="Animal" type="AnimatedSprite2D" parent="."]
+[node name="Animal" type="AnimatedSprite2D" parent="." unique_id=610400359]
 position = Vector2(12, 8)
 sprite_frames = ExtResource("7_0cil3")
-animation = &"Normal"
+animation = &"Angry"
 centered = false
 
-[node name="Hand" type="Sprite2D" parent="."]
+[node name="Hand" type="Sprite2D" parent="." unique_id=273730474]
 position = Vector2(90, 52)
 texture = ExtResource("7_4u1pm")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Hand"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hand" unique_id=245364219]
 root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_nvmmb")
-}
+libraries/ = SubResource("AnimationLibrary_nvmmb")
 
-[node name="Marker2D2" type="Marker2D" parent="."]
+[node name="Marker2D2" type="Marker2D" parent="." unique_id=634248977]
 position = Vector2(136, 67)
 
-[node name="Marker2D" type="Marker2D" parent="."]
+[node name="Marker2D" type="Marker2D" parent="." unique_id=416836695]
 position = Vector2(95, 80)
+
+[node name="DEBUGLabel" type="Label" parent="." unique_id=1679458292]
+visible = false
+offset_left = 83.0
+offset_top = 8.0
+offset_right = 149.0
+offset_bottom = 28.0
+text = "<STATE>"

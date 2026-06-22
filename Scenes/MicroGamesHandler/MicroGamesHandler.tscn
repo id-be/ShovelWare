@@ -1,11 +1,18 @@
-[gd_scene load_steps=10 format=3 uid="uid://ftkh155jwal2"]
+[gd_scene format=3 uid="uid://ftkh155jwal2"]
 
-[ext_resource type="Script" path="res://Scenes/MicroGamesHandler/Scripts/micro_games_handler.gd" id="1_bkbri"]
+[ext_resource type="Script" uid="uid://cnhaam1l7g08p" path="res://Scenes/MicroGamesHandler/Scripts/micro_games_handler.gd" id="1_bkbri"]
 [ext_resource type="Texture2D" uid="uid://f53rs58kvlfq" path="res://Scenes/MicroGamesHandler/Assets/2D/Cloud2.png" id="2_g468g"]
 [ext_resource type="Texture2D" uid="uid://b2rsyo5v88vf2" path="res://Scenes/MicroGamesHandler/Assets/2D/EndBomb.png" id="2_hv17n"]
 [ext_resource type="Texture2D" uid="uid://datfnkmlcyc6v" path="res://Scenes/MicroGamesHandler/Assets/2D/Bomb1.png" id="3_sa4kw"]
 [ext_resource type="AudioStream" uid="uid://llqshaenjyfn" path="res://Scenes/MicroGamesHandler/Assets/Audio/BombSplode.ogg" id="3_yxg65"]
 [ext_resource type="AudioStream" uid="uid://cjr7t5vifoyu" path="res://Scenes/MicroGamesHandler/Assets/Audio/BombBump.ogg" id="4_tk4ib"]
+[ext_resource type="Material" uid="uid://dse046wvbee6j" path="res://Scenes/MicroGamesHandler/Assets/Shaders/ShaderMaterials/TVStaticShader.tres" id="4_yk03m"]
+[ext_resource type="Shader" uid="uid://diglj43h367c5" path="res://Scenes/MicroGamesHandler/Assets/Shaders/TVStaticShader.gdshader" id="5_72du8"]
+[ext_resource type="AudioStream" uid="uid://7lihmhyu1qa4" path="res://Scenes/MicroGamesHandler/Assets/Audio/Static.wav" id="9_stq7r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_stq7r"]
+shader = ExtResource("5_72du8")
+shader_parameter/amount = 40.0
 
 [sub_resource type="Animation" id="Animation_8cyig"]
 length = 0.001
@@ -20,6 +27,70 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ChallengeLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpeedUpLabel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ReadyLabel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_72du8"]
+resource_name = "flash_challenge"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ChallengeLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false]
 }
 
 [sub_resource type="Animation" id="Animation_650cc"]
@@ -37,22 +108,64 @@ tracks/0/keys = {
 "update": 1,
 "values": [true, false, true, false, true, false, true, false, true, false]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ReadyLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_stq7r"]
+resource_name = "flash_speed_up"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpeedUpLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m847m"]
 _data = {
-"RESET": SubResource("Animation_8cyig"),
-"flash_ready": SubResource("Animation_650cc")
+&"RESET": SubResource("Animation_8cyig"),
+&"flash_challenge": SubResource("Animation_72du8"),
+&"flash_ready": SubResource("Animation_650cc"),
+&"flash_speed_up": SubResource("Animation_stq7r")
 }
 
-[node name="MicroGamesHandler" type="Node2D"]
+[node name="MicroGamesHandler" type="Node2D" unique_id=1387874159]
 process_mode = 1
 script = ExtResource("1_bkbri")
+tv_shader = ExtResource("4_yk03m")
 bomb_explode_texture = ExtResource("2_hv17n")
 bomb_splode = ExtResource("3_yxg65")
-microgame_playmode = "queue"
-microgames_queue = Array[String](["res://Scenes/MicroGames/CatScratch.tscn"])
+metadata/_edit_lock_ = true
 
-[node name="SubViewPortContainer" type="SubViewportContainer" parent="."]
+[node name="SubViewPortContainer" type="SubViewportContainer" parent="." unique_id=1536643310]
 process_mode = 1
 texture_filter = 1
 clip_contents = true
@@ -71,22 +184,45 @@ mouse_filter = 0
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
-[node name="SubViewPort" type="SubViewport" parent="SubViewPortContainer"]
+[node name="SubViewPort" type="SubViewport" parent="SubViewPortContainer" unique_id=259508142]
 handle_input_locally = false
 snap_2d_vertices_to_pixel = true
 physics_object_picking = true
 size = Vector2i(240, 160)
 render_target_update_mode = 4
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=561278466]
+visible = false
 offset_left = -108.0
 offset_top = -72.0
 offset_right = 108.0
 offset_bottom = 72.0
 mouse_filter = 1
 color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
-[node name="WinLossRect" type="ColorRect" parent="."]
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=41639163]
+visible = false
+material = SubResource("ShaderMaterial_stq7r")
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -72.0
+offset_right = 108.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(120, 80)
+mouse_filter = 1
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="WinLossRect" type="ColorRect" parent="." unique_id=548834448]
 process_mode = 3
 visible = false
 anchors_preset = -1
@@ -102,7 +238,7 @@ size_flags_vertical = 4
 mouse_filter = 1
 metadata/_edit_lock_ = true
 
-[node name="WinLabel" type="Label" parent="WinLossRect"]
+[node name="WinLabel" type="Label" parent="WinLossRect" unique_id=699867483]
 visible = false
 texture_filter = 1
 layout_mode = 1
@@ -116,8 +252,9 @@ text = "You Win!"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
-[node name="LossLabel" type="Label" parent="WinLossRect"]
+[node name="LossLabel" type="Label" parent="WinLossRect" unique_id=1497382887]
 visible = false
 texture_filter = 1
 layout_mode = 1
@@ -131,8 +268,10 @@ text = "You Lose!"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
-[node name="PromptLabel" type="Label" parent="."]
+[node name="Prompts" type="Control" parent="." unique_id=365340294]
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -146,17 +285,23 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 mouse_filter = 1
-text = "READY???"
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="ReadyLabel" type="Label" parent="Prompts" unique_id=920368121]
+layout_mode = 0
+offset_left = 0.5
+offset_top = 1.5
+offset_right = 87.5
+offset_bottom = 21.5
+text = "Ready???"
 horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PromptLabel"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Prompts" unique_id=54875357]
 process_mode = 1
-libraries = {
-"": SubResource("AnimationLibrary_m847m")
-}
+libraries/ = SubResource("AnimationLibrary_m847m")
 
-[node name="DEBUGHearts" type="Label" parent="PromptLabel"]
+[node name="DEBUGHearts" type="Label" parent="Prompts" unique_id=1852291676]
 layout_mode = 0
 offset_left = 1.5
 offset_top = 46.5
@@ -164,44 +309,96 @@ offset_right = 41.5
 offset_bottom = 66.5
 text = "
 "
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
-[node name="DEBUGMCGCount" type="Label" parent="PromptLabel"]
+[node name="DEBUGMCGCount" type="Label" parent="Prompts" unique_id=13587513]
 layout_mode = 0
 offset_left = 66.5
 offset_top = 46.5
 offset_right = 106.5
 offset_bottom = 66.5
 text = "0"
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
-[node name="BombTimer" type="Node2D" parent="."]
+[node name="BossLabel" type="Label" parent="Prompts" unique_id=1458125229]
+visible = false
+layout_mode = 0
+offset_left = -11.5
+offset_top = 20.5
+offset_right = 98.5
+offset_bottom = 40.5
+text = "BOSS  TIME!!!"
+horizontal_alignment = 1
+
+[node name="SpeedUpLabel" type="Label" parent="Prompts" unique_id=1965615373]
+visible = false
+layout_mode = 0
+offset_left = -11.5
+offset_top = 20.5
+offset_right = 98.5
+offset_bottom = 40.5
+text = "Speed Up!!!!!"
+horizontal_alignment = 1
+
+[node name="ChallengeLabel" type="Label" parent="Prompts" unique_id=177572821]
+visible = false
+layout_mode = 0
+offset_left = -20.5
+offset_top = 20.5
+offset_right = 107.5
+offset_bottom = 40.5
+text = "Challenge UP!"
+horizontal_alignment = 1
+
+[node name="PromptLabel" type="Label" parent="Prompts" unique_id=1840177535]
+visible = false
+layout_mode = 0
+offset_left = 0.5
+offset_top = 1.5
+offset_right = 87.5
+offset_bottom = 21.5
+text = "Prompt!"
+horizontal_alignment = 1
+
+[node name="BombTimer" type="Node2D" parent="." unique_id=1914615803]
 process_mode = 1
 visible = false
+metadata/_edit_lock_ = true
 
-[node name="Sky" type="ColorRect" parent="BombTimer"]
+[node name="Sky" type="ColorRect" parent="BombTimer" unique_id=1249329501]
 clip_contents = true
 offset_left = -120.0
 offset_top = -80.0
 offset_right = -108.0
 offset_bottom = 80.0
 color = Color(0, 1, 1, 1)
+metadata/_edit_lock_ = true
 
-[node name="Ground" type="ColorRect" parent="BombTimer/Sky"]
+[node name="Ground" type="ColorRect" parent="BombTimer/Sky" unique_id=31994869]
 layout_mode = 0
 offset_top = 148.0
 offset_right = 12.0
 offset_bottom = 160.0
 color = Color(0.984314, 0.701961, 0.592157, 1)
+metadata/_edit_lock_ = true
 
-[node name="Cloud1" type="Sprite2D" parent="BombTimer/Sky"]
+[node name="Cloud1" type="Sprite2D" parent="BombTimer/Sky" unique_id=1521322429]
 position = Vector2(6, 11)
 texture = ExtResource("2_g468g")
+metadata/_edit_lock_ = true
 
-[node name="Bomb" type="Sprite2D" parent="BombTimer/Sky"]
+[node name="Bomb" type="Sprite2D" parent="BombTimer/Sky" unique_id=280670389]
 position = Vector2(6, 10)
 texture = ExtResource("3_sa4kw")
+metadata/_edit_lock_ = true
 
-[node name="BombSFX" type="AudioStreamPlayer" parent="."]
+[node name="BombSFX" type="AudioStreamPlayer" parent="." unique_id=1669899278]
 stream = ExtResource("4_tk4ib")
 bus = &"SFXBus"
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=223106751]
+
+[node name="ScreenToggleSFX" type="AudioStreamPlayer" parent="." unique_id=1579377810]
+stream = ExtResource("9_stq7r")

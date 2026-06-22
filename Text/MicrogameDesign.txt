@@ -1,4 +1,7 @@
-allowed inputs: d-pad, action button 1, action button 2.
+allowed inputs: d-pad, action button 1, action button 2, microphone, mouse/touch (these are the same).
 
-some games require all inputs
+some games require all inputs. in order to set which inputs are necessary
+for a particular game, please use the attached flags so that the appropriate action commands are presented
 
+some microgames are regular, some are boss-only, some are "bossable"--this means that they can be
+loaded in a "boss mode" so that they are significantly more difficult or have incresed requirements.

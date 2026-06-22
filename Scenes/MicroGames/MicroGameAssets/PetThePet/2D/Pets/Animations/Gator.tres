@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=12 format=3 uid="uid://b3wuj62rruwx7"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://b3wuj62rruwx7"]
 
 [ext_resource type="Texture2D" uid="uid://dykxyfe551j6h" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Pets/CrocAngry.png" id="1_ccxo6"]
 [ext_resource type="Texture2D" uid="uid://chu2w1g3ieki2" path="res://Scenes/MicroGames/MicroGameAssets/PetThePet/2D/Pets/CrocNormal.png" id="2_f07st"]

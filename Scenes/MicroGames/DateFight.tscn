@@ -1,0 +1,192 @@
+[gd_scene format=3 uid="uid://c7jgo7y8haq2y"]
+
+[ext_resource type="Script" uid="uid://bgim2irkreukc" path="res://Scenes/MicroGames/MicroGameScriptsAndSubscenes/DateFight/date_fight.gd" id="1_7vp34"]
+[ext_resource type="Script" uid="uid://badeqdy7ktits" path="res://Scenes/MicroGames/MicroGameScriptsAndSubscenes/DateFight/correct_choice.gd" id="2_jfv8c"]
+[ext_resource type="Texture2D" uid="uid://bucjr426s70d2" path="res://Assets/DEBUG/2D/Defaults/Square.png" id="3_medmk"]
+[ext_resource type="Script" uid="uid://vu4lgcfpouxs" path="res://Scenes/MicroGames/MicroGameScriptsAndSubscenes/DateFight/wrong_choice.gd" id="3_xjgb8"]
+[ext_resource type="Script" uid="uid://8rkrua4s6yfw" path="res://Scenes/MicroGames/MicroGameScriptsAndSubscenes/DateFight/false_choice.gd" id="4_o1vdi"]
+[ext_resource type="FontFile" uid="uid://dpqwbdgn4khd3" path="res://Assets/2D/Fonts/squarefont/Square.ttf" id="4_swpm3"]
+[ext_resource type="Texture2D" uid="uid://daay1xgi1tvof" path="res://Scenes/MicroGames/MicroGameAssets/DateFight/2D/HotBabe1Neutral.png" id="5_ib1v5"]
+[ext_resource type="PackedScene" uid="uid://bsbyf1lx7fwi8" path="res://Scenes/Core/Cursor.tscn" id="5_js453"]
+[ext_resource type="Texture2D" uid="uid://ded46l34746pv" path="res://Scenes/MicroGames/MicroGameAssets/DateFight/2D/HotBabe1Happy.png" id="6_s0xu7"]
+[ext_resource type="Texture2D" uid="uid://ncje5f2j1avp" path="res://Scenes/MicroGames/MicroGameAssets/DateFight/2D/HotBabe1Sad.png" id="7_mi501"]
+[ext_resource type="AudioStream" uid="uid://3jy7kmi6son6" path="res://Scenes/MicroGames/MicroGameAssets/DateFight/Audio/SFX/buzzer-or-wrong-answer-20582.mp3" id="8_3o0yv"]
+[ext_resource type="AudioStream" uid="uid://v0fb8brlrmx0" path="res://Scenes/MicroGames/MicroGameAssets/DateFight/Audio/Music/soulfuljamtracks-classical-violin-music-478144.mp3" id="8_ib1v5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7eon1"]
+size = Vector2(240, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_48eb0"]
+size = Vector2(16, 160)
+
+[node name="DateFight" type="Node2D" unique_id=1312234696]
+script = ExtResource("1_7vp34")
+choice_scripts = Array[Script]([ExtResource("2_jfv8c"), ExtResource("3_xjgb8"), ExtResource("4_o1vdi")])
+girlsgirlsgirls = [ExtResource("5_ib1v5"), ExtResource("6_s0xu7"), ExtResource("7_mi501")]
+_prompt = "Date!"
+input_flags = {
+"button_0": false,
+"button_1": true,
+"microphone": false,
+"mouse_touch": false,
+"ui_down": true,
+"ui_left": true,
+"ui_right": true,
+"ui_up": true
+}
+_music_tracks = Array[AudioStream]([ExtResource("8_ib1v5")])
+_sfx = Array[AudioStream]([ExtResource("8_3o0yv"), null])
+_time_step = 0.4
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=652485299]
+position = Vector2(120, 60)
+texture = ExtResource("5_ib1v5")
+metadata/_edit_lock_ = true
+
+[node name="Bounds" type="Node2D" parent="." unique_id=1005631674]
+metadata/_edit_lock_ = true
+
+[node name="TopBound" type="StaticBody2D" parent="Bounds" unique_id=1712151589]
+position = Vector2(120, 0)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/TopBound" unique_id=495057058]
+texture_filter = 1
+scale = Vector2(3.75, 0.25)
+texture = ExtResource("3_medmk")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/TopBound" unique_id=599067468]
+shape = SubResource("RectangleShape2D_7eon1")
+metadata/_edit_lock_ = true
+
+[node name="BottomBound" type="StaticBody2D" parent="Bounds" unique_id=843405072]
+position = Vector2(120, 160)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/BottomBound" unique_id=1309502438]
+texture_filter = 1
+scale = Vector2(3.75, 0.25)
+texture = ExtResource("3_medmk")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BottomBound" unique_id=1426434865]
+shape = SubResource("RectangleShape2D_7eon1")
+metadata/_edit_lock_ = true
+
+[node name="LeftBound" type="StaticBody2D" parent="Bounds" unique_id=1392982850]
+position = Vector2(4, 80)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/LeftBound" unique_id=1222745922]
+texture_filter = 1
+position = Vector2(-2.98023e-08, 0)
+scale = Vector2(0.25, 2.5)
+texture = ExtResource("3_medmk")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/LeftBound" unique_id=1517147252]
+shape = SubResource("RectangleShape2D_48eb0")
+metadata/_edit_lock_ = true
+
+[node name="RightBound" type="StaticBody2D" parent="Bounds" unique_id=518280737]
+position = Vector2(236, 80)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/RightBound" unique_id=485696258]
+texture_filter = 1
+scale = Vector2(0.25, 2.5)
+texture = ExtResource("3_medmk")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightBound" unique_id=683506058]
+shape = SubResource("RectangleShape2D_48eb0")
+metadata/_edit_lock_ = true
+
+[node name="Panel" type="Panel" parent="." unique_id=533023659]
+offset_left = 19.0
+offset_top = 95.0
+offset_right = 221.0
+offset_bottom = 145.0
+metadata/_edit_lock_ = true
+
+[node name="GridContainer" type="GridContainer" parent="Panel" unique_id=1372788399]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -25.0
+offset_right = 75.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="Panel/GridContainer" unique_id=1057605209]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 6
+theme_override_colors/font_shadow_color = Color(0.443137, 0.364706, 0, 1)
+theme_override_fonts/font = ExtResource("4_swpm3")
+theme_override_font_sizes/font_size = 13
+text = "THING1"
+metadata/_edit_lock_ = true
+
+[node name="Label2" type="Label" parent="Panel/GridContainer" unique_id=474553064]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme_override_colors/font_shadow_color = Color(0.443137, 0.364706, 0, 1)
+theme_override_fonts/font = ExtResource("4_swpm3")
+theme_override_font_sizes/font_size = 13
+text = "THING2"
+metadata/_edit_lock_ = true
+
+[node name="Label3" type="Label" parent="Panel/GridContainer" unique_id=351319339]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme_override_colors/font_shadow_color = Color(0.443137, 0.364706, 0, 1)
+theme_override_fonts/font = ExtResource("4_swpm3")
+theme_override_font_sizes/font_size = 13
+text = "THING3"
+metadata/_edit_lock_ = true
+
+[node name="Label4" type="Label" parent="Panel/GridContainer" unique_id=2073167536]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme_override_colors/font_shadow_color = Color(0.443137, 0.364706, 0, 1)
+theme_override_fonts/font = ExtResource("4_swpm3")
+theme_override_font_sizes/font_size = 13
+text = "THING4"
+metadata/_edit_lock_ = true
+
+[node name="Label5" type="Label" parent="Panel/GridContainer" unique_id=1951528388]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme_override_colors/font_shadow_color = Color(0.443137, 0.364706, 0, 1)
+theme_override_fonts/font = ExtResource("4_swpm3")
+theme_override_font_sizes/font_size = 13
+text = "THING5"
+metadata/_edit_lock_ = true
+
+[node name="Label6" type="Label" parent="Panel/GridContainer" unique_id=1806255373]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme_override_colors/font_shadow_color = Color(0.443137, 0.364706, 0, 1)
+theme_override_fonts/font = ExtResource("4_swpm3")
+theme_override_font_sizes/font_size = 13
+text = "THING6"
+metadata/_edit_lock_ = true
+
+[node name="Cursor" parent="." unique_id=1177806600 instance=ExtResource("5_js453")]
+cursor_offset = Vector2(20, 11)
+menu_parent_path = NodePath("../Panel/GridContainer")

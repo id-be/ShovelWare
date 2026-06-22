@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0f6eyvux4ch5"]
+
+[ext_resource type="Material" uid="uid://dse046wvbee6j" path="res://Scenes/MicroGamesHandler/Assets/Shaders/ShaderMaterials/TVStaticShader.tres" id="1_f78ol"]
+[ext_resource type="Texture2D" uid="uid://5uyx77h5bilf" path="res://Assets/GodotDefaults/icon.svg" id="2_w5pl4"]
+
+[node name="DebugShaders" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("1_f78ol")
+texture = ExtResource("2_w5pl4")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(13.715, 13.715)

@@ -1,0 +1,396 @@
+[gd_scene format=3 uid="uid://g2ci702egj4u"]
+
+[ext_resource type="Script" uid="uid://dencbrvwkfg8v" path="res://Scenes/MicroGames/MicroGameScriptsAndSubscenes/ChopIt/chop_it.gd" id="1_tpmw8"]
+[ext_resource type="AudioStream" uid="uid://j44asy7fkc2v" path="res://Scenes/MicroGames/MicroGameAssets/ChopIt/Sound/Music/pink_sound-neon-symphony-phonk-house-background-music-for-video-21-second-533504.mp3" id="2_vw8ad"]
+[ext_resource type="Texture2D" uid="uid://bx6vix7krmua6" path="res://Scenes/MicroGames/MicroGameAssets/ChopIt/Sprites/cutting_board.png" id="3_uqoei"]
+[ext_resource type="Texture2D" uid="uid://dna1fcoa6850j" path="res://Scenes/MicroGames/MicroGameAssets/ChopIt/Sprites/chef.png" id="4_i7xpe"]
+[ext_resource type="AudioStream" uid="uid://3oyvjoa37iy0" path="res://Scenes/MicroGames/MicroGameAssets/ChopIt/Sound/SFX/chop.mp3" id="5_u04kj"]
+[ext_resource type="Texture2D" uid="uid://bwkt65l2t0bgt" path="res://Scenes/MicroGames/MicroGameAssets/ChopIt/Sprites/carrot.png" id="6_eydbh"]
+[ext_resource type="Script" uid="uid://cg4hyyubfmflb" path="res://Scenes/MicroGames/MicroGameScriptsAndSubscenes/ChopIt/carrot_chunk.gd" id="7_16617"]
+[ext_resource type="Texture2D" uid="uid://bucjr426s70d2" path="res://Assets/DEBUG/2D/Defaults/Square.png" id="8_3cfwy"]
+[ext_resource type="AudioStream" uid="uid://bloho32u1egke" path="res://Scenes/MicroGames/MicroGameAssets/ChopIt/Sound/SFX/freesound_community-laugh-105488.mp3" id="9_vw8ad"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2rsm"]
+size = Vector2(240, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_728vn"]
+size = Vector2(16, 160)
+
+[node name="ChopIt" type="Node2D" unique_id=368484487]
+script = ExtResource("1_tpmw8")
+_prompt = "Chop!"
+input_flags = {
+"button_0": false,
+"button_1": true,
+"microphone": false,
+"mouse_touch": false,
+"ui_down": false,
+"ui_left": false,
+"ui_right": false,
+"ui_up": false
+}
+_music_tracks = Array[AudioStream]([ExtResource("2_vw8ad")])
+metadata/_edit_lock_ = true
+
+[node name="BoardSprite" type="Sprite2D" parent="." unique_id=1569865107]
+position = Vector2(119.75, 80)
+scale = Vector2(1.0069767, 1)
+texture = ExtResource("3_uqoei")
+metadata/_edit_lock_ = true
+
+[node name="ChefSprite" type="Sprite2D" parent="." unique_id=1815063884]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(120.00001, 80)
+scale = Vector2(1.263158, 1.2631578)
+texture = ExtResource("4_i7xpe")
+metadata/_edit_lock_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2085699824]
+stream = ExtResource("5_u04kj")
+bus = &"SFXBus"
+
+[node name="Carrot" type="Node2D" parent="." unique_id=194762648]
+position = Vector2(10, 82)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Carrot" unique_id=1288148946]
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(0, 0, 37, 30)
+script = ExtResource("7_16617")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="Carrot" unique_id=840155833]
+position = Vector2(22.5, 0)
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(38, 0, 8, 30)
+script = ExtResource("7_16617")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="Carrot" unique_id=803202009]
+position = Vector2(30.5, 0)
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(47, 0, 8, 30)
+script = ExtResource("7_16617")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D4" type="Sprite2D" parent="Carrot" unique_id=1063877423]
+position = Vector2(38.5, 0)
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(56, 0, 8, 30)
+script = ExtResource("7_16617")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D5" type="Sprite2D" parent="Carrot" unique_id=81332586]
+position = Vector2(46.5, 0)
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(65, 0, 8, 30)
+script = ExtResource("7_16617")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D6" type="Sprite2D" parent="Carrot" unique_id=1282612244]
+position = Vector2(54.5, 0)
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(74, 0, 8, 30)
+script = ExtResource("7_16617")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D7" type="Sprite2D" parent="Carrot" unique_id=603466586]
+position = Vector2(62.5, 0)
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(83, 0, 8, 30)
+script = ExtResource("7_16617")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D8" type="Sprite2D" parent="Carrot" unique_id=590671824]
+position = Vector2(70.5, 0)
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(92, 0, 8, 30)
+script = ExtResource("7_16617")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D9" type="Sprite2D" parent="Carrot" unique_id=6513458]
+position = Vector2(78.5, 0)
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(101, 0, 8, 30)
+script = ExtResource("7_16617")
+metadata/_edit_lock_ = true
+
+[node name="Middle" type="Sprite2D" parent="Carrot" unique_id=1638858868]
+position = Vector2(86.5, 0)
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(110, 0, 8, 30)
+script = ExtResource("7_16617")
+is_middle = true
+metadata/_edit_lock_ = true
+
+[node name="Middle2" type="Sprite2D" parent="Carrot" unique_id=1927664805]
+position = Vector2(86.5, 0)
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(110, 0, 8, 30)
+script = ExtResource("7_16617")
+is_middle = true
+metadata/_edit_lock_ = true
+
+[node name="Middle3" type="Sprite2D" parent="Carrot" unique_id=1531925148]
+position = Vector2(86.5, 0)
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(110, 0, 8, 30)
+script = ExtResource("7_16617")
+is_middle = true
+metadata/_edit_lock_ = true
+
+[node name="Middle4" type="Sprite2D" parent="Carrot" unique_id=953144774]
+position = Vector2(86.5, 0)
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(110, 0, 8, 30)
+script = ExtResource("7_16617")
+is_middle = true
+metadata/_edit_lock_ = true
+
+[node name="Middle5" type="Sprite2D" parent="Carrot" unique_id=14736148]
+position = Vector2(86.5, 0)
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(110, 0, 8, 30)
+script = ExtResource("7_16617")
+is_middle = true
+metadata/_edit_lock_ = true
+
+[node name="Middle6" type="Sprite2D" parent="Carrot" unique_id=1749134509]
+position = Vector2(86.5, 0)
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(110, 0, 8, 30)
+script = ExtResource("7_16617")
+is_middle = true
+metadata/_edit_lock_ = true
+
+[node name="Middle7" type="Sprite2D" parent="Carrot" unique_id=338228627]
+position = Vector2(86.5, 0)
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(110, 0, 8, 30)
+script = ExtResource("7_16617")
+is_middle = true
+metadata/_edit_lock_ = true
+
+[node name="Middle8" type="Sprite2D" parent="Carrot" unique_id=106908264]
+position = Vector2(86.5, 0)
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(110, 0, 8, 30)
+script = ExtResource("7_16617")
+is_middle = true
+metadata/_edit_lock_ = true
+
+[node name="Middle9" type="Sprite2D" parent="Carrot" unique_id=1192235320]
+position = Vector2(86.5, 0)
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(110, 0, 8, 30)
+script = ExtResource("7_16617")
+is_middle = true
+metadata/_edit_lock_ = true
+
+[node name="Middle10" type="Sprite2D" parent="Carrot" unique_id=42840659]
+position = Vector2(86.5, 0)
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(110, 0, 8, 30)
+script = ExtResource("7_16617")
+is_middle = true
+metadata/_edit_lock_ = true
+
+[node name="Middle11" type="Sprite2D" parent="Carrot" unique_id=225788904]
+position = Vector2(86.5, 0)
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(110, 0, 8, 30)
+script = ExtResource("7_16617")
+is_middle = true
+metadata/_edit_lock_ = true
+
+[node name="Middle12" type="Sprite2D" parent="Carrot" unique_id=63150066]
+position = Vector2(86.5, 0)
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(110, 0, 8, 30)
+script = ExtResource("7_16617")
+is_middle = true
+metadata/_edit_lock_ = true
+
+[node name="Middle13" type="Sprite2D" parent="Carrot" unique_id=1956072898]
+position = Vector2(86.5, 0)
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(110, 0, 8, 30)
+script = ExtResource("7_16617")
+is_middle = true
+metadata/_edit_lock_ = true
+
+[node name="Middle14" type="Sprite2D" parent="Carrot" unique_id=1169734157]
+position = Vector2(86.5, 0)
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(110, 0, 8, 30)
+script = ExtResource("7_16617")
+is_middle = true
+metadata/_edit_lock_ = true
+
+[node name="Middle15" type="Sprite2D" parent="Carrot" unique_id=1513090844]
+position = Vector2(86.5, 0)
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(110, 0, 8, 30)
+script = ExtResource("7_16617")
+is_middle = true
+metadata/_edit_lock_ = true
+
+[node name="Middle16" type="Sprite2D" parent="Carrot" unique_id=241259275]
+position = Vector2(86.5, 0)
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(110, 0, 8, 30)
+script = ExtResource("7_16617")
+is_middle = true
+metadata/_edit_lock_ = true
+
+[node name="Middle17" type="Sprite2D" parent="Carrot" unique_id=1767423302]
+position = Vector2(86.5, 0)
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(110, 0, 8, 30)
+script = ExtResource("7_16617")
+is_middle = true
+metadata/_edit_lock_ = true
+
+[node name="Middle18" type="Sprite2D" parent="Carrot" unique_id=2002929670]
+position = Vector2(86.5, 0)
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(110, 0, 8, 30)
+script = ExtResource("7_16617")
+is_middle = true
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D11" type="Sprite2D" parent="Carrot" unique_id=1222558156]
+position = Vector2(94.5, 0)
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(119, 0, 8, 30)
+script = ExtResource("7_16617")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D12" type="Sprite2D" parent="Carrot" unique_id=910341985]
+position = Vector2(102.5, 0)
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(128, 0, 8, 30)
+script = ExtResource("7_16617")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D13" type="Sprite2D" parent="Carrot" unique_id=1098272890]
+position = Vector2(110.5, 0)
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(137, 0, 8, 30)
+script = ExtResource("7_16617")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D14" type="Sprite2D" parent="Carrot" unique_id=28955259]
+position = Vector2(118.5, 0)
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(146, 0, 8, 30)
+script = ExtResource("7_16617")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D15" type="Sprite2D" parent="Carrot" unique_id=1910828211]
+position = Vector2(126.5, 0)
+texture = ExtResource("6_eydbh")
+region_enabled = true
+region_rect = Rect2(155, 0, 8, 30)
+script = ExtResource("7_16617")
+metadata/_edit_lock_ = true
+
+[node name="Bounds" type="Node2D" parent="." unique_id=1616419447]
+metadata/_edit_lock_ = true
+
+[node name="TopBound" type="StaticBody2D" parent="Bounds" unique_id=37962972]
+position = Vector2(120, 0)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/TopBound" unique_id=831575358]
+texture_filter = 1
+scale = Vector2(3.75, 0.25)
+texture = ExtResource("8_3cfwy")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/TopBound" unique_id=1435098662]
+shape = SubResource("RectangleShape2D_d2rsm")
+metadata/_edit_lock_ = true
+
+[node name="BottomBound" type="StaticBody2D" parent="Bounds" unique_id=1756468412]
+position = Vector2(120, 160)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/BottomBound" unique_id=883450035]
+texture_filter = 1
+scale = Vector2(3.75, 0.25)
+texture = ExtResource("8_3cfwy")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BottomBound" unique_id=1337985399]
+shape = SubResource("RectangleShape2D_d2rsm")
+metadata/_edit_lock_ = true
+
+[node name="LeftBound" type="StaticBody2D" parent="Bounds" unique_id=886042250]
+position = Vector2(4, 80)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/LeftBound" unique_id=1509527795]
+texture_filter = 1
+position = Vector2(-2.98023e-08, 0)
+scale = Vector2(0.25, 2.5)
+texture = ExtResource("8_3cfwy")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/LeftBound" unique_id=2009390046]
+shape = SubResource("RectangleShape2D_728vn")
+metadata/_edit_lock_ = true
+
+[node name="RightBound" type="StaticBody2D" parent="Bounds" unique_id=668147071]
+position = Vector2(236, 80)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Bounds/RightBound" unique_id=1806600245]
+texture_filter = 1
+scale = Vector2(0.25, 2.5)
+texture = ExtResource("8_3cfwy")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightBound" unique_id=2119574253]
+shape = SubResource("RectangleShape2D_728vn")
+metadata/_edit_lock_ = true
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=845361242]
+position = Vector2(157, 169)
+metadata/_edit_lock_ = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=2119060543]
+stream = ExtResource("9_vw8ad")
+volume_db = 16.66
+bus = &"SFXBus"
